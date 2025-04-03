@@ -4,9 +4,9 @@ name: LaTeX Compile & Spellcheck
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,14 +27,17 @@ jobs:
       - uses: xu-cheng/latex-action@v3
         name: Github Action for LaTeX
         with:
-          # The root LaTeX file to be compiled
           root_file: main.tex
+      - name: Install htlatex
+        run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-all tex4ht
+      - name: Convert LaTeX to HTML
+        run: htlatex main.tex
       - name: Lint LaTeX document
         uses: ChiefGokhlayeh/textidote-action@v5
         id: lint
         with:
-            root_file: main.tex
-            args: --check en --dict en_US.dict
+          root_file: main.tex
+          args: --check en --dict en_US.dict
       - name: Throw error if linter warnings exist
         if: ${{ steps.lint.outputs.num_warnings != 0 }}
         run: 'echo "::error file=main.tex::num_warnings: ${{ steps.lint.outputs.num_warnings }}";'
@@ -46,12 +49,19 @@ jobs:
       - name: Upload TeXtidote report
         uses: actions/upload-artifact@v4
         with:
-            name: textidote-report-v${{ github.run_number }}-${{ env.NOW }}.html
-            path: report.html
-      - name: Rename textidote report 
+          name: textidote-report-v${{ github.run_number }}-${{ env.NOW }}.html
+          path: report.html
+      - name: Upload report HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-report-v${{ github.run_number }}-${{ env.NOW }}.html
+          path: main.html
+      - name: Rename textidote report
         run: mv report.html textidote-report.html
-      - name: Rename latex report 
+      - name: Rename latex report
         run: mv main.pdf final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
+      - name: Rename HTML report
+        run: mv main.html final-report-v${{ github.run_number }}-${{ env.NOW }}.html
       - name: Tag the repository
         id: tag
         env:
@@ -68,4 +78,4 @@ jobs:
           files: |
             textidote-report.html
             final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
-                
+            final-report-v${{ github.run_number }}-${{ env.NOW }}.html
