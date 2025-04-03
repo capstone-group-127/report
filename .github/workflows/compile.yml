@@ -26,29 +26,20 @@ jobs:
         with:
           root_file: main.tex
           args: --check en --dict en_US.dict
+      - name: Throw error if linter warnings exist
+        if: ${{ steps.lint.outputs.num_warnings != 0 }}
+        run: 'echo "::error file=main.tex::num_warnings: ${{ steps.lint.outputs.num_warnings }}";'
       - uses: xu-cheng/latex-action@v3
         name: Github Action for LaTeX
         with:
           root_file: main.tex
       - name: Convert LaTeX to HTML
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y make latexmk zip ghostscript dvisvgm cpanminus
-          curl -L -o latexml.tar.gz https://github.com/brucemiller/LaTeXML/archive/v0.8.6.tar.gz
-          tar -xzf latexml.tar.gz
-          cd LaTeXML-0.8.6
-          cpanm Parse::RecDescent
-          perl Makefile.PL
-          make
-          sudo make install
-          cd ..
-          git clone https://github.com/LeedsUni/BookML.git
-          cp -r BookML/bookml .
-          cp BookML/GNUmakefile .
-          make
-      - name: Throw error if linter warnings exist
-        if: ${{ steps.lint.outputs.num_warnings != 0 }}
-        run: 'echo "::error file=main.tex::num_warnings: ${{ steps.lint.outputs.num_warnings }}";'
+        uses: docker://pandoc/core:3.5
+        with:
+          args: >-
+            --standalone
+            --output=main.html
+            main.tex
       - name: Upload completed PDF
         uses: actions/upload-artifact@v4
         with:
@@ -77,12 +68,16 @@ jobs:
         run: |
           git config user.name "GitHub Action"
           git config user.email "bloop@blorp.com"
-          git tag -a v${{ github.run_number }}-${{ env.NOW }} -m "Published version v${{ github.run_number }}"
-          git push origin v${{ github.run_number }}-${{ env.NOW }}
+          git tag -a v${{ github.run_number }} -m "Published version v${{ github.run_number }}"
+          git push origin v${{ github.run_number }}
+      - name: Generate release name
+        uses: boonya/gh-action-name-generator@v1
+        id: generator
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.run_number }}-${{ env.NOW }}
+          tag_name: ${{ github.run_number }}
+          name: ${{ steps.generator.outputs.name }} - ${{ env.NOW }}
           files: |
             textidote-report.html
             final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
