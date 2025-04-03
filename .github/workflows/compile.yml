@@ -1,17 +1,13 @@
 name: LaTeX Compile & Spellcheck
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -24,20 +20,31 @@ jobs:
       - uses: actions/checkout@v4
       - name: set date env
         run: echo "NOW=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
-      - uses: xu-cheng/latex-action@v3
-        name: Github Action for LaTeX
-        with:
-          root_file: main.tex
-      - name: Install htlatex
-        run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-all tex4ht
-      - name: Convert LaTeX to HTML
-        run: sudo htlatex main.tex
       - name: Lint LaTeX document
         uses: ChiefGokhlayeh/textidote-action@v5
         id: lint
         with:
           root_file: main.tex
           args: --check en --dict en_US.dict
+      - uses: xu-cheng/latex-action@v3
+        name: Github Action for LaTeX
+        with:
+          root_file: main.tex
+      - name: Convert LaTeX to HTML
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y make latexmk texfot zip ghostscript dvisvgm
+          curl -L -o latexml.tar.gz https://github.com/brucemiller/LaTeXML/archive/v0.8.6.tar.gz
+          tar -xzf latexml.tar.gz
+          cd LaTeXML-0.8.6
+          perl Makefile.PL
+          make
+          sudo make install
+          cd ..
+          git clone https://github.com/LeedsUni/BookML.git
+          cp -r BookML/bookml .
+          cp BookML/GNUmakefile .
+          make
       - name: Throw error if linter warnings exist
         if: ${{ steps.lint.outputs.num_warnings != 0 }}
         run: 'echo "::error file=main.tex::num_warnings: ${{ steps.lint.outputs.num_warnings }}";'
