@@ -1,0 +1,347 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in,lmargin=1in,rmargin=1in]{geometry}
+\usepackage{fancyhdr}
+\setcounter{tocdepth}{5}
+\usepackage{titletoc,tocloft}
+\setlength{\cftsubsecindent}{0.65cm}
+\setlength{\cftsubsubsecindent}{1.3cm}
+\newcommand{\nocontentsline}[3]{}
+\let\origcontentsline\addcontentsline
+\newcommand\stoptoc{\let\addcontentsline\nocontentsline}
+\newcommand\resumetoc{\let\addcontentsline\origcontentsline}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep}
+\usepackage{listings} % For code listings
+\usepackage{color} % For colored text
+\usepackage{amsmath} % For mathematical notation
+\usepackage{array} % For better table formatting
+\patchcmd{\thebibliography}{\section*}{\section}{}{}
+\graphicspath{ {./images/} }
+
+\newcommand{\quickimage}[2]{%
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=#2]{#1}
+\end{figure}%
+} 
+
+\newcommand{\quickfigure}[4]{%
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=#2]{#1}
+\caption{#3}
+\label{#4}
+\end{figure}%
+} 
+
+\lstset{ %
+  numbers=left,           
+  stepnumber=1,           
+  numbersep=5pt,          
+  showspaces=false,           
+  showstringspaces=false,     
+  showtabs=false,         
+  frame=single,           
+  tabsize=4,              
+  captionpos=b,           
+  breaklines=true,            
+  breakatwhitespace=false,        
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           Title Page                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{ 
+\begin{center}
+\raisebox{-0.5\height}{\includegraphics[width=4cm]{template/Picture2.jpg}} \hfill
+\raisebox{-0.5\height}{\includegraphics[width=6cm]{template/Picture1.png}} \hfill
+\raisebox{-0.5\height}{\includegraphics[width=4cm]{template/pki-logo.png}}
+\end{center}
+\vspace{1cm}
+{\normalsize{}
+College of Engineering\\
+Electrical and Computer Engineering Department\\
+}
+\vspace{1cm}
+ECEN 495\\
+The Harm Drone\\
+\vspace{2cm}
+{\normalsize{}
+By\\
+}
+Carter Brehm\\
+Toby Heinemann\\
+Camryn Klintworth\\
+Michael Maline\\
+\vspace{1cm}
+}
+\author{
+\small{}Submitted in Partial Fulfillment of the Requirements for the B.Sc. Degree,\\
+\small{}Electrical and Computer Engineering,\\
+\small{}College of Engineering,\\
+\small{}University of Nebraska-Lincoln\\
+\small{}Peter Kiewit Institute, Omaha, Nebraska, U.S.A.\\
+\small{}May 2025\\}
+\date{}
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        Front Matter                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Front Matter}
+
+\subsection*{Ethical Design Statement}
+A statement affirming that the Code of Ethics of the IEEE has been reviewed and applied to the design process and in the selection of the final proposed design. And that, the designers have held the safety of the public to be paramount and have addressed this in their design.
+
+\subsection*{Environmental Impact Statement}
+A statement declaring that the designers have considered any impact to the environment in their design and have eliminated the use of toxic materials, specifically those dangerous to humans.
+
+\subsection*{Project Abstract}
+% (Insert Project Abstract as stipulated in the rubric)
+
+\subsection*{Acknowledgement}
+The acknowledgment mentions persons or groups that contributed to the report or provided funding.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                     Executive Summary                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Executive Summary (1 page)}
+
+\subsection*{Foreword}
+\begin{itemize}[noitemsep]
+    \item Give the problem statement including the organizational problem, (the purpose of capstone projects, the context of your project) and the general technical problem (the type of project you are doing (software prototype, hardware prototype, application program for a client, etc.).
+    \item Give a more specific assignment statement --- specifically what the writers of the report were asked to do (an overview of the project goals), the technical questions, task, and perhaps the hypothesis or solution.
+    \item State the overall purpose of the report.
+\end{itemize}
+
+\subsection*{Summary}
+\begin{itemize}[noitemsep]
+    \item Provide the objective and background (how problem was approached, what were the results) including objective or hypothesis, methodology or experimental procedure and results.
+    \item Give overall conclusions about the project including recommendations for improvements and their implications, subsequent action, and cost and benefits.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                     Table of Contents                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                         Introduction                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction (3-6 pages)}
+The introduction should orient the reader to the topic of the report by including the following:
+\begin{itemize}[noitemsep]
+    \item \textbf{The problem} - Explain the problem that is addressed in the report.
+    \item \textbf{The objective} - State the objectives (what your project needs to accomplish to solve the problem).
+    \item \textbf{The method of the report} - Describe the organization and structure of the report.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    Problem Formulation                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Problem Formulation (3-6 pages)}
+\subsection{Problem Statement}
+State the problem to be solved as indicated by the need (the university, industry sponsor, or self-proposed). Present the objectives and expectations of the need and constraints given to the problem.
+
+\subsection{Background}
+Discuss the state of the art, competitive products, and patent liability analysis (HW 1).
+
+\subsection{Problem Formulation}
+Show that the problem has been formulated by presenting appropriate design method objectives, taking into consideration the following factors:
+\begin{itemize}[noitemsep]
+    \item (a) Problem is realistic or satisfies a specified need
+    \item (b) Easy to verify and/or validate by the end of the project
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Project Design Requirements, Specifications, and Success Criteria     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Project Design Requirements, Specifications, and Success Criteria (3-6 pages)}
+\begin{itemize}[noitemsep]
+    \item Give a clear set of design specifications for the project. The design specifications should be clear concise statements with a specific metric and an appropriate value.
+    \item The specifications should provide an unambiguous measure of the success of the final design in meeting the need and constraints associated with the design problem.
+    \item Problem Requirements Specifications is a dynamic process. Although it is desirable to freeze a set of requirements permanently, it is rarely possible. Requirements are likely to evolve through an iterative process that involves communication between the customer specifying the need and the technical community. The impact of proposed requirements must be evaluated to ensure that the initial intent of the requirements baseline is maintained or that changes to the intent are understood and accepted by the customer. The following diagram summarizes the dynamic process of developing system requirements:
+\end{itemize}
+
+\begin{center}
+Need or Customer \\
+Developed System Requirements \\
+Design Team Environment/Constraints \\
+Raw Requirements \quad Customer Feedback \quad Customer Representation \\
+Technical Representation \quad Technical Feedback
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         Concept Development, Synthesis, and Process Description          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Concept Development, Synthesis, and Process Description (5-10 pages)}
+\subsection{Literature Review}
+Give a brief summary of the key literature that has been researched and used in the design effort. This can include textbooks, handbooks, technical papers, technical reports, web sources, codes and regulations. A summary of similar designs, processes, or techniques can also be discussed to show the strengths and weaknesses of your design compared to others. Indicate whenever the design process was supported by previous coursework.
+
+\subsection{Concept Generation}
+Show that design methods were used to generate several conceptual solutions to the design problem. Draw sketches or tree diagrams to describe the alternatives that were produced by this effort.
+
+\subsection{Concept Reduction}
+Show that a judicial decision-making process was used to reduce the number of possible conceptual solutions to a single (optimal) solution that is to be implemented and verified and/or validated by the end of the project. Discuss why alternative solutions were rejected/chosen over other solutions. Describe the criteria used to evaluate potential solutions. Substantiate that the proposed final concept is the optimal choice in providing the functionality necessary while best meeting the specified constraints of the design problem. Document in detail the decision-making process.
+
+\subsection{Production Schedule (1-2 pages)}
+Discuss the phases of the design and implementation of your project. (PERT charts, Gantt charts, or OPPMs may be appropriate in the discussion) Recommend any improvements that could have been made in the scheduling and planning.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Detailed Engineering Analysis and Design Product Presentation          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Detailed Engineering Analysis and Design Product Presentation}
+Present and discuss the design concepts which have been used to solve the design problem. Although this section should be supported by a text discussion, it should be strongly supported by a detailed solid model of engineering analysis and design methods. Be sure to discuss the major subsystems in the design and the purpose and features of each subsystem. Include the following material to support this section:
+\begin{itemize}[noitemsep]
+    \item A thorough presentation and discussion of all engineering analysis used in the design process. Present all formulations, assumptions and parameters used. Show results of the analysis.
+    \item You should prove that the design will not fail and will perform as required through analysis. If you cannot predict it, then it is research or experiment, not engineered design.
+    \item Packaging Description (HW 4)
+    \item Hardware Design (HW 3)
+    \item PCB Design (HW 5)
+    \item Software Design (not a listing of code) (HW 7)
+\end{itemize}
+
+\subsection{Performance Estimates and Results (2-5 pages)}
+Present the estimated performance of the project (and how it was derived) based on the preliminary design (estimates to include speed, cost, power consumption, noise-immunity, ease of use, etc., depending on the project). Present the actual performance results. Discuss the results. Compare with estimated performance and explain discrepancies. Include suggestions for design changes that would improve the performance of the project. Use graphs or other figures to show relationships when appropriate.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                         Economic Analysis                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Economic Analysis}
+\subsection{Cost Analysis}
+Design includes some form of economic analysis. Realistic design must be concerned with cost. Include an analysis for:
+\begin{itemize}[noitemsep]
+    \item Prototype one-time cost (parts and implementation)
+    \item Prototype labor investment (documented engineer-hours)
+    \item Lifetime operational cost
+\end{itemize}
+
+\subsection{Bill of Materials}
+Include a full parts list for the entire design if applicable. All standard parts should be completely identified by their code or specification. Custom parts must also be specified.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    Reliability and Safety Analysis                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reliability and Safety Analysis (HW 6)}
+It is the ethical responsibility of the engineer to ensure that the solution to the design problem is safe to the public and the environment. This is substantiated by showing that Design for Safety methods were employed in the design process and documented through a Hazards and Failure Analysis. Discuss the results of the analysis and how safety was incorporated into the design.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Social/Political/Environmental Impact                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Social/Political/Environmental Impact (HW 8)}
+Engineers are morally responsible for the social consequences of their technical decisions. Engineers can broadly influence society. But, with this power comes the ability to do harm as well. The professional engineer, as with all professionals, should consider the implications of their actions, especially with respect to the public. This section should present the project team's consideration of the power and responsibility presented to the engineering graduate. An engineer is someone who uses math and the sciences to mess with the world—by designing and making things that people will buy and use; and once you mess with the world, you are responsible for the mess you’ve made.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%            Discussion, Conclusions, and Recommendations                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion, Conclusions, and Recommendations (2-4 pages)}
+Restate the problem that gave rise to the report. Summarize the main points and the approach that was taken. Summarize the design performance. Provide recommendations, explaining subsequent action or posing specific questions for investigations. Discuss the lessons learned.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                         User’s Manual                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{User’s Manual (1-3 pages)}
+Provide a user’s manual for the operation and maintenance of the system designed in the project. The operators' manual for a Senior Capstone Design Project will give complete and detailed step-by-step operating instructions such that anyone can operate the device. If it is necessary to calibrate any part of the project to assure its proper operation, the calibration procedure must be a part of this manual. It will contain all applicable safety warnings that apply to operation and/or operator maintenance of the project.
+
+The user's manual will include all initialization and/or set up instructions needed for the proper operation of the project. If the project is done for yourself, the manual may be bound in the report and need only be detailed enough that you would be able to operate it after a long period of time away from it.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                          Appendices                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendices}
+Include in the appendices information that could not be included in the formal body of the report because it would disrupt the continuity of the discussion. Background materials, product catalogs, experimental data tables, and extra documentation should be placed in the appendix.
+
+The following appendices should be organized in the order listed. If an appendix is not applicable to your report, insert a page in the proper place and note this fact on it.
+
+\subsection*{Appendix A: Notes}
+This appendix consists of a numbered list of material, books, magazines, etc. from which you have taken information, circuits, data, or other information directly. The main body of the report is to use End Notes for references. Material in the main body of the report taken from any of the listed documents should be assigned an End Note number as a superscript in the discussion of the material and be listed in the END note section. In the case of schematics and pictures, the end note number should appear as a superscript after the figure's title. The first time a copyright or trademark is encountered in the report it
+will be assigned an end note number and proper notation will appear in the end notes. Written permission will be sought for information copied from data books, books, magazines, and data sheets. If verbal permission is given, the date, name, and phone number of the person giving permission will be noted in the end notes. If permission cannot be obtained, no copies of the data will be included in the report.
+
+\subsection*{Appendix B: Acceptance Testing}
+This appendix is an extract from your senior project proposal requirements specifications testing section. If you have requested a change in your acceptance testing (Project Specific Success Criteria) a copy of the request and the approval letter will be included. The last page will then be a copy of the new (modified) acceptance testing criteria (PSSC). This information will be used by the faculty to judge whether your project performs as proposed or has been modified during the demonstration phase of your presentation.
+
+\subsection*{Appendix C: Electrical Specifications}
+This appendix will, as a minimal requirement, contain the following:
+\begin{enumerate}[noitemsep]
+    \item Schematics: An overall block diagram or interconnection diagram from ORCAD will be the first page. Lines on the schematics that enter and leave the page will be annotated so that one knows which page sheet they go to or come from as well as the name of the function it performs. Signal flow if possible, should be from left to right. If a line is exceptionally long its name should appear above the line about midway of the total length. Devices will be assigned reference designations as listed in the national standard (IEEE Std 315-1975). If a reference designation is not found in the quick reference list for a device, further information may be obtained from the standards books maintained in the ECEN maintenance shop. Symbols drawn by the ORCAD software will also be acceptable. Logic symbols will be in accordance with IEEE Std 91-1984 or as drawn by ORCAD.
+    \item Timing Analysis: A timing analysis will be done on all devices necessary.
+    \item Loading Analysis: A loading analysis will be done on all outputs necessary.
+    \item Specification Sheets: Only include data sheets of unique or seldom used parts. Check with the manufactures to gain permission to reproduce data sheets for inclusion in your report.
+    \item Signal Quality Analysis (SQA): An SQA analysis will be done on all signals transmitted on long runs.
+    \item Safety/Electrical Hazard Checklist: With respect to safety, all controls will be appropriately labeled. Warning labels such as “disconnect power before opening case”, “no user serviceable parts inside”, “danger hazardous voltages” etc. will be affixed to the project if applicable.
+    \item Accuracy Certification: In this section, describe how the accuracy claimed in your project acceptance testing statement (PSSC) was verified. Give the name and serial number of the units used to check the accuracy and the date of the most recent time the instrument was calibrated against a NIST traceable standard.
+\end{enumerate}
+
+\subsection*{Appendix D: Software}
+\begin{enumerate}[noitemsep]
+    \item Flowcharts: An overall flowchart will begin this section. Detailed flowcharts will be done for each individual routine. Each flowchart will be given a descriptive title. The title should be centered at the top of the page. On the line below the title, centered and enclosed in parenthesis, will appear a reference to the corresponding line numbers or page in the software listing where this code can be found. Circles containing an alpha designator will be used to show connectivity between portions of flowcharts. A to/from page number will be placed next to the circle to aid in tracing the flow between pages. Pseudo-code may be used in place of flowcharts for computational code, but not for control or input/output code.
+    \item Program Listings: High Level or Machine: Compressed printing can be used. All programs must have enough comments so that a reviewer can gain insight into the purpose of the program elements.
+\end{enumerate}
+
+\subsection*{Appendix E: Resource Expenditure Analysis}
+\begin{enumerate}[noitemsep]
+    \item Cost Analysis: This appendix consists of a list of parts grouped under general headings along with the total price. In narrative form, discuss the nature of any cost overrun, if you are more than 10\% over your estimated cost.
+    \item Labor Hour Analysis: This appendix will contain a breakdown of the hours spent in the development of the hardware and the software. Besides these two main areas, attempt to sub divide it into specific areas as basic research, requisition of parts, testing hardware, testing software, debugging hardware/software, writing the report, etc.
+    \item Parts List: This appendix will contain a listing, in reference designation alpha numeric order, of all the parts used. All parts which do not have a reference designation will be listed in alpha numeric order under a heading of miscellaneous items. Use of the parts list documentation of the schematic capture part of the ORCAD program is recommended.
+    \item Other Resources: Include in this appendix things like funding supplied by others, review time done by others, etc.
+\end{enumerate}
+
+\subsection*{Appendix F: Individual Student Outcomes Appendices}
+Each member of the team is responsible for an individual appendix (F1, F2, F3, [F4]) that includes evidence that each member of the team has met ABET Criterion 3, 1) through 7), student outcomes. These can be organized as you wish, but they MUST BE ORGANIZED, not just a collection of notes and miscellaneous course work. Identify each of the 7 outcomes and your supporting evidence.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    Report General Guidelines                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Report General Guidelines}
+\begin{itemize}[noitemsep]
+    \item Be sure to introduce and summarize each section.
+    \item Always write general to specific in each section.
+    \item Do not write chronologically. (a technical report is not a story or a novel)
+    \item Use section and subsection titles.
+    \item Make sure that subsections follow each other in a logical progression.
+    \item Number each page.
+    \item Use bulleted or enumerated lists rather than lengthy textual discussion of requirements, subsystems, etc.
+\end{itemize}
+
+\section*{Figures and Tables}
+\begin{itemize}[noitemsep]
+    \item Technical reports only contain Figures and Tables.
+    \item Refer to graphs as figures, photos as figures, small code segments as figures, etc.
+    \item Figures and tables are NOT to be hand sketched.
+    \item Figures and tables should be used to supplement the discussion.
+    \item Always introduce a figure or table in the text and never place a figure or table in the text that is not discussed.
+    \item Discuss the meaning and significance of the table or figure.
+    \item Be sure to highlight the fine points and structure.
+    \item Figures and tables should be located in the body of the text, AFTER they are introduced in the text.
+    \item It is often appropriate to pull out small segments of code from a main program or to write pseudo-code to describe an algorithm or major point of the project. This is considered a figure and should be titled and numbered as such.
+    \item If a group of figures or a long table or code listing takes up too much space, locate them in an appendix.
+    \item Figures and tables can be located at the end of the text, but it is less convenient for the reader.
+    \item Figure titles and numbering: Figures should be numbered consecutively in the report. Every figure must have a descriptive title located immediately below the figure.
+    \item Table titles and numbers: Tables should be numbered consecutively in the report. Every table must have a descriptive title located above or below the table.
+\end{itemize}
+
+\section*{References}
+Use the IEEE format for reference style. List all references used in the report. All references should include author, title, journal or magazine title (if a journal article), publisher, page number, date. Below are sample references from a conference proceeding paper [1], book [2], journal article [3], Ph.D. dissertation [4], technical specification [5], and web page.
+
+\begin{enumerate}[noitemsep]
+    \item [1] P. J. Hurst and W. J. McIntyre, “Double sampling in switched-capacitor delta-sigma A/D converters,” in Proc. IEEE Int. Symposium on. Circuits and Systems., 1990, pp. 902-905.
+    \item [2] J. C. Candy and G. C. Temes, \textit{Oversampling Delta-Sigma Data Converters: Theory, Design and Simulation}. New York: IEEE Press, 1992.
+    \item [3] L. R. Rabiner, R. W. Schafer, and C. M. Rader, “The chirp z-transform algorithm,” \textit{IEEE Trans. on Audio Electroacoustics}, AU-17:6 (June 1969), pp. 86-92.
+    \item [4] S. Bagchi, “The nonuniform discrete Fourier transform and its applications in signal processing,” Ph.D. dissertation, Electrical Engineering Department, Univ. California, Santa Barbara, 1994.
+    \item [5] Motorola CMOS Logic Data, Series C, Motorola, INC, 1990, pp. 6-97 - 6-107.
+    \item [6] EE Design Center - Questlink Technology, www.questlink.com, 1999.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                              End Document                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
