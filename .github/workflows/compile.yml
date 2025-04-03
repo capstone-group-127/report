@@ -55,6 +55,8 @@ jobs:
       - name: Tag the repository
         id: tag
         run: |
+          git config user.name "GitHub Action"
+          git config user.email "bloop@blorp.com"
           git tag -a ${{ github.run_number }} -m "Published version $TAG" ${GITHUB_SHA}
           git push origin ${{ github.run_number }}
       - name: Release
