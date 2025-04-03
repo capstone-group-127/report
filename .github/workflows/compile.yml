@@ -34,6 +34,7 @@ jobs:
         id: lint
         with:
             root_file: main.tex
+            args: --check en --dict en_US.dict
       - name: Upload completed PDF
         uses: actions/upload-artifact@v4
         with:
@@ -44,4 +45,14 @@ jobs:
         with:
             name: textidote-report-v${{ github.run_number }}-${{ env.NOW }}.html
             path: report.html
+      - name: Rename textidote report 
+        run: mv report.html textidote-report.html
+      - name: Rename latex report 
+        run: mv main.pdf final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            textidote-report.html
+            final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
                 
