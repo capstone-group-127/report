@@ -40,7 +40,7 @@ jobs:
           name: final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
           path: main.pdf
       - name: Upload TeXtidote report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
             name: textidote-report-v${{ github.run_number }}-${{ env.NOW }}.html
             path: report.html
