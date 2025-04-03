@@ -32,20 +32,20 @@ jobs:
           root_file: main.tex
       - name: Convert LaTeX to HTML
         run: |
-        sudo apt-get update
-        sudo apt-get install -y make latexmk zip ghostscript dvisvgm cpanminus
-        curl -L -o latexml.tar.gz https://github.com/brucemiller/LaTeXML/archive/v0.8.6.tar.gz
-        tar -xzf latexml.tar.gz
-        cd LaTeXML-0.8.6
-        cpanm Parse::RecDescent
-        perl Makefile.PL
-        make
-        sudo make install
-        cd ..
-        git clone https://github.com/LeedsUni/BookML.git
-        cp -r BookML/bookml .
-        cp BookML/GNUmakefile .
-        make
+          sudo apt-get update
+          sudo apt-get install -y make latexmk zip ghostscript dvisvgm cpanminus
+          curl -L -o latexml.tar.gz https://github.com/brucemiller/LaTeXML/archive/v0.8.6.tar.gz
+          tar -xzf latexml.tar.gz
+          cd LaTeXML-0.8.6
+          cpanm Parse::RecDescent
+          perl Makefile.PL
+          make
+          sudo make install
+          cd ..
+          git clone https://github.com/LeedsUni/BookML.git
+          cp -r BookML/bookml .
+          cp BookML/GNUmakefile .
+          make
       - name: Throw error if linter warnings exist
         if: ${{ steps.lint.outputs.num_warnings != 0 }}
         run: 'echo "::error file=main.tex::num_warnings: ${{ steps.lint.outputs.num_warnings }}";'
