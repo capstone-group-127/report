@@ -31,7 +31,7 @@ jobs:
       - name: Install htlatex
         run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-all tex4ht
       - name: Convert LaTeX to HTML
-        run: htlatex main.tex
+        run: sudo htlatex main.tex
       - name: Lint LaTeX document
         uses: ChiefGokhlayeh/textidote-action@v5
         id: lint
