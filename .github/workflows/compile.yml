@@ -35,6 +35,9 @@ jobs:
         with:
             root_file: main.tex
             args: --check en --dict en_US.dict
+      - name: Throw error if linter warnings exist
+        if: ${{ steps.lint.outputs.num_warnings != 0 }}
+        run: 'echo "::error file=main.tex::num_warnings: ${{ steps.lint.outputs.num_warnings }}"; exit 1;'
       - name: Upload completed PDF
         uses: actions/upload-artifact@v4
         with:
@@ -49,9 +52,15 @@ jobs:
         run: mv report.html textidote-report.html
       - name: Rename latex report 
         run: mv main.pdf final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
+      - name: Tag the repository
+        id: tag
+        run: |
+          git tag -a ${{ github.run_number }} -m "Published version $TAG" ${GITHUB_SHA}
+          git push origin ${{ github.run_number }}
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.run_number }}
           files: |
             textidote-report.html
             final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
