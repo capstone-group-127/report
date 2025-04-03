@@ -33,7 +33,7 @@ jobs:
       - name: Convert LaTeX to HTML
         run: |
           sudo apt-get update
-          sudo apt-get install -y make latexmk texfot zip ghostscript dvisvgm
+          sudo apt-get install -y make latexmk zip ghostscript dvisvgm
           curl -L -o latexml.tar.gz https://github.com/brucemiller/LaTeXML/archive/v0.8.6.tar.gz
           tar -xzf latexml.tar.gz
           cd LaTeXML-0.8.6
