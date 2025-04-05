@@ -33,14 +33,6 @@ jobs:
         name: Github Action for LaTeX
         with:
           root_file: main.tex
-      - name: Convert LaTeX to HTML
-        uses: docker://pandoc/core:3.5
-        with:
-          args: >-
-            --standalone
-            --output=main.html
-            --css=output.css
-            main.tex
       - name: Upload completed PDF
         uses: actions/upload-artifact@v4
         with:
@@ -51,17 +43,10 @@ jobs:
         with:
           name: textidote-report-v${{ github.run_number }}-${{ env.NOW }}.html
           path: report.html
-      - name: Upload report HTML
-        uses: actions/upload-artifact@v4
-        with:
-          name: final-report-v${{ github.run_number }}-${{ env.NOW }}.html
-          path: main.html
       - name: Rename textidote report
         run: mv report.html textidote-report.html
       - name: Rename latex report
         run: mv main.pdf final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
-      - name: Rename HTML report
-        run: mv main.html final-report-v${{ github.run_number }}-${{ env.NOW }}.html
       - name: Tag the repository
         id: tag
         env:
@@ -74,7 +59,7 @@ jobs:
       - name: Generate release name
         uses: boonya/gh-action-name-generator@v1
         with:
-          style: lowerCase
+          style: capital
         id: generator
       - name: Release
         uses: softprops/action-gh-release@v2
@@ -84,4 +69,3 @@ jobs:
           files: |
             textidote-report.html
             final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
-            final-report-v${{ github.run_number }}-${{ env.NOW }}.html
