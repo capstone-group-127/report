@@ -239,6 +239,78 @@ Design includes some form of economic analysis. Realistic design must be concern
 Include a full parts list for the entire design if applicable. All standard parts should be completely identified by their code or specification. Custom parts must also be specified.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                         Packaging Design                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Commercial Product Packaging (HW 3)}
+
+To refine the Harm Drone’s PCB packaging design, we analyzed two commercial drones with plastic-based enclosures: the Parrot AR.Drone and the Parrot Anafi USA. Both drones emphasize lightweight and durable construction, making them useful comparisons for our 3D-printed plastic case. However, they differ in structural integrity, modularity, and accessibility.
+
+Parrot designed the AR.Drone with a plastic and expanded polypropylene (EPP) foam casing, which protects its electronics while keeping the drone lightweight and impact-resistant. Its interchangeable hulls include a foam indoor hull for propeller protection and a lightweight plastic outdoor hull for maneuverability~\cite{parrot2021}. While this design remains cost-effective and lightweight, it lacks structural rigidity and EMI shielding.
+
+Parrot built the Anafi USA for professional and industrial applications, using lightweight thermoplastic materials to improve structural integrity and environmental resistance~\cite{parrot2023}. Unlike the AR.Drone, the Anafi USA features a reinforced plastic housing, which protects its internal flight electronics, sensors, and camera systems while maintaining modularity for easier maintenance. However, this model still prioritizes lightweight efficiency over impact resistance, making it more fragile than drones with metal enclosures.
+
+\subsection{Parrot AR.Drone}
+
+The Parrot AR.Drone serves as an early example of lightweight, plastic-based enclosures for drones. It encloses PCB components inside a light plastic shell, while internal EPP foam elements absorb impact. The enclosure integrates fully into the drone’s frame, ensuring efficient weight distribution and minor crash protection.
+
+\textbf{Positive Aspects:}
+\begin{itemize}[leftmargin=1.5em]
+    \item Maintains lightweight and energy efficiency due to plastic and foam materials.
+    \item Features interchangeable hulls for adaptability in different environments.
+    \item Provides a cost-effective and easily manufacturable design.
+\end{itemize}
+
+\textbf{Negative Aspects:}
+\begin{itemize}[leftmargin=1.5em]
+    \item Offers limited structural protection due to its lightweight materials.
+    \item Lacks dedicated EMI shielding, which may affect sensor performance.
+    \item Uses a fixed casing, making maintenance and upgrades more difficult.
+\end{itemize}
+
+We adopted the lightweight plastic construction approach of the Parrot AR.Drone while improving structural reinforcement and accessibility. Instead of using a fully integrated casing like the AR.Drone, we designed a 3D-printed modular enclosure with two interlocking halves and a latch mechanism, allowing for quick access, easy maintenance, and upgrades. Additionally, we incorporated precisely positioned cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, enabling seamless external connectivity without requiring complete disassembly.
+
+\subsection{Parrot Anafi USA}
+
+Parrot engineered the Anafi USA to balance durability and weight efficiency, ensuring optimal flight performance while protecting internal electronics. Parrot built the drone’s enclosure as part of the main frame, ensuring structural support while keeping components compact and secure.
+
+\textbf{Positive Aspects:}
+\begin{itemize}[leftmargin=1.5em]
+    \item Reinforced thermoplastic materials improve durability while maintaining a lightweight design.
+    \item Modular structure allows for easier maintenance and upgrades.
+    \item Includes basic EMI shielding, which reduces interference with sensor and communication systems.
+\end{itemize}
+
+\textbf{Negative Aspects:}
+\begin{itemize}[leftmargin=1.5em]
+    \item Lightweight plastic housing offers limited impact resistance compared to metal enclosures.
+    \item Non-removable casing makes internal components harder to access.
+    \item Lacks vibration-dampening features, which could affect PCB stability over time.
+\end{itemize}
+
+We based the Harm Drone’s enclosure on the Anafi USA’s thermoplastic construction, enhancing durability and accessibility through a custom 3D-printed modular design. Unlike the Anafi USA’s fully integrated frame, our enclosure maintains modularity, ensuring that components can be easily removed, replaced, or upgraded. To improve usability, we integrated cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, allowing external connections without the need for full enclosure removal.
+
+\section{Project Package Specifications}
+
+We designed the Harm Drone’s PCB packaging as a lightweight, durable, and modular enclosure that protects critical electronic components while allowing easy maintenance and upgrades. The enclosure consists of a custom 3D-printed plastic case with two interlocking halves, secured using a latch mechanism. This structure enables quick access to internal components, eliminating the need for complex disassembly.
+
+We selected 3D-printed plastic for its balance of strength and weight efficiency. The two-part housing connects via a latch, eliminating the need for screws or additional fasteners. Internal mounting points secure the PCB, reducing mechanical stress and vibration.
+
+To support external connections, we incorporated custom cutouts for the power switch, USB-C port, microSD slot, USB ports, and XT60 connector. These cutouts align precisely with the PCB layout, ensuring seamless connectivity without requiring enclosure removal.
+
+\section{PCB Footprint Layout}
+
+We designed the Harm Drone’s PCB footprint layout to optimize routing, space usage, and accessibility while aligning with the 3D-printed enclosure’s cutouts. We selected footprints based on space constraints, manufacturability, and electrical performance to ensure an efficient balance between density and accessibility.
+
+The STM32F072CB microcontroller uses an LQFP-48 package, ensuring compact form and manageable pin spacing for UART, SPI, and USB routing~\cite{stm2023}. The FT231XS-R USB-to-UART converter and TUSB2046I USB hub use SOIC and QFN footprints, reducing PCB footprint while ensuring signal integrity~\cite{ftdi2023,ti2023a}. The CAT25160VI-GT3 EEPROM, placed in an 8-SOIC package, provides compact non-volatile storage~\cite{onsemi2023}.
+
+We placed the IS62WVS2568GBLL SRAM in a TSOP-44 footprint for high-speed memory access, balancing pin density and thermal performance~\cite{issi2023}. The MSD-12-A microSD card module, a critical component for external data storage, is edge-mounted to align with the enclosure’s cutout for user accessibility~\cite{samesky2023}. We routed the 23LC1024 SPI bus, which the microcontroller, EEPROM, and SD card share, to minimize signal interference and optimize communication speeds~\cite{microchip2023}.
+
+We selected SOT-23-6 and SOT-23-5 footprints for power regulation components, including the LMR51430XDDCR buck converter and XC6210A332MR-G LDO regulator, to ensure efficient power conversion with minimal space usage~\cite{ti2023b,torex2023}. Through-hole mounting is used for high-stress connectors like USB and XT60 power, ensuring long-term mechanical stability.
+
+With an estimated PCB size of 95.5\,mm $\times$ 40.228\,mm $\times$ 17.68\,mm, the layout maintains clear separation of power and data lines, ensures efficient signal routing, and aligns precisely with enclosure cutouts. Appendix C includes the final footprint layout.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                    Reliability and Safety Analysis                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Reliability and Safety Analysis (HW 6)}
@@ -248,7 +320,149 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 %               Social/Political/Environmental Impact                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Social/Political/Environmental Impact (HW 8)}
-Engineers are morally responsible for the social consequences of their technical decisions. Engineers can broadly influence society. But, with this power comes the ability to do harm as well. The professional engineer, as with all professionals, should consider the implications of their actions, especially with respect to the public. This section should present the project team's consideration of the power and responsibility presented to the engineering graduate. An engineer is someone who uses math and the sciences to mess with the world—by designing and making things that people will buy and use; and once you mess with the world, you are responsible for the mess you’ve made.
+
+We designed the Harm Drone PCB with a strong emphasis on ethical engineering and social responsibility. Because the board collects real-time data in potentially sensitive environments, we intentionally avoid wireless data transmission, reducing interception risks and aligning with ethical data handling practices~\cite{parrot2023,microchip2023}.
+
+We developed rigorous testing protocols to confirm safe operation under conditions such as fluctuating power, temperature changes, and data load variations. By incorporating fail-safe mechanisms, reliable firmware, and complete documentation, we reduce the likelihood of failure during critical missions.
+
+Our documentation includes all necessary electrical, integration, and operational details to ensure safe and transparent deployment. This level of openness aligns with the National Society of Professional Engineers (NSPE) Code of Ethics, which emphasizes engineers' responsibility to protect public safety and communicate system limitations~\cite{nspe}.
+
+\subsection{Stakeholder Considerations}
+
+The system directly impacts multiple stakeholders, including Professor Harms' lab, drone operators, academic researchers, and communities near drone operation zones. We ensure secure data handling by enforcing local storage and by not implementing wireless communication, which reduces the chance of unintended surveillance. This design approach strengthens trust between developers, users, and the public, and supports transparent research practices~\cite{parrot2023}.
+
+\subsection{Research Data Privacy and Ethics}
+
+Because the board may store geolocation and environmental data from sensitive areas, we prioritize data privacy in our system architecture. By avoiding wireless data transfers and encrypting log files where necessary, we ensure compliance with data privacy standards such as the California Consumer Privacy Act (CCPA)~\cite{microchip2023}. Researchers integrating the board must follow institutional and governmental review processes for ethical deployment.
+
+\section{Political Impact Analysis}
+
+Although the Harm Drone PCB is designed for academic use, its integration of USB interfaces, microcontrollers, and memory modules introduces political and regulatory complexities. These components may fall under U.S. export control regulations such as ITAR or EAR when paired with sensitive payloads~\cite{itar}.
+
+We source parts from vendors who comply with international trade regulations and maintain transparency in their labor practices. Should the board see international deployment, we will ensure compliance with American data protection standards such as CCPA and with product safety regulations like CE and FCC~\cite{ti2023b,microchip2023}.
+
+To mitigate supply chain risks, we identified multiple vendors and ensured compatibility with alternative components. Our adherence to RoHS, CE, and FCC standards promotes safe design and supports potential international academic collaboration~\cite{ti2023b}.
+
+\subsection{Regulatory Compliance}
+
+We ensured compliance with globally recognized standards, including RoHS (for hazardous substance restrictions), FCC (for electromagnetic emissions), and CE (for general product safety). Meeting these standards strengthens product safety and legal clarity, especially for future research use or potential commercial adaptation~\cite{ti2023b}.
+
+\section{Environmental Impact Analysis}
+
+Although we did not manufacture an entire drone platform, the PCB system still contributes environmental impacts throughout its lifecycle. We addressed these challenges through design decisions that reduce waste, power consumption, and end-of-life hazards.
+
+\subsection{Manufacturing}
+
+PCB fabrication consumes energy and involves hazardous chemicals such as etchants and solvents. To minimize this impact, we use RoHS-compliant materials, lead-free solder, and compact surface-mount designs that reduce board size and component count~\cite{ti2023b}. We followed IPC-2221B design standards to ensure environmentally responsible layout practices~\cite{ipc2221b}.
+
+\subsubsection{Enclosure Material and Additive Manufacturing}
+
+To house and protect the PCB during deployment, we designed a custom 3D-printed enclosure made from polylactic acid (PLA), a biodegradable thermoplastic derived from renewable resources like cornstarch or sugarcane. PLA offers several benefits over petroleum-based plastics, including a lower carbon footprint during production and improved biodegradability under industrial composting conditions~\cite{pla2023}.
+
+By using additive manufacturing, we minimize material waste and enable rapid iteration of enclosure designs to fit a variety of drone platforms. This approach supports our modular integration goals and allows users to fabricate new casings on demand using common 3D printing equipment. The use of PLA also avoids the environmental hazards associated with legacy enclosures made from ABS or carbon-reinforced polymers.
+
+\subsection{Normal Use}
+
+During operation, the PCB draws low power from the drone’s main supply. We optimized firmware to reduce polling cycles and power consumption from non-critical modules. Our modular design supports repairability, allowing users to replace only faulty components—such as USB headers or memory chips—rather than the entire board.
+
+\subsection{Disposal/Recycling}
+
+At end-of-life, the board presents moderate recycling challenges due to embedded copper, tin, and trace amounts of gold. To mitigate these risks, we included clear disassembly documentation and recommended disposal via certified e-waste programs. Our packaging uses recyclable materials and avoids excessive padding, aligning with environmentally responsible delivery methods~\cite{epa2023}.
+
+\subsection{Lifecycle Assessment Overview}
+
+By decoupling the data logging system from specific drone models, we reduce redundant hardware production and lower our carbon footprint. The board’s reusability across multiple UAV platforms increases its service life and reduces overall resource consumption. Our design choices support circular lifecycle goals through modularity, durability, and sustainable manufacturing practices~\cite{epa2023}.
+\section{Design Constraints and Component Selection Rationale (HW ?)}
+\section{Design Constraint Analysis}
+
+\subsection{Computation Requirements}
+
+Computation requirements for the add-on PCB are not highly restrictive. The microcontroller must be powerful enough to run the USB protocol and facilitate communication between the drone’s onboard computer and the sensors connected to the USB hub.
+
+\subsection{Interface Requirements}
+
+The design requires several interfaces, including SPI, UART, and USB. To interface with the USB hub, the microcontroller must operate at 48\,MHz. The USB 2.0 specification also requires the board to supply 500\,mA of current at 5\,V.
+
+There are three SPI devices on the board. While these could theoretically share a single SPI bus, the SD card—operating in SPI mode—necessitated the use of a dedicated SPI interface to simplify firmware development. The STM32 HAL driver for SPI was not optimized for this shared configuration. Additional pull-up resistors were added to each SD card data pin to enhance data integrity.
+
+\subsection{On-Chip Peripheral Requirements}
+
+The Harm Drone system requires multiple on-chip peripherals. These include:
+\begin{itemize}
+    \item Two SPI interfaces
+    \item One UART interface
+    \item One USB interface
+    \item One PWM clock (for LED brightness control)
+    \item A 48\,MHz clock source for USB hub communication
+\end{itemize}
+
+\subsection{Off-Chip Peripheral Requirements}
+
+External components include:
+\begin{itemize}
+    \item USB hub (must interface with four external USB devices)
+    \item SD card reader (must support SPI mode)
+    \item SRAM and EEPROM (connected over SPI, used for future system expansions)
+\end{itemize}
+
+\subsection{Power Constraints}
+
+Power is supplied by a 15\,V rechargeable battery that powers all subsystems. A two-stage regulation system includes:
+\begin{itemize}
+    \item A buck converter (15\,V $\rightarrow$ 5\,V for peripherals)
+    \item An LDO regulator (5\,V $\rightarrow$ 3.3\,V for microcontroller, GPS, and sensors)
+\end{itemize}
+
+Brushless motors and ESCs draw directly from the 15\,V source, while lower-power components rely on precise regulation. The power system is optimized for:
+\begin{itemize}
+    \item 10 minutes of flight time
+    \item Voltage stability
+    \item Current distribution across subsystems
+\end{itemize}
+
+\subsection{Packaging Constraints}
+
+Due to the Harm Drone’s compact, asymmetric design and protruding components (e.g., propeller arms, sensors, power connectors), the packaging must:
+\begin{itemize}
+    \item Be custom-fit to avoid damage
+    \item Provide rigid outer casing with shock-absorbent interior
+    \item Safely house the 15\,V battery and accessories
+    \item Allow for easy unpacking, assembly, and re-deployment
+\end{itemize}
+
+\subsection{Cost Constraints}
+
+The project operates under a \$325 budget, covering all hardware. To stay within this constraint:
+\begin{itemize}
+    \item Components were selected based on cost-performance tradeoffs
+    \item Off-the-shelf parts were prioritized
+    \item Critical parts (e.g., buck converter, USB hub) were chosen for affordability and efficiency
+\end{itemize}
+
+Despite budget limits, the design must remain competitive with commercial offerings, many of which benefit from economies of scale.
+
+\section{Component Selection Rationale}
+
+Component choices prioritized efficient power management, reliable communication, compact footprint, and low power consumption.
+
+\begin{itemize}
+    \item \textbf{Microcontroller:} STM32F072CB was selected for its ARM Cortex-M0 core, USB 2.0 support, UART/SPI interfaces, and flash/RAM balance~\cite{stm2023}. Table~\ref{tab:mcus} compares it with the ATmega32U4~\cite{atmel2023}.
+
+    \item \textbf{USB-UART Converter:} FT231XS-R was chosen for stable USB-to-serial conversion~\cite{ftdi2023}. Table~\ref{tab:usb_uart} compares it with the CP2102~\cite{silabs2023}.
+
+    \item \textbf{Buck Converter:} LMR51430XDDCR offers efficient 15\,V to 5\,V regulation~\cite{ti2023b}. Table~\ref{tab:buck} compares it with the MP2315~\cite{mp2315}.
+
+    \item \textbf{USB Hub:} TUSB2046I provides 4-port USB expansion with low power consumption~\cite{ti2023a}. Compared in Table~\ref{tab:usb_hub} with the FE1.1S~\cite{fe1hub}.
+
+    \item \textbf{LDO Regulator:} XC6210A332MR-G was selected for low dropout and high efficiency~\cite{torex2023}. Compared in Table~\ref{tab:ldo} with the AMS1117-3.3~\cite{ams1117}.
+
+    \item \textbf{EEPROM:} CAT25160VI-GT3 supports reliable SPI-based data logging~\cite{onsemi2023}. Table~\ref{tab:eeprom} compares it with AT24C256~\cite{at24c256}.
+
+    \item \textbf{SRAM:} IS62WVS2568GBLL-45NLI-TR provides high-speed memory access for real-time processing~\cite{issi2023}. Compared in Table~\ref{tab:sram} with 23LC1024~\cite{microchip2023}.
+\end{itemize}
+
+These components collectively form a robust and efficient embedded system that meets performance, power, and interface demands.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %            Discussion, Conclusions, and Recommendations                %
