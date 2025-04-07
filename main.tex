@@ -20,6 +20,7 @@
 \usepackage{color} % For colored text
 \usepackage{amsmath} % For mathematical notation
 \usepackage{array} % For better table formatting
+\usepackage{float}
 \patchcmd{\thebibliography}{\section*}{\section}{}{}
 \graphicspath{ {./images/} }
 
@@ -165,7 +166,7 @@ In many academic and research applications, there is a growing demand for reliab
 
 The problem, therefore, is to design a universal, low-cost data acquisition and logging system for drones that supports modular USB sensor integration, onboard data storage with integrity verification, and compliance with operational safety standards. The solution must not rely on wireless data transmission, must store data in a platform-agnostic format, and must be rugged enough for field deployment in moderate outdoor environments.
 
-This project is self-proposed and sponsored by the University of Nebraska Omaha in partial fulfillment of capstone design requirements. The expectations include delivering a working prototype that meets five measurable criteria (PSSCs), including USB sensor interfacing, SD card compatibility, nonvolatile memory recovery, IEEE 1789-compliant lighting, and successful cross-platform data retrieval. Constraints include a fixed budget of 325 dollars, a maximum PCB size compatible with most hobby-grade drones (100~mm × 100~mm), and delivery by the designated final demonstration date.
+This project is self-proposed and sponsored by the University of Nebraska Omaha in partial fulfillment of capstone design requirements. The expectations include delivering a working prototype that meets five measurable criteria (PSSCs), including USB sensor interfacing, SD card compatibility, nonvolatile memory recovery, IEEE 1789-compliant lighting, and successful cross-platform data retrieval. Constraints include a fixed budget of \$325, a maximum PCB size compatible with most hobby-grade drones (100~mm × 100~mm), and delivery by the designated final demonstration date.
 
 \subsection{Background}
 %Discuss the state of the art, competitive products, and patent liability analysis (HW 1).
@@ -175,6 +176,7 @@ Modern UAV applications span a wide range of fields, from agriculture and precis
 Academic UAV platforms—such as ArduPilot-based systems, Raspberry Pi drones, or Pixhawk-integrated quadcopters—do allow for open-source development and hardware extension. However, most lack standardized USB sensor interfacing, relying instead on I2C, SPI, or UART protocols. Integrating external sensors often requires deep firmware changes and power conversion boards, further increasing complexity and cost. Moreover, these systems rarely include robust data integrity checking, making them vulnerable to power loss or in-flight resets.
 
 In terms of lighting systems, few small UAVs incorporate flicker-safe lighting. IEEE Standard 1789-2015 was developed to address biological risks associated with pulse-width modulated (PWM) light sources—especially those visible to human observers or operating in environments where safety and compliance are essential. While this standard is widely used in lighting and display engineering, it is largely ignored in hobby and research drone lighting systems due to added cost and design complexity.
+As these challenges and gaps in current UAV systems became evident, it was necessary to explore the existing commercial landscape and intellectual property space to understand where our system could differentiate itself—both technologically and legally. A formal review of patents and competitive products was conducted to identify potential overlaps, draw inspiration from existing solutions, and ensure that \textit{The Harm Drone} does not infringe upon established claims or technologies.
 
 \subsubsection{Results of Patent and Product Search}
 
@@ -217,6 +219,7 @@ To further mitigate patent infringement risks, \textit{The Harm Drone} should pr
 \end{itemize}
 
 By implementing these strategic modifications—including non-removable sensor integration, altitude and data handling restrictions, waypoint-bound image capture, and unique flight software—\textit{The Harm Drone} will remain functionally distinct from the referenced patents. These actions will protect the project from infringement risk while achieving its design goals.
+With a clear understanding of existing patent landscapes and actionable steps to avoid infringement, the focus of the project now shifts from legal differentiation to technical implementation. These patent-driven constraints directly inform the design problem, shaping both the hardware and software requirements. In the following section, the core engineering challenge is formally defined, incorporating key limitations such as non-removable sensors, offline operation, and standards compliance. This formulation ensures that the project not only avoids legal conflicts but also addresses real-world needs for robust, low-cost UAV data systems.
 
 \subsection{Problem Formulation}
 %Show that the problem has been formulated by presenting appropriate design method objectives, taking into consideration the following factors:
@@ -243,24 +246,99 @@ The formulated design problem requires the development of a compact embedded sys
 The design method is structured to satisfy both engineering feasibility and verification at each stage of development. The system architecture must remain adaptable for testing under simulated or real UAV flight conditions, allowing for validation of each subsystem independently—such as power management, data handling, interface timing, and sensor communication. Design constraints related to size, power consumption, and data compatibility are selected specifically to ensure that the final product can be verified through bench testing, field simulation, and cross-platform data access.
 
 This problem formulation enables an iterative design approach, incorporating hardware prototyping, embedded firmware development, and system-level validation. By focusing on modularity, offline data handling, and cross-platform accessibility, the project remains grounded in realistic engineering constraints while offering meaningful impact in real-world applications such as environmental monitoring, agriculture, and research support.
+To translate this problem formulation into an actionable engineering plan, a detailed set of design requirements and specifications must be established. These specifications form the foundation for evaluating the success of the final system and ensure that all subsystems align with both project goals and external constraints, such as compliance standards and operational environments. By defining clear, quantifiable metrics, the design team can track progress, validate subsystem performance, and verify that the integrated system meets all functional and safety expectations. The following section outlines these specifications, along with the criteria that will be used to determine whether the project successfully achieves its technical objectives.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Project Design Requirements, Specifications, and Success Criteria     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Project Design Requirements, Specifications, and Success Criteria (3-6 pages)}
-\begin{itemize}[noitemsep]
-    \item Give a clear set of design specifications for the project. The design specifications should be clear concise statements with a specific metric and an appropriate value.
-    \item The specifications should provide an unambiguous measure of the success of the final design in meeting the need and constraints associated with the design problem.
-    \item Problem Requirements Specifications is a dynamic process. Although it is desirable to freeze a set of requirements permanently, it is rarely possible. Requirements are likely to evolve through an iterative process that involves communication between the customer specifying the need and the technical community. The impact of proposed requirements must be evaluated to ensure that the initial intent of the requirements baseline is maintained or that changes to the intent are understood and accepted by the customer. The following diagram summarizes the dynamic process of developing system requirements:
-\end{itemize}
+%\begin{itemize}[noitemsep]
+  %  \item Give a clear set of design specifications for the project. The design specifications should be clear concise statements with a specific metric and an appropriate value.
+  %  \item The specifications should provide an unambiguous measure of the success of the final design in meeting the need and constraints associated with the design problem.
+  %  \item Problem Requirements Specifications is a dynamic process. Although it is desirable to freeze a set of requirements permanently, it is rarely possible. Requirements are likely to evolve through an iterative process that involves communication between the customer specifying the need and the technical community. The impact of proposed requirements must be evaluated to ensure that the initial intent of the requirements baseline is maintained or that changes to the intent are understood and accepted by the customer. The following diagram summarizes the dynamic process of developing system requirements:
+%\end{itemize}
 
-\begin{center}
-Need or Customer \\
-Developed System Requirements \\
-Design Team Environment/Constraints \\
-Raw Requirements \quad Customer Feedback \quad Customer Representation \\
-Technical Representation \quad Technical Feedback
-\end{center}
+%\begin{center}
+%Need or Customer \\
+%Developed System Requirements \\
+%Design Team Environment/Constraints \\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|p{4cm}|p{3cm}|p{3cm}|p{4cm}|}
+\hline
+\textbf{Spec ID} & \textbf{Description} & \textbf{Metric} & \textbf{Target Value} & \textbf{Rationale} \\
+\hline
+DS1 & Onboard data retention & Data capacity & $\geq$ 1000 KB & Ensures retention of flight, log, and sensor data in persistent memory. \\
+\hline
+DS2 & Data accessibility & Cross-platform compatibility & Readable on Mac OS, Windows, Debian Linux & Guarantees log access on all major OS platforms. \\
+\hline
+DS3 & External storage capacity & SD card storage & $\geq$ 4 GB & Provides space for extended data logging. \\
+\hline
+DS4 & USB sensor support & Concurrent USB connections & Up to 4 sensors & Supports flexible external sensing integration. \\
+\hline
+DS5 & Light system compliance & Flicker modulation testing & Pass IEEE 1789-2015 check & Meets industry lighting safety standards. \\
+\hline
+DS6 & PCB fabrication & Trace and via tolerance & $\leq \pm$5 mil & Ensures manufacturability and reliability. \\
+\hline
+DS7 & USB data throughput & Data transfer rate & $\geq$ 12 Mbps & Enables real-time sensor data exchange. \\
+\hline
+DS8 & Firmware robustness & Uptime with full load & $\geq$ 8 hours & Confirms system stability. \\
+\hline
+DS9 & Boot time & Power-on to readiness & $\leq$ 5 seconds & Improves responsiveness. \\
+\hline
+DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone compatibility. \\
+\hline
+\end{tabular}
+\caption{Project Design Specifications for Harm Drone System}
+\end{table}
+
+\subsection{Project Common Success Criteria}
+
+The design team established the following success benchmarks:
+\begin{enumerate}
+    \item \textbf{Complete Bill of Materials:} A detailed and ordered BoM including all parts and vendors.
+    \item \textbf{Design Schematic:} Readable schematic with complete interface and timing analysis.
+    \item \textbf{PCB Fabrication:} Design, layout, and etching of a fully-functional custom PCB.
+    \item \textbf{Board Assembly:} Populated board with debugged, verified electrical and logical operation.
+    \item \textbf{Product Packaging:} Professionally finished enclosure demonstrating complete system functionality.
+\end{enumerate}
+
+These criteria serve as checkpoints throughout the project to ensure that major milestones are achieved before moving on to the next stage. They reflect not only technical success but also the team’s ability to manage procurement, documentation, debugging, and final presentation. These are non-negotiable goals that collectively define a complete and professional engineering process.
+
+\subsection{Project-Specific Success Criteria (PSSC)}
+
+\begin{enumerate}
+
+    \item \textbf The board must receive and store 1000KB of flight, log, and sensor data on nonvolatile, persistent onboard storage.
+    \item \textbf The SD card content must be accessible via Mac OS, Windows, and Debian Linux.
+    \item \textbf The system must support bidirectional communication with up to 4 USB sensors.
+    \item \textbf The drone's SD card must store up to 4GB of data, fully retrievable.
+    \item \textbf The drone’s lighting must comply with IEEE Standard 1789-2015 guidelines.
+\end{enumerate}
+
+The Project-Specific Success Criteria (PSSCs) are the primary metrics used to validate whether the final design fulfills the essential functional expectations. Each PSSC represents a critical operational feature of the Harm Drone system and was developed in direct response to customer and course-defined requirements. These criteria will be assessed through experimental tests designed to simulate real-world operational environments. 
+
+Together with the Project Common Success Criteria (PCSCs), the PSSCs form a comprehensive framework that balances engineering rigor, practical functionality, and user accessibility. Meeting both sets of criteria will demonstrate not only that the system works but that it is reliable, user-friendly, and designed according to real-world constraints and standards.
+
+The PCSCs are especially valuable as they reflect the full life cycle of the hardware development process, from component selection and schematic design to layout, fabrication, and final integration. By breaking down the work into discrete engineering deliverables, the team ensures traceability and accountability at each stage. Each item in the PCSC list has a measurable output, such as a complete BoM or a fabricated PCB, which allows the team to gauge progress and verify quality throughout the project timeline.
+
+Similarly, the PSSCs extend this concept by validating the functional performance of the final system. Where PCSCs capture engineering process quality, the PSSCs serve to evaluate whether the final design meets user needs, technical feasibility, and interoperability standards. By explicitly requiring things like cross-platform SD card access or USB sensor communication, the PSSCs reinforce user-oriented design and demonstrate that the team can meet practical, hands-on criteria for usability and effectiveness.
+ that balances engineering rigor, practical functionality, and user accessibility. Meeting both sets of criteria will demonstrate not only that the system works but that it is reliable, user-friendly, and designed according to real-world constraints and standards.
+
+\subsection{The Dynamic Nature of System Requirements}
+
+System design requirements evolve iteratively through stakeholder interaction and technical discovery. The Harm Drone project acknowledges this reality with a dynamic process:
+
+\begin{enumerate}
+    \item \textbf{Initial Baseline Creation:} Requirements are derived from stakeholder needs, PSSCs, and technical constraints.
+    \item \textbf{Customer-Engineer Dialogue:} Frequent communication ensures alignment and continuous feedback.
+    \item \textbf{Impact Evaluation:} Any change undergoes technical, financial, and scheduling assessment.
+    \item \textbf{Version Control:} Documented rationale and versioning ensure traceability and clarity.
+\end{enumerate}
+
+This dynamic model enables adaptability without compromising core functionality, encouraging a flexible yet controlled approach to engineering design.
+The recognition that system requirements are not static, but rather evolve through iterative refinement, naturally leads into the conceptual development phase of the project. With a flexible yet well-documented baseline established, the design team was able to begin exploring multiple solution pathways that would satisfy both the technical objectives and operational constraints defined earlier. The following section outlines the conceptual design process, beginning with the literature that informed early decisions, and continuing through concept generation, reduction, and the formulation of a structured implementation plan.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         Concept Development, Synthesis, and Process Description          %
