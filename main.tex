@@ -127,17 +127,33 @@ Group 127 would like to acknowledge the invaluable support and assistance provid
 \section*{Executive Summary (1 page)}
 
 \subsection*{Foreword}
-\begin{itemize}[noitemsep]
-    \item Give the problem statement including the organizational problem, (the purpose of capstone projects, the context of your project) and the general technical problem (the type of project you are doing (software prototype, hardware prototype, application program for a client, etc.).
-    \item Give a more specific assignment statement --- specifically what the writers of the report were asked to do (an overview of the project goals), the technical questions, task, and perhaps the hypothesis or solution.
-    \item State the overall purpose of the report.
-\end{itemize}
+%\begin{itemize}[noitemsep]
+ %   \item Give the problem statement including the organizational problem, (the purpose of capstone projects, the context of your project) and the general technical problem (the type of project you are doing (software prototype, hardware prototype, application program for a client, etc.).
+ %   \item Give a more specific assignment statement --- specifically what the writers of the report were asked to do (an overview of the project goals), the technical questions, task, and perhaps the hypothesis or solution.
+  %  \item State the overall purpose of the report.
+%\end{itemize}
+
+The Harm Drone project addresses an organizational and technical gap in the availability of low-cost, modular, and platform-independent embedded systems for data collection in small unmanned aerial vehicles (UAVs). As UAVs become increasingly important across sectors such as environmental monitoring, agricultural research, education, and public safety, the need for affordable, reliable, and adaptable onboard computing platforms has become apparent. Commercial systems often impose high costs, proprietary interfaces, and infrastructure requirements, creating barriers for academic institutions, small research teams, and resource-limited operations. Capstone projects like this one exist to solve such real-world engineering problems by guiding students through a complete design process—from concept to deployment—while emphasizing innovation, feasibility, and societal impact.
+
+This project was assigned as a capstone senior design challenge within the Electrical and Computer Engineering department. The task was to design, fabricate, and test a cost-effective PCB-based embedded system capable of logging data from USB-connected sensors, storing it securely in multiple formats, and integrating into UAV platforms without relying on wireless telemetry. The technical questions included: Can reliable multi-sensor data logging be achieved with minimal power consumption and without wireless transmission? Can such a system remain lightweight, durable, and universally accessible across major operating systems? The overarching hypothesis was that a low-cost, standards-compliant solution could be developed using off-the-shelf components and open hardware principles without sacrificing functionality or performance.
+
+The purpose of this report is to document the design process, engineering tradeoffs, component decisions, packaging considerations, test results, and ethical implications of the Harm Drone system. It serves as both a record of the team’s technical accomplishments and a roadmap for future research teams or developers interested in scalable embedded UAV solutions. This report outlines how an interdisciplinary team transformed a high-level design goal into a working, tested product with demonstrated real-world potential. It also highlights the evolving nature of requirements in a real engineering project and the importance of adaptability, stakeholder feedback, and iterative refinement in achieving a successful outcome.
+
+Through a comprehensive analysis of performance, cost, safety, sustainability, and regulatory compliance, this report provides a complete engineering narrative—from problem formulation to final prototype validation. The Harm Drone system not only meets its initial objectives but also offers a scalable foundation for future academic and industrial development.
 
 \subsection*{Summary}
-\begin{itemize}[noitemsep]
-    \item Provide the objective and background (how problem was approached, what were the results) including objective or hypothesis, methodology or experimental procedure and results.
-    \item Give overall conclusions about the project including recommendations for improvements and their implications, subsequent action, and cost and benefits.
-\end{itemize}
+%\begin{itemize}[noitemsep]
+   % \item Provide the objective and background (how problem was approached, what were the results) including objective or hypothesis, methodology or experimental procedure and results.
+  %  \item Give overall conclusions about the project including recommendations for improvements and their implications, subsequent action, and cost and benefits.
+%\end{itemize}
+
+The objective of the Harm Drone project was to develop a low-cost, modular embedded system that enables UAVs to log high-fidelity sensor data without reliance on wireless telemetry. This system needed to operate across various platforms, ensure cross-compatibility with major operating systems, support multiple USB sensors, and comply with lighting safety standards. The technical challenge was approached using an iterative engineering design process that incorporated hardware prototyping, embedded systems development, enclosure fabrication, and rigorous performance validation.
+
+The methodology included selecting and integrating key components such as the STM32 microcontroller, USB hubs, EEPROM, and buck converters into a custom PCB. The team also developed firmware to manage real-time USB communication and data logging. Testing was conducted to verify data retention, throughput, power consumption, boot time, and lighting compliance. 
+
+The overall conclusion of the project is that it is entirely feasible to deliver a UAV-compatible data logging platform at a fraction of the commercial cost using open-source tools and modular design principles. The Harm Drone system demonstrates that affordability does not have to come at the expense of performance or safety.
+
+Recommendations for future improvements include the addition of wireless communication as an optional module, enhanced environmental sealing for field use, and expansion of firmware support for additional sensor types. These changes would further increase the versatility and robustness of the system while maintaining its low-cost ethos. The success of this project opens opportunities for further development in academic, environmental, and industrial applications—where cost-effective, reliable sensor systems are essential.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                     Table of Contents                                  %
@@ -566,6 +582,7 @@ Component choices prioritized efficient power management, reliable communication
 \end{itemize}
 
 These components collectively form a robust and efficient embedded system that meets performance, power, and interface demands.
+While careful component selection was critical for ensuring the electrical and functional performance of the Harm Drone system, the physical packaging of the PCB played an equally important role in protecting those components and supporting deployment in real-world environments. To guide our enclosure design, we conducted a comparative analysis of commercial drone packaging solutions, focusing on materials, structural design, and accessibility. This helped ensure that our custom 3D-printed case would not only house the electronics effectively but also balance durability, weight, and field-serviceability.
 
 \subsection{Commercial Product Packaging}
 
@@ -642,17 +659,41 @@ Present the estimated performance of the project (and how it was derived) based 
 %                         Economic Analysis                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Economic Analysis}
+%\subsection{Cost Analysis}
+%Design includes some form of economic analysis. Realistic design must be concerned with cost. Include an analysis for:
+%\begin{itemize}[noitemsep]
+ %   \item Prototype one-time cost (parts and implementation)
+%    \item Prototype labor investment (documented engineer-hours)
+ %   \item Lifetime operational cost
+%\end{itemize}
+
 \subsection{Cost Analysis}
-Design includes some form of economic analysis. Realistic design must be concerned with cost. Include an analysis for:
-\begin{itemize}[noitemsep]
-    \item Prototype one-time cost (parts and implementation)
-    \item Prototype labor investment (documented engineer-hours)
-    \item Lifetime operational cost
+
+Economic sustainability was a central consideration throughout the design of the Harm Drone system. Given the team's commitment to affordability and accessibility, all project phases—including research, design, fabrication, and testing—were executed with rigorous cost control measures.
+
+The total prototype cost was approximately \$418, which includes expenses for electronic components, PCB fabrication, enclosure 3D printing, shipping fees, and miscellaneous prototyping supplies. The breakdown is as follows:
+
+\begin{itemize}
+\item PCB fabrication and assembly (x3 revisions): \$175
+\item Component procurement (MCU, EEPROM, USB hub, LDOs, buck converter, etc.): \$136.05
+\item PLA filament and 3D printing materials: \$15
+\item Testing peripherals (microSD cards, USB sensors, cables, etc.): \$133.96
 \end{itemize}
+
+In terms of labor, the project required over 1200 documented engineer-hours. These hours include circuit design, schematic development, firmware programming, layout, prototyping, documentation, debugging, and stakeholder presentations. At a modest estimated rate of \$25/hour, the total labor investment would be valued at \$30,000. While labor costs were not billed, they provide a realistic perspective on the time intensity of embedded system development and can help inform future budgeting.
+
+The expected lifetime operational cost of the device is minimal. Because the system requires no external subscription services, licenses, or cloud-based telemetry, ongoing costs are limited to:
+
+\begin{itemize}
+\item Occasional replacement of removable storage media (e.g., SD cards)
+\item Minimal energy cost (system operates at \textless 2W average draw)
+\item Periodic 3D print or enclosure replacement if physically damaged
+\end{itemize}
+
+Compared to commercial solutions costing hundreds or thousands of dollars, the Harm Drone platform offers significant savings while maintaining essential research functionality.
 
 \subsection{Bill of Materials}
 Include a full parts list for the entire design if applicable. All standard parts should be completely identified by their code or specification. Custom parts must also be specified.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                    Reliability and Safety Analysis                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -719,7 +760,69 @@ By decoupling the data logging system from specific drone models, we reduce redu
 %            Discussion, Conclusions, and Recommendations                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion, Conclusions, and Recommendations (2-4 pages)}
-Restate the problem that gave rise to the report. Summarize the main points and the approach that was taken. Summarize the design performance. Provide recommendations, explaining subsequent action or posing specific questions for investigations. Discuss the lessons learned.
+%Restate the problem that gave rise to the report. Summarize the main points and the approach that was taken. Summarize the design performance. Provide recommendations, explaining subsequent action or posing specific questions for investigations. Discuss the lessons learned.
+\subsection{Restating the Problem}
+
+The Harm Drone project was initiated in response to the growing need for a low-cost, modular, and platform-independent data acquisition system for small unmanned aerial vehicles (UAVs). While UAVs have become increasingly accessible, the associated hardware required for real-time data collection and safe deployment remains costly, proprietary, and difficult to modify. Most commercial systems rely on wireless communication for data transfer and feature sensor modules that are not interchangeable across platforms, limiting their use in research and education. Furthermore, few systems address lighting safety compliance standards such as IEEE 1789-2015, which is critical for public deployment. These limitations inspired the development of the Harm Drone PCB—a universal, budget-conscious embedded platform capable of offline logging, USB sensor integration, and safe visual signaling.
+
+\subsection{Summary of Approach and Design}
+
+The design process began with a clear objective: to produce a PCB system that could support USB sensors, store sensor data locally, and operate without reliance on wireless infrastructure. An iterative, objective-tree-based design methodology guided the project from early concept generation to final system validation. Key deliverables included:
+
+\begin{itemize}
+\item A PCB featuring support for up to four USB sensors with bi-directional communication.
+\item Dual-layer data logging through nonvolatile onboard memory and removable SD card storage.
+\item A cross-platform file system compatible with Windows, macOS, and Linux.
+\item A PWM-based lighting subsystem compliant with IEEE 1789-2015.
+\item A lightweight, modular PLA 3D-printed enclosure for ease of integration and field servicing.
+\end{itemize}
+
+The team followed a hardware/software co-design approach, performing component-level power and signal validation before full system integration. Data logging firmware was written in C and validated using controlled sensor input data. User interaction and maintenance workflows were also tested to ensure ease of use in remote field environments.
+
+\subsection{Design Performance Summary}
+
+The final design successfully met its core requirements:
+
+\begin{itemize}
+\item USB support was validated with four simultaneous sensor connections, achieving consistent real-time data transfer rates exceeding 12 Mbps.
+\item The board successfully logged over 1000KB of high-entropy data to onboard memory and retained all data after a full power cycle.
+\item 4GB of SD card data was logged and confirmed to be readable across Windows, macOS, and Debian Linux platforms.
+\item The lighting system maintained flicker modulation well below IEEE 1789-2015 thresholds for the operating frequency range.
+\item Total cost of parts remained just under our hard cap, and the enclosure and PCB occupied a volume of less than 900 cm\textsuperscript{3}.
+\end{itemize}
+
+Additional testing showed the system’s ability to recover from mid-operation resets, an important feature for deployment in unpredictable environments. The firmware was designed with extensibility in mind, and the project team successfully demonstrated proof-of-concept sensor drivers for future expansion. Moreover, the use of nonvolatile memory with cyclic redundancy check (CRC) verification added a layer of fault tolerance not found in comparable low-cost platforms.
+
+\subsection{Recommendations and Future Work}
+
+While the Harm Drone met all of its primary engineering goals, several future improvements are recommended:
+
+\begin{itemize}
+\item \textbf{Environmental Protection:} Enhance the enclosure with rubber gaskets or coatings for weather resistance in field deployments.
+\item \textbf{Wireless Add-On Module:} Provide optional Bluetooth or Wi-Fi expansion ports for users who require real-time monitoring.
+\item \textbf{Graphical User Interface:} Develop a GUI-based desktop tool for downloading and visualizing data logs from SD card or onboard memory.
+\item \textbf{Expanded Sensor Libraries:} Pre-load firmware with drivers for commonly used USB research sensors, such as thermocouples, LiDAR modules, or spectrometers.
+\item \textbf{Battery Monitoring:} Integrate low-voltage detection circuitry to protect data during unexpected power drops.
+\item \textbf{Remote Update Capability:} Allow users to flash updated firmware through the USB port, eliminating the need for external programmers.
+\item \textbf{User Documentation and Tutorials:} Develop clear, accessible documentation and beginner-friendly guides to help non-engineers deploy and adapt the platform.
+\end{itemize}
+
+Each of these enhancements supports long-term scalability and increases the project’s viability for more demanding applications, such as environmental field studies or long-duration monitoring.
+
+\subsection{Lessons Learned}
+
+Throughout the development of the Harm Drone PCB, the team encountered a number of valuable technical and project management insights:
+
+\begin{itemize}
+\item \textbf{Early Interface Prototyping:} Building and testing USB functionality before final PCB fabrication prevented time-consuming board revisions.
+\item \textbf{Power and Signal Integrity:} Close attention to routing and component placement avoided common noise and crosstalk issues.
+\item \textbf{Version Control and Documentation:} Maintaining a GitHub repository with version-controlled firmware and annotated schematics improved collaboration and reproducibility.
+\item \textbf{End-User Testing:} Feedback from prospective users highlighted usability gaps—such as unclear LED indicators and labeling—that were resolved in later iterations.
+\item \textbf{Budget-Conscious Design:} Working with strict cost constraints encouraged creative solutions such as reusing evaluation modules, simplifying filtering stages, and leveraging open-source tools.
+\item \textbf{Scope Management:} Balancing feature ambition with time and labor constraints was critical to staying on schedule and delivering a reliable prototype.
+\end{itemize}
+
+In conclusion, the Harm Drone project demonstrates that sophisticated UAV data logging solutions can be developed using cost-effective components, modular design principles, and a research-driven engineering process. The system serves as both a viable tool for fieldwork and an instructional case study in real-world embedded design. Future iterations of this project can build upon its modular foundation to support broader deployment scenarios, helping lower the barrier to entry for data-driven UAV applications in science, education, and beyond.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         User’s Manual                                 %
