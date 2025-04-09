@@ -58,7 +58,7 @@ jobs:
           git push origin v${{ github.run_number }}
       - name: Get commit message
         id: get_commit
-        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%s | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')" >> $GITHUB_ENV
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
