@@ -35,6 +35,7 @@
 \usepackage{amsmath} % For mathematical notation
 \usepackage{array} % For better table formatting
 \usepackage{float}
+\usepackage{url}
 \patchcmd{\thebibliography}{\section*}{\section}{}{}
 \graphicspath{ {./images/} }
 
@@ -957,109 +958,234 @@ For full schematics, firmware source code, and additional test scripts, refer to
 %                          Appendices                                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Appendices}
-Include in the appendices information that could not be included in the formal body of the report because it would disrupt the continuity of the discussion. Background materials, product catalogs, experimental data tables, and extra documentation should be placed in the appendix.
+%Include in the appendices information that could not be included in the formal body of the report because it would disrupt the continuity of the discussion. Background materials, product catalogs, experimental data tables, and extra documentation should be placed in the appendix.
 
-The following appendices should be organized in the order listed. If an appendix is not applicable to your report, insert a page in the proper place and note this fact on it.
+%The following appendices should be organized in the order listed. If an appendix is not applicable to your report, insert a page in the proper place and note this fact on it.
 
 \subsection*{Appendix A: Notes}
-This appendix consists of a numbered list of material, books, magazines, etc. from which you have taken information, circuits, data, or other information directly. The main body of the report is to use End Notes for references. Material in the main body of the report taken from any of the listed documents should be assigned an End Note number as a superscript in the discussion of the material and be listed in the END note section. In the case of schematics and pictures, the end note number should appear as a superscript after the figure's title. The first time a copyright or trademark is encountered in the report it
-will be assigned an end note number and proper notation will appear in the end notes. Written permission will be sought for information copied from data books, books, magazines, and data sheets. If verbal permission is given, the date, name, and phone number of the person giving permission will be noted in the end notes. If permission cannot be obtained, no copies of the data will be included in the report.
+%This appendix consists of a numbered list of material, books, magazines, etc. from which you have taken information, circuits, data, or other information directly. The main body of the report is to use End Notes for references. Material in the main body of the report taken from any of the listed documents should be assigned an End Note number as a superscript in the discussion of the material and be listed in the END note section. In the case of schematics and pictures, the end note number should appear as a superscript after the figure's title. The first time a copyright or trademark is encountered in the report it
+%will be assigned an end note number and proper notation will appear in the end notes. Written permission will be sought for information copied from data books, books, magazines, and data sheets. If verbal permission is given, the date, name, and phone number of the person giving permission will be noted in the end notes. If permission cannot be obtained, no copies of the data will be included in the report.
 
 \subsection*{Appendix B: Acceptance Testing}
-This appendix is an extract from your senior project proposal requirements specifications testing section. If you have requested a change in your acceptance testing (Project Specific Success Criteria) a copy of the request and the approval letter will be included. The last page will then be a copy of the new (modified) acceptance testing criteria (PSSC). This information will be used by the faculty to judge whether your project performs as proposed or has been modified during the demonstration phase of your presentation.
+%This appendix is an extract from your senior project proposal requirements specifications testing section. If you have requested a change in your acceptance testing (Project Specific Success Criteria) a copy of the request and the approval letter will be included. The last page will then be a copy of the new (modified) acceptance testing criteria (PSSC). This information will be used by the faculty to judge whether your project performs as proposed or has been modified during the demonstration phase of your presentation.
 
 \subsection*{Appendix C: Electrical Specifications}
-This appendix will, as a minimal requirement, contain the following:
-\begin{enumerate}[noitemsep]
-    \item Schematics: An overall block diagram or interconnection diagram from ORCAD will be the first page. Lines on the schematics that enter and leave the page will be annotated so that one knows which page sheet they go to or come from as well as the name of the function it performs. Signal flow if possible, should be from left to right. If a line is exceptionally long its name should appear above the line about midway of the total length. Devices will be assigned reference designations as listed in the national standard (IEEE Std 315-1975). If a reference designation is not found in the quick reference list for a device, further information may be obtained from the standards books maintained in the ECEN maintenance shop. Symbols drawn by the ORCAD software will also be acceptable. Logic symbols will be in accordance with IEEE Std 91-1984 or as drawn by ORCAD.
-    \item Timing Analysis: A timing analysis will be done on all devices necessary.
-    \item Loading Analysis: A loading analysis will be done on all outputs necessary.
-    \item Specification Sheets: Only include data sheets of unique or seldom used parts. Check with the manufactures to gain permission to reproduce data sheets for inclusion in your report.
-    \item Signal Quality Analysis (SQA): An SQA analysis will be done on all signals transmitted on long runs.
-    \item Safety/Electrical Hazard Checklist: With respect to safety, all controls will be appropriately labeled. Warning labels such as “disconnect power before opening case”, “no user serviceable parts inside”, “danger hazardous voltages” etc. will be affixed to the project if applicable.
-    \item Accuracy Certification: In this section, describe how the accuracy claimed in your project acceptance testing statement (PSSC) was verified. Give the name and serial number of the units used to check the accuracy and the date of the most recent time the instrument was calibrated against a NIST traceable standard.
-\end{enumerate}
+%This appendix will, as a minimal requirement, contain the following:
+%\begin{enumerate}[noitemsep]
+   % \item Schematics: An overall block diagram or interconnection diagram from ORCAD will be the first page. Lines on the schematics that enter and leave the page will be annotated so that one knows which page sheet they go to or come from as well as the name of the function it performs. Signal flow if possible, should be from left to right. If a line is exceptionally long its name should appear above the line about midway of the total length. Devices will be assigned reference designations as listed in the national standard (IEEE Std 315-1975). If a reference designation is not found in the quick reference list for a device, further information may be obtained from the standards books maintained in the ECEN maintenance shop. Symbols drawn by the ORCAD software will also be acceptable. Logic symbols will be in accordance with IEEE Std 91-1984 or as drawn by ORCAD.
+   % \item Timing Analysis: A timing analysis will be done on all devices necessary.
+   % \item Loading Analysis: A loading analysis will be done on all outputs necessary.
+   % \item Specification Sheets: Only include data sheets of unique or seldom used parts. Check with the manufactures to gain permission to reproduce data sheets for inclusion in your report.
+   % \item Signal Quality Analysis (SQA): An SQA analysis will be done on all signals transmitted on long runs.
+   % \item Safety/Electrical Hazard Checklist: With respect to safety, all controls will be appropriately labeled. Warning labels such as “disconnect power before opening case”, “no user serviceable parts inside”, “danger hazardous voltages” etc. will be affixed to the project if applicable.
+   % \item Accuracy Certification: In this section, describe how the accuracy claimed in your project acceptance testing statement (PSSC) was verified. Give the name and serial number of the units used to check the accuracy and the date of the most recent time the instrument was calibrated against a NIST traceable standard.
+%\end{enumerate}
 
 \subsection*{Appendix D: Software}
-\begin{enumerate}[noitemsep]
-    \item Flowcharts: An overall flowchart will begin this section. Detailed flowcharts will be done for each individual routine. Each flowchart will be given a descriptive title. The title should be centered at the top of the page. On the line below the title, centered and enclosed in parenthesis, will appear a reference to the corresponding line numbers or page in the software listing where this code can be found. Circles containing an alpha designator will be used to show connectivity between portions of flowcharts. A to/from page number will be placed next to the circle to aid in tracing the flow between pages. Pseudo-code may be used in place of flowcharts for computational code, but not for control or input/output code.
-    \item Program Listings: High Level or Machine: Compressed printing can be used. All programs must have enough comments so that a reviewer can gain insight into the purpose of the program elements.
-\end{enumerate}
+%\begin{enumerate}[noitemsep]
+   % \item Flowcharts: An overall flowchart will begin this section. Detailed flowcharts will be done for each individual routine. Each flowchart will be given a descriptive title. The title should be centered at the top of the page. On the line below the title, centered and enclosed in parenthesis, will appear a reference to the corresponding line numbers or page in the software listing where this code can be found. Circles containing an alpha designator will be used to show connectivity between portions of flowcharts. A to/from page number will be placed next to the circle to aid in tracing the flow between pages. Pseudo-code may be used in place of flowcharts for computational code, but not for control or input/output code.
+   % \item Program Listings: High Level or Machine: Compressed printing can be used. All programs must have enough comments so that a reviewer can gain insight into the purpose of the program elements.
+%\end{enumerate}
 
 \subsection*{Appendix E: Resource Expenditure Analysis}
-\begin{enumerate}[noitemsep]
-    \item Cost Analysis: This appendix consists of a list of parts grouped under general headings along with the total price. In narrative form, discuss the nature of any cost overrun, if you are more than 10\% over your estimated cost.
-    \item Labor Hour Analysis: This appendix will contain a breakdown of the hours spent in the development of the hardware and the software. Besides these two main areas, attempt to sub divide it into specific areas as basic research, requisition of parts, testing hardware, testing software, debugging hardware/software, writing the report, etc.
-    \item Parts List: This appendix will contain a listing, in reference designation alpha numeric order, of all the parts used. All parts which do not have a reference designation will be listed in alpha numeric order under a heading of miscellaneous items. Use of the parts list documentation of the schematic capture part of the ORCAD program is recommended.
-    \item Other Resources: Include in this appendix things like funding supplied by others, review time done by others, etc.
-\end{enumerate}
+%\begin{enumerate}[noitemsep]
+   % \item Cost Analysis: This appendix consists of a list of parts grouped under general headings along with the total price. In narrative form, discuss the nature of any cost overrun, if you are more than 10\% over your estimated cost.
+   % \item Labor Hour Analysis: This appendix will contain a breakdown of the hours spent in the development of the hardware and the software. Besides these two main areas, attempt to sub divide it into specific areas as basic research, requisition of parts, testing hardware, testing software, debugging hardware/software, writing the report, etc.
+   % \item Parts List: This appendix will contain a listing, in reference designation alpha numeric order, of all the parts used. All parts which do not have a reference designation will be listed in alpha numeric order under a heading of miscellaneous items. Use of the parts list documentation of the schematic capture part of the ORCAD program is recommended.
+   % \item Other Resources: Include in this appendix things like funding supplied by others, review time done by others, etc.
+%\end{enumerate}
 
 \subsection*{Appendix F: Individual Student Outcomes Appendices}
-Each member of the team is responsible for an individual appendix (F1, F2, F3, [F4]) that includes evidence that each member of the team has met ABET Criterion 3, 1) through 7), student outcomes. These can be organized as you wish, but they MUST BE ORGANIZED, not just a collection of notes and miscellaneous course work. Identify each of the 7 outcomes and your supporting evidence.
+%Each member of the team is responsible for an individual appendix (F1, F2, F3, [F4]) that includes evidence that each member of the team has met ABET Criterion 3, 1) through 7), student outcomes. These can be organized as you wish, but they MUST BE ORGANIZED, not just a collection of notes and miscellaneous course work. Identify each of the 7 outcomes and your supporting evidence.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                    Report General Guidelines                           %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Report General Guidelines}
-\begin{itemize}[noitemsep]
-    \item Be sure to introduce and summarize each section.
-    \item Always write general to specific in each section.
-    \item Do not write chronologically. (a technical report is not a story or a novel)
-    \item Use section and subsection titles.
-    \item Make sure that subsections follow each other in a logical progression.
-    \item Number each page.
-    \item Use bulleted or enumerated lists rather than lengthy textual discussion of requirements, subsystems, etc.
-\end{itemize}
+%\section*{Report General Guidelines}
+%\begin{itemize}[noitemsep]
+   % \item Be sure to introduce and summarize each section.
+   % \item Always write general to specific in each section.
+   % \item Do not write chronologically. (a technical report is not a story or a novel)
+   % \item Use section and subsection titles.
+   % \item Make sure that subsections follow each other in a logical progression.
+   % \item Number each page.
+   % \item Use bulleted or enumerated lists rather than lengthy textual discussion of requirements, subsystems, etc.
+%\end{itemize}
 
 \section*{Figures and Tables}
-\begin{itemize}[noitemsep]
-    \item Technical reports only contain Figures and Tables.
-    \item Refer to graphs as figures, photos as figures, small code segments as figures, etc.
-    \item Figures and tables are NOT to be hand sketched.
-    \item Figures and tables should be used to supplement the discussion.
-    \item Always introduce a figure or table in the text and never place a figure or table in the text that is not discussed.
-    \item Discuss the meaning and significance of the table or figure.
-    \item Be sure to highlight the fine points and structure.
-    \item Figures and tables should be located in the body of the text, AFTER they are introduced in the text.
-    \item It is often appropriate to pull out small segments of code from a main program or to write pseudo-code to describe an algorithm or major point of the project. This is considered a figure and should be titled and numbered as such.
-    \item If a group of figures or a long table or code listing takes up too much space, locate them in an appendix.
-    \item Figures and tables can be located at the end of the text, but it is less convenient for the reader.
-    \item Figure titles and numbering: Figures should be numbered consecutively in the report. Every figure must have a descriptive title located immediately below the figure.
-    \item Table titles and numbers: Tables should be numbered consecutively in the report. Every table must have a descriptive title located above or below the table.
-\end{itemize}
-
-\section*{References}
-Use the IEEE format for reference style. List all references used in the report. All references should include author, title, journal or magazine title (if a journal article), publisher, page number, date. Below are sample references from a conference proceeding paper [1], book [2], journal article [3], Ph.D. dissertation [4], technical specification [5], and web page.
-
-\begin{enumerate}[noitemsep]
-    \item [1] P. J. Hurst and W. J. McIntyre, “Double sampling in switched-capacitor delta-sigma A/D converters,” in Proc. IEEE Int. Symposium on. Circuits and Systems., 1990, pp. 902-905.
-    \item [2] J. C. Candy and G. C. Temes, \textit{Oversampling Delta-Sigma Data Converters: Theory, Design and Simulation}. New York: IEEE Press, 1992.
-    \item [3] L. R. Rabiner, R. W. Schafer, and C. M. Rader, “The chirp z-transform algorithm,” \textit{IEEE Trans. on Audio Electroacoustics}, AU-17:6 (June 1969), pp. 86-92.
-    \item [4] S. Bagchi, “The nonuniform discrete Fourier transform and its applications in signal processing,” Ph.D. dissertation, Electrical Engineering Department, Univ. California, Santa Barbara, 1994.
-    \item [5] Motorola CMOS Logic Data, Series C, Motorola, INC, 1990, pp. 6-97 - 6-107.
-    \item [6] EE Design Center - Questlink Technology, www.questlink.com, 1999.
-\end{enumerate}
-
-\begin{figure}
+%\begin{itemize}[noitemsep]
+   % \item Technical reports only contain Figures and Tables.
+   % \item Refer to graphs as figures, photos as figures, small code segments as figures, etc.
+   % \item Figures and tables are NOT to be hand sketched.
+   % \item Figures and tables should be used to supplement the discussion.
+   % \item Always introduce a figure or table in the text and never place a figure or table in the text that is not discussed.
+   % \item Discuss the meaning and significance of the table or figure.
+   % \item Be sure to highlight the fine points and structure.
+   % \item Figures and tables should be located in the body of the text, AFTER they are introduced in the text.
+   % \item It is often appropriate to pull out small segments of code from a main program or to write pseudo-code to describe an algorithm or major point of the project. This is considered a figure and should be titled and numbered as such.
+   % \item If a group of figures or a long table or code listing takes up too much space, locate them in an appendix.
+   % \item Figures and tables can be located at the end of the text, but it is less convenient for the reader.
+   % \item Figure titles and numbering: Figures should be numbered consecutively in the report. Every figure must have a descriptive title located immediately below the figure.
+   % \item Table titles and numbers: Tables should be numbered consecutively in the report. Every table must have a descriptive title located above or below the table.
+  % \end{itemize}
+    \begin{figure}
     \centering
-    \includegraphics[width=1.0\linewidth]{images/PCB Design Layout.png}
-    \caption{Enter Caption}
+    \includegraphics[width=0.8\linewidth]{images/PCB Design Layout.png}
+    \caption{PCB Layout}
     \label{fig:enter-label}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\linewidth]{images/Drill Chart.png}
-    \caption{Enter Caption}
+    \includegraphics[width=0.8\linewidth]{images/Drill Chart.png}
+    \caption{Drill Chart}
     \label{fig:enter-label}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\linewidth]{images/Silk Screen.png}
-    \caption{Enter Caption}
+    \includegraphics[width=0.8\linewidth]{images/Silk Screen.png}
+    \caption{Silk Screen}
     \label{fig:enter-label}
 \end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/Right Side of PCB casing.png}
+    \caption{Right Side View of PCB Casing}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/Bottom side of PCB casing.png}
+    \caption{Bottom Side of PCB Casing}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/Front View of PCB Casing.png}
+    \caption{Front View of PCB Casing}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/Top viiew of the PCB casing open.png}
+    \caption{Top Side View of the PCB Casing}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/Top front view of PCB Casing Open.png}
+    \caption{Top Front View of the PCB Casing}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/Specifications of Casing.png}
+    \caption{Materials, Tools, Cost Specifications for the PCB Casing}
+    \label{Table:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/PCB CAD Drawing.png}
+    \caption{PCB CAD Casing}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/Initial PCB Footprint layout.png}
+    \caption{Initial PCB Footprint Layout}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/Parrot AR.Dron Casing.jpg}
+    \caption{Parrot AR.Drone Casing}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/Parrot Anafi USA Casing.jpg}
+    \caption{Parrot Anafi USA Casing}
+    \label{fig:enter-label}
+\end{figure}
+
+\newpage
+%\section*{References}
+%Use the IEEE format for reference style. List all references used in the report. All references should include author, title, journal or magazine title (if a journal article), publisher, page number, date. Below are sample references from a conference proceeding paper [1], book [2], journal article [3], Ph.D. dissertation [4], technical specification [5], and web page.
+\begin{thebibliography}{99}
+
+\bibitem{parrot2021ardrone}
+Parrot, \emph{AR.Drone 2.0 User Guide}, Parrot SA, Sept. 2021. [Online]. Available: \url{https://www.parrot.com/assets/s3fs-public/2021-09/ar.drone2_user-guide_uk.pdf}
+
+\bibitem{parrot2023anafi}
+Parrot, \emph{Anafi USA Datasheet}, Parrot SA, 2023. [Online]. Available: \url{https://www.parrot.com/files/s3fs-public/2023-07/parrot-anafi-usa.pdf}
+
+\bibitem{st2023stm32}
+STMicroelectronics, ``STM32F072CB Datasheet,'' STMicroelectronics, 2023. [Online]. Available: \url{https://www.st.com/resource/en/datasheet/stm32f072cb.pdf}
+
+\bibitem{ftdi2023ft231x}
+FTDI Chip, ``FT231X Full Speed USB to Full Handshake UART,'' FTDI, 2023. [Online]. Available: \url{https://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT231X.pdf}
+
+\bibitem{ti2023tusb}
+Texas Instruments, ``TUSB2046I 3.3-V 4-Port USB Hub,'' Texas Instruments, 2023. [Online]. Available: \url{https://www.ti.com/lit/ds/symlink/tusb2046i.pdf}
+
+\bibitem{onsemi2023cat}
+ON Semiconductor, ``CAT25160 16-Kb SPI Serial CMOS EEPROM,'' ON Semiconductor, 2023. [Online]. Available: \url{https://www.onsemi.com/pdf/datasheet/cat25160-d.pdf}
+
+\bibitem{issi2023sram}
+ISSI Integrated Silicon Solution, Inc., ``IS62WVS2568GBLL 256K x 8 Low Voltage, Ultra Low Power CMOS Static RAM,'' ISSI, 2023. [Online]. Available: \url{https://www.issi.com/WW/pdf/62-65WV2568GBLL.pdf}
+
+\bibitem{samesky2023msd}
+Same Sky, \emph{MSD-12-A microSD Card Connector Datasheet}, 2023. [Online]. Available: \url{https://www.sameskydevices.com/product/resource/msd-12-a.pdf}
+
+\bibitem{microchip2023sram}
+Microchip Technology Inc., ``23LC1024 1 Mbit SPI Serial SRAM,'' Microchip Technology, 2023. [Online]. Available: \url{https://ww1.microchip.com/downloads/en/DeviceDoc/25142A.pdf}
+
+\bibitem{ti2023stepdown}
+Texas Instruments, ``LMR51430 4.3-A, 36-V, 2.1-MHz Synchronous Step-Down Converter,'' Texas Instruments, 2023. [Online]. Available: \url{https://www.ti.com/lit/ds/symlink/lmr51430.pdf}
+
+\bibitem{torex2023ldo}
+Torex Semiconductor Ltd., ``XC6210 Series 700mA High-Speed LDO Regulators,'' Torex Semiconductor, 2023. [Online]. Available: \url{https://www.torexsemi.com/file/xc6210/XC6210.pdf}
+
+\bibitem{speasl2022payload}
+J. Speasl, M. Patterson, and M. Roberts, ``Removable sensor payload system for unmanned aerial vehicle performing media capture and property analysis,'' U.S. Patent 11,501,483 B2, Nov. 15, 2022. [Online]. Available: \url{https://patents.google.com/patent/US11501483B2/en}
+
+\bibitem{kendall2022remote}
+R. Kendall, R. Jonkman, and S. Talaber, ``High-Altitude Airborne Remote Sensing,'' U.S. Patent Application 2022/0404273 A1, Dec. 22, 2022. [Online]. Available: \url{https://patents.google.com/patent/US20220404273A1/en}
+
+\bibitem{bart2019autodrone}
+G. F. Bart and E. Caglayan, ``Autonomous drone with image sensor,'' U.S. Patent 10,462,366 B1, Oct. 29, 2019. [Online]. Available: \url{https://patents.google.com/patent/US10462366B1/en}
+
+\bibitem{microchip2023atmega}
+Microchip Technology Inc., ``ATmega32U4 Datasheet,'' Microchip Technology Inc., 2023. [Online]. Available: \url{https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf}
+
+\bibitem{silabs2023cp2102}
+Silicon Labs, ``CP2102 USB to UART Bridge Controller,'' Silicon Labs, 2023. [Online]. Available: \url{https://www.silabs.com/documents/public/data-sheets/cp2102.pdf}
+
+\bibitem{mps2023mp2315}
+Monolithic Power Systems, ``MP2315 2.5A, 24V, 1.4MHz Step-Down Converter,'' MPS, 2023. [Online]. Available: \url{https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP2315/document_id/100/}
+
+\bibitem{terminus2023fe11s}
+Terminus Technology Inc., ``FE1.1S USB 2.0 Hub Controller,'' Terminus Technology, 2023. [Online]. Available: \url{http://www.terminus.com.tw/pdf/FE1.1s.pdf}
+
+\bibitem{ams2023ams1117}
+Advanced Monolithic Systems, ``AMS1117 Datasheet,'' AMS, 2023. [Online]. Available: \url{http://www.advanced-monolithic.com/pdf/ds1117.pdf}
+
+\bibitem{microchip2023at24c256}
+Microchip Technology Inc., ``AT24C256 256-Kbit 2-wire Serial EEPROM,'' Microchip Technology, 2023. [Online]. Available: \url{https://ww1.microchip.com/downloads/en/DeviceDoc/doc0336.pdf}
+
+\end{thebibliography}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                              End Document                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
