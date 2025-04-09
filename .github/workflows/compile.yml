@@ -56,16 +56,14 @@ jobs:
           git config user.email "bloop@blorp.com"
           git tag -a v${{ github.run_number }} -m "Published version v${{ github.run_number }}"
           git push origin v${{ github.run_number }}
-      - name: Generate release name
-        uses: boonya/gh-action-name-generator@v1
-        with:
-          style: capital
-        id: generator
+      - name: Get commit message
+        id: get_commit
+        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.run_number }}
-          name: ${{ steps.generator.outputs.name }} - ${{ env.NOW }}
+          name: ${{ env.COMMIT_MESSAGE }} - ${{ env.NOW }}
           files: |
             textidote-report.html
             final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
