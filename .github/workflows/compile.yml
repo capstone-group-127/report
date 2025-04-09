@@ -56,15 +56,6 @@ jobs:
           git config user.email "bloop@blorp.com"
           git tag -a v${{ github.run_number }} -m "Published version v${{ github.run_number }}"
           git push origin v${{ github.run_number }}
-      - name: Compile with BookML
-        uses: vlmantova/bookml-action@v1.0.1
-        with:
-          release: false
-      - name: Upload bookML
-        uses: actions/upload-artifact@v4
-        with:
-          name: bookML-report-v${{ github.run_number }}-${{ env.NOW }}.zip
-          path: main.zip
       - name: Get commit message
         id: get_commit
         run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
