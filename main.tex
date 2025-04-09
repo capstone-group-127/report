@@ -165,7 +165,7 @@ Group 127 would like to acknowledge the invaluable support and assistance provid
 
 \par The objective of the Harm Drone project was to develop a low-cost, modular embedded system that enables UAVs to log high-fidelity sensor data without reliance on wireless telemetry. This system needed to operate across various platforms, ensure cross-compatibility with major operating systems, support multiple USB sensors, and comply with lighting safety standards. The technical challenge was approached using an iterative engineering design process that incorporated hardware prototyping, embedded systems development, enclosure fabrication, and rigorous performance validation.
 
-\par The methodology included selecting and integrating key components such as the STM32 microcontroller, USB hubs, EEPROM, and buck converters into a custom PCB. The team also developed firmware to manage real-time USB communication and data logging. Testing was conducted to verify data retention, throughput, power consumption, boot time, and lighting compliance. 
+\par The methodology included selecting and integrating key components such as the STM32 microcontroller, USB hubs, EEPROM, LDO regulator(Low Dropout), and a buck converter into a custom PCB. The team also developed firmware to manage real-time USB communication and data logging. Testing was conducted to verify data retention, throughput, power consumption, boot time, and lighting compliance. 
 
 \par The overall conclusion of the project is that it is entirely feasible to deliver a UAV-compatible data logging platform at a fraction of the commercial cost using open-source tools and modular design principles. The Harm Drone system demonstrates that affordability does not have to come at the expense of performance or safety.
 
@@ -203,7 +203,7 @@ Group 127 would like to acknowledge the invaluable support and assistance provid
 \par The Harm Drone project seeks to provide a functional and affordable embedded platform tailored to the unique requirements of UAV-based research and data collection. The primary objective is to design a universal sensor interface and data logging system that minimizes cost while maximizing utility, modularity, and safety. In pursuit of this goal, the project sets forth the following expanded objectives:
 
 \begin{itemize}
-\item \textbf{Affordability:} Develop a complete PCB system that meets all functionality goals with a total materials cost under \$50, allowing academic and low-budget users to adopt the technology without financial strain.
+\item \textbf{Affordability:} Develop a complete PCB system that meets all functionality goals with a total materials cost under \$420, allowing academic and low-budget users to adopt the technology without financial strain.
 
 \item \textbf{Sensor Modularity:} Enable plug-and-play compatibility with up to four USB-based sensors. This allows end users to customize data collection based on mission-specific needs without modifying firmware or hardware.
 
@@ -278,7 +278,7 @@ By following this structure, the report ensures clarity for both technical and n
 
 \par The problem, therefore, is to design a universal, low-cost data acquisition and logging system for drones that supports modular USB sensor integration, onboard data storage with integrity verification, and compliance with operational safety standards. The solution must not rely on wireless data transmission, must store data in a platform-agnostic format, and must be rugged enough for field deployment in moderate outdoor environments.
 
-\par This project is self-proposed and sponsored by the University of Nebraska Omaha in partial fulfillment of capstone design requirements. The expectations include delivering a working prototype that meets five measurable criteria (PSSCs), including USB sensor interfacing, SD card compatibility, nonvolatile memory recovery, IEEE 1789-compliant lighting, and successful cross-platform data retrieval. Constraints include a fixed budget of \$325, a maximum PCB size compatible with most hobby-grade drones (100mm x 100mm), and delivery by the designated final demonstration date.
+\par This project is self-proposed and sponsored by the University of Nebraska Omaha in partial fulfillment of capstone design requirements. The expectations include delivering a working prototype that meets five measurable criteria (PSSCs), including USB sensor interfacing, SD card compatibility, nonvolatile memory recovery, IEEE 1789-compliant lighting, and successful cross-platform data retrieval. Constraints include a fixed budget of \$420, a maximum PCB size compatible with most hobby-grade drones (100mm x 100mm), and delivery by the designated final demonstration date.
 
 \subsection{Background}
 %Discuss the state of the art, competitive products, and patent liability analysis (HW 1).
@@ -510,6 +510,75 @@ Discuss the phases of the design and implementation of your project. (PERT chart
     %\item PCB Design (HW 5)
     %\item Software Design (not a listing of code) (HW 7)
 %\end{itemize}
+\subsection{Packaging Constraints (HW 4)}
+\subsection{Commercial Product Packaging}
+
+\par To refine the \textit{Harm Drone}’s PCB packaging design, we analyzed two commercial drones with plastic-based enclosures: the Parrot AR.Drone and the Parrot Anafi USA. Both drones emphasize lightweight and durable construction, making them useful comparisons for our 3D-printed plastic case. However, they differ in structural integrity, modularity, and accessibility.
+
+\par Parrot designed the AR.Drone with a plastic and expanded polypropylene (EPP) foam casing, which protects its electronics while keeping the drone lightweight and impact-resistant. Its interchangeable hulls include a foam indoor hull for propeller protection and a lightweight plastic outdoor hull for maneuverability \cite{parrot1}. While this design remains cost-effective and lightweight, it lacks structural rigidity and EMI shielding.
+
+\par Parrot built the Anafi USA for professional and industrial applications, using lightweight thermoplastic materials to improve structural integrity and environmental resistance \cite{parrot2}. Unlike the AR.Drone, the Anafi USA features a reinforced plastic housing, which protects its internal flight electronics, sensors, and camera systems while maintaining modularity for easier maintenance. However, this model still prioritizes lightweight efficiency over impact resistance, making it more fragile than drones with metal enclosures.
+
+\subsubsection{Parrot AR.Drone}
+
+\par The Parrot AR.Drone serves as an early example of lightweight, plastic-based enclosures for drones. It encloses PCB components inside a light plastic shell, while internal EPP foam elements absorb impact. The enclosure integrates fully into the drone’s frame, ensuring efficient weight distribution and minor crash protection.
+
+\textbf{Positive Aspects:}
+\begin{itemize}
+    \item Maintains lightweight and energy efficiency due to plastic and foam materials.
+    \item Features interchangeable hulls for adaptability in different environments.
+    \item Provides a cost-effective and easily manufacturable design.
+\end{itemize}
+
+\textbf{Negative Aspects:}
+\begin{itemize}
+    \item Offers limited structural protection due to its lightweight materials.
+    \item Lacks dedicated EMI shielding, which may affect sensor performance.
+    \item Uses a fixed casing, making maintenance and upgrades more difficult.
+\end{itemize}
+
+\par We adopted the lightweight plastic construction approach of the Parrot AR.Drone while improving structural reinforcement and accessibility. Instead of using a fully integrated casing like the AR.Drone, we designed a 3D-printed modular enclosure with two interlocking halves and a latch mechanism, allowing for quick access, easy maintenance, and upgrades. Additionally, we incorporated precisely positioned cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, enabling seamless external connectivity without requiring complete disassembly.
+
+\subsubsection{Parrot Anafi USA}
+
+\par Parrot engineered the Anafi USA to balance durability and weight efficiency, ensuring optimal flight performance while protecting internal electronics. Parrot built the drone’s enclosure as part of the main frame, ensuring structural support while keeping components compact and secure.
+
+\textbf{Positive Aspects:}
+\begin{itemize}
+    \item Parrot used reinforced thermoplastic materials to improve durability while maintaining a lightweight design.
+    \item The modular structure allows for easier maintenance and upgrades.
+    \item The design includes basic EMI shielding, which reduces interference with sensor and communication systems.
+\end{itemize}
+
+\textbf{Negative Aspects:}
+\begin{itemize}
+    \item The lightweight plastic housing offers limited impact resistance compared to metal enclosures.
+    \item Parrot designed the casing as non-removable, making internal components harder to access.
+    \item The enclosure lacks vibration-dampening features, which could affect PCB stability over time.
+\end{itemize}
+
+\par We based the \textit{Harm Drone}’s enclosure on the Anafi USA’s thermoplastic construction, enhancing durability and accessibility through a custom 3D-printed modular design. Unlike the Anafi USA’s fully integrated frame, our enclosure maintains modularity, ensuring that components can be easily removed, replaced, or upgraded. To improve usability, we integrated cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, allowing external connections without the need for full enclosure removal.
+
+\subsection{Project Package Specifications}
+
+\par We designed the \textit{Harm Drone}’s PCB packaging as a lightweight, durable, and modular enclosure that protects critical electronic components while allowing easy maintenance and upgrades. The enclosure consists of a custom 3D-printed plastic case with two interlocking halves, secured using a latch mechanism. This structure enables quick access to internal components, eliminating the need for complex disassembly.
+
+\par We selected 3D-printed plastic for its balance of strength and weight efficiency. The two-part housing connects via a latch, eliminating the need for screws or additional fasteners. Internal mounting points secure the PCB, reducing mechanical stress and vibration.
+
+\par To support external connections, we incorporated custom cutouts for the power switch, USB-C port, microSD slot, USB ports, and XT60 connector. These cutouts align precisely with the PCB layout, ensuring seamless connectivity without requiring enclosure removal.
+
+\subsection{PCB Footprint Layout}
+
+\par We designed the \textit{Harm Drone}’s PCB footprint layout to optimize routing, space usage, and accessibility while aligning with the 3D-printed enclosure’s cutouts. We selected footprints based on space constraints, manufacturability, and electrical performance to ensure an efficient balance between density and accessibility.
+
+\par The STM32F072CB microcontroller uses an LQFP-48 package, ensuring compact form and manageable pin spacing for UART, SPI, and USB routing \cite{stm32}. The FT231XS-R USB-to-UART converter and TUSB2046I USB hub use SOIC and QFN footprints, reducing PCB footprint while ensuring signal integrity \cite{ft231x} \cite{tusb2046i}. The CAT25160VI-GT3 EEPROM, placed in an 8-SOIC package, provides compact non-volatile storage \cite{cat25160}.
+
+\par For high-speed memory access, we placed the IS62WVS2568GBLL SRAM in a TSOP-44 footprint, which balances pin density and thermal performance while allowing for compact placement on the board \cite{is62}. We positioned the MSD-12-A microSD card module, a critical component for external data storage, in an edge-mounted footprint to align directly with the enclosure’s cutout for user accessibility \cite{msd12}. We routed the 23LC1024 SPI bus, which the microcontroller, EEPROM, and SD card share, to minimize signal interference and optimize communication speeds \cite{23lc1024}.
+
+\par We selected SOT-23-6 and SOT-23-5 footprints for power regulation components, including the LMR51430XDDCR buck converter and XC6210A332MR-G LDO regulator, to ensure efficient power conversion with minimal space usage \cite{lmr51430} \cite{xc6210}. We implemented through-hole mounting for high-stress connectors like USB and XT60 power, ensuring long-term mechanical stability.
+
+\par With an estimated PCB size of 95.5\,mm $\times$ 40.228\,mm $\times$ 17.68\,mm, the layout maintains clear separation of power and data lines, ensures efficient signal routing, and aligns precisely with enclosure cutouts. We included the final footprint layout in Appendix C, detailing component placement, trace routing, and external port alignment.
+
 \subsection{Design Constraints and Component Selection Rationale (HW 2)}
 
 \subsubsection{Computation Requirements}
@@ -600,74 +669,33 @@ Component choices prioritized efficient power management, reliable communication
 
 \par These components collectively form a robust and efficient embedded system that meets performance, power, and interface demands.
 \par While careful component selection was critical for ensuring the electrical and functional performance of the Harm Drone system, the physical packaging of the PCB played an equally important role in protecting those components and supporting deployment in real-world environments. To guide our enclosure design, we conducted a comparative analysis of commercial drone packaging solutions, focusing on materials, structural design, and accessibility. This helped ensure that our custom 3D-printed case would not only house the electronics effectively but also balance durability, weight, and field-serviceability.
+\par While thoughtful component selection was essential to meeting the electrical and performance requirements of the Harm Drone system, these components could not function optimally without a PCB layout that supports their integration. The physical arrangement and routing of the board play a critical role in preserving signal integrity, ensuring proper power distribution, and maintaining system reliability. Accordingly, the following section outlines the key design considerations that informed the layout of the PCB, with special emphasis on supporting high-speed communication interfaces, compact form factor, and mechanical compatibility with the drone's structure.
+\subsection{PCB Layout and Design Considerations – Overall}
+The design of this PCB is subject to several critical constraints to ensure optimal performance and compatibility within the drone’s system. One of the primary concerns is maintaining USB 2.0 signal integrity. This requires careful routing of the USB data lines to minimize interference, preserve signal quality, and ensure reliable data transmission. In order to accomplish this, several criteria must be met. 
 
-\subsection{Commercial Product Packaging}
+\par The most important of these is that the lengths of the traces for the positive and negative data lines match each other. Secondly, the use of vias must be minimized due to the imprecise nature of via manufacturing. Another concern when using vias for high-speed signals is the possibility of via stubs—unused lengths of the via that can act as antennas and greatly degrade signal quality.
 
-\par To refine the \textit{Harm Drone}’s PCB packaging design, we analyzed two commercial drones with plastic-based enclosures: the Parrot AR.Drone and the Parrot Anafi USA. Both drones emphasize lightweight and durable construction, making them useful comparisons for our 3D-printed plastic case. However, they differ in structural integrity, modularity, and accessibility.
+\par Additionally, the PCB must be designed to support USB 2.0 5V power delivery, requiring robust power traces capable of handling the necessary current while minimizing voltage drops. The board must be able to provide 2A at 5V across the four USB ports available on the device; this will be addressed further in the power system design.
 
-\par Parrot designed the AR.Drone with a plastic and expanded polypropylene (EPP) foam casing, which protects its electronics while keeping the drone lightweight and impact-resistant. Its interchangeable hulls include a foam indoor hull for propeller protection and a lightweight plastic outdoor hull for maneuverability \cite{parrot1}. While this design remains cost-effective and lightweight, it lacks structural rigidity and EMI shielding.
+\par The inclusion of SPI clock and data lines adds another layer of complexity—not because their signals are as sensitive as the USB’s, but because these are additional signal lines that can clutter the board. The layout must also account for easily accessible locations for switches and USB ports, ensuring they are positioned in a way that allows for user interaction while maintaining the compact design required for the drone. This is accomplished by placing them on the ``Southern'' edge of the PCB with an appropriate amount of overhang to free up space for additional components.
 
-\par Parrot built the Anafi USA for professional and industrial applications, using lightweight thermoplastic materials to improve structural integrity and environmental resistance \cite{parrot2}. Unlike the AR.Drone, the Anafi USA features a reinforced plastic housing, which protects its internal flight electronics, sensors, and camera systems while maintaining modularity for easier maintenance. However, this model still prioritizes lightweight efficiency over impact resistance, making it more fragile than drones with metal enclosures.
+\par Furthermore, the PCB must be sized to fit within the available space on the drone, which is 95 mm by 40 mm. Lastly, M3 drill holes must be spaced 57.5 mm apart for securing the PCB to the drone frame, ensuring both mechanical stability and ease of assembly.
 
-\subsubsection{Parrot AR.Drone}
+\subsection{PCB Layout and Design Considerations – Microcontroller}
+The design of this PCB is also influenced by the architecture of the microcontroller selected for this project. Most of the I/O pins are located on the right or bottom of the PCB, with only two pins located elsewhere. This placement necessitates positioning the MCU at the upper central location of the PCB to provide enough room to break out all relevant data lines.
 
-\par The Parrot AR.Drone serves as an early example of lightweight, plastic-based enclosures for drones. It encloses PCB components inside a light plastic shell, while internal EPP foam elements absorb impact. The enclosure integrates fully into the drone’s frame, ensuring efficient weight distribution and minor crash protection.
+\par Power delivery is another key factor, with specific attention paid to the spacing of vias. These must be positioned to avoid being too close together to ensure that exclusion zones do not overlap, which could result in pins not being connected to any other part of the board.
 
-\textbf{Positive Aspects:}
-\begin{itemize}
-    \item Maintains lightweight and energy efficiency due to plastic and foam materials.
-    \item Features interchangeable hulls for adaptability in different environments.
-    \item Provides a cost-effective and easily manufacturable design.
-\end{itemize}
+\par The design also needs to accommodate a stable 3.3V power supply, which will be explained further in the power supply discussion. In terms of communication routing, the USB pins are located on the right side of the microcontroller, while the SPI pins are positioned on the bottom. This placement influences the routing priority on the PCB. To ensure USB signal integrity, the USB lines were routed first, followed by the SPI lines.
 
-\textbf{Negative Aspects:}
-\begin{itemize}
-    \item Offers limited structural protection due to its lightweight materials.
-    \item Lacks dedicated EMI shielding, which may affect sensor performance.
-    \item Uses a fixed casing, making maintenance and upgrades more difficult.
-\end{itemize}
+\subsection{PCB Layout and Design Considerations – Power Supply}
+The power supply design of this PCB involves several key considerations to ensure efficient power distribution and minimize noise or interference. One of the primary elements is the use of copper pours, which help create low-resistance paths for current—especially for high-current traces. This technique is particularly important for the 15V connection to the buck converter, as the power draw on this section of the PCB could reach 30W over a short distance of less than 2 mm.
 
-\par We adopted the lightweight plastic construction approach of the Parrot AR.Drone while improving structural reinforcement and accessibility. Instead of using a fully integrated casing like the AR.Drone, we designed a 3D-printed modular enclosure with two interlocking halves and a latch mechanism, allowing for quick access, easy maintenance, and upgrades. Additionally, we incorporated precisely positioned cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, enabling seamless external connectivity without requiring complete disassembly.
+\par A dedicated ground layer is crucial for maintaining signal integrity and providing a low-resistance return path for all signals. This is essential for reducing electromagnetic interference (EMI) and ensuring the proper functioning of sensitive circuits.
 
-\subsubsection{Parrot Anafi USA}
+\par In addition to the ground layer, a separate 3.3V power layer is essential to provide a stable and regulated voltage to components such as the microcontroller, SRAM, EEPROM, and the SD card slot.
 
-\par Parrot engineered the Anafi USA to balance durability and weight efficiency, ensuring optimal flight performance while protecting internal electronics. Parrot built the drone’s enclosure as part of the main frame, ensuring structural support while keeping components compact and secure.
-
-\textbf{Positive Aspects:}
-\begin{itemize}
-    \item Parrot used reinforced thermoplastic materials to improve durability while maintaining a lightweight design.
-    \item The modular structure allows for easier maintenance and upgrades.
-    \item The design includes basic EMI shielding, which reduces interference with sensor and communication systems.
-\end{itemize}
-
-\textbf{Negative Aspects:}
-\begin{itemize}
-    \item The lightweight plastic housing offers limited impact resistance compared to metal enclosures.
-    \item Parrot designed the casing as non-removable, making internal components harder to access.
-    \item The enclosure lacks vibration-dampening features, which could affect PCB stability over time.
-\end{itemize}
-
-\par We based the \textit{Harm Drone}’s enclosure on the Anafi USA’s thermoplastic construction, enhancing durability and accessibility through a custom 3D-printed modular design. Unlike the Anafi USA’s fully integrated frame, our enclosure maintains modularity, ensuring that components can be easily removed, replaced, or upgraded. To improve usability, we integrated cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, allowing external connections without the need for full enclosure removal.
-
-\subsection{Project Package Specifications}
-
-\par We designed the \textit{Harm Drone}’s PCB packaging as a lightweight, durable, and modular enclosure that protects critical electronic components while allowing easy maintenance and upgrades. The enclosure consists of a custom 3D-printed plastic case with two interlocking halves, secured using a latch mechanism. This structure enables quick access to internal components, eliminating the need for complex disassembly.
-
-\par We selected 3D-printed plastic for its balance of strength and weight efficiency. The two-part housing connects via a latch, eliminating the need for screws or additional fasteners. Internal mounting points secure the PCB, reducing mechanical stress and vibration.
-
-\par To support external connections, we incorporated custom cutouts for the power switch, USB-C port, microSD slot, USB ports, and XT60 connector. These cutouts align precisely with the PCB layout, ensuring seamless connectivity without requiring enclosure removal.
-
-\subsection{PCB Footprint Layout}
-
-\par We designed the \textit{Harm Drone}’s PCB footprint layout to optimize routing, space usage, and accessibility while aligning with the 3D-printed enclosure’s cutouts. We selected footprints based on space constraints, manufacturability, and electrical performance to ensure an efficient balance between density and accessibility.
-
-\par The STM32F072CB microcontroller uses an LQFP-48 package, ensuring compact form and manageable pin spacing for UART, SPI, and USB routing \cite{stm32}. The FT231XS-R USB-to-UART converter and TUSB2046I USB hub use SOIC and QFN footprints, reducing PCB footprint while ensuring signal integrity \cite{ft231x} \cite{tusb2046i}. The CAT25160VI-GT3 EEPROM, placed in an 8-SOIC package, provides compact non-volatile storage \cite{cat25160}.
-
-\par For high-speed memory access, we placed the IS62WVS2568GBLL SRAM in a TSOP-44 footprint, which balances pin density and thermal performance while allowing for compact placement on the board \cite{is62}. We positioned the MSD-12-A microSD card module, a critical component for external data storage, in an edge-mounted footprint to align directly with the enclosure’s cutout for user accessibility \cite{msd12}. We routed the 23LC1024 SPI bus, which the microcontroller, EEPROM, and SD card share, to minimize signal interference and optimize communication speeds \cite{23lc1024}.
-
-\par We selected SOT-23-6 and SOT-23-5 footprints for power regulation components, including the LMR51430XDDCR buck converter and XC6210A332MR-G LDO regulator, to ensure efficient power conversion with minimal space usage \cite{lmr51430} \cite{xc6210}. We implemented through-hole mounting for high-stress connectors like USB and XT60 power, ensuring long-term mechanical stability.
-
-\par With an estimated PCB size of 95.5\,mm $\times$ 40.228\,mm $\times$ 17.68\,mm, the layout maintains clear separation of power and data lines, ensures efficient signal routing, and aligns precisely with enclosure cutouts. We included the final footprint layout in Appendix C, detailing component placement, trace routing, and external port alignment.
+\par Finally, the position of the XT60 connector, which delivers power from the battery, must be carefully considered. It should be placed such that, when the battery is connected, the cable does not interfere with the drone’s rotors during operation.
 
 \subsection{Performance Estimates and Results (2-5 pages)}
 Present the estimated performance of the project (and how it was derived) based on the preliminary design (estimates to include speed, cost, power consumption, noise-immunity, ease of use, etc., depending on the project). Present the actual performance results. Discuss the results. Compare with estimated performance and explain discrepancies. Include suggestions for design changes that would improve the performance of the project. Use graphs or other figures to show relationships when appropriate.
@@ -688,7 +716,7 @@ Present the estimated performance of the project (and how it was derived) based 
 
 \par Economic sustainability was a central consideration throughout the design of the Harm Drone system. Given the team's commitment to affordability and accessibility, all project phases—including research, design, fabrication, and testing—were executed with rigorous cost control measures.
 
-\par The total prototype cost was approximately \$418, which includes expenses for electronic components, PCB fabrication, enclosure 3D printing, shipping fees, and miscellaneous prototyping supplies. The breakdown is as follows:
+\par The total prototype cost was approximately \$460.01, which includes expenses for electronic components, PCB fabrication, enclosure 3D printing, shipping fees, and miscellaneous prototyping supplies. The breakdown is as follows:
 
 \begin{itemize}
 \item PCB fabrication and assembly (x3 revisions): \$175
@@ -1012,6 +1040,26 @@ Use the IEEE format for reference style. List all references used in the report.
     \item [6] EE Design Center - Questlink Technology, www.questlink.com, 1999.
 \end{enumerate}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{images/PCB Design Layout.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{images/Drill Chart.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{images/Silk Screen.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                              End Document                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
