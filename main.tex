@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[tmargin=1in,lmargin=1in,rmargin=1in]{geometry}
 \usepackage{fancyhdr}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{5}
 \usepackage{titletoc,tocloft}
 \setlength{\cftsubsecindent}{0.65cm}
 \setlength{\cftsubsubsecindent}{1.3cm}
@@ -30,7 +30,6 @@
 \usepackage{etoolbox}
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep}
-\usepackage[margin=2cm]{caption}
 \usepackage{listings} % For code listings
 \usepackage{color} % For colored text
 \usepackage{amsmath} % For mathematical notation
@@ -483,102 +482,6 @@ Discuss the phases of the design and implementation of your project. (PERT chart
     %\item PCB Design (HW 5)
     %\item Software Design (not a listing of code) (HW 7)
 %\end{itemize}
-\subsection{Software Design}
-\par The Harm Drone design project constitutes multiple software components and modules working together to produce the desired results. As a part of the design process, many considerations were taken to ensure that these software components were individually verifiable, while ensuring they could work together to form a cohesive system.
-\par This section will explain constraints incurred by the development process, in both hardware specifications and general system layouts. Then, given these constraints, the analysis will deduce a set of distinct software modules that can be developed, tested, and completed separately, while also maintaining their connection to the whole system.
-\subsubsection{Considerations of Flash Memory}
-\paragraph{Read-only Memory (Recovery)}
-\begin{itemize}
-    \item \textbf{Address:} \texttt{0x1FFFC800} - \texttt{0x1FFFF7FF}
-    \item \textbf{Usage:} Factory-programmed bootloader.
-    \item \textbf{Restrictions:} Read-only. Used for reprogramming flash via specific interfaces (USART, I2C, USB DFU) when booting in System Memory mode ([1, Section 3.3]).
-\end{itemize}
-\paragraph{Onboard EEPROM}
-\begin{itemize}
-    \item \textbf{Size:} 128 Kbytes.
-    \item \textbf{Address:} \texttt{0x08000000} - \texttt{0x0801FFFF}. Aliased at \texttt{0x00000000}
-    \item \textbf{Usage:} Program code (\texttt{.text}), constant data (\texttt{.rodata}), \texttt{.data} initial image.
-    \item \textbf{Restrictions:}
-    \begin{itemize}
-        \item Limited write/erase cycles (Endurance: 10 kcycles, [1, Table 47]).
-    \end{itemize}
-\end{itemize}
-\paragraph{EEPROM over SPI}
-\begin{itemize}
-    \item \textbf{Size:} 16 Kbytes.
-    \item \textbf{Address:} SPI Bus 1, \verb|CHIP_SELECT_EEPROM|
-    \item \textbf{Usage:} Persistent configuration data, stored between flight runs
-    \item \textbf{Restrictions:}
-    \begin{itemize}
-        \item Cannot be written to in parallel with SRAM over SPI
-        \item Limited write/erase cycles (Endurance: 1M cycles, [2, Table 2])
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{Considerations of Volatile Memory}
-\paragraph{Onboard}
-\begin{itemize}
-    \item \textbf{Size:} 16 Kbytes.
-    \item \textbf{Address:} \texttt{0x20000000} - \texttt{0x20003FFF}.
-    \item \textbf{Usage:} Runtime storage for \texttt{.data}, \texttt{.bss}, stack, heap, RAM functions.
-    \item \textbf{Restrictions:}
-    \begin{itemize}
-        \item \textbf{Volatile:} Content lost on power-down
-        \item \textbf{Size Limit:} 16 KB total for stack, heap, variables.
-    \end{itemize}
-\end{itemize}
-\paragraph{SRAM over SPI}
-\begin{itemize}
-    \item \textbf{Size:} 2 Mbytes
-    \item \textbf{Address:} SPI Bus 1, \verb|CHIP_SELECT_SRAM|
-    \item \textbf{Usage:} Runtime storage for flight logs and sensor data
-    \item \textbf{Restrictions:}
-    \begin{itemize}
-        \item \textbf{Volatile:} Content lost on power-down [3]
-        \item Cannot be written to in parallel with EEPROM over SPI
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{Considerations of External Interfaces \& Peripherals}
-\paragraph{GPIO Ports} Due to the Harm Drone's power delivery requirements, care was taken to ensure that the GPIO pins of the microcontroller are all 5V tolerant [1, Table 14], despite their 3.3V logic level.
-\begin{itemize}
-	\item PB11: SD\_CARD\_DETECT
-	\item PB12: USB\_RESET
-	\item PB13: USB\_SUSPEND
-    \item PC13: PWM LED
-\end{itemize}
-\paragraph{SPI} The STM microcontroller used for the Harm Drone has two SPI busses [1, Tables 17-20].
-\subparagraph{Bus 1} Used to communicate with the external memory, both SRAM and EEPROM. Runs at 1Mhz to avoid interfering EMFs with the drone's navigation system.
-\subparagraph{Bus 2} Exclusively used for managing the SD card. On initialization, the SPI bus is manually cycled 76 times to detect an SD card and to enable SPI mode on the card. Once initialization is complete, control of this bus is managed by the built-in STM FAT library. This library initializes the filesystem and manages output files on the SD card. This bus also runs at only 1Mhz, both to avoid generating EMF but also to support any speed of SD card that could be inserted.
-\paragraph{USB}
-\subparagraph{to USB} The Harm Drone utilizes an on-board self-powered USB hub to connect multiple sensors at once. To operate the USB hub, it requires a 6Mhz clock signal (generated via on-board crystal) as well as access to 2.3A of power (500mA per device,  300mA operating current).
-\subparagraph{to Serial} To communicate with the drone hardware, the microcontroller uses the onboard USART TX/RX lines through a USB-to-Serial conversion IC connected to the drone. Support for serial communication is built-in to the STM HAL, so no additional drivers are needed for this communication.
-\paragraph{Timers}
-To simplify timer configuration, the included STM clock helper tool is used to program the appropriate configuration registers. The timer configuration as defined in the tool is shown in Figure \ref{timer-configuration}. This configuration is used to control the PWM LED.
- \quickfigure{timer-configuration.png}{6in}{Configuring the timer in STM32CubeMX. This enables the clock and sets the prescalar, period, mode, and channel modes.}{timer-configuration}
-
-\paragraph{Organization} In general, the Harm Drone code runs as a polling-based program. The core loop logic runs to await incoming messages from the flight control software before taking any action. The incoming messages could be sensor data, or commands intended to stop or start data logging.
-\par There are some portions that must be interrupt-driven. The flight control software running on the drone to control the motors runs as real-time, allowing for prioritization of the drone's core operation. Also, communication over USB with attached sensors is interrupt-driven when sensors send data to the host.
-
-\paragraph{Debugging} To facilitate interactive debugging and testing modes, STM processors support SWD (serial wire debugging). When an STLink-compatible adapter is connected to a shared ground, as well as pins 13 and 14 ([1] Table 14) of the microcontroller, debug information can be shared with the connected computer, allowing for line-by-line walkthroughs as well as live variable manipulation. This process is also the primary method used to flash and program the microcontroller.
-
-\subsubsection{Modular Organization}
-To facilitate distribution of tasks, unit testing, as well as code cleanliness, the software stack of the Harm Drone is divided into multiple modules, each responsible for a different device or mode of operation. These modules communicate with each other using formally defined packets, either serially over the wire, or within memory on the device.
-
-\paragraph{Main Module} The main module runs on the STM microcontroller in a polling loop. This module is responsible for two tasks:
-\begin{itemize}
-\item Logging incoming sensor data over USB to the attached SD card, mirroring the data to memory for redundancy.
-\item Hypervising flight operations through the connection to the flight control software, including starting and stopping planned flights.
-\end{itemize}
-\par The main module is not yet complete, requiring more changes to support operations regarding the flight manager. The memory operations have been tested to operate using the SD card and memory routines.
-
-\paragraph{Drone Middleware} To communicate with the existing embedded Linux system, a middleware program exists to bridge commands and sensor data over the serial connection to the main microcontroller program. The middleware takes control of the attached USB device (the USB-to-Serial chip) and initializes it as a serial terminal. Then, this middleware takes commands from the microcontroller and sends it to the onboard flight control software. When waypoints are reached or other sensor data is collected, this middleware formats the data for logging before sending it serially over the wire. This program runs in user space to avoid starving more critical flight processes of resources. This helps to minimize risk.
-
-\paragraph{SD Card Manager} The SD card manager is a thin wrapper around the built-in STM FAT filesystem library. When the microcontroller boots, the Main program will initialize all memory, then start the SD card manager. The SD card manager uses the \verb|CARD_DETECT| GPIO pin to determine if an SD card is inserted. If a valid card is detected, the card is placed into SPI mode by cycling the clock 74 times while holding the data low. Once initialization is complete, control of the bus is passed to the filesystem library. STM includes commands to read, write, and manipulate files, but the card manager contains shims for each of these functionalities to redirect their effects from a virtual drive to the SPI commands necessary to manipulate the SD card in the same way.
-
-\paragraph{Memory Manager} Similar to the SD card manager, the memory manager is another process called upon by the main loop. When data is received from the attached USB sensors, this data is mirrored to both the SD card and the volatile memory to allow for recovery of failed transfers. The memory manager also implements a key-value store, allowing for configuration values like data format and operational timing (how long to wait before takeoff).
-
-
 \subsection{Packaging Constraints (HW 4)}
 \subsection{Commercial Product Packaging}
 
@@ -640,11 +543,11 @@ To facilitate distribution of tasks, unit testing, as well as code cleanliness, 
 
 \par We designed the \textit{Harm Drone}’s PCB footprint layout to optimize routing, space usage, and accessibility while aligning with the 3D-printed enclosure’s cutouts. We selected footprints based on space constraints, manufacturability, and electrical performance to ensure an efficient balance between density and accessibility.
 
-\par The STM32F072CB microcontroller uses an LQFP-48 package, ensuring compact form and manageable pin spacing for UART, SPI, and USB routing \cite{st2023stm32}. The FT231XS-R USB-to-UART converter and TUSB2046I USB hub use SOIC and QFN footprints, reducing PCB footprint while ensuring signal integrity \cite{} \cite{}. The CAT25160VI-GT3 EEPROM, placed in an 8-SOIC package, provides compact non-volatile storage \cite{}.
+\par The STM32F072CB microcontroller uses an LQFP-48 package, ensuring compact form and manageable pin spacing for UART, SPI, and USB routing \cite{st2023stm32}. The FT231XS-R USB-to-UART converter and TUSB2046I USB hub use SOIC and QFN footprints, reducing PCB footprint while ensuring signal integrity \cite{ftdi2023ft231x} \cite{ti2023tusb}. The CAT25160VI-GT3 EEPROM, placed in an 8-SOIC package, provides compact non-volatile storage \cite{onsemi2023cat}.
 
-\par For high-speed memory access, we placed the IS62WVS2568GBLL SRAM in a TSOP-44 footprint, which balances pin density and thermal performance while allowing for compact placement on the board \cite{}. We positioned the MSD-12-A microSD card module, a critical component for external data storage, in an edge-mounted footprint to align directly with the enclosure’s cutout for user accessibility \cite{}. We routed the 23LC1024 SPI bus, which the microcontroller, EEPROM, and SD card share, to minimize signal interference and optimize communication speeds \cite{}.
+\par For high-speed memory access, we placed the IS62WVS2568GBLL SRAM in a TSOP-44 footprint, which balances pin density and thermal performance while allowing for compact placement on the board \cite{issi2023sram}. We positioned the MSD-12-A microSD card module, a critical component for external data storage, in an edge-mounted footprint to align directly with the enclosure’s cutout for user accessibility \cite{samesky2023msd}. We routed the 23LC1024 SPI bus, which the microcontroller, EEPROM, and SD card share, to minimize signal interference and optimize communication speeds \cite{microchip2023sram}.
 
-\par We selected SOT-23-6 and SOT-23-5 footprints for power regulation components, including the LMR51430XDDCR buck converter and XC6210A332MR-G LDO regulator, to ensure efficient power conversion with minimal space usage \cite{} \cite{}. We implemented through-hole mounting for high-stress connectors like USB and XT60 power, ensuring long-term mechanical stability.
+\par We selected SOT-23-6 and SOT-23-5 footprints for power regulation components, including the LMR51430XDDCR buck converter and XC6210A332MR-G LDO regulator, to ensure efficient power conversion with minimal space usage \cite{ti2023stepdown} \cite{torex2023ldo}. We implemented through-hole mounting for high-stress connectors like USB and XT60 power, ensuring long-term mechanical stability.
 
 \par With an estimated PCB size of 95.5\,mm $\times$ 40.228\,mm $\times$ 17.68\,mm, the layout maintains clear separation of power and data lines, ensures efficient signal routing, and aligns precisely with enclosure cutouts. We included the final footprint layout in Appendix C, detailing component placement, trace routing, and external port alignment.
 
@@ -721,19 +624,19 @@ Despite budget limits, the design must remain competitive with commercial offeri
 Component choices prioritized efficient power management, reliable communication, compact footprint, and low power consumption.
 
 \begin{itemize}
-    \item \textbf{Microcontroller:} STM32F072CB was selected for its ARM Cortex-M0 core, USB 2.0 support, UART/SPI interfaces, and flash/RAM balance . Table \cite{} compares it with the ATmega32U4 \cite{}.
+    \item \textbf{Microcontroller:} STM32F072CB was selected for its ARM Cortex-M0 core, USB 2.0 support, UART/SPI interfaces, and flash/RAM balance . Table \ref{stm32_vs_atmega} compares it with the ATmega32U4 \cite{microchip2023atmega}.
 
-    \item \textbf{USB-UART Converter:} FT231XS-R was chosen for stable USB-to-serial conversion \cite{}. Table \cite{} compares it with the CP2102 \cite{}.
+    \item \textbf{USB-UART Converter:} FT231XS-R was chosen for stable USB-to-serial conversion \cite{ftdi2023ft231x}. Table \ref{ft231_vs_cp2102} compares it with the CP2102 \cite{silabs2023cp2102}.
 
-    \item \textbf{Buck Converter:} LMR51430XDDCR offers efficient 15\,V to 5\,V regulation \cite{}. Table \cite{} compares it with the MP2315 \cite{}.
+    \item \textbf{Buck Converter:} LMR51430XDDCR offers efficient 15\,V to 5\,V regulation \cite{ti2023stepdown}. Table \ref{lm514_vs_mp2315} compares it with the MP2315 \cite{mps2023mp2315}.
 
-    \item \textbf{USB Hub:} TUSB2046I provides 4-port USB expansion with low power consumption \cite{}. Compared in Table \cite{} with the FE1.1S \cite{}.
+    \item \textbf{USB Hub:} TUSB2046I provides 4-port USB expansion with low power consumption \cite{ti2023tusb}. Compared in Table \ref{tusb_vs_fe1} with the FE1.1S \cite{terminus2023fe11s}.
 
-    \item \textbf{LDO Regulator:} XC6210A332MR-G was selected for low dropout and high efficiency \cite{}. Compared in Table \cite{} with the AMS1117-3.3 \cite{}.
+    \item \textbf{LDO Regulator:} XC6210A332MR-G was selected for low dropout and high efficiency \cite{torex2023ldo}. Compared in Table \ref{xc6210_vs_ams1117} with the AMS1117-3.3 \cite{ams2023ams1117}.
 
-    \item \textbf{EEPROM:} CAT25160VI-GT3 supports reliable SPI-based data logging \cite{}. Table \cite{} compares it with AT24C256 \cite{}.
+    \item \textbf{EEPROM:} CAT25160VI-GT3 supports reliable SPI-based data logging \cite{onsemi2023cat}. Table \ref{cat25160_vs_at24c256} compares it with AT24C256 \cite{microchip2023at24c256}.
 
-    \item \textbf{SRAM:} IS62WVS2568GBLL-45NLI-TR provides high-speed memory access for real-time processing \cite{}. Compared in Table \cite{} with 23LC1024 \cite{}.
+    \item \textbf{SRAM:} IS62WVS2568GBLL-45NLI-TR provides high-speed memory access for real-time processing \cite{issi2023sram}. Compared in Table \ref{is62_vs_23lc1024} with 23LC1024 \cite{microchip2023sram}.
 \end{itemize}
 
 \par These components collectively form a robust and efficient embedded system that meets performance, power, and interface demands.
@@ -820,31 +723,31 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Social/Political/Environmental Impact (HW 8)}
 
-\par We designed the Harm Drone PCB with a strong emphasis on ethical engineering and social responsibility. Because the board collects real-time data in potentially sensitive environments, we intentionally avoid wireless data transmission, reducing interception risks and aligning with ethical data handling practices \cite{} \cite{}.
+\par We designed the Harm Drone PCB with a strong emphasis on ethical engineering and social responsibility. Because the board collects real-time data in potentially sensitive environments, we intentionally avoid wireless data transmission, reducing interception risks and aligning with ethical data handling practices \cite{ieee_ethics}, \cite{ccpa}.
 
 \par We developed rigorous testing protocols to confirm safe operation under conditions such as fluctuating power, temperature changes, and data load variations. By incorporating fail-safe mechanisms, reliable firmware, and complete documentation, we reduce the likelihood of failure during critical missions.
 
-\par Our documentation includes all necessary electrical, integration, and operational details to ensure safe and transparent deployment. This level of openness aligns with the National Society of Professional Engineers (NSPE) Code of Ethics, which emphasizes engineers' responsibility to protect public safety and communicate system limitations \cite{}.
+\par Our documentation includes all necessary electrical, integration, and operational details to ensure safe and transparent deployment. This level of openness aligns with the National Society of Professional Engineers (NSPE) Code of Ethics, which emphasizes engineers' responsibility to protect public safety and communicate system limitations \cite{nspe2020}.
 
 \subsection{Stakeholder Considerations}
 
-\par The system directly impacts multiple stakeholders, including Professor Harms' lab, drone operators, academic researchers, and communities near drone operation zones. We ensure secure data handling by enforcing local storage and by not implementing wireless communication, which reduces the chance of unintended surveillance. This design approach strengthens trust between developers, users, and the public, and supports transparent research practices \cite{}.
+\par The system directly impacts multiple stakeholders, including Professor Harms' lab, drone operators, academic researchers, and communities near drone operation zones. We ensure secure data handling by enforcing local storage and by not implementing wireless communication, which reduces the chance of unintended surveillance. This design approach strengthens trust between developers, users, and the public, and supports transparent research practices \cite{ieee_ethics}.
 
 \subsection{Research Data Privacy and Ethics}
 
-\par Because the board may store geolocation and environmental data from sensitive areas, we prioritize data privacy in our system architecture. By avoiding wireless data transfers and encrypting log files where necessary, we ensure compliance with data privacy standards such as the California Consumer Privacy Act (CCPA) \cite{}. Researchers integrating the board must follow institutional and governmental review processes for ethical deployment.
+\par Because the board may store geolocation and environmental data from sensitive areas, we prioritize data privacy in our system architecture. By avoiding wireless data transfers and encrypting log files where necessary, we ensure compliance with data privacy standards such as the California Consumer Privacy Act (CCPA) \cite{ccpa}. Researchers integrating the board must follow institutional and governmental review processes for ethical deployment.
 
 \subsection{Political Impact Analysis}
 
-\par Although the Harm Drone PCB is designed for academic use, its integration of USB interfaces, microcontrollers, and memory modules introduces political and regulatory complexities. These components may fall under U.S. export control regulations such as ITAR or EAR when paired with sensitive payloads \cite{}.
+\par Although the Harm Drone PCB is designed for academic use, its integration of USB interfaces, microcontrollers, and memory modules introduces political and regulatory complexities. These components may fall under U.S. export control regulations such as ITAR or EAR when paired with sensitive payloads \cite{ear}.
 
-\par We source parts from vendors who comply with international trade regulations and maintain transparency in their labor practices. Should the board see international deployment, we will ensure compliance with American data protection standards such as CCPA and with product safety regulations like CE and FCC \cite{}.
+\par We source parts from vendors who comply with international trade regulations and maintain transparency in their labor practices. Should the board see international deployment, we will ensure compliance with American data protection standards such as CCPA and with product safety regulations like CE and FCC \cite{rohs}, \cite{ccpa}.
 
-\par To mitigate supply chain risks, we identified multiple vendors and ensured compatibility with alternative components. Our adherence to RoHS, CE, and FCC standards promotes safe design and supports potential international academic collaboration \cite{}.
+\par To mitigate supply chain risks, we identified multiple vendors and ensured compatibility with alternative components. Our adherence to RoHS, CE, and FCC standards promotes safe design and supports potential international academic collaboration \cite{rohs}.
 
 \subsubsection{Regulatory Compliance}
 
-\par We ensured compliance with globally recognized standards, including RoHS (for hazardous substance restrictions), FCC (for electromagnetic emissions), and CE (for general product safety). Meeting these standards strengthens product safety and legal clarity, especially for future research use or potential commercial adaptation \cite{}.
+\par We ensured compliance with globally recognized standards, including RoHS (for hazardous substance restrictions), FCC (for electromagnetic emissions), and CE (for general product safety). Meeting these standards strengthens product safety and legal clarity, especially for future research use or potential commercial adaptation \cite{rohs}.
 
 \subsection{Environmental Impact Analysis}
 
@@ -852,11 +755,11 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 
 \subsubsection{Manufacturing}
 
-\par PCB fabrication consumes energy and involves hazardous chemicals such as etchants and solvents. To minimize this impact, we use RoHS-compliant materials, lead-free solder, and compact surface mount designs that reduce board size and component count \cite{}. We followed IPC-2221B design standards to ensure environmentally responsible layout practices \cite{}.
+\par PCB fabrication consumes energy and involves hazardous chemicals such as etchants and solvents. To minimize this impact, we use RoHS-compliant materials, lead-free solder, and compact surface mount designs that reduce board size and component count \cite{rohs}. We followed IPC-2221B design standards to ensure environmentally responsible layout practices \cite{ipc2221}.
 
 \subsubsection{Enclosure Material and Additive Manufacturing}
 
-\par To house and protect the PCB during deployment, we designed a custom 3D-printed enclosure made from polylactic acid (PLA), a biodegradable thermoplastic derived from renewable resources like cornstarch or sugarcane. PLA offers several benefits over petroleum-based plastics, including a lower carbon footprint during production and improved biodegradability under industrial composting conditions \cite{}.
+\par To house and protect the PCB during deployment, we designed a custom 3D-printed enclosure made from polylactic acid (PLA), a biodegradable thermoplastic derived from renewable resources like cornstarch or sugarcane. PLA offers several benefits over petroleum-based plastics, including a lower carbon footprint during production and improved biodegradability under industrial composting conditions \cite{natureworks_pla}.
 
 \par By using additive manufacturing, we minimize material waste and enable rapid iteration of enclosure designs to fit a variety of drone platforms. This approach supports our modular integration goals and allows users to fabricate new casings on demand using common 3D printing equipment. The use of PLA also avoids the environmental hazards associated with legacy enclosures made from ABS or carbon-reinforced polymers.
 
@@ -866,11 +769,11 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 
 \subsubsection{Disposal/Recycling}
 
-\par At the end of life, the board presents moderate recycling challenges due to embedded copper, tin, and trace amounts of gold. To mitigate these risks, we included clear disassembly documentation and recommended disposal via certified e-waste programs. Our packaging uses recyclable materials and avoids excessive padding, aligning with environmentally responsible delivery methods \cite{}.
+\par At the end of life, the board presents moderate recycling challenges due to embedded copper, tin, and trace amounts of gold. To mitigate these risks, we included clear disassembly documentation and recommended disposal via certified e-waste programs. Our packaging uses recyclable materials and avoids excessive padding, aligning with environmentally responsible delivery methods \cite{goncalves_uav}.
 
 \subsection{Lifecycle Assessment Overview}
 
-\par By decoupling the data logging system from specific drone models, we reduce redundant hardware production and lower our carbon footprint. The board’s reusability across multiple UAV platforms increases its service life and reduces overall resource consumption. Our design choices support circular lifecycle goals through modularity, durability, and sustainable manufacturing practices \cite{}.
+\par By decoupling the data logging system from specific drone models, we reduce redundant hardware production and lower our carbon footprint. The board’s reusability across multiple UAV platforms increases its service life and reduces overall resource consumption. Our design choices support circular lifecycle goals through modularity, durability, and sustainable manufacturing practices \cite{goncalves_uav}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %            Discussion, Conclusions, and Recommendations                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1143,7 +1046,7 @@ DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone c
 \textbf{Estimated Unit Cost} & Total Estimated Cost per Unit - \$5 - \$11 \\ \hline
 \end{tabular}
 \caption{Tooling Requirements, Estimated Weight, and Unit Cost Summary}
-\label{tab:tooling_costs}
+\label{tooling_costs}
 \end{table}
 
 \begin{table}[H]
@@ -1163,7 +1066,7 @@ Cost & ~\$3.50 & ~\$3.00 \\
 \hline
 \end{tabular}
 \caption{STM32 vs. ATmega32 Microcontroller Comparison}
-\label{tab:stm32_vs_atmega}
+\label{stm32_vs_atmega}
 \end{table}
 
 \begin{table}[H]
@@ -1182,7 +1085,7 @@ Cost & ~\$3.00 & ~\$2.00 \\
 \hline
 \end{tabular}
 \caption{FT231XS vs. CP2102 USB to UART Comparison}
-\label{tab:ft231_vs_cp2102}
+\label{ft231_vs_cp2102}
 \end{table}
 
 \begin{table}[H]
@@ -1200,7 +1103,7 @@ Cost & ~\$2.50 & ~\$1.50 \\
 \hline
 \end{tabular}
 \caption{TUSB3046I vs. FE1.1S USB Hub Comparison}
-\label{tab:tusb_vs_fe1}
+\label{tusb_vs_fe1}
 \end{table}
 
 \begin{table}[H]
@@ -1219,7 +1122,7 @@ Cost & ~\$2.50 & ~\$3.00 \\
 \hline
 \end{tabular}
 \caption{LMR51430 vs. MP2315 Buck Converter Comparison}
-\label{tab:lm514_vs_mp2315}
+\label{lm514_vs_mp2315}
 \end{table}
 
 \begin{table}[H]
@@ -1236,7 +1139,7 @@ Cost & ~\$0.30 & ~\$0.50 \\
 \hline
 \end{tabular}
 \caption{XC6210A vs. AMS1117 LDO Comparison}
-\label{tab:xc6210_vs_ams1117}
+\label{xc6210_vs_ams1117}
 \end{table}
 
 \begin{table}[H]
@@ -1253,7 +1156,7 @@ Cost & ~\$0.46 & ~\$0.28 \\
 \hline
 \end{tabular}
 \caption{CAT25160VI vs. AT24C256 EEPROM Comparison}
-\label{tab:cat25160_vs_at24c256}
+\label{cat25160_vs_at24c256}
 \end{table}
 
 \begin{table}[H]
@@ -1271,7 +1174,7 @@ Cost & ~\$2.50 & ~\$2.00 \\
 \hline
 \end{tabular}
 \caption{IS62 vs. 23LC1024 SRAM Comparison}
-\label{tab:is62_vs_23lc1024}
+\label{is62_vs_23lc1024}
 \end{table}
 
 \newpage
@@ -1364,6 +1267,33 @@ Advanced Monolithic Systems, ``AMS1117 Datasheet,'' AMS, 2023. [Online]. Availab
 
 \bibitem{microchip2023at24c256}
 Microchip Technology Inc., ``AT24C256 256-Kbit 2-wire Serial EEPROM,'' Microchip Technology, 2023. [Online]. Available: \url{https://ww1.microchip.com/downloads/en/DeviceDoc/doc0336.pdf}
+
+\bibitem{nspe2020}
+National Society of Professional Engineers (NSPE), \emph{Code of Ethics for Engineers}, 2020. [Online]. Available: \url{https://www.nspe.org/resources/ethics/code-ethics}
+
+\bibitem{ieee_ethics}
+IEEE Global Initiative, \emph{Ethically Aligned Design: A Vision for Prioritizing Human Well-being with Autonomous and Intelligent Systems}, 1st ed., 2019. [Online]. Available: \url{https://ethicsinaction.ieee.org/}
+
+\bibitem{ipc2221}
+IPC, \emph{IPC-2221B: Generic Standard on Printed Board Design}, IPC Association, 2012. [Online]. Available: \url{https://shop.ipc.org/IPC-2221B-Redline-2221B-RL-P-0-EN}
+
+\bibitem{rohs}
+European Union, \emph{Directive 2011/65/EU on the Restriction of Hazardous Substances (RoHS)}, 2011. [Online]. Available: \url{https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32011L0065}
+
+\bibitem{ear}
+U.S. Department of Commerce, Bureau of Industry and Security, \emph{Export Administration Regulations (EAR)}, 2023. [Online]. Available: \url{https://www.bis.doc.gov/index.php/regulations/export-administration-regulations-ear}
+
+\bibitem{ccpa}
+State of California Department of Justice, “California Consumer Privacy Act (CCPA),” Mar. 13, 2024. [Online]. Available: \url{https://oag.ca.gov/privacy/ccpa}
+
+\bibitem{ieee1789}
+IEEE Standards Association, \emph{IEEE Std 1789-2015: Recommended Practices for Modulating Current in High-Brightness LEDs}, 2015. [Online]. Available: \url{https://standards.ieee.org/standard/1789-2015.html}
+
+\bibitem{goncalves_uav}
+D. Gonçalves, A. Pereira, and R. Silva, “Sustainability in UAVs: Bio-Based and Recycled Composites,” \emph{Materials}, vol. 9, no. 4, p. 169, Apr. 2023. [Online]. Available: \url{https://www.mdpi.com/2504-477X/9/4/169}
+
+\bibitem{natureworks_pla}
+NatureWorks LLC, \emph{Polylactic Acid (PLA) Bioplastic: Environmental Benefits and Life Cycle Assessment}, 2023. [Online]. Available: \url{https://www.natureworksllc.com/What-is-Ingeo/Why-it-Matters}
 
 \end{thebibliography}
 
