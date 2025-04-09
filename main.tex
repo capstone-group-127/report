@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[tmargin=1in,lmargin=1in,rmargin=1in]{geometry}
 \usepackage{fancyhdr}
-\setcounter{tocdepth}{5}
+\setcounter{tocdepth}{3}
 \usepackage{titletoc,tocloft}
 \setlength{\cftsubsecindent}{0.65cm}
 \setlength{\cftsubsubsecindent}{1.3cm}
@@ -30,6 +30,7 @@
 \usepackage{etoolbox}
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep}
+\usepackage[margin=2cm]{caption}
 \usepackage{listings} % For code listings
 \usepackage{color} % For colored text
 \usepackage{amsmath} % For mathematical notation
@@ -482,6 +483,102 @@ Discuss the phases of the design and implementation of your project. (PERT chart
     %\item PCB Design (HW 5)
     %\item Software Design (not a listing of code) (HW 7)
 %\end{itemize}
+\subsection{Software Design}
+\par The Harm Drone design project constitutes multiple software components and modules working together to produce the desired results. As a part of the design process, many considerations were taken to ensure that these software components were individually verifiable, while ensuring they could work together to form a cohesive system.
+\par This section will explain constraints incurred by the development process, in both hardware specifications and general system layouts. Then, given these constraints, the analysis will deduce a set of distinct software modules that can be developed, tested, and completed separately, while also maintaining their connection to the whole system.
+\subsubsection{Considerations of Flash Memory}
+\paragraph{Read-only Memory (Recovery)}
+\begin{itemize}
+    \item \textbf{Address:} \texttt{0x1FFFC800} - \texttt{0x1FFFF7FF}
+    \item \textbf{Usage:} Factory-programmed bootloader.
+    \item \textbf{Restrictions:} Read-only. Used for reprogramming flash via specific interfaces (USART, I2C, USB DFU) when booting in System Memory mode ([1, Section 3.3]).
+\end{itemize}
+\paragraph{Onboard EEPROM}
+\begin{itemize}
+    \item \textbf{Size:} 128 Kbytes.
+    \item \textbf{Address:} \texttt{0x08000000} - \texttt{0x0801FFFF}. Aliased at \texttt{0x00000000}
+    \item \textbf{Usage:} Program code (\texttt{.text}), constant data (\texttt{.rodata}), \texttt{.data} initial image.
+    \item \textbf{Restrictions:}
+    \begin{itemize}
+        \item Limited write/erase cycles (Endurance: 10 kcycles, [1, Table 47]).
+    \end{itemize}
+\end{itemize}
+\paragraph{EEPROM over SPI}
+\begin{itemize}
+    \item \textbf{Size:} 16 Kbytes.
+    \item \textbf{Address:} SPI Bus 1, \verb|CHIP_SELECT_EEPROM|
+    \item \textbf{Usage:} Persistent configuration data, stored between flight runs
+    \item \textbf{Restrictions:}
+    \begin{itemize}
+        \item Cannot be written to in parallel with SRAM over SPI
+        \item Limited write/erase cycles (Endurance: 1M cycles, [2, Table 2])
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Considerations of Volatile Memory}
+\paragraph{Onboard}
+\begin{itemize}
+    \item \textbf{Size:} 16 Kbytes.
+    \item \textbf{Address:} \texttt{0x20000000} - \texttt{0x20003FFF}.
+    \item \textbf{Usage:} Runtime storage for \texttt{.data}, \texttt{.bss}, stack, heap, RAM functions.
+    \item \textbf{Restrictions:}
+    \begin{itemize}
+        \item \textbf{Volatile:} Content lost on power-down
+        \item \textbf{Size Limit:} 16 KB total for stack, heap, variables.
+    \end{itemize}
+\end{itemize}
+\paragraph{SRAM over SPI}
+\begin{itemize}
+    \item \textbf{Size:} 2 Mbytes
+    \item \textbf{Address:} SPI Bus 1, \verb|CHIP_SELECT_SRAM|
+    \item \textbf{Usage:} Runtime storage for flight logs and sensor data
+    \item \textbf{Restrictions:}
+    \begin{itemize}
+        \item \textbf{Volatile:} Content lost on power-down [3]
+        \item Cannot be written to in parallel with EEPROM over SPI
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Considerations of External Interfaces \& Peripherals}
+\paragraph{GPIO Ports} Due to the Harm Drone's power delivery requirements, care was taken to ensure that the GPIO pins of the microcontroller are all 5V tolerant [1, Table 14], despite their 3.3V logic level.
+\begin{itemize}
+	\item PB11: SD\_CARD\_DETECT
+	\item PB12: USB\_RESET
+	\item PB13: USB\_SUSPEND
+    \item PC13: PWM LED
+\end{itemize}
+\paragraph{SPI} The STM microcontroller used for the Harm Drone has two SPI busses [1, Tables 17-20].
+\subparagraph{Bus 1} Used to communicate with the external memory, both SRAM and EEPROM. Runs at 1Mhz to avoid interfering EMFs with the drone's navigation system.
+\subparagraph{Bus 2} Exclusively used for managing the SD card. On initialization, the SPI bus is manually cycled 76 times to detect an SD card and to enable SPI mode on the card. Once initialization is complete, control of this bus is managed by the built-in STM FAT library. This library initializes the filesystem and manages output files on the SD card. This bus also runs at only 1Mhz, both to avoid generating EMF but also to support any speed of SD card that could be inserted.
+\paragraph{USB}
+\subparagraph{to USB} The Harm Drone utilizes an on-board self-powered USB hub to connect multiple sensors at once. To operate the USB hub, it requires a 6Mhz clock signal (generated via on-board crystal) as well as access to 2.3A of power (500mA per device,  300mA operating current).
+\subparagraph{to Serial} To communicate with the drone hardware, the microcontroller uses the onboard USART TX/RX lines through a USB-to-Serial conversion IC connected to the drone. Support for serial communication is built-in to the STM HAL, so no additional drivers are needed for this communication.
+\paragraph{Timers}
+To simplify timer configuration, the included STM clock helper tool is used to program the appropriate configuration registers. The timer configuration as defined in the tool is shown in Figure \ref{timer-configuration}. This configuration is used to control the PWM LED.
+ \quickfigure{timer-configuration.png}{6in}{Configuring the timer in STM32CubeMX. This enables the clock and sets the prescalar, period, mode, and channel modes.}{timer-configuration}
+
+\paragraph{Organization} In general, the Harm Drone code runs as a polling-based program. The core loop logic runs to await incoming messages from the flight control software before taking any action. The incoming messages could be sensor data, or commands intended to stop or start data logging.
+\par There are some portions that must be interrupt-driven. The flight control software running on the drone to control the motors runs as real-time, allowing for prioritization of the drone's core operation. Also, communication over USB with attached sensors is interrupt-driven when sensors send data to the host.
+
+\paragraph{Debugging} To facilitate interactive debugging and testing modes, STM processors support SWD (serial wire debugging). When an STLink-compatible adapter is connected to a shared ground, as well as pins 13 and 14 ([1] Table 14) of the microcontroller, debug information can be shared with the connected computer, allowing for line-by-line walkthroughs as well as live variable manipulation. This process is also the primary method used to flash and program the microcontroller.
+
+\subsubsection{Modular Organization}
+To facilitate distribution of tasks, unit testing, as well as code cleanliness, the software stack of the Harm Drone is divided into multiple modules, each responsible for a different device or mode of operation. These modules communicate with each other using formally defined packets, either serially over the wire, or within memory on the device.
+
+\paragraph{Main Module} The main module runs on the STM microcontroller in a polling loop. This module is responsible for two tasks:
+\begin{itemize}
+\item Logging incoming sensor data over USB to the attached SD card, mirroring the data to memory for redundancy.
+\item Hypervising flight operations through the connection to the flight control software, including starting and stopping planned flights.
+\end{itemize}
+\par The main module is not yet complete, requiring more changes to support operations regarding the flight manager. The memory operations have been tested to operate using the SD card and memory routines.
+
+\paragraph{Drone Middleware} To communicate with the existing embedded Linux system, a middleware program exists to bridge commands and sensor data over the serial connection to the main microcontroller program. The middleware takes control of the attached USB device (the USB-to-Serial chip) and initializes it as a serial terminal. Then, this middleware takes commands from the microcontroller and sends it to the onboard flight control software. When waypoints are reached or other sensor data is collected, this middleware formats the data for logging before sending it serially over the wire. This program runs in user space to avoid starving more critical flight processes of resources. This helps to minimize risk.
+
+\paragraph{SD Card Manager} The SD card manager is a thin wrapper around the built-in STM FAT filesystem library. When the microcontroller boots, the Main program will initialize all memory, then start the SD card manager. The SD card manager uses the \verb|CARD_DETECT| GPIO pin to determine if an SD card is inserted. If a valid card is detected, the card is placed into SPI mode by cycling the clock 74 times while holding the data low. Once initialization is complete, control of the bus is passed to the filesystem library. STM includes commands to read, write, and manipulate files, but the card manager contains shims for each of these functionalities to redirect their effects from a virtual drive to the SPI commands necessary to manipulate the SD card in the same way.
+
+\paragraph{Memory Manager} Similar to the SD card manager, the memory manager is another process called upon by the main loop. When data is received from the attached USB sensors, this data is mirrored to both the SD card and the volatile memory to allow for recovery of failed transfers. The memory manager also implements a key-value store, allowing for configuration values like data format and operational timing (how long to wait before takeoff).
+
+
 \subsection{Packaging Constraints (HW 4)}
 \subsection{Commercial Product Packaging}
 
