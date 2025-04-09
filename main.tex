@@ -294,17 +294,17 @@ By following this structure, the report ensures clarity for both technical and n
 
 \subsubsection{Results of Patent and Product Search}
 
-\par To assess potential patent infringement risks for \textit{The Harm Drone}, it is essential to examine existing patents with similar functions. One of the most relevant is \textbf{US 11,501,483 B2}, \textit{Removable Sensor Payload System for Unmanned Aerial Vehicle Performing Media Capture and Property Analysis}, filed on November 15, 2022 []. This patent describes a modular payload system that allows UAVs to swap sensors for media capture and automated aerial data collection. Given \textit{The Harm Drone}’s use of specialized sensors for autonomous data collection, there is a potential overlap, particularly in sensor payload design and data acquisition methods. To mitigate risks, \textit{The Harm Drone} must ensure its sensor integration does not replicate this removable payload system.
+\par To assess potential patent infringement risks for \textit{The Harm Drone}, it is essential to examine existing patents with similar functions. One of the most relevant is \textbf{US 11,501,483 B2}, \textit{Removable Sensor Payload System for Unmanned Aerial Vehicle Performing Media Capture and Property Analysis}, filed on November 15, 2022 \cite{speasl2022payload}. This patent describes a modular payload system that allows UAVs to swap sensors for media capture and automated aerial data collection. Given \textit{The Harm Drone}’s use of specialized sensors for autonomous data collection, there is a potential overlap, particularly in sensor payload design and data acquisition methods. To mitigate risks, \textit{The Harm Drone} must ensure its sensor integration does not replicate this removable payload system.
 
-\par Another relevant patent is \textbf{US 2022/0404273 A1}, \textit{High-Altitude Airborne Remote Sensing}, published on December 22, 2022 []. This patent describes high-altitude UAVs equipped with specialized sensors for environmental monitoring, where collected data is processed and transmitted to a ground station. \textit{The Harm Drone} operates at lower altitudes, but it shares key functionalities such as autonomous navigation, environmental data collection, and onboard processing. The risk of infringement exists if \textit{The Harm Drone}’s sensor integration and data handling closely resemble those in this patent.
+\par Another relevant patent is \textbf{US 2022/0404273 A1}, \textit{High-Altitude Airborne Remote Sensing}, published on December 22, 2022 \cite{kendall2022remote}. This patent describes high-altitude UAVs equipped with specialized sensors for environmental monitoring, where collected data is processed and transmitted to a ground station. \textit{The Harm Drone} operates at lower altitudes, but it shares key functionalities such as autonomous navigation, environmental data collection, and onboard processing. The risk of infringement exists if \textit{The Harm Drone}’s sensor integration and data handling closely resemble those in this patent.
 
-\par Finally, \textbf{US 10,462,366 B1}, \textit{Autonomous Drone with Image Sensor}, granted on October 29, 2019 [], describes a drone based monitoring system that continuously collects image data, even while charging. It integrates stationary ground sensors with drone captured data for real time property surveillance and analysis. Key claims include image sensors for monitoring, data collection while docked, and integration with stationary sensors. \textit{The Harm Drone} also incorporates image sensors for environmental monitoring, posing a potential overlap in data collection, processing, and storage. However, \textit{The Harm Drone} does not perform continuous image capture while stationary, reducing the likelihood of direct infringement.
+\par Finally, \textbf{US 10,462,366 B1}, \textit{Autonomous Drone with Sensor}, granted on October 29, 2019 \cite{bart2019autodrone}, describes a drone based monitoring system that continuously collects data, even while charging. It integrates stationary ground sensors with drone captured data for real time property surveillance and analysis. Key claims include sensors for monitoring, data collection while docked, and integration with stationary sensors. \textit{The Harm Drone} also incorporates data sensors for environmental monitoring, posing a potential overlap in data collection, processing, and storage. However, \textit{The Harm Drone} does not perform continuous data capture while stationary, reducing the likelihood of direct infringement.
 
 \par By differentiating its sensor integration, flight altitude, and data processing methods, \textit{The Harm Drone} can mitigate potential patent risks while maintaining its research focused functionality.
 
 \subsubsection{Analysis of Patent Liability}
 
-\par To assess \textit{The Harm Drone}'s potential for patent infringement, we examine both \textit{literal infringement} and infringement under the \textit{doctrine of equivalents} concerning US 11,501,483 B2 [], US 2022/0404273 A1 [], and US 10,462,366 B1 []. While \textit{The Harm Drone} shares functional similarities with these patents, significant differences in design, operation, and data collection methods reduce the likelihood of infringement.
+\par To assess \textit{The Harm Drone}'s potential for patent infringement, we examine both \textit{literal infringement} and infringement under the \textit{doctrine of equivalents} concerning US 11,501,483 B2 \cite{speasl2022payload}, US 2022/0404273 A1 \cite{kendall2022remote}, and US 10,462,366 B1 \cite{bart2019autodrone}. While \textit{The Harm Drone} shares functional similarities with these patents, significant differences in design, operation, and data collection methods reduce the likelihood of infringement.
 
 \begin{itemize}
     \item \textbf{US 11,501,483 B2}: Describes a removable sensor payload system for UAVs, allowing modular sensor integration for media capture and property analysis. While \textit{The Harm Drone} also integrates specialized sensors, its design does not use interchangeable payloads but instead features fixed sensors for research applications. Additionally, it focuses on environmental monitoring rather than media capture or property analysis. Under the doctrine of equivalents, despite both projects involving sensor equipped UAVs, \textit{The Harm Drone} prioritizes weather resistance and research driven sensor integration, reducing infringement risks.
@@ -325,14 +325,12 @@ By following this structure, the report ensures clarity for both technical and n
     
     \item \textbf{Altitude and Transmission Constraints:} Operate strictly within low to mid altitude ranges and avoid any real time data transmission to differentiate from US 2022/0404273 A1. Offline storage and post flight data retrieval should be emphasized.
 
-    \item \textbf{Image Sensor Limitations:} Ensure the image sensor captures data only during flight, at pre-programmed GPS waypoints. Avoid any stationary or docked data collection, in contrast to the system described in US 10,462,366 B1.
-
     \item \textbf{Custom Software and Algorithms:} Develop custom navigation and flight control software, rather than depending on proprietary or lightly modified open source frameworks. This avoids infringing on patented control algorithms or autonomous behaviors.
 
     \item \textbf{Research Positioning:} Clearly brand and document \textit{The Harm Drone} as a tool for environmental research or agricultural data collection. Avoid surveillance, property monitoring, or media capture use cases to limit overlaps with broad UAV surveillance patents.
 \end{itemize}
 
-\par By implementing these strategic modifications—including non-removable sensor integration, altitude and data handling restrictions, waypoint bound image capture, and unique flight software—\textit{The Harm Drone} will remain functionally distinct from the referenced patents. These actions will protect the project from infringement risk while achieving its design goals.
+\par By implementing these strategic modifications—including non-removable sensor integration, altitude and data handling restrictions, waypoint bound data collection, and unique flight software—\textit{The Harm Drone} will remain functionally distinct from the referenced patents. These actions will protect the project from infringement risk while achieving its design goals.
 \par With a clear understanding of existing patent landscapes and actionable steps to avoid infringement, the focus of the project now shifts from legal differentiation to technical implementation. These patent driven constraints directly inform the design problem, shaping both the hardware and software requirements. In the following section, the core engineering challenge is formally defined, incorporating key limitations such as non-removable sensors, offline operation, and standards compliance. This formulation ensures that the project not only avoids legal conflicts but also addresses real world needs for robust, low cost UAV data systems.
 
 \subsection{Problem Formulation}
@@ -485,15 +483,15 @@ Discuss the phases of the design and implementation of your project. (PERT chart
     %\item Software Design (not a listing of code) (HW 7)
 %\end{itemize}
 \subsection{Packaging Constraints (HW 4)}
-\subsubsection{Commercial Product Packaging}
+\subsection{Commercial Product Packaging}
 
 \par To refine the \textit{Harm Drone}’s PCB packaging design, we analyzed two commercial drones with plastic based enclosures: the Parrot AR.Drone and the Parrot Anafi USA. Both drones emphasize lightweight and durable construction, making them useful comparisons for our 3D-printed plastic case. However, they differ in structural integrity, modularity, and accessibility.
 
-\par Parrot designed the AR.Drone with a plastic and expanded polypropylene (EPP) foam casing, which protects its electronics while keeping the drone lightweight and impact resistant. Its interchangeable hulls include a foam indoor hull for propeller protection and a lightweight plastic outdoor hull for maneuverability []. While this design remains cost-effective and lightweight, it lacks structural rigidity and EMI shielding.
+\par Parrot designed the AR.Drone with a plastic and expanded polypropylene (EPP) foam casing, which protects its electronics while keeping the drone lightweight and impact resistant. Its interchangeable hulls include a foam indoor hull for propeller protection and a lightweight plastic outdoor hull for maneuverability \cite{parrot2021ardrone}. While this design remains cost-effective and lightweight, it lacks structural rigidity and EMI shielding.
 
-\par Parrot built the Anafi USA for professional and industrial applications, using lightweight thermoplastic materials to improve structural integrity and environmental resistance []. Unlike the AR.Drone, the Anafi USA features a reinforced plastic housing, which protects its internal flight electronics, sensors, and camera systems while maintaining modularity for easier maintenance. However, this model still prioritizes lightweight efficiency over impact resistance, making it more fragile than drones with metal enclosures.
+\par Parrot built the Anafi USA for professional and industrial applications, using lightweight thermoplastic materials to improve structural integrity and environmental resistance \cite{parrot2023anafi}. Unlike the AR.Drone, the Anafi USA features a reinforced plastic housing, which protects its internal flight electronics, sensors, and camera systems while maintaining modularity for easier maintenance. However, this model still prioritizes lightweight efficiency over impact resistance, making it more fragile than drones with metal enclosures.
 
-\paragraph{Parrot AR.Drone}
+\subsubsection{Parrot AR.Drone}
 
 \par The Parrot AR.Drone serves as an early example of lightweight, plastic based enclosures for drones. It encloses PCB components inside a light plastic shell, while internal EPP foam elements absorb impact. The enclosure integrates fully into the drone’s frame, ensuring efficient weight distribution and minor crash protection.
 
@@ -513,7 +511,7 @@ Discuss the phases of the design and implementation of your project. (PERT chart
 
 \par We adopted the lightweight plastic construction approach of the Parrot AR.Drone while improving structural reinforcement and accessibility. Instead of using a fully integrated casing like the AR.Drone, we designed a 3D-printed modular enclosure with two interlocking halves and a latch mechanism, allowing for quick access, easy maintenance, and upgrades. Additionally, we incorporated precisely positioned cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, enabling seamless external connectivity without requiring complete disassembly.
 
-\paragraph{Parrot Anafi USA}
+\subsubsection{Parrot Anafi USA}
 
 \par Parrot engineered the Anafi USA to balance durability and weight efficiency, ensuring optimal flight performance while protecting internal electronics. Parrot built the drone’s enclosure as part of the main frame, ensuring structural support while keeping components compact and secure.
 
@@ -533,7 +531,7 @@ Discuss the phases of the design and implementation of your project. (PERT chart
 
 \par We based the \textit{Harm Drone}’s enclosure on the Anafi USA’s thermoplastic construction, enhancing durability and accessibility through a custom 3D-printed modular design. Unlike the Anafi USA’s fully integrated frame, our enclosure maintains modularity, ensuring that components can be easily removed, replaced, or upgraded. To improve usability, we integrated cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, allowing external connections without the need for full enclosure removal.
 
-\subsubsection{Project Package Specifications}
+\subsection{Project Package Specifications}
 
 \par We designed the \textit{Harm Drone}’s PCB packaging as a lightweight, durable, and modular enclosure that protects critical electronic components while allowing easy maintenance and upgrades. The enclosure consists of a custom 3D-printed plastic case with two interlocking halves, secured using a latch mechanism. This structure enables quick access to internal components, eliminating the need for complex disassembly.
 
@@ -541,15 +539,15 @@ Discuss the phases of the design and implementation of your project. (PERT chart
 
 \par To support external connections, we incorporated custom cutouts for the power switch, USB-C port, microSD slot, USB ports, and XT60 connector. These cutouts align precisely with the PCB layout, ensuring seamless connectivity without requiring enclosure removal.
 
-\subsubsection{PCB Footprint Layout}
+\subsection{PCB Footprint Layout}
 
 \par We designed the \textit{Harm Drone}’s PCB footprint layout to optimize routing, space usage, and accessibility while aligning with the 3D-printed enclosure’s cutouts. We selected footprints based on space constraints, manufacturability, and electrical performance to ensure an efficient balance between density and accessibility.
 
-\par The STM32F072CB microcontroller uses an LQFP-48 package, ensuring compact form and manageable pin spacing for UART, SPI, and USB routing []. The FT231XS-R USB-to-UART converter and TUSB2046I USB hub use SOIC and QFN footprints, reducing PCB footprint while ensuring signal integrity [] []. The CAT25160VI-GT3 EEPROM, placed in an 8-SOIC package, provides compact non-volatile storage [].
+\par The STM32F072CB microcontroller uses an LQFP-48 package, ensuring compact form and manageable pin spacing for UART, SPI, and USB routing \cite{st2023stm32}. The FT231XS-R USB-to-UART converter and TUSB2046I USB hub use SOIC and QFN footprints, reducing PCB footprint while ensuring signal integrity \cite{} \cite{}. The CAT25160VI-GT3 EEPROM, placed in an 8-SOIC package, provides compact non-volatile storage \cite{}.
 
-\par For high-speed memory access, we placed the IS62WVS2568GBLL SRAM in a TSOP-44 footprint, which balances pin density and thermal performance while allowing for compact placement on the board []. We positioned the MSD-12-A microSD card module, a critical component for external data storage, in an edge-mounted footprint to align directly with the enclosure’s cutout for user accessibility []. We routed the 23LC1024 SPI bus, which the microcontroller, EEPROM, and SD card share, to minimize signal interference and optimize communication speeds [].
+\par For high-speed memory access, we placed the IS62WVS2568GBLL SRAM in a TSOP-44 footprint, which balances pin density and thermal performance while allowing for compact placement on the board \cite{}. We positioned the MSD-12-A microSD card module, a critical component for external data storage, in an edge-mounted footprint to align directly with the enclosure’s cutout for user accessibility \cite{}. We routed the 23LC1024 SPI bus, which the microcontroller, EEPROM, and SD card share, to minimize signal interference and optimize communication speeds \cite{}.
 
-\par We selected SOT-23-6 and SOT-23-5 footprints for power regulation components, including the LMR51430XDDCR buck converter and XC6210A332MR-G LDO regulator, to ensure efficient power conversion with minimal space usage [] []. We implemented through-hole mounting for high-stress connectors like USB and XT60 power, ensuring long-term mechanical stability.
+\par We selected SOT-23-6 and SOT-23-5 footprints for power regulation components, including the LMR51430XDDCR buck converter and XC6210A332MR-G LDO regulator, to ensure efficient power conversion with minimal space usage \cite{} \cite{}. We implemented through-hole mounting for high-stress connectors like USB and XT60 power, ensuring long-term mechanical stability.
 
 \par With an estimated PCB size of 95.5\,mm $\times$ 40.228\,mm $\times$ 17.68\,mm, the layout maintains clear separation of power and data lines, ensures efficient signal routing, and aligns precisely with enclosure cutouts. We included the final footprint layout in Appendix C, detailing component placement, trace routing, and external port alignment.
 
@@ -612,10 +610,10 @@ Due to the Harm Drone’s compact, asymmetric design and protruding components (
 
 \subsubsection{Cost Constraints}
 
-The project operates under a \$325 budget, covering all hardware. To stay within this constraint:
+The project operates under a \$420 budget, covering all hardware. To stay within this constraint:
 \begin{itemize}
     \item Components were selected based on cost-performance tradeoffs
-    \item Off-the-shelf parts were prioritized
+    \item Off the shelf parts were prioritized
     \item Critical parts (e.g., buck converter, USB hub) were chosen for affordability and efficiency
 \end{itemize}
 
@@ -626,24 +624,25 @@ Despite budget limits, the design must remain competitive with commercial offeri
 Component choices prioritized efficient power management, reliable communication, compact footprint, and low power consumption.
 
 \begin{itemize}
-    \item \textbf{Microcontroller:} STM32F072CB was selected for its ARM Cortex-M0 core, USB 2.0 support, UART/SPI interfaces, and flash/RAM balance . Table [] compares it with the ATmega32U4 [].
+    \item \textbf{Microcontroller:} STM32F072CB was selected for its ARM Cortex-M0 core, USB 2.0 support, UART/SPI interfaces, and flash/RAM balance . Table \cite{} compares it with the ATmega32U4 \cite{}.
 
-    \item \textbf{USB-UART Converter:} FT231XS-R was chosen for stable USB-to-serial conversion []. Table [] compares it with the CP2102 [].
+    \item \textbf{USB-UART Converter:} FT231XS-R was chosen for stable USB-to-serial conversion \cite{}. Table \cite{} compares it with the CP2102 \cite{}.
 
-    \item \textbf{Buck Converter:} LMR51430XDDCR offers efficient 15\,V to 5\,V regulation []. Table [] compares it with the MP2315 [].
+    \item \textbf{Buck Converter:} LMR51430XDDCR offers efficient 15\,V to 5\,V regulation \cite{}. Table \cite{} compares it with the MP2315 \cite{}.
 
-    \item \textbf{USB Hub:} TUSB2046I provides 4-port USB expansion with low power consumption []. Compared in Table [] with the FE1.1S [].
+    \item \textbf{USB Hub:} TUSB2046I provides 4-port USB expansion with low power consumption \cite{}. Compared in Table \cite{} with the FE1.1S \cite{}.
 
-    \item \textbf{LDO Regulator:} XC6210A332MR-G was selected for low dropout and high efficiency []. Compared in Table [] with the AMS1117-3.3 [].
+    \item \textbf{LDO Regulator:} XC6210A332MR-G was selected for low dropout and high efficiency \cite{}. Compared in Table \cite{} with the AMS1117-3.3 \cite{}.
 
-    \item \textbf{EEPROM:} CAT25160VI-GT3 supports reliable SPI-based data logging []. Table [] compares it with AT24C256 [].
+    \item \textbf{EEPROM:} CAT25160VI-GT3 supports reliable SPI-based data logging \cite{}. Table \cite{} compares it with AT24C256 \cite{}.
 
-    \item \textbf{SRAM:} IS62WVS2568GBLL-45NLI-TR provides high-speed memory access for real-time processing []. Compared in Table [] with 23LC1024 [].
+    \item \textbf{SRAM:} IS62WVS2568GBLL-45NLI-TR provides high-speed memory access for real-time processing \cite{}. Compared in Table \cite{} with 23LC1024 \cite{}.
 \end{itemize}
 
 \par These components collectively form a robust and efficient embedded system that meets performance, power, and interface demands.
 \par While careful component selection was critical for ensuring the electrical and functional performance of the Harm Drone system, the physical packaging of the PCB played an equally important role in protecting those components and supporting deployment in real-world environments. To guide our enclosure design, we conducted a comparative analysis of commercial drone packaging solutions, focusing on materials, structural design, and accessibility. This helped ensure that our custom 3D-printed case would not only house the electronics effectively but also balance durability, weight, and field serviceability.
 \par While thoughtful component selection was essential to meeting the electrical and performance requirements of the Harm Drone system, these components could not function optimally without a PCB layout that supports their integration. The physical arrangement and routing of the board play a critical role in preserving signal integrity, ensuring proper power distribution, and maintaining system reliability. Accordingly, the following section outlines the key design considerations that informed the layout of the PCB, with special emphasis on supporting high speed communication interfaces, compact form factor, and mechanical compatibility with the drone's structure.
+
 \subsection{PCB Layout and Design Considerations – Overall}
 The design of this PCB is subject to several critical constraints to ensure optimal performance and compatibility within the drone’s system. One of the primary concerns is maintaining USB 2.0 signal integrity. This requires careful routing of the USB data lines to minimize interference, preserve signal quality, and ensure reliable data transmission. In order to accomplish this, several criteria must be met. 
 
@@ -690,16 +689,16 @@ Present the estimated performance of the project (and how it was derived) based 
 
 \par Economic sustainability was a central consideration throughout the design of the Harm Drone system. Given the team's commitment to affordability and accessibility, all project phases—including research, design, fabrication, and testing—were executed with rigorous cost control measures.
 
-\par The total prototype cost was approximately \$460.01, which includes expenses for electronic components, PCB fabrication, enclosure 3D printing, shipping fees, and miscellaneous prototyping supplies. The breakdown is as follows:
+\par The total prototype cost was \$328.77, which includes expenses for electronic components, PCB fabrication, enclosure 3D printing, shipping fees, and miscellaneous prototyping supplies. The breakdown is as follows:
 
 \begin{itemize}
-\item PCB fabrication and assembly (x3 revisions): \$175
-\item Component procurement (MCU, EEPROM, USB hub, LDOs, buck converter, etc.): \$136.05
+\item PCB fabrication and assembly: \$113.56
+\item Component procurement (MCU, EEPROM, USB hub, LDOs, buck converter, etc.): \$66.25
 \item PLA filament and 3D printing materials: \$15
 \item Testing peripherals (microSD cards, USB sensors, cables, etc.): \$133.96
 \end{itemize}
 
-\par In terms of labor, the project required over 1200 documented engineer-hours. These hours include circuit design, schematic development, firmware programming, layout, prototyping, documentation, debugging, and stakeholder presentations. At a modest estimated rate of \$25/hour, the total labor investment would be valued at \$30,000. While labor costs were not billed, they provide a realistic perspective on the time intensity of embedded system development and can help inform future budgeting.
+\par In terms of labor, the project required over 571.2 documented engineer-hours. These hours include circuit design, schematic development, firmware programming, layout, prototyping, documentation, debugging, and stakeholder presentations. At a modest estimated rate of \$25/hour, the total labor investment would be valued at \$14,280. While labor costs were not billed, they provide a realistic perspective on the time intensity of embedded system development and can help inform future budgeting.
 
 \par The expected lifetime operational cost of the device is minimal. Because the system requires no external subscription services, licenses, or cloud based telemetry, ongoing costs are limited to:
 
@@ -724,31 +723,31 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Social/Political/Environmental Impact (HW 8)}
 
-\par We designed the Harm Drone PCB with a strong emphasis on ethical engineering and social responsibility. Because the board collects real-time data in potentially sensitive environments, we intentionally avoid wireless data transmission, reducing interception risks and aligning with ethical data handling practices [] [].
+\par We designed the Harm Drone PCB with a strong emphasis on ethical engineering and social responsibility. Because the board collects real-time data in potentially sensitive environments, we intentionally avoid wireless data transmission, reducing interception risks and aligning with ethical data handling practices \cite{} \cite{}.
 
 \par We developed rigorous testing protocols to confirm safe operation under conditions such as fluctuating power, temperature changes, and data load variations. By incorporating fail-safe mechanisms, reliable firmware, and complete documentation, we reduce the likelihood of failure during critical missions.
 
-\par Our documentation includes all necessary electrical, integration, and operational details to ensure safe and transparent deployment. This level of openness aligns with the National Society of Professional Engineers (NSPE) Code of Ethics, which emphasizes engineers' responsibility to protect public safety and communicate system limitations [].
+\par Our documentation includes all necessary electrical, integration, and operational details to ensure safe and transparent deployment. This level of openness aligns with the National Society of Professional Engineers (NSPE) Code of Ethics, which emphasizes engineers' responsibility to protect public safety and communicate system limitations \cite{}.
 
 \subsection{Stakeholder Considerations}
 
-\par The system directly impacts multiple stakeholders, including Professor Harms' lab, drone operators, academic researchers, and communities near drone operation zones. We ensure secure data handling by enforcing local storage and by not implementing wireless communication, which reduces the chance of unintended surveillance. This design approach strengthens trust between developers, users, and the public, and supports transparent research practices [].
+\par The system directly impacts multiple stakeholders, including Professor Harms' lab, drone operators, academic researchers, and communities near drone operation zones. We ensure secure data handling by enforcing local storage and by not implementing wireless communication, which reduces the chance of unintended surveillance. This design approach strengthens trust between developers, users, and the public, and supports transparent research practices \cite{}.
 
 \subsection{Research Data Privacy and Ethics}
 
-\par Because the board may store geolocation and environmental data from sensitive areas, we prioritize data privacy in our system architecture. By avoiding wireless data transfers and encrypting log files where necessary, we ensure compliance with data privacy standards such as the California Consumer Privacy Act (CCPA) []. Researchers integrating the board must follow institutional and governmental review processes for ethical deployment.
+\par Because the board may store geolocation and environmental data from sensitive areas, we prioritize data privacy in our system architecture. By avoiding wireless data transfers and encrypting log files where necessary, we ensure compliance with data privacy standards such as the California Consumer Privacy Act (CCPA) \cite{}. Researchers integrating the board must follow institutional and governmental review processes for ethical deployment.
 
 \subsection{Political Impact Analysis}
 
-\par Although the Harm Drone PCB is designed for academic use, its integration of USB interfaces, microcontrollers, and memory modules introduces political and regulatory complexities. These components may fall under U.S. export control regulations such as ITAR or EAR when paired with sensitive payloads [].
+\par Although the Harm Drone PCB is designed for academic use, its integration of USB interfaces, microcontrollers, and memory modules introduces political and regulatory complexities. These components may fall under U.S. export control regulations such as ITAR or EAR when paired with sensitive payloads \cite{}.
 
-\par We source parts from vendors who comply with international trade regulations and maintain transparency in their labor practices. Should the board see international deployment, we will ensure compliance with American data protection standards such as CCPA and with product safety regulations like CE and FCC [].
+\par We source parts from vendors who comply with international trade regulations and maintain transparency in their labor practices. Should the board see international deployment, we will ensure compliance with American data protection standards such as CCPA and with product safety regulations like CE and FCC \cite{}.
 
-\par To mitigate supply chain risks, we identified multiple vendors and ensured compatibility with alternative components. Our adherence to RoHS, CE, and FCC standards promotes safe design and supports potential international academic collaboration [].
+\par To mitigate supply chain risks, we identified multiple vendors and ensured compatibility with alternative components. Our adherence to RoHS, CE, and FCC standards promotes safe design and supports potential international academic collaboration \cite{}.
 
 \subsubsection{Regulatory Compliance}
 
-\par We ensured compliance with globally recognized standards, including RoHS (for hazardous substance restrictions), FCC (for electromagnetic emissions), and CE (for general product safety). Meeting these standards strengthens product safety and legal clarity, especially for future research use or potential commercial adaptation [].
+\par We ensured compliance with globally recognized standards, including RoHS (for hazardous substance restrictions), FCC (for electromagnetic emissions), and CE (for general product safety). Meeting these standards strengthens product safety and legal clarity, especially for future research use or potential commercial adaptation \cite{}.
 
 \subsection{Environmental Impact Analysis}
 
@@ -756,11 +755,11 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 
 \subsubsection{Manufacturing}
 
-\par PCB fabrication consumes energy and involves hazardous chemicals such as etchants and solvents. To minimize this impact, we use RoHS-compliant materials, lead-free solder, and compact surface mount designs that reduce board size and component count []. We followed IPC-2221B design standards to ensure environmentally responsible layout practices [].
+\par PCB fabrication consumes energy and involves hazardous chemicals such as etchants and solvents. To minimize this impact, we use RoHS-compliant materials, lead-free solder, and compact surface mount designs that reduce board size and component count \cite{}. We followed IPC-2221B design standards to ensure environmentally responsible layout practices \cite{}.
 
 \subsubsection{Enclosure Material and Additive Manufacturing}
 
-\par To house and protect the PCB during deployment, we designed a custom 3D-printed enclosure made from polylactic acid (PLA), a biodegradable thermoplastic derived from renewable resources like cornstarch or sugarcane. PLA offers several benefits over petroleum-based plastics, including a lower carbon footprint during production and improved biodegradability under industrial composting conditions [].
+\par To house and protect the PCB during deployment, we designed a custom 3D-printed enclosure made from polylactic acid (PLA), a biodegradable thermoplastic derived from renewable resources like cornstarch or sugarcane. PLA offers several benefits over petroleum-based plastics, including a lower carbon footprint during production and improved biodegradability under industrial composting conditions \cite{}.
 
 \par By using additive manufacturing, we minimize material waste and enable rapid iteration of enclosure designs to fit a variety of drone platforms. This approach supports our modular integration goals and allows users to fabricate new casings on demand using common 3D printing equipment. The use of PLA also avoids the environmental hazards associated with legacy enclosures made from ABS or carbon-reinforced polymers.
 
@@ -770,11 +769,11 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 
 \subsubsection{Disposal/Recycling}
 
-\par At the end of life, the board presents moderate recycling challenges due to embedded copper, tin, and trace amounts of gold. To mitigate these risks, we included clear disassembly documentation and recommended disposal via certified e-waste programs. Our packaging uses recyclable materials and avoids excessive padding, aligning with environmentally responsible delivery methods [].
+\par At the end of life, the board presents moderate recycling challenges due to embedded copper, tin, and trace amounts of gold. To mitigate these risks, we included clear disassembly documentation and recommended disposal via certified e-waste programs. Our packaging uses recyclable materials and avoids excessive padding, aligning with environmentally responsible delivery methods \cite{}.
 
 \subsection{Lifecycle Assessment Overview}
 
-\par By decoupling the data logging system from specific drone models, we reduce redundant hardware production and lower our carbon footprint. The board’s reusability across multiple UAV platforms increases its service life and reduces overall resource consumption. Our design choices support circular lifecycle goals through modularity, durability, and sustainable manufacturing practices [].
+\par By decoupling the data logging system from specific drone models, we reduce redundant hardware production and lower our carbon footprint. The board’s reusability across multiple UAV platforms increases its service life and reduces overall resource consumption. Our design choices support circular lifecycle goals through modularity, durability, and sustainable manufacturing practices \cite{}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %            Discussion, Conclusions, and Recommendations                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1048,6 +1047,134 @@ DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone c
 \end{tabular}
 \caption{Tooling Requirements, Estimated Weight, and Unit Cost Summary}
 \label{tab:tooling_costs}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{STM32F072CB} & \textbf{ATmega32U4} \\
+\hline
+Architecture & ARM Cortex-M0 & 8-bit AVR \\
+Clock Speed & 48 MHz & 16 MHz \\
+Flash Memory & 128 KB & 32 KB \\
+RAM & 16 KB & 2.5 KB \\
+USB Support & USB 2.0 Full-Speed & USB 2.0 Full-Speed \\
+Number of UART Interfaces & 2 & 1 \\
+Power Consumption & Low & Higher \\
+Cost & ~\$3.50 & ~\$3.00 \\
+\hline
+\end{tabular}
+\caption{STM32 vs. ATmega32 Microcontroller Comparison}
+\label{tab:stm32_vs_atmega}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{FT231XS-R} & \textbf{CP2102} \\
+\hline
+USB Version & 2.0 & 2.0 \\
+Voltage Support & 3.3V/5V & 3.3V/5V \\
+Baud Rate & Up to 3Mbps & Up to 1Mbps \\
+Driver Compatibility & FTDI Standard & Silicon Labs \\
+Power Consumption & Lower & Moderate \\
+Built-in EEPROM & Yes & No \\
+Cost & ~\$3.00 & ~\$2.00 \\
+\hline
+\end{tabular}
+\caption{FT231XS vs. CP2102 USB to UART Comparison}
+\label{tab:ft231_vs_cp2102}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{TUSB3046I} & \textbf{FE1.1S} \\
+\hline
+USB Version & USB 2.0 & USB 2.0 \\
+Number of Ports & 4 & 4 \\
+Power Consumption & Moderate & Lower \\
+External Power Required & Yes & No \\
+Integrated 5V Regulator & No & Yes \\
+Cost & ~\$2.50 & ~\$1.50 \\
+\hline
+\end{tabular}
+\caption{TUSB3046I vs. FE1.1S USB Hub Comparison}
+\label{tab:tusb_vs_fe1}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{LMR51430XDDCR} & \textbf{MP2315} \\
+\hline
+Max Output Current & 4.3A & 2.5A \\
+Input Voltage Range & 4V–36V & 4.5V–24V \\
+Output Voltage & Adjustable (0.6V–30V) & Fixed (3.3V/5V) \\
+Switching Frequency & 550kHz & 1MHz \\
+Efficiency & ~90\%+ & ~85\%+ \\
+Thermal Performance & Better & Higher Heat Generation \\
+Cost & ~\$2.50 & ~\$3.00 \\
+\hline
+\end{tabular}
+\caption{LMR51430 vs. MP2315 Buck Converter Comparison}
+\label{tab:lm514_vs_mp2315}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{XC6210A332MR-G} & \textbf{AMS1117-3.3V} \\
+\hline
+Max Output Current & 700mA & 1A \\
+Dropout Voltage & 0.3V & 1.1V \\
+Quiescent Current & 35uA & \~5mA \\
+Power Dissipation & Lower & Higher \\
+Cost & ~\$0.30 & ~\$0.50 \\
+\hline
+\end{tabular}
+\caption{XC6210A vs. AMS1117 LDO Comparison}
+\label{tab:xc6210_vs_ams1117}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{CAT25160VI-GT3} & \textbf{AT24C256} \\
+\hline
+Capacity & 16Kb & 256Kb \\
+Interface & SPI & I2C \\
+Max Speed & 10MHz & 1MHz \\
+Power Consumption & Lower & Slightly Higher \\
+Cost & ~\$0.46 & ~\$0.28 \\
+\hline
+\end{tabular}
+\caption{CAT25160VI vs. AT24C256 EEPROM Comparison}
+\label{tab:cat25160_vs_at24c256}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{IS62WVS2568GBLL-45NLI-TR} & \textbf{23LC1024} \\
+\hline
+Memory Size & 256Kb & 1Mb \\
+Interface & Parallel & SPI \\
+Access Time & 45ns & 50ns \\
+Power Consumption & Low & Low \\
+Operating Voltage & 2.7V–3.6V & 2.7V–3.6V \\
+Cost & ~\$2.50 & ~\$2.00 \\
+\hline
+\end{tabular}
+\caption{IS62 vs. 23LC1024 SRAM Comparison}
+\label{tab:is62_vs_23lc1024}
 \end{table}
 
 \newpage
