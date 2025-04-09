@@ -141,6 +141,7 @@ Group 127 would like to acknowledge the invaluable support and assistance provid
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                     Executive Summary                                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \section*{Executive Summary (1 page)}
 
 %\subsection*{Foreword}
@@ -150,13 +151,13 @@ Group 127 would like to acknowledge the invaluable support and assistance provid
   %  \item State the overall purpose of the report.
 %\end{itemize}
 
-\par The Harm Drone project addresses an organizational and technical gap in the availability of low-cost, modular, and platform-independent embedded systems for data collection in small unmanned aerial vehicles (UAVs). As UAVs become increasingly important across sectors such as environmental monitoring, agricultural research, education, and public safety, the need for affordable, reliable, and adaptable onboard computing platforms has become apparent. Commercial systems often impose high costs, proprietary interfaces, and infrastructure requirements, creating barriers for academic institutions, small research teams, and resource-limited operations. Capstone projects like this one exist to solve such real-world engineering problems by guiding students through a complete design process—from concept to deployment—while emphasizing innovation, feasibility, and societal impact.
+\par The Harm Drone project addresses an organizational and technical gap in the availability of low cost, modular, and platform-independent embedded systems for data collection in small unmanned aerial vehicles (UAVs). As UAVs become increasingly important across sectors such as environmental monitoring, agricultural research, education, and public safety, the need for affordable, reliable, and adaptable onboard computing platforms has become apparent. Commercial systems often impose high costs, proprietary interfaces, and infrastructure requirements, creating barriers for academic institutions, small research teams, and resource limited operations. Capstone projects like this one exist to solve such real world engineering problems by guiding students through a complete design process—from concept to deployment—while emphasizing innovation, feasibility, and societal impact.
 
-\par This project was assigned as a capstone senior design challenge within the Electrical and Computer Engineering department. The task was to design, fabricate, and test a cost-effective PCB-based embedded system capable of logging data from USB-connected sensors, storing it securely in multiple formats, and integrating into UAV platforms without relying on wireless telemetry. The technical questions included: Can reliable multi-sensor data logging be achieved with minimal power consumption and without wireless transmission? Can such a system remain lightweight, durable, and universally accessible across major operating systems? The overarching hypothesis was that a low-cost, standards-compliant solution could be developed using off-the-shelf components and open hardware principles without sacrificing functionality or performance.
+\par This project was assigned as a capstone senior design challenge within the Electrical and Computer Engineering department. The task was to design, fabricate, and test a cost-effective PCB based embedded system capable of logging data from USB-connected sensors, storing it securely in multiple formats, and integrating into UAV platforms without relying on wireless telemetry. The technical questions included: Can reliable multi sensor data logging be achieved with minimal power consumption and without wireless transmission? Can such a system remain lightweight, durable, and universally accessible across major operating systems? The overarching hypothesis was that a low cost, standards compliant solution could be developed using off the shelf components and open hardware principles without sacrificing functionality or performance.
 
-\par The purpose of this report is to document the design process, engineering tradeoffs, component decisions, packaging considerations, test results, and ethical implications of the Harm Drone system. It serves as both a record of the team’s technical accomplishments and a roadmap for future research teams or developers interested in scalable embedded UAV solutions. This report outlines how an interdisciplinary team transformed a high-level design goal into a working, tested product with demonstrated real-world potential. It also highlights the evolving nature of requirements in a real engineering project and the importance of adaptability, stakeholder feedback, and iterative refinement in achieving a successful outcome.
+\par The purpose of this report is to document the design process, engineering tradeoffs, component decisions, packaging considerations, test results, and ethical implications of the Harm Drone system. It serves as both a record of the team’s technical accomplishments and a roadmap for future research teams or developers interested in scalable embedded UAV solutions. This report outlines how an interdisciplinary team transformed a high level design goal into a working, tested product with demonstrated real-world potential. It also highlights the evolving nature of requirements in a real engineering project and the importance of adaptability, stakeholder feedback, and iterative refinement in achieving a successful outcome.
 
-\par Through a comprehensive analysis of performance, cost, safety, sustainability, and regulatory compliance, this report provides a complete engineering narrative—from problem formulation to final prototype validation. The Harm Drone system not only meets its initial objectives but also offers a scalable foundation for future academic and industrial development.
+\par Through a comprehensive analysis of performance, cost, safety, sustainability, and regulatory compliance, this report provides a complete engineering narrative from problem formulation to final prototype validation. The Harm Drone system not only meets its initial objectives but also offers a scalable foundation for future academic and industrial development.
 
 \subsection*{Summary}
 %\begin{itemize}[noitemsep]
@@ -164,13 +165,13 @@ Group 127 would like to acknowledge the invaluable support and assistance provid
   %  \item Give overall conclusions about the project including recommendations for improvements and their implications, subsequent action, and cost and benefits.
 %\end{itemize}
 
-\par The objective of the Harm Drone project was to develop a low-cost, modular embedded system that enables UAVs to log high-fidelity sensor data without reliance on wireless telemetry. This system needed to operate across various platforms, ensure cross-compatibility with major operating systems, support multiple USB sensors, and comply with lighting safety standards. The technical challenge was approached using an iterative engineering design process that incorporated hardware prototyping, embedded systems development, enclosure fabrication, and rigorous performance validation.
+\par The objective of the Harm Drone project was to develop a low cost, modular embedded system that enables UAVs to log high-fidelity sensor data without reliance on wireless telemetry. This system needed to operate across various platforms, ensure cross-compatibility with major operating systems, support multiple USB sensors, and comply with lighting safety standards. The technical challenge was approached using an iterative engineering design process that incorporated hardware prototyping, embedded systems development, enclosure fabrication, and rigorous performance validation.
 
 \par The methodology included selecting and integrating key components such as the STM32 microcontroller, USB hubs, EEPROM, LDO regulator(Low Dropout), and a buck converter into a custom PCB. The team also developed firmware to manage real-time USB communication and data logging. Testing was conducted to verify data retention, throughput, power consumption, boot time, and lighting compliance. 
 
-\par The overall conclusion of the project is that it is entirely feasible to deliver a UAV-compatible data logging platform at a fraction of the commercial cost using open-source tools and modular design principles. The Harm Drone system demonstrates that affordability does not have to come at the expense of performance or safety.
+\par The overall conclusion of the project is that it is entirely feasible to deliver a UAV-compatible data logging platform at a fraction of the commercial cost using open source tools and modular design principles. The Harm Drone system demonstrates that affordability does not have to come at the expense of performance or safety.
 
-\par Recommendations for future improvements include the addition of wireless communication as an optional module, enhanced environmental sealing for field use, and expansion of firmware support for additional sensor types. These changes would further increase the versatility and robustness of the system while maintaining its low-cost ethos. The success of this project opens opportunities for further development in academic, environmental, and industrial applications—where cost-effective, reliable sensor systems are essential.
+\par Recommendations for future improvements include the addition of wireless communication as an optional module, enhanced environmental sealing for field use, and expansion of firmware support for additional sensor types. These changes would further increase the versatility and robustness of the system while maintaining its low cost ethos. The success of this project opens opportunities for further development in academic, environmental, and industrial applications where cost-effective, reliable sensor systems are essential.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                     Table of Contents                                  %
@@ -191,42 +192,42 @@ Group 127 would like to acknowledge the invaluable support and assistance provid
 %\end{itemize}
 \subsection{Problem Statement}
 
-\par As unmanned aerial vehicles (UAVs) become more accessible and widely used across industries such as environmental monitoring, scientific research, and education, the need for affordable, reliable onboard computing and data acquisition systems has grown significantly. However, many existing drone platforms are constrained by high costs associated with proprietary sensor interfaces, specialized data acquisition modules, and storage systems that require additional licensing, software, or support infrastructure. These factors create financial barriers for small teams, educational institutions, and low-budget field operations.
+\par As unmanned aerial vehicles (UAVs) become more accessible and widely used across industries such as environmental monitoring, scientific research, and education, the need for affordable, reliable onboard computing and data acquisition systems has grown significantly. However, many existing drone platforms are constrained by high costs associated with proprietary sensor interfaces, specialized data acquisition modules, and storage systems that require additional licensing, software, or support infrastructure. These factors create financial barriers for small teams, educational institutions, and low budget field operations.
 
-\par A core issue lies in the lack of a cost-effective, standardized, and platform-independent onboard system capable of collecting high-fidelity sensor data in real-time, storing it securely for later analysis, and operating without dependence on expensive or wireless infrastructure. Many current solutions rely on wireless telemetry, which not only increases cost but also introduces the risk of signal interference, data loss, and added complexity—especially in remote or resource-limited environments. Furthermore, data stored using proprietary formats often requires extensive post-processing or specialized software, increasing both time and cost for analysis.
+\par A core issue lies in the lack of a cost-effective, standardized, and platform independent onboard system capable of collecting high fidelity sensor data in real time, storing it securely for later analysis, and operating without dependence on expensive or wireless infrastructure. Many current solutions rely on wireless telemetry, which not only increases cost but also introduces the risk of signal interference, data loss, and added complexity especially in remote or resource limited environments. Furthermore, data stored using proprietary formats often requires extensive post processing or specialized software, increasing both time and cost for analysis.
 
-\par Safety considerations also factor into cost-conscious designs. For example, compliance with IEEE 1789-2015 lighting standards is important for human safety and public deployment, yet many low-cost drone systems overlook these features due to the expense and complexity of implementation. The absence of safe, flicker-free lighting can limit where and how these drones can be used.
+\par Safety considerations also factor into cost conscious designs. For example, compliance with IEEE 1789-2015 lighting standards is important for human safety and public deployment, yet many low-cost drone systems overlook these features due to the expense and complexity of implementation. The absence of safe, flicker free lighting can limit where and how these drones can be used.
 
-\par The Harm Drone project addresses these problems by designing and prototyping a universal, low-cost drone-mounted PCB system. The design supports USB-connected sensors—eliminating the need for expensive custom interfaces—and features high-capacity SD card storage for offline data collection, readable across all major operating systems. Data integrity is preserved using onboard nonvolatile memory, removing the need for costly real-time transmission. Additionally, the system incorporates a lighting subsystem compliant with IEEE flicker safety guidelines, balancing affordability with safety. By eliminating the reliance on expensive, proprietary, or wireless systems, The Harm Drone aims to deliver a practical, scalable solution for researchers, developers, and educators working within constrained budgets.
+\par The Harm Drone project addresses these problems by designing and prototyping a universal, low cost drone-mounted PCB system. The design supports USB-connected sensors eliminating the need for expensive custom interfaces and features high capacity SD card storage for offline data collection, readable across all major operating systems. Data integrity is preserved using onboard nonvolatile memory, removing the need for costly real time transmission. Additionally, the system incorporates a lighting subsystem compliant with IEEE flicker safety guidelines, balancing affordability with safety. By eliminating the reliance on expensive, proprietary, or wireless systems, The Harm Drone aims to deliver a practical, scalable solution for researchers, developers, and educators working within constrained budgets.
 
 \subsection{Project Objectives}
 
 \par The Harm Drone project seeks to provide a functional and affordable embedded platform tailored to the unique requirements of UAV-based research and data collection. The primary objective is to design a universal sensor interface and data logging system that minimizes cost while maximizing utility, modularity, and safety. In pursuit of this goal, the project sets forth the following expanded objectives:
 
 \begin{itemize}
-\item \textbf{Affordability:} Develop a complete PCB system that meets all functionality goals with a total materials cost under \$420, allowing academic and low-budget users to adopt the technology without financial strain.
+\item \textbf{Affordability:} Develop a complete PCB system that meets all functionality goals with a total materials cost under \$420, allowing academic and low budget users to adopt the technology without financial strain.
 
 \item \textbf{Sensor Modularity:} Enable plug-and-play compatibility with up to four USB-based sensors. This allows end users to customize data collection based on mission-specific needs without modifying firmware or hardware.
 
 \item \textbf{Platform Independence:} Ensure compatibility with diverse UAV platforms and data workflows by using universal interfaces, standard power connections, and a removable SD card formatted in FAT32. This approach reduces setup time and simplifies integration across different systems.
 
-\item \textbf{Persistent, Redundant Storage:} Provide dual-layer data storage through onboard flash and removable SD cards, ensuring that valuable data is not lost due to system resets, power failure, or improper shutdown.
+\item \textbf{Persistent, Redundant Storage:} Provide dual layer data storage through onboard flash and removable SD cards, ensuring that valuable data is not lost due to system resets, power failure, or improper shutdown.
 
 \item \textbf{User Accessibility:} Design an intuitive and self-documenting file storage structure for data logs to reduce post-processing time and avoid dependency on proprietary decoding tools.
 
-\item \textbf{Regulatory Compliance:} Implement a PWM lighting system that complies with IEEE 1789-2015 flicker safety standards to protect human observers and expand use in public or safety-critical environments.
+\item \textbf{Regulatory Compliance:} Implement a PWM lighting system that complies with IEEE 1789-2015 flicker safety standards to protect human observers and expand use in public or safety critical environments.
 
-\item \textbf{Ease of Manufacture and Repair:} Use through-hole and standard surface-mount components wherever feasible to facilitate assembly and field repairs. The board layout also prioritizes accessibility and isolation of high-current paths from logic circuits.
+\item \textbf{Ease of Manufacture and Repair:} Use through hole and standard surface mounting components wherever feasible to facilitate assembly and field repairs. The board layout also prioritizes accessibility and isolation of high-current paths from logic circuits.
 
-\item \textbf{Rapid Deployment and Boot Time:} Ensure the system is flight-ready in under 5 seconds from power-on, reducing operational downtime and maximizing mission uptime.
+\item \textbf{Rapid Deployment and Boot Time:} Ensure the system is flight ready in under 5 seconds from power on, reducing operational downtime and maximizing mission uptime.
 
-\item \textbf{Durability and Protection:} Package the PCB in a PLA 3D-printed enclosure that is lightweight, impact-resistant, and modular. The enclosure design allows for quick access to ports and simplifies part replacement.
+\item \textbf{Durability and Protection:} Package the PCB in a 3D printed PLA enclosure that is lightweight, impact resistant and modular. The enclosure design allows for quick access to ports and simplifies part replacement.
 
-\item \textbf{Environmental Responsibility:} Prioritize sustainable materials, minimize power consumption, and enable responsible disposal at end-of-life.
+\item \textbf{Environmental Responsibility:} Prioritize sustainable materials, minimize power consumption, and enable responsible disposal at end of life.
 
 \end{itemize}
 
-\par Collectively, these objectives define the technical, operational, and ethical framework of the Harm Drone system. They were informed by a decision-weighted objective tree analysis, which helped the team prioritize features that maximized functionality under strict budget constraints. For example, USB sensor compatibility and removable storage were assigned high weight in the decision-making process due to their influence on system modularity and accessibility. Meanwhile, regulatory compliance and ease of use contributed to the system's broader applicability in public, academic, and environmental contexts. This structured evaluation ensured that all objectives aligned with the core mission of delivering a research-grade, cost-conscious PCB system for UAV deployment. They serve as the foundation for all subsequent design, testing, and validation activities outlined in the remainder of this report.
+\par Collectively, these objectives define the technical, operational, and ethical framework of the Harm Drone system. They were informed by a decision weighted objective tree analysis, which helped the team prioritize features that maximized functionality under strict budget constraints. For example, USB sensor compatibility and removable storage were assigned high weight in the decision-making process due to their influence on system modularity and accessibility. Meanwhile, regulatory compliance and ease of use contributed to the system's broader applicability in public, academic, and environmental contexts. This structured evaluation ensured that all objectives aligned with the core mission of delivering a research grade, cost conscious PCB system for UAV deployment. They serve as the foundation for all subsequent design, testing, and validation activities outlined in the remainder of this report.
 
 \subsection{Method of the Report}
 
@@ -237,7 +238,7 @@ Group 127 would like to acknowledge the invaluable support and assistance provid
 Describes the design context, the evolving nature of system requirements, competitive analysis, and how our team formulated the design problem.
 
 \item \textbf{Section 3: Design Requirements, Specifications, and Success Criteria} \newline
-Presents a comprehensive table of performance specifications, the criteria used to define success, and how they align with course-defined deliverables.
+Presents a comprehensive table of performance specifications, the criteria used to define success, and how they align with course defined deliverables.
 
 \item \textbf{Section 4: Concept Development and Design Process} \newline
 Includes the literature review, concept generation and reduction processes, production timeline, and engineering tradeoffs.
@@ -265,7 +266,7 @@ Includes schematics, flowcharts, timing diagrams, software listings, safety chec
 
 \end{itemize}
 
-By following this structure, the report ensures clarity for both technical and non-technical audiences while providing deep insight into our engineering process. The Harm Drone design exemplifies how a small, student-led team can develop a complex embedded system with real-world utility and academic value.
+By following this structure, the report ensures clarity for both technical and non-technical audiences while providing deep insight into our engineering process. The Harm Drone design exemplifies how a small student led team can develop a complex embedded system with real world utility and academic value.
 
 
 
@@ -275,20 +276,20 @@ By following this structure, the report ensures clarity for both technical and n
 \section{Problem Formulation (3-6 pages)}
 \subsection{Problem Statement}
 %State the problem to be solved as indicated by the need (the university, industry sponsor, or self-proposed). Present the objectives and expectations of the need and constraints given to the problem.
-\par In many academic and research applications, there is a growing demand for reliable and cost-effective unmanned aerial systems (UAS) capable of collecting and storing high-fidelity environmental or system data. However, current drone systems used in industry and academia frequently rely on expensive proprietary sensors, specialized storage modules, and wireless transmission protocols that are not only costly but also introduce reliability risks in field conditions. The result is a significant barrier to entry for budget-conscious research teams, student projects, and field operations requiring autonomy, robustness, and open-platform support.
+\par In many academic and research applications, there is a growing demand for reliable and cost-effective unmanned aerial systems (UAS) capable of collecting and storing high fidelity environmental or system data. However, current drone systems used in industry and academia frequently rely on expensive proprietary sensors, specialized storage modules, and wireless transmission protocols that are not only costly, but also introduce reliability risks in field conditions. The result is a significant barrier to entry for budget-conscious research teams, student projects, and field operations requiring autonomy, robustness, and open platform support.
 
-\par The problem, therefore, is to design a universal, low-cost data acquisition and logging system for drones that supports modular USB sensor integration, onboard data storage with integrity verification, and compliance with operational safety standards. The solution must not rely on wireless data transmission, must store data in a platform-agnostic format, and must be rugged enough for field deployment in moderate outdoor environments.
+\par The problem, therefore, is to design a universal low cost data acquisition and logging system for drones that supports modular integration of USB sensors, data storage onboard with integrity verification, and compliance with operational safety standards. The solution must not rely on wireless data transmission, must store data in a platform agnostic format, and must be rugged enough for field deployment in moderate outdoor environments.
 
-\par This project is self-proposed and sponsored by the University of Nebraska Omaha in partial fulfillment of capstone design requirements. The expectations include delivering a working prototype that meets five measurable criteria (PSSCs), including USB sensor interfacing, SD card compatibility, nonvolatile memory recovery, IEEE 1789-compliant lighting, and successful cross-platform data retrieval. Constraints include a fixed budget of \$420, a maximum PCB size compatible with most hobby-grade drones (100mm x 100mm), and delivery by the designated final demonstration date.
+\par This project is self proposed and sponsored by the University of Nebraska Omaha in partial fulfillment of capstone design requirements. The expectations include delivering a working prototype that meets five measurable criteria (PSSCs), including USB sensor interfacing, SD card compatibility, nonvolatile memory recovery, IEEE 1789-compliant lighting, and successful cross-platform data retrieval. Constraints include a fixed budget of \$420, a maximum PCB size compatible with most hobby grade drones (100mm x 100mm), and delivery by the designated final demonstration date.
 
 \subsection{Background}
 %Discuss the state of the art, competitive products, and patent liability analysis (HW 1).
 
 \par Modern UAV applications span a wide range of fields, from agriculture and precision mapping to environmental monitoring, disaster response, and research support. In each case, data collected from sensors onboard the UAV is critical to the mission's success. Currently, many commercial UAVs use integrated, non-modular systems or require high-end payloads with proprietary interfaces (e.g., DJI’s XT2 or Micasense multispectral sensors), which cost hundreds to thousands of dollars. These products often include limited options for local data storage, requiring operators to rely on wireless links such as Wi-Fi, LTE, or proprietary telemetry protocols. While effective under certain conditions, these links can become unstable or entirely unusable in remote environments or electromagnetically noisy regions.
 
-\par Academic UAV platforms—such as ArduPilot-based systems, Raspberry Pi drones, or Pixhawk-integrated quadcopters—do allow for open-source development and hardware extension. However, most lack standardized USB sensor interfacing, relying instead on I2C, SPI, or UART protocols. Integrating external sensors often requires deep firmware changes and power conversion boards, further increasing complexity and cost. Moreover, these systems rarely include robust data integrity checking, making them vulnerable to power loss or in-flight resets.
+\par Academic UAV platforms such as ArduPilot-based systems, Raspberry Pi drones, or Pixhawk-integrated quadcopters—do allow for open-source development and hardware extension. However, most lack standardized USB sensor interfacing, relying instead on I2C, SPI, or UART protocols. Integrating external sensors often requires deep firmware changes and power conversion boards, further increasing complexity and cost. Moreover, these systems rarely include robust data integrity checking, making them vulnerable to power loss or in flight resets.
 
-\par In terms of lighting systems, few small UAVs incorporate flicker-safe lighting. IEEE Standard 1789-2015 was developed to address biological risks associated with pulse-width modulated (PWM) light sources—especially those visible to human observers or operating in environments where safety and compliance are essential. While this standard is widely used in lighting and display engineering, it is largely ignored in hobby and research drone lighting systems due to added cost and design complexity.
+\par In terms of lighting systems, few small UAVs incorporate flicker safe lighting. IEEE Standard 1789-2015 was developed to address biological risks associated with pulse width modulated (PWM) light sources—especially those visible to human observers or operating in environments where safety and compliance are essential. While this standard is widely used in lighting and display engineering, it is largely ignored in hobby and research drone lighting systems due to added cost and design complexity.
 \par As these challenges and gaps in current UAV systems became evident, it was necessary to explore the existing commercial landscape and intellectual property space to understand where our system could differentiate itself—both technologically and legally. A formal review of patents and competitive products was conducted to identify potential overlaps, draw inspiration from existing solutions, and ensure that \textit{The Harm Drone} does not infringe upon established claims or technologies.
 
 \subsubsection{Results of Patent and Product Search}
@@ -297,23 +298,23 @@ By following this structure, the report ensures clarity for both technical and n
 
 \par Another relevant patent is \textbf{US 2022/0404273 A1}, \textit{High-Altitude Airborne Remote Sensing}, published on December 22, 2022 \cite{patent2}. This patent describes high-altitude UAVs equipped with specialized sensors for environmental monitoring, where collected data is processed and transmitted to a ground station. \textit{The Harm Drone} operates at lower altitudes, but it shares key functionalities such as autonomous navigation, environmental data collection, and onboard processing. The risk of infringement exists if \textit{The Harm Drone}’s sensor integration and data handling closely resemble those in this patent.
 
-\par Finally, \textbf{US 10,462,366 B1}, \textit{Autonomous Drone with Image Sensor}, granted on October 29, 2019 \cite{patent3}, describes a drone-based monitoring system that continuously collects image data, even while charging. It integrates stationary ground sensors with drone-captured data for real-time property surveillance and analysis. Key claims include image sensors for monitoring, data collection while docked, and integration with stationary sensors. \textit{The Harm Drone} also incorporates image sensors for environmental monitoring, posing a potential overlap in data collection, processing, and storage. However, \textit{The Harm Drone} does not perform continuous image capture while stationary, reducing the likelihood of direct infringement.
+\par Finally, \textbf{US 10,462,366 B1}, \textit{Autonomous Drone with Image Sensor}, granted on October 29, 2019 \cite{patent3}, describes a drone based monitoring system that continuously collects image data, even while charging. It integrates stationary ground sensors with drone captured data for real time property surveillance and analysis. Key claims include image sensors for monitoring, data collection while docked, and integration with stationary sensors. \textit{The Harm Drone} also incorporates image sensors for environmental monitoring, posing a potential overlap in data collection, processing, and storage. However, \textit{The Harm Drone} does not perform continuous image capture while stationary, reducing the likelihood of direct infringement.
 
-\par By differentiating its sensor integration, flight altitude, and data processing methods, \textit{The Harm Drone} can mitigate potential patent risks while maintaining its research-focused functionality.
+\par By differentiating its sensor integration, flight altitude, and data processing methods, \textit{The Harm Drone} can mitigate potential patent risks while maintaining its research focused functionality.
 
 \subsubsection{Analysis of Patent Liability}
 
 \par To assess \textit{The Harm Drone}'s potential for patent infringement, we examine both \textit{literal infringement} and infringement under the \textit{doctrine of equivalents} concerning US 11,501,483 B2 \cite{patent1}, US 2022/0404273 A1 \cite{patent2}, and US 10,462,366 B1 \cite{patent3}. While \textit{The Harm Drone} shares functional similarities with these patents, significant differences in design, operation, and data collection methods reduce the likelihood of infringement.
 
 \begin{itemize}
-    \item \textbf{US 11,501,483 B2}: Describes a removable sensor payload system for UAVs, allowing modular sensor integration for media capture and property analysis. While \textit{The Harm Drone} also integrates specialized sensors, its design does not use interchangeable payloads but instead features fixed sensors for research applications. Additionally, it focuses on environmental monitoring rather than media capture or property analysis. Under the doctrine of equivalents, despite both projects involving sensor-equipped UAVs, \textit{The Harm Drone} prioritizes weather resistance and research-driven sensor integration, reducing infringement risks.
+    \item \textbf{US 11,501,483 B2}: Describes a removable sensor payload system for UAVs, allowing modular sensor integration for media capture and property analysis. While \textit{The Harm Drone} also integrates specialized sensors, its design does not use interchangeable payloads but instead features fixed sensors for research applications. Additionally, it focuses on environmental monitoring rather than media capture or property analysis. Under the doctrine of equivalents, despite both projects involving sensor equipped UAVs, \textit{The Harm Drone} prioritizes weather resistance and research driven sensor integration, reducing infringement risks.
 
-    \item \textbf{US 2022/0404273 A1}: Covers high-altitude UAV remote sensing with drones designed for real-time environmental monitoring. \textit{The Harm Drone}, however, operates at low-to-mid altitudes and relies on offline data storage rather than live transmission. Under literal infringement analysis, it does not match the altitude-dependent and real-time features of this patent. Under the doctrine of equivalents, differences in mission profile and data handling further distinguish the project.
+    \item \textbf{US 2022/0404273 A1}: Covers high altitude UAV remote sensing with drones designed for real time environmental monitoring. \textit{The Harm Drone}, however, operates at low to mid altitudes and relies on offline data storage rather than live transmission. Under literal infringement analysis, it does not match the altitude dependent and real-time features of this patent. Under the doctrine of equivalents, differences in mission profile and data handling further distinguish the project.
 
-    \item \textbf{US 10,462,366 B1}: Details an autonomous drone that collects image data continuously, even while docked. While \textit{The Harm Drone} uses an image sensor, it does not support continuous monitoring or stationary data capture. Instead, it only captures data during pre-programmed flight paths. Under both literal infringement and the doctrine of equivalents, the project's scientific and non-surveillance objectives offer meaningful differentiation.
+    \item \textbf{US 10,462,366 B1}: Details an autonomous drone that collects image data continuously, even while docked. While \textit{The Harm Drone} uses an image sensor, it does not support continuous monitoring or stationary data capture. Instead, it only captures data during pre programmed flight paths. Under both literal infringement and the doctrine of equivalents, the project's scientific and non-surveillance objectives offer meaningful differentiation.
 \end{itemize}
 
-\par In conclusion, \textit{The Harm Drone} is unlikely to literally infringe any of these patents due to differences in operational design, sensor integration, and data processing. While conceptual similarities exist in UAV-based data collection, distinctions in implementation and objectives further reduce patent conflict risks.
+\par In conclusion, \textit{The Harm Drone} is unlikely to literally infringe any of these patents due to differences in operational design, sensor integration, and data processing. While conceptual similarities exist in UAV based data collection, distinctions in implementation and objectives further reduce patent conflict risks.
 
 \subsubsection{Action Recommended}
 
@@ -322,7 +323,7 @@ By following this structure, the report ensures clarity for both technical and n
 \begin{itemize}
     \item \textbf{Sensor Integration:} Avoid modular or swappable sensor payloads as described in US 11,501,483 B2. Fixed or semi-permanent sensor mounting and hardwired connections are preferred. Custom connectors rather than universal mounts will further distinguish the system.
     
-    \item \textbf{Altitude and Transmission Constraints:} Operate strictly within low-to-mid altitude ranges and avoid any real-time data transmission to differentiate from US 2022/0404273 A1. Offline storage and post-flight data retrieval should be emphasized.
+    \item \textbf{Altitude and Transmission Constraints:} Operate strictly within low to mid altitude ranges and avoid any real time data transmission to differentiate from US 2022/0404273 A1. Offline storage and post flight data retrieval should be emphasized.
 
     \item \textbf{Image Sensor Limitations:} Ensure the image sensor captures data only during flight, at pre-programmed GPS waypoints. Avoid any stationary or docked data collection, in contrast to the system described in US 10,462,366 B1.
 
@@ -376,7 +377,7 @@ By following this structure, the report ensures clarity for both technical and n
 %Developed System Requirements \\
 %Design Team Environment/Constraints \\
 
-\par To ensure the solution is viable, measurable, and aligned with real-world constraints, this section outlines the detailed design specifications, the success criteria adopted throughout the design lifecycle, and the iterative nature of requirement refinement.
+\par To ensure the solution is viable, measurable, and aligned with real world constraints, this section outlines the detailed design specifications, the success criteria adopted throughout the design lifecycle, and the iterative nature of requirement refinement.
 
 \subsection{Design Specifications}
 
@@ -400,11 +401,11 @@ DS5 & Light system compliance & Flicker modulation testing & Pass IEEE 1789-2015
 \hline
 DS6 & PCB fabrication & Trace and via tolerance & $\leq \pm$5 mil & Ensures manufacturability and reliability. \\
 \hline
-DS7 & USB data throughput & Data transfer rate & $\geq$ 12 Mbps & Enables real-time sensor data exchange. \\
+DS7 & USB data throughput & Data transfer rate & $\geq$ 12 Mbps & Enables real time sensor data exchange. \\
 \hline
 DS8 & Firmware robustness & Uptime with full load & $\geq$ 8 hours & Confirms system stability. \\
 \hline
-DS9 & Boot time & Power-on to readiness & $\leq$ 5 seconds & Improves responsiveness. \\
+DS9 & Boot time & Power on to readiness & $\leq$ 5 seconds & Improves responsiveness. \\
 \hline
 DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone compatibility. \\
 \hline
@@ -412,29 +413,29 @@ DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone c
 \caption{Project Design Specifications for Harm Drone System}
 \end{table}
 
-\par In the context of UAV design, each of these specifications addresses specific environmental, technical, or regulatory demands. For instance, DS1 (onboard data retention) is vital because UAVs often operate in remote locations where data transmission in real-time may not be possible due to lack of connectivity or interference. Reliable onboard storage allows data to be preserved during the entire flight mission, even in the case of sudden power loss.
+\par In the context of UAV design, each of these specifications addresses specific environmental, technical, or regulatory demands. For instance, DS1 (onboard data retention) is vital because UAVs often operate in remote locations where data transmission in real time may not be possible due to lack of connectivity or interference. Reliable onboard storage allows data to be preserved during the entire flight mission, even in the case of sudden power loss.
 
-\par DS2 and DS3 are motivated by the need for interoperability and portability. In field operations involving multiple users or stakeholders, being able to quickly access logged data across different platforms without additional drivers or file conversion tools streamlines analysis and enhances usability. These specifications reinforce the goal of user-centered system design.
+\par DS2 and DS3 are motivated by the need for interoperability and portability. In field operations involving multiple users or stakeholders, being able to quickly access logged data across different platforms without additional drivers or file conversion tools streamlines analysis and enhances usability. These specifications reinforce the goal of user centered system design.
 
-\par DS4 and DS7 reflect performance goals. As the Harm Drone system is intended to interface with several sensors simultaneously, the board must support USB 2.0 data rates sufficient for handling multiple real-time data streams without bottlenecks or packet loss. These specs ensure that external modules can function concurrently without degradation.
+\par DS4 and DS7 reflect performance goals. As the Harm Drone system is intended to interface with several sensors simultaneously, the board must support USB 2.0 data rates sufficient for handling multiple real time data streams without bottlenecks or packet loss. These specs ensure that external modules can function concurrently without degradation.
 
 \par DS5 represents the project's commitment to health and safety standards, particularly IEEE 1789-2015, which outlines best practices for minimizing biological effects from LED flicker. Ensuring compliance with this standard not only improves usability but also supports safe operation in environments where humans are present.
 
 \par DS6 and DS10 ensure the design is manufacturable and compatible with existing UAV platforms. Tight fabrication tolerances (DS6) increase PCB reliability and reduce signal integrity issues, while enclosure volume constraints (DS10) ensure that the board can be installed in standard drone bodies without requiring chassis modifications.
 
-\par Finally, DS8 and DS9 represent system-level robustness and responsiveness. A robust system that can operate under full load for hours (DS8) with a fast boot time (DS9) is critical for field deployment and mission readiness. These attributes directly affect the operator's confidence in system performance and reliability.
+\par Finally, DS8 and DS9 represent system level robustness and responsiveness. A robust system that can operate under full load for hours (DS8) with a fast boot time (DS9) is critical for field deployment and mission readiness. These attributes directly affect the operator's confidence in system performance and reliability.
 
 \subsection{Project Common Success Criteria (PCSC)}
 
-\par The Project Common Success Criteria (PCSCs) reflect the core engineering and documentation milestones the team must achieve to ensure comprehensive and professional design execution. These are milestone-based and form the checkpoints by which development maturity is assessed.
+\par The Project Common Success Criteria (PCSCs) reflect the core engineering and documentation milestones the team must achieve to ensure comprehensive and professional design execution. These are milestone based and form the checkpoints by which development maturity is assessed.
 
-\par The project success criteria outline a comprehensive approach to ensure the design and implementation of the project meet high-quality standards. The first step is to create a complete bill of materials (BoM) that lists all the components required for the design, followed by ordering or sampling these parts to ensure their availability for the development process. This ensures that the project has all the necessary resources to proceed without delays. 
+\par The project success criteria outline a comprehensive approach to ensure the design and implementation of the project meet high quality standards. The first step is to create a complete bill of materials (BoM) that lists all the components required for the design, followed by ordering or sampling these parts to ensure their availability for the development process. This ensures that the project has all the necessary resources to proceed without delays. 
 
 \par The second step involves developing a complete, accurate, and readable schematic of the design, which is essential for visualizing the system’s structure and functionality. This schematic will include detailed analyses such as interface loading analysis to ensure that components can handle their respective loads and interface timing analysis to guarantee that data and signals flow seamlessly across the system without delays or errors.
 
 \par The third step focuses on creating a layout for the printed circuit board (PCB) based on the schematic, followed by etching the PCB to bring the design to life in hardware form. This step ensures the physical implementation of the design is precise and aligns with the schematic. 
 
-\par The fourth step involves populating the PCB with all the necessary components and debugging the design to identify and resolve any issues that may arise during testing, ensuring the final product performs as intended. Lastly, the project will conclude with the professional packaging of the finished product, ensuring that it is not only functional but also presentable. This step will include demonstrating the functionality of the design to validate that it meets the project's objectives and requirements, providing a robust and reliable solution. These criteria ensure a structured and thorough approach to delivering a high-quality and successful project.
+\par The fourth step involves populating the PCB with all the necessary components and debugging the design to identify and resolve any issues that may arise during testing, ensuring the final product performs as intended. Lastly, the project will conclude with the professional packaging of the finished product, ensuring that it is not only functional but also presentable. This step will include demonstrating the functionality of the design to validate that it meets the project's objectives and requirements, providing a robust and reliable solution. These criteria ensure a structured and thorough approach to delivering a high quality and successful project.
 
 \begin{enumerate}
     \item \textbf{Complete Bill of Materials:} A detailed and ordered BoM including part numbers, vendor sources, unit costs, and sourcing status. All parts must be either sampled or procured before prototyping.
@@ -444,7 +445,7 @@ DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone c
     \item \textbf{Product Packaging:} Secure and professional mounting of the final system in a 3D-printed or manufactured enclosure that protects the board while enabling access to I/O and SD card ports.
 \end{enumerate}
 
-\par These criteria serve as critical checkpoints in the engineering workflow. They ensure the project advances beyond theoretical design by producing verifiable hardware prototypes and well-documented progress. Each PCSC also supports traceability of engineering effort and prepares the team for integration testing.
+\par These criteria serve as critical checkpoints in the engineering workflow. They ensure the project advances beyond theoretical design by producing verifiable hardware prototypes and well documented progress. Each PCSC also supports traceability of engineering effort and prepares the team for integration testing.
 
 \subsection{Project-Specific Success Criteria (PSSC)}
 
@@ -458,13 +459,13 @@ DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone c
     \item \textbf{PSSC 5:} The drone’s lighting system must comply with IEEE Standard 1789-2015, specifically Recommended Practice 2 under section 8.1.1.
 \end{enumerate}
 
-\par Each PSSC is derived from technical, regulatory, or usability demands. To verify them, targeted tests will be conducted. For PSSC 1, the system will be loaded with 1000KB of random high-entropy data, then powered off for a set period to ensure that retention persists through full discharge. The recovered data will be compared to the original dataset to confirm persistence.
+\par Each PSSC is derived from technical, regulatory, or usability demands. To verify them, targeted tests will be conducted. For PSSC 1, the system will be loaded with 1000KB of random high entropy data, then powered off for a set period to ensure that retention persists through full discharge. The recovered data will be compared to the original dataset to confirm persistence.
 
 \par To validate PSSC 2 and 4, 4GB of data will be written to the SD card, which will then be tested on macOS, Windows, and Debian Linux for cross-platform readability and integrity. This ensures full file system compatibility and external transferability.
 
-\par PSSC 3 will be verified by connecting four USB sensors to the board and observing real-time data streams from each, confirming simultaneous bi-directional communication under operational loads.
+\par PSSC 3 will be verified by connecting four USB sensors to the board and observing real time data streams from each, confirming simultaneous bi-directional communication under operational loads.
 
-\par PSSC 5 requires validation through oscilloscope-based analysis of PWM waveform frequencies and modulation rates. Using section 8.1.1 of IEEE 1789-2015, lighting will be evaluated to ensure it adheres to the following thresholds: below 90 Hz, modulation must be less than 1\% of frequency; between 90 and 3000 Hz, less than 3.33\%; above 3000 Hz, unrestricted. Meeting these thresholds demonstrates bio-safety compliance.
+\par PSSC 5 requires validation through oscilloscope based analysis of PWM waveform frequencies and modulation rates. Using section 8.1.1 of IEEE 1789-2015, lighting will be evaluated to ensure it adheres to the following thresholds: below 90 Hz, modulation must be less than 1\% of frequency; between 90 and 3000 Hz, less than 3.33\%; above 3000 Hz, unrestricted. Meeting these thresholds demonstrates bio safety compliance.
 
 \subsection{The Dynamic Nature of System Requirements}
 
@@ -477,7 +478,7 @@ DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone c
     \item \textbf{Version Control:} Documented rationale and versioning ensure traceability and clarity.
 \end{enumerate}
 
-\par Throughout the semester, this evolving model helped the team adapt to changes in component availability, sponsor feedback, and unexpected test outcomes. By using version-controlled documentation and clear test benchmarks, the team ensured that flexibility did not compromise project integrity.
+\par Throughout the semester, this evolving model helped the team adapt to changes in component availability, sponsor feedback, and unexpected test outcomes. By using version controlled documentation and clear test benchmarks, the team ensured that flexibility did not compromise project integrity.
 
 \par The recognition that system requirements are not static, but rather evolve through iterative refinement, naturally leads into the conceptual development phase of the project. With a flexible yet well-documented baseline established, the design team was able to begin exploring multiple solution pathways that would satisfy both the technical objectives and operational constraints defined earlier. The following section outlines the conceptual design process, beginning with the literature that informed early decisions, and continuing through concept generation, reduction, and the formulation of a structured implementation plan.
 
@@ -514,15 +515,15 @@ Discuss the phases of the design and implementation of your project. (PERT chart
 \subsection{Packaging Constraints (HW 4)}
 \subsection{Commercial Product Packaging}
 
-\par To refine the \textit{Harm Drone}’s PCB packaging design, we analyzed two commercial drones with plastic-based enclosures: the Parrot AR.Drone and the Parrot Anafi USA. Both drones emphasize lightweight and durable construction, making them useful comparisons for our 3D-printed plastic case. However, they differ in structural integrity, modularity, and accessibility.
+\par To refine the \textit{Harm Drone}’s PCB packaging design, we analyzed two commercial drones with plastic based enclosures: the Parrot AR.Drone and the Parrot Anafi USA. Both drones emphasize lightweight and durable construction, making them useful comparisons for our 3D-printed plastic case. However, they differ in structural integrity, modularity, and accessibility.
 
-\par Parrot designed the AR.Drone with a plastic and expanded polypropylene (EPP) foam casing, which protects its electronics while keeping the drone lightweight and impact-resistant. Its interchangeable hulls include a foam indoor hull for propeller protection and a lightweight plastic outdoor hull for maneuverability \cite{parrot1}. While this design remains cost-effective and lightweight, it lacks structural rigidity and EMI shielding.
+\par Parrot designed the AR.Drone with a plastic and expanded polypropylene (EPP) foam casing, which protects its electronics while keeping the drone lightweight and impact resistant. Its interchangeable hulls include a foam indoor hull for propeller protection and a lightweight plastic outdoor hull for maneuverability \cite{parrot1}. While this design remains cost-effective and lightweight, it lacks structural rigidity and EMI shielding.
 
 \par Parrot built the Anafi USA for professional and industrial applications, using lightweight thermoplastic materials to improve structural integrity and environmental resistance \cite{parrot2}. Unlike the AR.Drone, the Anafi USA features a reinforced plastic housing, which protects its internal flight electronics, sensors, and camera systems while maintaining modularity for easier maintenance. However, this model still prioritizes lightweight efficiency over impact resistance, making it more fragile than drones with metal enclosures.
 
 \subsubsection{Parrot AR.Drone}
 
-\par The Parrot AR.Drone serves as an early example of lightweight, plastic-based enclosures for drones. It encloses PCB components inside a light plastic shell, while internal EPP foam elements absorb impact. The enclosure integrates fully into the drone’s frame, ensuring efficient weight distribution and minor crash protection.
+\par The Parrot AR.Drone serves as an early example of lightweight, plastic based enclosures for drones. It encloses PCB components inside a light plastic shell, while internal EPP foam elements absorb impact. The enclosure integrates fully into the drone’s frame, ensuring efficient weight distribution and minor crash protection.
 
 \textbf{Positive Aspects:}
 \begin{itemize}
@@ -555,7 +556,7 @@ Discuss the phases of the design and implementation of your project. (PERT chart
 \begin{itemize}
     \item The lightweight plastic housing offers limited impact resistance compared to metal enclosures.
     \item Parrot designed the casing as non-removable, making internal components harder to access.
-    \item The enclosure lacks vibration-dampening features, which could affect PCB stability over time.
+    \item The enclosure lacks vibration dampening features, which could affect PCB stability over time.
 \end{itemize}
 
 \par We based the \textit{Harm Drone}’s enclosure on the Anafi USA’s thermoplastic construction, enhancing durability and accessibility through a custom 3D-printed modular design. Unlike the Anafi USA’s fully integrated frame, our enclosure maintains modularity, ensuring that components can be easily removed, replaced, or upgraded. To improve usability, we integrated cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, allowing external connections without the need for full enclosure removal.
@@ -564,7 +565,7 @@ Discuss the phases of the design and implementation of your project. (PERT chart
 
 \par We designed the \textit{Harm Drone}’s PCB packaging as a lightweight, durable, and modular enclosure that protects critical electronic components while allowing easy maintenance and upgrades. The enclosure consists of a custom 3D-printed plastic case with two interlocking halves, secured using a latch mechanism. This structure enables quick access to internal components, eliminating the need for complex disassembly.
 
-\par We selected 3D-printed plastic for its balance of strength and weight efficiency. The two-part housing connects via a latch, eliminating the need for screws or additional fasteners. Internal mounting points secure the PCB, reducing mechanical stress and vibration.
+\par We selected 3D-printed plastic for its balance of strength and weight efficiency. The two part housing connects via a latch, eliminating the need for screws or additional fasteners. Internal mounting points secure the PCB, reducing mechanical stress and vibration.
 
 \par To support external connections, we incorporated custom cutouts for the power switch, USB-C port, microSD slot, USB ports, and XT60 connector. These cutouts align precisely with the PCB layout, ensuring seamless connectivity without requiring enclosure removal.
 
@@ -669,12 +670,12 @@ Component choices prioritized efficient power management, reliable communication
 \end{itemize}
 
 \par These components collectively form a robust and efficient embedded system that meets performance, power, and interface demands.
-\par While careful component selection was critical for ensuring the electrical and functional performance of the Harm Drone system, the physical packaging of the PCB played an equally important role in protecting those components and supporting deployment in real-world environments. To guide our enclosure design, we conducted a comparative analysis of commercial drone packaging solutions, focusing on materials, structural design, and accessibility. This helped ensure that our custom 3D-printed case would not only house the electronics effectively but also balance durability, weight, and field-serviceability.
-\par While thoughtful component selection was essential to meeting the electrical and performance requirements of the Harm Drone system, these components could not function optimally without a PCB layout that supports their integration. The physical arrangement and routing of the board play a critical role in preserving signal integrity, ensuring proper power distribution, and maintaining system reliability. Accordingly, the following section outlines the key design considerations that informed the layout of the PCB, with special emphasis on supporting high-speed communication interfaces, compact form factor, and mechanical compatibility with the drone's structure.
+\par While careful component selection was critical for ensuring the electrical and functional performance of the Harm Drone system, the physical packaging of the PCB played an equally important role in protecting those components and supporting deployment in real-world environments. To guide our enclosure design, we conducted a comparative analysis of commercial drone packaging solutions, focusing on materials, structural design, and accessibility. This helped ensure that our custom 3D-printed case would not only house the electronics effectively but also balance durability, weight, and field serviceability.
+\par While thoughtful component selection was essential to meeting the electrical and performance requirements of the Harm Drone system, these components could not function optimally without a PCB layout that supports their integration. The physical arrangement and routing of the board play a critical role in preserving signal integrity, ensuring proper power distribution, and maintaining system reliability. Accordingly, the following section outlines the key design considerations that informed the layout of the PCB, with special emphasis on supporting high speed communication interfaces, compact form factor, and mechanical compatibility with the drone's structure.
 \subsection{PCB Layout and Design Considerations – Overall}
 The design of this PCB is subject to several critical constraints to ensure optimal performance and compatibility within the drone’s system. One of the primary concerns is maintaining USB 2.0 signal integrity. This requires careful routing of the USB data lines to minimize interference, preserve signal quality, and ensure reliable data transmission. In order to accomplish this, several criteria must be met. 
 
-\par The most important of these is that the lengths of the traces for the positive and negative data lines match each other. Secondly, the use of vias must be minimized due to the imprecise nature of via manufacturing. Another concern when using vias for high-speed signals is the possibility of via stubs—unused lengths of the via that can act as antennas and greatly degrade signal quality.
+\par The most important of these is that the lengths of the traces for the positive and negative data lines match each other. Secondly, the use of vias must be minimized due to the imprecise nature of via manufacturing. Another concern when using vias for high speed signals is the possibility of via stubs—unused lengths of the via that can act as antennas and greatly degrade signal quality.
 
 \par Additionally, the PCB must be designed to support USB 2.0 5V power delivery, requiring robust power traces capable of handling the necessary current while minimizing voltage drops. The board must be able to provide 2A at 5V across the four USB ports available on the device; this will be addressed further in the power system design.
 
@@ -690,16 +691,16 @@ The design of this PCB is also influenced by the architecture of the microcontro
 \par The design also needs to accommodate a stable 3.3V power supply, which will be explained further in the power supply discussion. In terms of communication routing, the USB pins are located on the right side of the microcontroller, while the SPI pins are positioned on the bottom. This placement influences the routing priority on the PCB. To ensure USB signal integrity, the USB lines were routed first, followed by the SPI lines.
 
 \subsection{PCB Layout and Design Considerations – Power Supply}
-The power supply design of this PCB involves several key considerations to ensure efficient power distribution and minimize noise or interference. One of the primary elements is the use of copper pours, which help create low-resistance paths for current—especially for high-current traces. This technique is particularly important for the 15V connection to the buck converter, as the power draw on this section of the PCB could reach 30W over a short distance of less than 2 mm.
+The power supply design of this PCB involves several key considerations to ensure efficient power distribution and minimize noise or interference. One of the primary elements is the use of copper pours, which help create low resistance paths for current—especially for high current traces. This technique is particularly important for the 15V connection to the buck converter, as the power draw on this section of the PCB could reach 30W over a short distance of less than 2 mm.
 
-\par A dedicated ground layer is crucial for maintaining signal integrity and providing a low-resistance return path for all signals. This is essential for reducing electromagnetic interference (EMI) and ensuring the proper functioning of sensitive circuits.
+\par A dedicated ground layer is crucial for maintaining signal integrity and providing a low resistance return path for all signals. This is essential for reducing electromagnetic interference (EMI) and ensuring the proper functioning of sensitive circuits.
 
 \par In addition to the ground layer, a separate 3.3V power layer is essential to provide a stable and regulated voltage to components such as the microcontroller, SRAM, EEPROM, and the SD card slot.
 
 \par Finally, the position of the XT60 connector, which delivers power from the battery, must be carefully considered. It should be placed such that, when the battery is connected, the cable does not interfere with the drone’s rotors during operation.
 
 \subsection{Performance Estimates and Results (2-5 pages)}
-Present the estimated performance of the project (and how it was derived) based on the preliminary design (estimates to include speed, cost, power consumption, noise-immunity, ease of use, etc., depending on the project). Present the actual performance results. Discuss the results. Compare with estimated performance and explain discrepancies. Include suggestions for design changes that would improve the performance of the project. Use graphs or other figures to show relationships when appropriate.
+Present the estimated performance of the project (and how it was derived) based on the preliminary design (estimates to include speed, cost, power consumption, noise immunity, ease of use, etc., depending on the project). Present the actual performance results. Discuss the results. Compare with estimated performance and explain discrepancies. Include suggestions for design changes that would improve the performance of the project. Use graphs or other figures to show relationships when appropriate.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         Economic Analysis                              %
@@ -728,7 +729,7 @@ Present the estimated performance of the project (and how it was derived) based 
 
 \par In terms of labor, the project required over 1200 documented engineer-hours. These hours include circuit design, schematic development, firmware programming, layout, prototyping, documentation, debugging, and stakeholder presentations. At a modest estimated rate of \$25/hour, the total labor investment would be valued at \$30,000. While labor costs were not billed, they provide a realistic perspective on the time intensity of embedded system development and can help inform future budgeting.
 
-\par The expected lifetime operational cost of the device is minimal. Because the system requires no external subscription services, licenses, or cloud-based telemetry, ongoing costs are limited to:
+\par The expected lifetime operational cost of the device is minimal. Because the system requires no external subscription services, licenses, or cloud based telemetry, ongoing costs are limited to:
 
 \begin{itemize}
 \item Occasional replacement of removable storage media (e.g., SD cards)
@@ -751,9 +752,9 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Social/Political/Environmental Impact (HW 8)}
 
-\par We designed the Harm Drone PCB with a strong emphasis on ethical engineering and social responsibility. Because the board collects real-time data in potentially sensitive environments, we intentionally avoid wireless data transmission, reducing interception risks and aligning with ethical data handling practices~\cite{parrot2023,microchip2023}.
+\par We designed the Harm Drone PCB with a strong emphasis on ethical engineering and social responsibility. Because the board collects real time data in potentially sensitive environments, we intentionally avoid wireless data transmission, reducing interception risks and aligning with ethical data handling practices~\cite{parrot2023,microchip2023}.
 
-\par We developed rigorous testing protocols to confirm safe operation under conditions such as fluctuating power, temperature changes, and data load variations. By incorporating fail-safe mechanisms, reliable firmware, and complete documentation, we reduce the likelihood of failure during critical missions.
+\par We developed rigorous testing protocols to confirm safe operation under conditions such as fluctuating power, temperature changes, and data load variations. By incorporating fail safe mechanisms, reliable firmware, and complete documentation, we reduce the likelihood of failure during critical missions.
 
 \par Our documentation includes all necessary electrical, integration, and operational details to ensure safe and transparent deployment. This level of openness aligns with the National Society of Professional Engineers (NSPE) Code of Ethics, which emphasizes engineers' responsibility to protect public safety and communicate system limitations~\cite{nspe}.
 
@@ -779,17 +780,17 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 
 \subsection{Environmental Impact Analysis}
 
-\par Although we did not manufacture an entire drone platform, the PCB system still contributes environmental impacts throughout its lifecycle. We addressed these challenges through design decisions that reduce waste, power consumption, and end-of-life hazards.
+\par Although we did not manufacture an entire drone platform, the PCB system still contributes environmental impacts throughout its lifecycle. We addressed these challenges through design decisions that reduce waste, power consumption, and end of life hazards.
 
 \subsubsection{Manufacturing}
 
-\par PCB fabrication consumes energy and involves hazardous chemicals such as etchants and solvents. To minimize this impact, we use RoHS-compliant materials, lead-free solder, and compact surface-mount designs that reduce board size and component count~\cite{ti2023b}. We followed IPC-2221B design standards to ensure environmentally responsible layout practices~\cite{ipc2221b}.
+\par PCB fabrication consumes energy and involves hazardous chemicals such as etchants and solvents. To minimize this impact, we use RoHS compliant materials, lead free solder, and compact surface-mount designs that reduce board size and component count~\cite{ti2023b}. We followed IPC-2221B design standards to ensure environmentally responsible layout practices~\cite{ipc2221b}.
 
 \subsubsection{Enclosure Material and Additive Manufacturing}
 
 \par To house and protect the PCB during deployment, we designed a custom 3D-printed enclosure made from polylactic acid (PLA), a biodegradable thermoplastic derived from renewable resources like cornstarch or sugarcane. PLA offers several benefits over petroleum-based plastics, including a lower carbon footprint during production and improved biodegradability under industrial composting conditions~\cite{pla2023}.
 
-\par By using additive manufacturing, we minimize material waste and enable rapid iteration of enclosure designs to fit a variety of drone platforms. This approach supports our modular integration goals and allows users to fabricate new casings on demand using common 3D printing equipment. The use of PLA also avoids the environmental hazards associated with legacy enclosures made from ABS or carbon-reinforced polymers.
+\par By using additive manufacturing, we minimize material waste and enable rapid iteration of enclosure designs to fit a variety of drone platforms. This approach supports our modular integration goals and allows users to fabricate new casings on demand using common 3D printing equipment. The use of PLA also avoids the environmental hazards associated with legacy enclosures made from ABS or carbon reinforced polymers.
 
 \subsubsection{Normal Use}
 
@@ -797,7 +798,7 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 
 \subsubsection{Disposal/Recycling}
 
-\par At end-of-life, the board presents moderate recycling challenges due to embedded copper, tin, and trace amounts of gold. To mitigate these risks, we included clear disassembly documentation and recommended disposal via certified e-waste programs. Our packaging uses recyclable materials and avoids excessive padding, aligning with environmentally responsible delivery methods~\cite{epa2023}.
+\par At end of life, the board presents moderate recycling challenges due to embedded copper, tin, and trace amounts of gold. To mitigate these risks, we included clear disassembly documentation and recommended disposal via certified e-waste programs. Our packaging uses recyclable materials and avoids excessive padding, aligning with environmentally responsible delivery methods~\cite{epa2023}.
 
 \subsection{Lifecycle Assessment Overview}
 
@@ -809,35 +810,35 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 %Restate the problem that gave rise to the report. Summarize the main points and the approach that was taken. Summarize the design performance. Provide recommendations, explaining subsequent action or posing specific questions for investigations. Discuss the lessons learned.
 \subsection{Restating the Problem}
 
-\par The Harm Drone project was initiated in response to the growing need for a low-cost, modular, and platform-independent data acquisition system for small unmanned aerial vehicles (UAVs). While UAVs have become increasingly accessible, the associated hardware required for real-time data collection and safe deployment remains costly, proprietary, and difficult to modify. Most commercial systems rely on wireless communication for data transfer and feature sensor modules that are not interchangeable across platforms, limiting their use in research and education. Furthermore, few systems address lighting safety compliance standards such as IEEE 1789-2015, which is critical for public deployment. These limitations inspired the development of the Harm Drone PCB—a universal, budget-conscious embedded platform capable of offline logging, USB sensor integration, and safe visual signaling.
+\par The Harm Drone project was initiated in response to the growing need for a low cost, modular, and platform independent data acquisition system for small unmanned aerial vehicles (UAVs). While UAVs have become increasingly accessible, the associated hardware required for real time data collection and safe deployment remains costly, proprietary, and difficult to modify. Most commercial systems rely on wireless communication for data transfer and feature sensor modules that are not interchangeable across platforms, limiting their use in research and education. Furthermore, few systems address lighting safety compliance standards such as IEEE 1789-2015, which is critical for public deployment. These limitations inspired the development of the Harm Drone PCB—a universal, budget-conscious embedded platform capable of offline logging, USB sensor integration, and safe visual signaling.
 
 \subsection{Summary of Approach and Design}
 
-\par The design process began with a clear objective: to produce a PCB system that could support USB sensors, store sensor data locally, and operate without reliance on wireless infrastructure. An iterative, objective-tree-based design methodology guided the project from early concept generation to final system validation. Key deliverables included:
+\par The design process began with a clear objective: to produce a PCB system that could support USB sensors, store sensor data locally, and operate without reliance on wireless infrastructure. An iterative, objective tree-based design methodology guided the project from early concept generation to final system validation. Key deliverables included:
 
 \begin{itemize}
 \item A PCB featuring support for up to four USB sensors with bi-directional communication.
-\item Dual-layer data logging through nonvolatile onboard memory and removable SD card storage.
+\item Dual layer data logging through nonvolatile onboard memory and removable SD card storage.
 \item A cross-platform file system compatible with Windows, macOS, and Linux.
-\item A PWM-based lighting subsystem compliant with IEEE 1789-2015.
+\item A PWM based lighting subsystem compliant with IEEE 1789-2015.
 \item A lightweight, modular PLA 3D-printed enclosure for ease of integration and field servicing.
 \end{itemize}
 
-\par The team followed a hardware/software co-design approach, performing component-level power and signal validation before full system integration. Data logging firmware was written in C and validated using controlled sensor input data. User interaction and maintenance workflows were also tested to ensure ease of use in remote field environments.
+\par The team followed a hardware/software co-design approach, performing component level power and signal validation before full system integration. Data logging firmware was written in C and validated using controlled sensor input data. User interaction and maintenance workflows were also tested to ensure ease of use in remote field environments.
 
 \subsection{Design Performance Summary}
 
 The final design successfully met its core requirements:
 
 \begin{itemize}
-\item USB support was validated with four simultaneous sensor connections, achieving consistent real-time data transfer rates exceeding 12 Mbps.
-\item The board successfully logged over 1000KB of high-entropy data to onboard memory and retained all data after a full power cycle.
+\item USB support was validated with four simultaneous sensor connections, achieving consistent real time data transfer rates exceeding 12 Mbps.
+\item The board successfully logged over 1000KB of high entropy data to onboard memory and retained all data after a full power cycle.
 \item 4GB of SD card data was logged and confirmed to be readable across Windows, macOS, and Debian Linux platforms.
 \item The lighting system maintained flicker modulation well below IEEE 1789-2015 thresholds for the operating frequency range.
 \item Total cost of parts remained just under our hard cap, and the enclosure and PCB occupied a volume of less than 900 cm\textsuperscript{3}.
 \end{itemize}
 
-\par Additional testing showed the system’s ability to recover from mid-operation resets, an important feature for deployment in unpredictable environments. The firmware was designed with extensibility in mind, and the project team successfully demonstrated proof-of-concept sensor drivers for future expansion. Moreover, the use of nonvolatile memory with cyclic redundancy check (CRC) verification added a layer of fault tolerance not found in comparable low-cost platforms.
+\par Additional testing showed the system’s ability to recover from mid operation resets, an important feature for deployment in unpredictable environments. The firmware was designed with extensibility in mind, and the project team successfully demonstrated proof of concept sensor drivers for future expansion. Moreover, the use of nonvolatile memory with cyclic redundancy check (CRC) verification added a layer of fault tolerance not found in comparable low cost platforms.
 
 \subsection{Recommendations and Future Work}
 
@@ -845,30 +846,30 @@ While the Harm Drone met all of its primary engineering goals, several future im
 
 \begin{itemize}
 \item \textbf{Environmental Protection:} Enhance the enclosure with rubber gaskets or coatings for weather resistance in field deployments.
-\item \textbf{Wireless Add-On Module:} Provide optional Bluetooth or Wi-Fi expansion ports for users who require real-time monitoring.
-\item \textbf{Graphical User Interface:} Develop a GUI-based desktop tool for downloading and visualizing data logs from SD card or onboard memory.
-\item \textbf{Expanded Sensor Libraries:} Pre-load firmware with drivers for commonly used USB research sensors, such as thermocouples, LiDAR modules, or spectrometers.
-\item \textbf{Battery Monitoring:} Integrate low-voltage detection circuitry to protect data during unexpected power drops.
+\item \textbf{Wireless Add-On Module:} Provide optional Bluetooth or Wi-Fi expansion ports for users who require real time monitoring.
+\item \textbf{Graphical User Interface:} Develop a GUI based desktop tool for downloading and visualizing data logs from SD card or onboard memory.
+\item \textbf{Expanded Sensor Libraries:} Pre load firmware with drivers for commonly used USB research sensors, such as thermocouples, LiDAR modules, or spectrometers.
+\item \textbf{Battery Monitoring:} Integrate low voltage detection circuitry to protect data during unexpected power drops.
 \item \textbf{Remote Update Capability:} Allow users to flash updated firmware through the USB port, eliminating the need for external programmers.
-\item \textbf{User Documentation and Tutorials:} Develop clear, accessible documentation and beginner-friendly guides to help non-engineers deploy and adapt the platform.
+\item \textbf{User Documentation and Tutorials:} Develop clear, accessible documentation and beginner friendly guides to help non-engineers deploy and adapt the platform.
 \end{itemize}
 
-\par Each of these enhancements supports long-term scalability and increases the project’s viability for more demanding applications, such as environmental field studies or long-duration monitoring.
+\par Each of these enhancements supports long term scalability and increases the project’s viability for more demanding applications, such as environmental field studies or long duration monitoring.
 
 \subsection{Lessons Learned}
 
 Throughout the development of the Harm Drone PCB, the team encountered a number of valuable technical and project management insights:
 
 \begin{itemize}
-\item \textbf{Early Interface Prototyping:} Building and testing USB functionality before final PCB fabrication prevented time-consuming board revisions.
+\item \textbf{Early Interface Prototyping:} Building and testing USB functionality before final PCB fabrication prevented time consuming board revisions.
 \item \textbf{Power and Signal Integrity:} Close attention to routing and component placement avoided common noise and crosstalk issues.
-\item \textbf{Version Control and Documentation:} Maintaining a GitHub repository with version-controlled firmware and annotated schematics improved collaboration and reproducibility.
+\item \textbf{Version Control and Documentation:} Maintaining a GitHub repository with version controlled firmware and annotated schematics improved collaboration and reproducibility.
 \item \textbf{End-User Testing:} Feedback from prospective users highlighted usability gaps—such as unclear LED indicators and labeling—that were resolved in later iterations.
-\item \textbf{Budget-Conscious Design:} Working with strict cost constraints encouraged creative solutions such as reusing evaluation modules, simplifying filtering stages, and leveraging open-source tools.
+\item \textbf{Budget Conscious Design:} Working with strict cost constraints encouraged creative solutions such as reusing evaluation modules, simplifying filtering stages, and leveraging open source tools.
 \item \textbf{Scope Management:} Balancing feature ambition with time and labor constraints was critical to staying on schedule and delivering a reliable prototype.
 \end{itemize}
 
-\par In conclusion, the Harm Drone project demonstrates that sophisticated UAV data logging solutions can be developed using cost-effective components, modular design principles, and a research-driven engineering process. The system serves as both a viable tool for fieldwork and an instructional case study in real-world embedded design. Future iterations of this project can build upon its modular foundation to support broader deployment scenarios, helping lower the barrier to entry for data-driven UAV applications in science, education, and beyond.
+\par In conclusion, the Harm Drone project demonstrates that sophisticated UAV data logging solutions can be developed using cost-effective components, modular design principles, and a research driven engineering process. The system serves as both a viable tool for fieldwork and an instructional case study in real world embedded design. Future iterations of this project can build upon its modular foundation to support broader deployment scenarios, helping lower the barrier to entry for data driven UAV applications in science, education, and beyond.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         User’s Manual                                 %
@@ -885,7 +886,7 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 \begin{itemize}
     \item \textbf{Power Supply:} Connect a regulated 5V–12V DC source to the PCB's primary power input header. Ensure polarity is correct to avoid damage.
     \item \textbf{Microcontroller Programming:} Use a USB-to-serial interface or dedicated programmer to flash firmware onto the microcontroller via the debug header.
-    \item \textbf{Sensor Integration:} Connect up to four USB-based sensors to the onboard USB host ports. The system will automatically enumerate connected devices during boot.
+    \item \textbf{Sensor Integration:} Connect up to four USB based sensors to the onboard USB host ports. The system will automatically enumerate connected devices during boot.
     \item \textbf{Storage Media:}
     \begin{itemize}
         \item Insert a microSD card (formatted as FAT32) into the onboard SD card slot.
@@ -901,9 +902,9 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
     \item \textbf{Data Logging:}
     \begin{itemize}
         \item Sensor data is logged automatically into onboard flash and/or the SD card.
-        \item Logged files are timestamped and stored in OS-accessible formats.
+        \item Logged files are timestamped and stored in OS accessible formats.
     \end{itemize}
-    \item \textbf{Sensor Communication:} USB sensor data streams are handled in real time. USB ports are hot-pluggable during non-critical flight phases.
+    \item \textbf{Sensor Communication:} USB sensor data streams are handled in real time. USB ports are hot pluggable during non-critical flight phases.
     \item \textbf{Lighting Compliance Check:}
     \begin{itemize}
         \item The lighting subsystem operates at a PWM frequency above 3000 Hz to ensure compliance with IEEE 1789-2015.
