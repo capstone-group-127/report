@@ -836,8 +836,8 @@ In summary, the Harm Drone project uses multiple software components to support 
 \end{itemize}
 
 \par We adopted the lightweight plastic construction approach of the Parrot AR.Drone while improving structural reinforcement and accessibility. Instead of using a fully integrated casing like the AR.Drone, we designed a 3D-printed modular enclosure with two interlocking halves and a latch mechanism, allowing for quick access, easy maintenance, and upgrades. Additionally, we incorporated precisely positioned cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, enabling seamless external connectivity without requiring complete disassembly.
-
-\quickfigure{images/parrot-AR-drone-casing.jpg}{15cm}{Parrot AR.Drone Casing}{parrot-ardrone-casing}
+\newpage
+\quickfigure{images/parrot-AR-drone-casing.jpg}{7.5cm}{Parrot AR.Drone Casing}{parrot-ardrone-casing}
 
 \paragraph{Parrot Anafi USA}
 
@@ -859,7 +859,7 @@ In summary, the Harm Drone project uses multiple software components to support 
 
 \par We based the \textit{Harm Drone}’s enclosure on the Anafi USA’s thermoplastic construction, enhancing durability and accessibility through a custom 3D-printed modular design. Unlike the Anafi USA’s fully integrated frame, our enclosure maintains modularity, ensuring that components can be easily removed, replaced, or upgraded. To improve usability, we integrated cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, allowing external connections without the need for full enclosure removal.
 
-\quickfigure{images/parrot-anafi-USA-casing.jpg}{15cm}{Parrot Anafi USA Casing}{parrot-anafi-usa-casing}
+\quickfigure{images/parrot-anafi-USA-casing.jpg}{7.5cm}{Parrot Anafi USA Casing}{parrot-anafi-usa-casing}
 
 \subsubsection{Project Package Specifications}
 
@@ -869,6 +869,25 @@ In summary, the Harm Drone project uses multiple software components to support 
 
 \par To support external connections, we incorporated custom cutouts for the power switch, USB-C port, microSD slot, USB ports, and XT60 connector. These cutouts align precisely with the PCB layout, ensuring seamless connectivity without requiring enclosure removal.
 
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Tooling Requirements} & Filament Type - PLA \\ \hline
+\textbf{Tooling Requirements} & Print Bed Surface - Glass bed \\ \hline
+\textbf{Tooling Requirements} & Post-Processing Tools - Sandpaper, Deburring tool \\ \hline
+\textbf{Tooling Requirements} & Assembly Tools - Screwdriver for Assembly \\ \hline
+\textbf{Estimated Weight} & PLA Enclosure - 80-120g \\ \hline
+\textbf{Estimated Weight} & Total Assembled Casing with latch \& 8 screws - 120-150g \\ \hline
+\textbf{Estimated Unit Cost} & Material Cost (1/4 of 1KG filament per unit) - \$2 - \$5 \\ \hline
+\textbf{Estimated Unit Cost} & Tooling and Processing - \$2 - \$3 \\ \hline
+\textbf{Estimated Unit Cost} & Latch Mechanism - \$1 - \$3 \\ \hline
+\textbf{Estimated Unit Cost} & Total Estimated Cost per Unit - \$5 - \$11 \\ \hline
+\end{tabular}
+\caption{Tooling Requirements, Estimated Weight, and Unit Cost Summary}
+\label{tooling_costs}
+\end{table}
+\newpage
 \subsubsection{PCB Footprint Layout}
 
 \par We designed the \textit{Harm Drone}’s PCB footprint layout to optimize routing, space usage, and accessibility while aligning with the 3D-printed enclosure’s cutouts. We selected footprints based on space constraints, manufacturability, and electrical performance to ensure an efficient balance between density and accessibility.
@@ -879,7 +898,7 @@ In summary, the Harm Drone project uses multiple software components to support 
 
 \par We selected SOT-23-6 and SOT-23-5 footprints for power regulation components, including the LMR51430XDDCR buck converter and XC6210A332MR-G LDO regulator, to ensure efficient power conversion with minimal space usage \cite{ti2023stepdown} \cite{torex2023ldo}. We implemented through-hole mounting for high-stress connectors like USB and XT60 power, ensuring long-term mechanical stability.
 
-\par With an estimated PCB size of 95.5\,mm $\times$ 40.228\,mm $\times$ 17.68\,mm, the layout maintains clear separation of power and data lines, ensures efficient signal routing, and aligns precisely with enclosure cutouts. We included the final footprint layout in Appendix C, detailing component placement, trace routing, and external port alignment.
+\par With an estimated PCB size of 95.5\,mm $\times$ 40.228\,mm $\times$ 17.68\,mm, the layout maintains clear separation of power and data lines, ensures efficient signal routing, and aligns precisely with enclosure cutouts.
 
 \subsection{Design Constraints and Component Selection Rationale}
 
@@ -968,6 +987,133 @@ Component choices prioritized efficient power management, reliable communication
 
     \item \textbf{SRAM:} IS62WVS2568GBLL-45NLI-TR provides high-speed memory access for real-time processing \cite{issi2023sram}. Compared in Table \ref{is62_vs_23lc1024} with 23LC1024 \cite{microchip2023sram}.
 \end{itemize}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{STM32F072CB} & \textbf{ATmega32U4} \\
+\hline
+Architecture & ARM Cortex-M0 & 8-bit AVR \\
+Clock Speed & 48 MHz & 16 MHz \\
+Flash Memory & 128 KB & 32 KB \\
+RAM & 16 KB & 2.5 KB \\
+USB Support & USB 2.0 Full-Speed & USB 2.0 Full-Speed \\
+Number of UART Interfaces & 2 & 1 \\
+Power Consumption & Low & Higher \\
+Cost & ~\$3.50 & ~\$3.00 \\
+\hline
+\end{tabular}
+\caption{STM32 vs. ATmega32 Microcontroller Comparison}
+\label{stm32_vs_atmega}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{FT231XS-R} & \textbf{CP2102} \\
+\hline
+USB Version & 2.0 & 2.0 \\
+Voltage Support & 3.3V/5V & 3.3V/5V \\
+Baud Rate & Up to 3Mbps & Up to 1Mbps \\
+Driver Compatibility & FTDI Standard & Silicon Labs \\
+Power Consumption & Lower & Moderate \\
+Built-in EEPROM & Yes & No \\
+Cost & ~\$3.00 & ~\$2.00 \\
+\hline
+\end{tabular}
+\caption{FT231XS vs. CP2102 USB to UART Comparison}
+\label{ft231_vs_cp2102}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{TUSB3046I} & \textbf{FE1.1S} \\
+\hline
+USB Version & USB 2.0 & USB 2.0 \\
+Number of Ports & 4 & 4 \\
+Power Consumption & Moderate & Lower \\
+External Power Required & Yes & No \\
+Integrated 5V Regulator & No & Yes \\
+Cost & ~\$2.50 & ~\$1.50 \\
+\hline
+\end{tabular}
+\caption{TUSB3046I vs. FE1.1S USB Hub Comparison}
+\label{tusb_vs_fe1}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{LMR51430XDDCR} & \textbf{MP2315} \\
+\hline
+Max Output Current & 4.3A & 2.5A \\
+Input Voltage Range & 4V–36V & 4.5V–24V \\
+Output Voltage & Adjustable (0.6V–30V) & Fixed (3.3V/5V) \\
+Switching Frequency & 550kHz & 1MHz \\
+Efficiency & ~90\%+ & ~85\%+ \\
+Thermal Performance & Better & Higher Heat Generation \\
+Cost & ~\$2.50 & ~\$3.00 \\
+\hline
+\end{tabular}
+\caption{LMR51430 vs. MP2315 Buck Converter Comparison}
+\label{lm514_vs_mp2315}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{XC6210A332MR-G} & \textbf{AMS1117-3.3V} \\
+\hline
+Max Output Current & 700mA & 1A \\
+Dropout Voltage & 0.3V & 1.1V \\
+Quiescent Current & 35uA & \~5mA \\
+Power Dissipation & Lower & Higher \\
+Cost & ~\$0.30 & ~\$0.50 \\
+\hline
+\end{tabular}
+\caption{XC6210A vs. AMS1117 LDO Comparison}
+\label{xc6210_vs_ams1117}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{CAT25160VI-GT3} & \textbf{AT24C256} \\
+\hline
+Capacity & 16Kb & 256Kb \\
+Interface & SPI & I2C \\
+Max Speed & 10MHz & 1MHz \\
+Power Consumption & Lower & Slightly Higher \\
+Cost & ~\$0.46 & ~\$0.28 \\
+\hline
+\end{tabular}
+\caption{CAT25160VI vs. AT24C256 EEPROM Comparison}
+\label{cat25160_vs_at24c256}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{IS62WVS2568GBLL-45NLI-TR} & \textbf{23LC1024} \\
+\hline
+Memory Size & 256Kb & 1Mb \\
+Interface & Parallel & SPI \\
+Access Time & 45ns & 50ns \\
+Power Consumption & Low & Low \\
+Operating Voltage & 2.7V–3.6V & 2.7V–3.6V \\
+Cost & ~\$2.50 & ~\$2.00 \\
+\hline
+\end{tabular}
+\caption{IS62 vs. 23LC1024 SRAM Comparison}
+\label{is62_vs_23lc1024}
+\end{table}
 
 \par These components collectively form a robust and efficient embedded system that meets performance, power, and interface demands.
 \par While careful component selection was critical for ensuring the electrical and functional performance of the Harm Drone system, the physical packaging of the PCB played an equally important role in protecting those components and supporting deployment in real-world environments. To guide our enclosure design, we conducted a comparative analysis of commercial drone packaging solutions, focusing on materials, structural design, and accessibility. This helped ensure that our custom 3D-printed case would not only house the electronics effectively but also balance durability, weight, and field serviceability.
@@ -1365,153 +1511,6 @@ For full schematics, firmware source code, and additional test scripts, refer to
    % \item Figure titles and numbering: Figures should be numbered consecutively in the report. Every figure must have a descriptive title located immediately below the figure.
    % \item Table titles and numbers: Tables should be numbered consecutively in the report. Every table must have a descriptive title located above or below the table.
   % \end{itemize}
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{|l|l|}
-\hline
-\textbf{Tooling Requirements} & Filament Type - PLA \\ \hline
-\textbf{Tooling Requirements} & Print Bed Surface - Glass bed \\ \hline
-\textbf{Tooling Requirements} & Post-Processing Tools - Sandpaper, Deburring tool \\ \hline
-\textbf{Tooling Requirements} & Assembly Tools - Screwdriver for Assembly \\ \hline
-\textbf{Estimated Weight} & PLA Enclosure - 80-120g \\ \hline
-\textbf{Estimated Weight} & Total Assembled Casing with latch \& 8 screws - 120-150g \\ \hline
-\textbf{Estimated Unit Cost} & Material Cost (1/4 of 1KG filament per unit) - \$2 - \$5 \\ \hline
-\textbf{Estimated Unit Cost} & Tooling and Processing - \$2 - \$3 \\ \hline
-\textbf{Estimated Unit Cost} & Latch Mechanism - \$1 - \$3 \\ \hline
-\textbf{Estimated Unit Cost} & Total Estimated Cost per Unit - \$5 - \$11 \\ \hline
-\end{tabular}
-\caption{Tooling Requirements, Estimated Weight, and Unit Cost Summary}
-\label{tooling_costs}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|}
-\hline
-\textbf{Feature} & \textbf{STM32F072CB} & \textbf{ATmega32U4} \\
-\hline
-Architecture & ARM Cortex-M0 & 8-bit AVR \\
-Clock Speed & 48 MHz & 16 MHz \\
-Flash Memory & 128 KB & 32 KB \\
-RAM & 16 KB & 2.5 KB \\
-USB Support & USB 2.0 Full-Speed & USB 2.0 Full-Speed \\
-Number of UART Interfaces & 2 & 1 \\
-Power Consumption & Low & Higher \\
-Cost & ~\$3.50 & ~\$3.00 \\
-\hline
-\end{tabular}
-\caption{STM32 vs. ATmega32 Microcontroller Comparison}
-\label{stm32_vs_atmega}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|}
-\hline
-\textbf{Feature} & \textbf{FT231XS-R} & \textbf{CP2102} \\
-\hline
-USB Version & 2.0 & 2.0 \\
-Voltage Support & 3.3V/5V & 3.3V/5V \\
-Baud Rate & Up to 3Mbps & Up to 1Mbps \\
-Driver Compatibility & FTDI Standard & Silicon Labs \\
-Power Consumption & Lower & Moderate \\
-Built-in EEPROM & Yes & No \\
-Cost & ~\$3.00 & ~\$2.00 \\
-\hline
-\end{tabular}
-\caption{FT231XS vs. CP2102 USB to UART Comparison}
-\label{ft231_vs_cp2102}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|}
-\hline
-\textbf{Feature} & \textbf{TUSB3046I} & \textbf{FE1.1S} \\
-\hline
-USB Version & USB 2.0 & USB 2.0 \\
-Number of Ports & 4 & 4 \\
-Power Consumption & Moderate & Lower \\
-External Power Required & Yes & No \\
-Integrated 5V Regulator & No & Yes \\
-Cost & ~\$2.50 & ~\$1.50 \\
-\hline
-\end{tabular}
-\caption{TUSB3046I vs. FE1.1S USB Hub Comparison}
-\label{tusb_vs_fe1}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|}
-\hline
-\textbf{Feature} & \textbf{LMR51430XDDCR} & \textbf{MP2315} \\
-\hline
-Max Output Current & 4.3A & 2.5A \\
-Input Voltage Range & 4V–36V & 4.5V–24V \\
-Output Voltage & Adjustable (0.6V–30V) & Fixed (3.3V/5V) \\
-Switching Frequency & 550kHz & 1MHz \\
-Efficiency & ~90\%+ & ~85\%+ \\
-Thermal Performance & Better & Higher Heat Generation \\
-Cost & ~\$2.50 & ~\$3.00 \\
-\hline
-\end{tabular}
-\caption{LMR51430 vs. MP2315 Buck Converter Comparison}
-\label{lm514_vs_mp2315}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|}
-\hline
-\textbf{Feature} & \textbf{XC6210A332MR-G} & \textbf{AMS1117-3.3V} \\
-\hline
-Max Output Current & 700mA & 1A \\
-Dropout Voltage & 0.3V & 1.1V \\
-Quiescent Current & 35uA & \~5mA \\
-Power Dissipation & Lower & Higher \\
-Cost & ~\$0.30 & ~\$0.50 \\
-\hline
-\end{tabular}
-\caption{XC6210A vs. AMS1117 LDO Comparison}
-\label{xc6210_vs_ams1117}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|}
-\hline
-\textbf{Feature} & \textbf{CAT25160VI-GT3} & \textbf{AT24C256} \\
-\hline
-Capacity & 16Kb & 256Kb \\
-Interface & SPI & I2C \\
-Max Speed & 10MHz & 1MHz \\
-Power Consumption & Lower & Slightly Higher \\
-Cost & ~\$0.46 & ~\$0.28 \\
-\hline
-\end{tabular}
-\caption{CAT25160VI vs. AT24C256 EEPROM Comparison}
-\label{cat25160_vs_at24c256}
-\end{table}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|}
-\hline
-\textbf{Feature} & \textbf{IS62WVS2568GBLL-45NLI-TR} & \textbf{23LC1024} \\
-\hline
-Memory Size & 256Kb & 1Mb \\
-Interface & Parallel & SPI \\
-Access Time & 45ns & 50ns \\
-Power Consumption & Low & Low \\
-Operating Voltage & 2.7V–3.6V & 2.7V–3.6V \\
-Cost & ~\$2.50 & ~\$2.00 \\
-\hline
-\end{tabular}
-\caption{IS62 vs. 23LC1024 SRAM Comparison}
-\label{is62_vs_23lc1024}
-\end{table}
 
 \newpage
 \quickfigure{pcb-design-layout.png}{15cm}{PCB Design Layout}{pcb-design-layout}
