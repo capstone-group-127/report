@@ -1118,7 +1118,7 @@ Cost & ~\$2.50 & ~\$2.00 \\
 \par These components collectively form a robust and efficient embedded system that meets performance, power, and interface demands.
 \par While careful component selection was critical for ensuring the electrical and functional performance of the Harm Drone system, the physical packaging of the PCB played an equally important role in protecting those components and supporting deployment in real-world environments. To guide our enclosure design, we conducted a comparative analysis of commercial drone packaging solutions, focusing on materials, structural design, and accessibility. This helped ensure that our custom 3D-printed case would not only house the electronics effectively but also balance durability, weight, and field serviceability.
 \par While thoughtful component selection was essential to meeting the electrical and performance requirements of the Harm Drone system, these components could not function optimally without a PCB layout that supports their integration. The physical arrangement and routing of the board play a critical role in preserving signal integrity, ensuring proper power distribution, and maintaining system reliability. Accordingly, the following section outlines the key design considerations that informed the layout of the PCB, with special emphasis on supporting high speed communication interfaces, compact form factor, and mechanical compatibility with the drone's structure.
-\section{Hardware Design}
+\subsection{Hardware Design}
 \subsection{Theory of Operation}
 
 This system consists of three primary subsystems: reliable power distribution, data storage, and stable communication. The following sections describe each subsystem and its operation in detail.
@@ -1142,6 +1142,7 @@ For communication, the four USB-A ports connect to a USB hub, which communicates
 For data storage, the SD card uses SPI1, while the EEPROM and SRAM share SPI2. The SD card connects via Port A pins 5 (SCK1), 6 (MISO1), and 7 (MOSI1). Chip select lines use Port B pins 0 (SD card), 1 (EEPROM), and 2 (SRAM). SPI2 uses Port B pin 10 (SCK2), pin 14 (MISO2), and pin 15 (MOSI2). These pins were chosen based on STM32 peripheral mapping and PCB layout considerations.
 
 This design allows the microcontroller to coordinate power management, handle real-time sensor data, and log mission data efficiently while meeting electrical and mechanical constraints.
+
 \section{PCB Design}
 \subsection{PCB Layout and Design Considerations – Overall}
 The design of this PCB is subject to several critical constraints to ensure optimal performance and compatibility within the drone’s system. One of the primary concerns is maintaining USB 2.0 signal integrity. This requires careful routing of the USB data lines to minimize interference, preserve signal quality, and ensure reliable data transmission. In order to accomplish this, several criteria must be met. 
