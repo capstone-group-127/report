@@ -136,13 +136,13 @@ A statement declaring that the designers have considered any impact to the envir
 Group 127 would like to acknowledge the invaluable support and assistance provided by faculty members of the University of Nebraska.
 \teenyparagraph{Dr. Herbert Harms}'s enthusiasm for drone-based research and data collection was what inspired Group 127 to begin the project, and his continued financial support allowed us to deliver a completed product.
 \teenyparagraph{Dr. Hamid Sharif}'s lessons on PCB design, architecture, and more specifically, USB communication, were invaluable to the completion of the project.
-\teenyparagraph{Mr. Detloff}'s instruction regarding working as a multi-disciplinary, high-performance engineering team helped us to effectively distribute work, complete milestones, and finalize the project effectively.
+\teenyparagraph{Prof. Herbert Detloff}'s instruction regarding working as a multi-disciplinary, high-performance engineering team helped us to effectively distribute work, complete milestones, and finalize the project effectively.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                     Executive Summary                                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\section*{Executive Summary (1 page)}
+\section*{Executive Summary}
 
 %\subsection*{Foreword}
 %\begin{itemize}[noitemsep]
@@ -183,7 +183,7 @@ Group 127 would like to acknowledge the invaluable support and assistance provid
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         Introduction                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction (3-6 pages)}
+\section{Introduction}
 %The introduction should orient the reader to the topic of the report by including the following:
 %\begin{itemize}[noitemsep]
  %   \item \textbf{The problem} - Explain the problem that is addressed in the report.
@@ -273,7 +273,7 @@ By following this structure, the report ensures clarity for both technical and n
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                    Problem Formulation                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Problem Formulation (3-6 pages)}
+\section{Problem Formulation}
 \subsection{Problem Statement}
 %State the problem to be solved as indicated by the need (the university, industry sponsor, or self-proposed). Present the objectives and expectations of the need and constraints given to the problem.
 \par In many academic and research applications, there is a growing demand for reliable and cost-effective unmanned aerial systems (UAS) capable of collecting and storing high fidelity environmental or system data. However, current drone systems used in industry and academia frequently rely on expensive proprietary sensors, specialized storage modules, and wireless transmission protocols that are not only costly, but also introduce reliability risks in field conditions. The result is a significant barrier to entry for budget conscious research teams, student projects, and field operations requiring autonomy, robustness, and open platform support.
@@ -363,7 +363,7 @@ By following this structure, the report ensures clarity for both technical and n
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Project Design Requirements, Specifications, and Success Criteria     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Project Design Requirements, Specifications, and Success Criteria (3-6 pages)}
+\section{Project Design Requirements, Specifications, and Success Criteria}
 %\begin{itemize}[noitemsep]
   %  \item Give a clear set of design specifications for the project. The design specifications should be clear concise statements with a specific metric and an appropriate value.
   %  \item The specifications should provide an unambiguous measure of the success of the final design in meeting the need and constraints associated with the design problem.
@@ -484,7 +484,7 @@ DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone c
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         Concept Development, Synthesis, and Process Description          %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Concept Development, Synthesis, and Process Description (5-10 pages)}
+\section{Concept Development, Synthesis, and Process Description}
 \subsection{Literature Review}
 Give a brief summary of the key literature that has been researched and used in the design effort. This can include textbooks, handbooks, technical papers, technical reports, web sources, codes and regulations. A summary of similar designs, processes, or techniques can also be discussed to show the strengths and weaknesses of your design compared to others. Indicate whenever the design process was supported by previous coursework.
 
@@ -494,8 +494,33 @@ Show that design methods were used to generate several conceptual solutions to t
 \subsection{Concept Reduction}
 Show that a judicial decision-making process was used to reduce the number of possible conceptual solutions to a single (optimal) solution that is to be implemented and verified and/or validated by the end of the project. Discuss why alternative solutions were rejected/chosen over other solutions. Describe the criteria used to evaluate potential solutions. Substantiate that the proposed final concept is the optimal choice in providing the functionality necessary while best meeting the specified constraints of the design problem. Document in detail the decision-making process.
 
-\subsection{Production Schedule (1-2 pages)}
+\subsection{Production Schedule}
 Discuss the phases of the design and implementation of your project. (PERT charts, Gantt charts, or OPPMs may be appropriate in the discussion) Recommend any improvements that could have been made in the scheduling and planning.
+
+\section{Project Design and Implementation Timeline}
+
+The Harm Drone project was developed over a 17-week period, progressing through clearly defined phases of planning, design, prototyping, development, testing, and finalization. Below is a week-by-week breakdown of the project's evolution.
+
+\subsection*{Weeks 1–2: Planning and Requirements}
+The first two weeks focused on project kickoff activities. Team roles were assigned, initial goals were established, and a feasibility assessment was performed. By Week 2, the team defined high-level system requirements, identified key components, and began evaluating technical constraints including environmental and regulatory considerations.
+
+\subsection*{Weeks 3–5: System Architecture and Design}
+During Weeks 3 through 5, the team designed the system's architecture. A block diagram was developed outlining subsystems and communication protocols. The PCB layout was initiated alongside enclosure sizing constraints. By Week 5, decisions regarding USB protocols, memory, and power systems were finalized, and a design review was conducted.
+
+\subsection*{Weeks 6–7: Prototyping and Component Acquisition}
+Weeks 6 and 7 involved finalizing the 3D enclosure design and ordering components. PCB fabrication for the first prototype was completed, and a PLA enclosure was 3D printed. Component arrival was scheduled to overlap with early testing procedures.
+
+\subsection*{Weeks 8–10: Hardware and Software Development}
+Development efforts ramped up in Weeks 8 through 10. The team assembled the PCB and conducted initial hardware validation. Concurrently, firmware development began, including USB sensor integration and SD card file system setup. By Week 10, multi-sensor support and basic data logging functionality were implemented.
+
+\subsection*{Weeks 11–13: System Testing and Validation}
+The focus during Weeks 11 to 13 was full system testing. This included verifying data transfer from USB sensors to SD card storage, testing data persistence after power loss, and checking compliance with IEEE 1789-2015 flicker safety standards. Environmental and thermal stress testing was also performed to ensure durability and reliability.
+
+\subsection*{Weeks 14–15: Optimization and Final Revisions}
+In Weeks 14 and 15, the team performed bug fixes, streamlined the firmware, and documented key system behavior. Final hardware validation and power optimization were completed, ensuring the system was stable and met design criteria.
+
+\subsection*{Weeks 16–17: Final Report and Presentation}
+The last two weeks were devoted to finalizing the project deliverables. All report sections, Gantt and PERT charts, and tables were compiled and formatted. In Week 17, the team conducted its final presentation and submitted the completed documentation for evaluation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Detailed Engineering Analysis and Design Product Presentation          %
@@ -510,6 +535,157 @@ Discuss the phases of the design and implementation of your project. (PERT chart
     %\item PCB Design (HW 5)
     %\item Software Design (not a listing of code) (HW 7)
 %\end{itemize}
+\subsection{Safety \& Reliability Analysis}
+Due to the sensitive nature of operating a drone, safety and reliability concerns were thoroughly enumerated, evaluated, and addressed according to MIL-HDBK-217F.
+\subsubsection{Component Evaluation}
+Each of the components used in the Harm Drone engineering project was individually evaluated against the relevant standards. 
+\paragraph{Microcontroller}
+\par The STM32F072CBT6 was chosen for a reliability analysis due to it's integral role in the embedded system. It's also the device with the most transistors, and complex devices have more reasons to fail.
+\begin{table}[htbp!]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Parameter Name & Description & Value & Comments \\ \hline
+$C_1$ & Die Complexity Failure Rate & 0.56 & 32-bit processor \\ \hline
+$C_2$ &  Package Failure Rate & 0.025 & 48 functional pins \\ \hline
+$\pi_E$ & Environment Factor & 5.0 & $A_{UC}$ \\ \hline
+$\pi_Q$ & Quality Factor & 1.0 & Not produced to the MIL spec \\ \hline
+$\pi_T$ & Temperature Factor & 2.1 & Range of 70C \\ \hline
+$\pi_L$ & Learning Factor & 1.0 & Produced for 5 years \\ \hline
+\end{tabular}
+\end{table}
+\par Using the indicated equation to calculate the total failure:
+\[ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L\]
+\[ \lambda_p = (0.56*2.1 + 0.025*5) * 1.0 * 1.0 = 1.3\]
+\[ \lambda_p^{-1} = 0.76923077 \]
+\par The results indicate that this part has an average time to failure of 769,230 hours. This is a reliable part, but the estimated time to failure is shorter than the rest of the components in the system. To increase reliability, a better microcontroller could be chosen, built to military specification. Otherwise, a processor with less bits or pins could be used to decrease complexity.
+\paragraph{Buck Converter}
+\par The LMR51430 buck converter was chosen for a reliability analysis due to its role in providing power to the entire system. Power for both the system and the drone will be provided from an on-board XT60 connection to a battery, so determining the reliability of this converter is useful for determining the longevity of the system.
+\begin{table}[htbp!]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Parameter Name & Description & Value & Comments \\ \hline
+$C_1$ & Die Complexity Failure Rate & 0.1 & Simple power converter control logic \\ \hline
+$C_2$ &  Package Failure Rate & 0.005 & 6-pin SOT-23 package \\ \hline
+$\pi_E$ & Environment Factor & 5.0 & $A_{UC}$ \\ \hline
+$\pi_Q$ & Quality Factor & 1.0 & Not produced to MIL spec \\ \hline
+$\pi_T$ & Temperature Factor & 2.1 & Range of 70C \\ \hline
+$\pi_L$ & Learning Factor & 1.0 & 3 years production \\ \hline
+\end{tabular}
+\end{table}
+\par Using the indicated equation to calculate the total failure:
+\[ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L\]
+\[ \lambda_p = (0.1*2.1 + 0.005*5) * 1.0 * 1.0 = 0.24\]
+\[ \lambda_p^{-1} = 4.26 \]
+\par The results indicate that this part has an average time to failure of 4,255,319 hours. This makes sense, because the simplicity and fixed nature of the buck converter means it will last longer under load. The reliability could be increased by finding a more reliable part with better construction, or by using active cooling to decrease temperature fluctuations. Otherwise, this part is easily serviceable on the product, as it's physically separated from other, more sensitive ICs.
+\paragraph{LDO Regulator} The XC6210 LDO regulator was chosen for a reliability analysis because it's a critical component for providing a stable voltage to parts of the system.  Determining its reliability is important for assessing overall system longevity.
+
+\begin{table}[htbp!]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Parameter Name & Description & Value & Comments \\ \hline
+$C_1$ & Die Complexity Failure Rate & 0.03 & Simple linear regulator \\ \hline
+$C_2$ &  Package Failure Rate & 0.0028 & SOT-25 package, 5 pins. \\ \hline
+$\pi_E$ & Environment Factor & 5.0 & $A_{UC}$ \\ \hline
+$\pi_Q$ & Quality Factor & 1 & Not produced to MIL spec \\ \hline
+$\pi_T$ & Temperature Factor & 2.1 & Range of 70C \\ \hline
+$\pi_L$ & Learning Factor & 1.0 & 2 years production \\ \hline
+\end{tabular}
+\end{table}
+
+\par Using the indicated equation to calculate the total failure:
+$$ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L$$
+$$ \lambda_p = (0.03 * 2.1 + 0.0028 * 5.0) * 1.0 * 1.0 = 0.08 $$
+$$ \lambda_p^{-1} = 12.99 $$
+\par The results indicate that this part has an average time to failure of 12,990,000 hours.  This result is significantly higher than that of the buck converter from before, which makes intuitive sense. The LDO should run cooler and have fewer points of failure compared to a switching supply. To increase the reliability, better cooling or a Mil-Spec part could be considered.
+\newpage
+\paragraph{Inductor}
+\begin{table}[htbp!]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Parameter Name & Description & Value & Comments \\ \hline
+$\lambda_b$ & Base Failure Rate & 0.000030 & Fixed inductor \\ \hline
+$\pi_T$ & Temperature Factor & 1.8 & Range of 70C \\ \hline
+$\pi_Q$ & Quality Factor & 3.0 & Not to milspec \\ \hline
+$\pi_E$ & Environment Factor & 5.0 & $A_{UC}$ \\ \hline
+\end{tabular}
+\end{table}
+\par Using the indicated equation to calculate the total failure:
+$$ \lambda_p = \lambda_b * \pi_T * \pi_Q * \pi_E $$
+$$ \lambda_p = 0.00003 * 1.8 + 3.0 * 5.0 = 0.08 $$
+$$ \lambda_p^{-1} = 15.000054 $$
+\par The results indicate that this part has an average time to failure of 15,000,054 hours.  This is due to the fixed nature of the inductor, as an alternative to a variable inductor which may wear more quickly. This also means it will fail after some other parts in the system, so reliability concerns are best focused on the previous parts.
+
+\subsubsection{Safety Analysis}
+\paragraph{C95}
+\par IEEE Standard C95.1 dictates standards by which devices operating in public areas (and near others) must adhere to, in order to preserve the safety of those nearby. These guidelines include guidance for electric, magnetic, and electromagnetic fields generated by a device.
+\par To summarize, the drone, as currently designed, does not have the ability to produce electromagnetic fields in excess of the IEEE Standard C95.1 in a manner to be considered an environmental hazard. This could change once add-on sensors are incorporated.
+\par For add-on components, the team will need to be cognizant of the specifications required of these components for operation in the specified frequency bands. These frequencies can affect the choice of hardware, including antennae and transceivers. The sensors currently being tested fulfill these specifications, with their generated fields being low-power. This is partially due to their connection over USB, which only allows for 500mA.
+
+\paragraph{National Electrical Safety Code} The National Electrical Safety Code is a standard used in the United States in regards to the safe installation, operation, and maintenance of power and communication utility systems. The code has four parts. Part 1 talks about rules regarding substations, Part 2 enumerates overhead line rules, Part 3 enumerates the rules regarding underground lines, and Part 4 discusses work rules when working with power lines. The Harm Drone system does not use mains power, and battery charging from AC power is handled by an external battery balance charger. Thus, the National Electrical Safety Code is out of scope for this analysis.
+\subsubsection{FMECA}
+\paragraph{Types of Failure}
+\par For the purposes of this analysis, two failure types will be defined. The separation between these two types of failure will be guided by how they affect the functionality of the drone. Since the Harm Drone board functions as an add-on board to the main drone, it is possible for the main board to be non-operational and not affect the flight of the drone.
+\subparagraph{Non-critical Failure}
+$\lambda = 10^{-5}$
+\par For this analysis, a non-critical failure is that which compromises the board in a way that does not affect the operation of the drone. This could include logic errors, watchdog-related resets, or even a complete shutdown of the microcontroller. Since communication with the drone is done serially, it's possible for a full system failure without affecting the autonomous flight functionality of the drone.
+\subparagraph{Critical Failure}
+$\lambda = 10^{-9}$
+\par Any other failure that is not restricted to the domain of the add-on board will be classified as a critical failure. A critical failure could affect power, signals, or other resources the drone depends on to stay in the air. This is the most critical failure as damage to the drone or users should be avoided at all costs.
+\paragraph{Microcontroller}
+\par The schematic for the microcontroller and related circuitry can be seen in Figure \ref{main}.
+\subparagraph{Failure Conditions}
+\par When reviewing the microcontroller, the most apparent source of failure is the many forms of decoupling capacitors used to balance the various power and ground inputs to the controller.
+\subparagraph{Effects}
+\par The effect of this would most likely be an undefined state of the microcontroller that can be mostly associated with non-operation. Inputs and outputs will stop flowing through the system, and active data collection will stop. However, due to the isolation between the microcontroller and the critical power systems, this would not affect the drone's operation.
+\subparagraph{Criticality}
+\par Due to the mild effect a microcontroller failure would have on the drone system as a whole, this failure can be categorized as non-critical.
+\paragraph{Buck}\par The schematic for the buck converter and related circuitry can be seen in Appendix A, Figure \ref{buck}.
+\subparagraph{Failure Conditions}
+The buck converter uses precise passive values to support the range of voltages that are output by the onboard battery. This means that failure of any of these passive components could cause a malfunction in the buck converter.
+\subparagraph{Effects}
+The effect that a passive failure could have on the buck converter could range from decreased efficiency, decreased current, or even damage to the battery or downstream consumers. This includes the drone operation itself, which relies heavily on the battery to keep rotors running.
+\subparagraph{Criticality}
+Because the failure could affect the drone flight itself, this failure is critical. This failure also has the greatest chance of damaging internal circuitry of either device.
+\paragraph{LDO}
+\par The schematic for the LDO and related circuitry can be seen in Appendix A, Figure \ref{LDO}.
+\subparagraph{Failure Conditions}
+The LDO is a fairly simple integrated circuit, relying on no precise values of passives to fulfill its role. This indicates that the circuit has very few failure conditions. If a short were to occur on the printed circuit itself, it could malfunction the LDO.
+\subparagraph{Effects}
+A failure condition that causes the LDO to malfunction will affect power to the microcontroller and other 3.3V elements, such as the serial connection, as well as SRAM and EEPROM. However, this is downstream from the main power converter, and wouldn't affect other elements.
+\subparagraph{Criticality}
+Due to the containment of any issues with the LDO to the logic portion of the circuit, the failure criticality of the LDO can be categorized as non-critical. The microcontroller could shut down without affecting the flight of the drone and the safety of the user.
+\paragraph{SPI}
+\par The schematic for the SPI communication with the SD card, SRAM, and EEPROM can be seen in Appendix A, Figure \ref{SPI}.
+\subparagraph{Failure Conditions}
+The SPI circuitry has several failure cases. The SD card specifically requires precise passive values to enable the SPI mode on the card. The SRAM and EEPROM require less precise passives and instead rely only on the MOSI and MISO lines, but these could be shorted, causing communication errors.
+\subparagraph{Effects}
+If communication is affected with the SPI bus, data storage and collection will be impacted. The controller could be unable to log information to the card, nor store it temporarily on the SRAM or use configuration values from the EEPROM.
+\subparagraph{Criticality}
+A failure of communication in SPI will only affect the board, not the power system or the drone flight itself. Thus, this can be categorized as a non-critical failure.
+\paragraph{USB}
+\par The schematic for the USB hub, ports, and related circuitry can be seen in Appendix A, Figure \ref{USB}.
+\subparagraph{Failure Conditions}
+The USB hub does utilize the main buck converter power system to draw up to 2A at 5V, so this gives it a larger failure surface. A short could affect the battery and the drone's flight.
+\subparagraph{Effects}
+If the USB hub were to malfunction and use too much power, the drone would be unable to draw the power it needs for the rotors, possibly dropping the drone out of the sky.
+\subparagraph{Criticality}
+Because the USB hub is connected centrally to the root power system, a failure of this system can be categorized as critical.
+\paragraph{USB Serial}
+\par The schematic for the USB-to-serial conversion circuitry can be seen in Appendix A, Figure \ref{usb-serial}.
+\subparagraph{Failure Conditions}
+The USB-to-serial circuit requires specific passives on the port and converter to ensure conversion from USB-level voltage to TTL. If these passives were to short or fail, serial communication with the drone could be interrupted.
+\subparagraph{Effects}
+If communication with the drone were to be interrupted, the drone couldn't communicate information such as coordinates and images, while the board would be unable to send the drone a new waypoint goal or detect when to save data.
+\subparagraph{Criticality}
+This failure case doesn't affect the drone's flight, only the ability to gather data, so it doesn't affect a person's health, making it a non-critical failure.
+\subsubsection{Summary}
+\subparagraph{} This report details a safety and reliability analysis conducted on the Harm Drone add-on board. A reliability analysis was performed on key components including the microcontroller, buck converter, LDO regulator, and inductor, with calculations to estimate their mean time to failure (MTTF). The results suggest the microcontroller has the shortest estimated time to failure, indicating it as an area for potential improvement. 
+\par The safety analysis addresses IEEE Standard C95.1 regarding electromagnetic field exposure and the National Electrical Safety Code, concluding that the drone's current design does not pose a significant electromagnetic hazard and that the NESC is out of scope for this task. 
+\par A Failure Mode, Effects, and Criticality Analysis (FMECA) identifies potential failure modes, their effects, and criticality levels for components like the microcontroller, buck converter, LDO, SPI communication, USB hub, and USB-to-serial converter. The FMECA categorizes failures as either non-critical (affecting only the add-on board) or critical (potentially impacting the drone's flight and safety). Critical failures, such as those associated with the buck converter and USB hub, necessitate higher-quality components and/or redundancy to minimize risk.
 \subsection{Software Design}
 \par The Harm Drone design project constitutes multiple software components and modules working together to produce the desired results. As a part of the design process, many considerations were taken to ensure that these software components were individually verifiable, while ensuring they could work together to form a cohesive system.
 \par This section will explain constraints incurred by the development process, in both hardware specifications and general system layouts. Then, given these constraints, the analysis will deduce a set of distinct software modules that can be developed, tested, and completed separately, while also maintaining their connection to the whole system.
@@ -604,7 +780,9 @@ To facilitate distribution of tasks, unit testing, as well as code cleanliness, 
 \paragraph{SD Card Manager} The SD card manager is a thin wrapper around the built-in STM FAT filesystem library. When the microcontroller boots, the Main program will initialize all memory, then start the SD card manager. The SD card manager uses the \verb|CARD_DETECT| GPIO pin to determine if an SD card is inserted. If a valid card is detected, the card is placed into SPI mode by cycling the clock 74 times while holding the data low. Once initialization is complete, control of the bus is passed to the filesystem library. STM includes commands to read, write, and manipulate files, but the card manager contains shims for each of these functionalities to redirect their effects from a virtual drive to the SPI commands necessary to manipulate the SD card in the same way.
 
 \paragraph{Memory Manager} Similar to the SD card manager, the memory manager is another process called upon by the main loop. When data is received from the attached USB sensors, this data is mirrored to both the SD card and the volatile memory to allow for recovery of failed transfers. The memory manager also implements a key-value store, allowing for configuration values like data format and operational timing (how long to wait before takeoff).
-\subsection{Packaging Constraints (HW 4)}
+\subsubsection{Summary}
+In summary, the Harm Drone project uses multiple software components to support and augment the operation of the original drone and flight control software. A middleware program runs on the drone to allow for sharing information with the microcontroller, while the microcontroller handles sensor reading and data logging. The software is architected in a way that allows for unit testing with defined inputs and outputs, while also ensuring that each portion of the system remains cohesive during normal operation.
+\subsection{Packaging Constraints}
 \subsubsection{Commercial Product Packaging}
 
 \par To refine the \textit{Harm Drone}’s PCB packaging design, we analyzed two commercial drones with plastic based enclosures: the Parrot AR.Drone and the Parrot Anafi USA. Both drones emphasize lightweight and durable construction, making them useful comparisons for our 3D-printed plastic case. However, they differ in structural integrity, modularity, and accessibility.
@@ -673,7 +851,7 @@ To facilitate distribution of tasks, unit testing, as well as code cleanliness, 
 
 \par With an estimated PCB size of 95.5\,mm $\times$ 40.228\,mm $\times$ 17.68\,mm, the layout maintains clear separation of power and data lines, ensures efficient signal routing, and aligns precisely with enclosure cutouts. We included the final footprint layout in Appendix C, detailing component placement, trace routing, and external port alignment.
 
-\subsection{Design Constraints and Component Selection Rationale (HW 2)}
+\subsection{Design Constraints and Component Selection Rationale}
 
 \subsubsection{Computation Requirements}
 
@@ -741,7 +919,7 @@ The project operates under a \$420 budget, covering all hardware. To stay within
 
 Despite budget limits, the design must remain competitive with commercial offerings, many of which benefit from economies of scale.
 
-\subsection{Component Selection Rationale}
+\subsubsection{Component Selection Rationale}
 
 Component choices prioritized efficient power management, reliable communication, compact footprint, and low power consumption.
 
@@ -844,13 +1022,13 @@ Include a full parts list for the entire design if applicable. All standard part
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                    Reliability and Safety Analysis                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Reliability and Safety Analysis (HW 6)}
+\section{Reliability and Safety Analysis}
 It is the ethical responsibility of the engineer to ensure that the solution to the design problem is safe to the public and the environment. This is substantiated by showing that Design for Safety methods were employed in the design process and documented through a Hazards and Failure Analysis. Discuss the results of the analysis and how safety was incorporated into the design.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %               Social/Political/Environmental Impact                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Social/Political/Environmental Impact (HW 8)}
+\section{Social/Political/Environmental Impact}
 
 \par We designed the Harm Drone PCB with a strong emphasis on ethical engineering and social responsibility. Because the board collects real-time data in potentially sensitive environments, we intentionally avoid wireless data transmission, reducing interception risks and aligning with ethical data handling practices \cite{ieee_ethics}, \cite{ccpa}.
 
@@ -906,7 +1084,7 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %            Discussion, Conclusions, and Recommendations                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion, Conclusions, and Recommendations (2-4 pages)}
+\section{Discussion, Conclusions, and Recommendations}
 %Restate the problem that gave rise to the report. Summarize the main points and the approach that was taken. Summarize the design performance. Provide recommendations, explaining subsequent action or posing specific questions for investigations. Discuss the lessons learned.
 \subsection{Restating the Problem}
 
@@ -974,7 +1152,7 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         User’s Manual                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{User’s Manual (1-3 pages)}
+\section{User’s Manual}
 %Provide a user’s manual for the operation and maintenance of the system designed in the project. The operators' manual for a Senior Capstone Design Project will give complete and detailed step-by-step operating instructions such that anyone can operate the device. If it is necessary to calibrate any part of the project to assure its proper operation, the calibration procedure must be a part of this manual. It will contain all applicable safety warnings that apply to operation and/or operator maintenance of the project.
 
 %The user's manual will include all initialization and/or set up instructions needed for the proper operation of the project. If the project is done for yourself, the manual may be bound in the report and need only be detailed enough that you would be able to operate it after a long period of time away from it.
