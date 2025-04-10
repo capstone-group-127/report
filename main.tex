@@ -495,31 +495,56 @@ Show that design methods were used to generate several conceptual solutions to t
 Show that a judicial decision-making process was used to reduce the number of possible conceptual solutions to a single (optimal) solution that is to be implemented and verified and/or validated by the end of the project. Discuss why alternative solutions were rejected/chosen over other solutions. Describe the criteria used to evaluate potential solutions. Substantiate that the proposed final concept is the optimal choice in providing the functionality necessary while best meeting the specified constraints of the design problem. Document in detail the decision-making process.
 
 \subsection{Production Schedule}
-Discuss the phases of the design and implementation of your project. (PERT charts, Gantt charts, or OPPMs may be appropriate in the discussion) Recommend any improvements that could have been made in the scheduling and planning.
-
-\section{Project Design and Implementation Timeline}
+%Discuss the phases of the design and implementation of your project. (PERT charts, Gantt charts, or OPPMs may be appropriate in the discussion) Recommend any improvements that could have been made in the scheduling and planning.
 
 The Harm Drone project was developed over a 17-week period, progressing through clearly defined phases of planning, design, prototyping, development, testing, and finalization. Below is a week-by-week breakdown of the project's evolution.
 
-\subsection*{Weeks 1–2: Planning and Requirements}
-The first two weeks focused on project kickoff activities. Team roles were assigned, initial goals were established, and a feasibility assessment was performed. By Week 2, the team defined high-level system requirements, identified key components, and began evaluating technical constraints including environmental and regulatory considerations.
+\subsubsection*{Weeks 1–2: Initial Hardware Testing and Software Parallelization}
 
-\subsection*{Weeks 3–5: System Architecture and Design}
-During Weeks 3 through 5, the team designed the system's architecture. A block diagram was developed outlining subsystems and communication protocols. The PCB layout was initiated alongside enclosure sizing constraints. By Week 5, decisions regarding USB protocols, memory, and power systems were finalized, and a design review was conducted.
+During the first two weeks, the team focused on validating the initial hardware and laying the foundation for the software stack. Testing of the first PCB revision was completed, during which a design issue was identified that required correction. To address this, the team began redesigning the PCB and prepared for a second fabrication order.
 
-\subsection*{Weeks 6–7: Prototyping and Component Acquisition}
-Weeks 6 and 7 involved finalizing the 3D enclosure design and ordering components. PCB fabrication for the first prototype was completed, and a PLA enclosure was 3D printed. Component arrival was scheduled to overlap with early testing procedures.
+To maintain momentum and prevent delays, development of the flight control software progressed in parallel. This decision ensured that the software would be ready for integration immediately upon arrival of the updated PCB. This parallel approach allowed the team to optimize scheduling efficiency and continue advancing project deliverables despite hardware-related setbacks.
 
-\subsection*{Weeks 8–10: Hardware and Software Development}
-Development efforts ramped up in Weeks 8 through 10. The team assembled the PCB and conducted initial hardware validation. Concurrently, firmware development began, including USB sensor integration and SD card file system setup. By Week 10, multi-sensor support and basic data logging functionality were implemented.
+\subsubsection*{Weeks 2–3: PCB Assembly, Microcontroller Integration, and Software Expansion}
 
-\subsection*{Weeks 11–13: System Testing and Validation}
-The focus during Weeks 11 to 13 was full system testing. This included verifying data transfer from USB sensors to SD card storage, testing data persistence after power loss, and checking compliance with IEEE 1789-2015 flicker safety standards. Environmental and thermal stress testing was also performed to ensure durability and reliability.
+Following the redesign and receipt of the updated PCB, the team successfully assembled the board and completed initial testing. With hardware validation nearing completion, efforts shifted toward microcontroller integration to ensure seamless communication across system components.
 
-\subsection*{Weeks 14–15: Optimization and Final Revisions}
+Simultaneously, software development accelerated. The team focused on implementing core functionalities, including flight control algorithms, GPS navigation protocols, and the data collection framework. These foundational software modules are critical for autonomous flight and onboard telemetry logging.
+
+To support upcoming integration tasks, additional sensors were identified and ordered. This ensured that all necessary components would be available in time to conclude the hardware development phase. The combined emphasis on hardware finalization and software advancement positioned the team well for full-system integration in the following weeks.
+
+\subsubsection*{Weeks 4–5: Sensor Testing, Peripheral Validation, and Software Refinement}
+
+During Weeks 4 and 5, the team received three out of the four sensors planned for integration. Preparations were made to begin testing these components immediately upon arrival to maintain development momentum.
+
+On the hardware side, validation of critical communication protocols and memory components was completed. The team successfully tested the SPI bus, as well as the EEPROM and SRAM modules, confirming reliable operation and proper interfacing with the microcontroller.
+
+Meanwhile, software development continued in parallel. Although not yet finalized, the team made steady progress toward implementing the full feature set. With core functions nearing completion, focus began to shift toward integrating the newly acquired sensors and refining the software to ensure seamless and reliable system behavior in preparation for full hardware-software integration.
+
+\subsubsection*{Weeks 6–8: Hardware Completion, Software Integration, and PSSC Progress}
+
+During Weeks 6 through 8, the team achieved several major project milestones. All Yocto sensors were tested and confirmed to be fully functional, and the arrival of the final outstanding sensor officially marked the completion of the hardware development phase.
+
+With the hardware finalized, efforts shifted toward flight software development. A parallel workflow was maintained, allowing the sensor and data systems to be prepared for integration while core flight functionalities were still under development. As part of this strategy, the team finalized PCB testing, validated USB communication, and began implementing SD card data logging capabilities.
+
+During this period, critical issues were identified in the USB hub and microcontroller interface, prompting the decision to revise and reorder the PCB. While awaiting the new board, the team prioritized software development to maintain progress. Key efforts included testing project-specific success criteria (PSSCs), enabling SD card read/write functionality, and installing VirtualHub on the drone's onboard computer to detect and interface with the Yocto sensors.
+
+By Week 8, the newly ordered PCB had arrived and assembly began immediately. In parallel, the team verified successful USB temperature sensor detection and confirmed that sensor readings could be logged to the SD card—meeting one of the defined PSSCs. In the same timeframe, another PSSC was completed, reflecting steady system-level progress.
+
+To conclude this development phase, the team prepared for a flight test under 10-knot wind conditions. The goal was to demonstrate autonomous drone navigation to four user-defined GPS coordinates. If successful, this test would satisfy two additional PSSCs, bringing the system significantly closer to final integration and validation.
+
+\subsubsection*{Weeks 9–11: Flight Test Setback, Design Reevaluation, and Recovery Planning}
+
+During Weeks 9 through 11, the team conducted a flight test of the drone to validate autonomous navigation and system integration. Unfortunately, the test resulted in an unexpected malfunction, which led to the loss of the drone. While this represented a significant setback, it prompted a thorough reassessment of the system design and risk management strategies.
+
+In response, the team developed a revised plan focused on improving system robustness and long-term reliability. This included finalizing a new PCB design that would be more versatile and better aligned with the updated project-specific success criteria (PSSCs). Key improvements targeted enhanced sensor integration, fault tolerance, and communication stability.
+
+By the end of Week 11, the updated PCB had been finalized, and the team initiated procurement of the required components. Preparations were made for board assembly and revalidation to ensure that development could continue with minimal further disruption. Despite the challenges, this phase marked a turning point in refining the system architecture and ensuring the project remained on track for successful completion.
+
+\subsubsection*{Weeks 12–14: Optimization and Final Revisions}
 In Weeks 14 and 15, the team performed bug fixes, streamlined the firmware, and documented key system behavior. Final hardware validation and power optimization were completed, ensuring the system was stable and met design criteria.
 
-\subsection*{Weeks 16–17: Final Report and Presentation}
+\subsubsection*{Weeks 15–17: Final Report and Presentation}
 The last two weeks were devoted to finalizing the project deliverables. All report sections, Gantt and PERT charts, and tables were compiled and formatted. In Week 17, the team conducted its final presentation and submitted the completed documentation for evaluation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
