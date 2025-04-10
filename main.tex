@@ -1118,8 +1118,8 @@ Cost & ~\$2.50 & ~\$2.00 \\
 \par These components collectively form a robust and efficient embedded system that meets performance, power, and interface demands.
 \par While careful component selection was critical for ensuring the electrical and functional performance of the Harm Drone system, the physical packaging of the PCB played an equally important role in protecting those components and supporting deployment in real-world environments. To guide our enclosure design, we conducted a comparative analysis of commercial drone packaging solutions, focusing on materials, structural design, and accessibility. This helped ensure that our custom 3D-printed case would not only house the electronics effectively but also balance durability, weight, and field serviceability.
 \par While thoughtful component selection was essential to meeting the electrical and performance requirements of the Harm Drone system, these components could not function optimally without a PCB layout that supports their integration. The physical arrangement and routing of the board play a critical role in preserving signal integrity, ensuring proper power distribution, and maintaining system reliability. Accordingly, the following section outlines the key design considerations that informed the layout of the PCB, with special emphasis on supporting high speed communication interfaces, compact form factor, and mechanical compatibility with the drone's structure.
-\section{Hardware Design}
-\subsection{Theory of Operation}
+\subsection{Hardware Design}
+\subsubsection{Theory of Operation}
 
 This system consists of three primary subsystems: reliable power distribution, data storage, and stable communication. The following sections describe each subsystem and its operation in detail.
 
@@ -1129,7 +1129,7 @@ The communication subsystem enables reliable data exchange between the microcont
 
 The data storage subsystem incorporates three SPI memory devices to provide persistent and volatile data handling. A microSD card serves as the primary storage medium, capable of storing up to 4GB of sensor data. It operates at 3.3V. Additionally, the system includes a CAT25160VI-GT3 EEPROM (16 Kb) and a 23AA02M-I/SN SRAM (2 Mb), both powered at 3.3V. Together, these devices provide robust storage capacity for both mission-critical and temporary data.
 
-\subsection{Hardware Design Narrative}
+\subsubsection{Hardware Design Narrative}
 
 The STM32F072CB microcontroller functions as the core controller of the Harm Drone system. It interfaces with each of the three major subsystems: power, communication, and data storage. This section details how the microcontroller connects to each subsystem, which ports were selected, and the rationale behind those choices.
 
@@ -1142,8 +1142,8 @@ For communication, the four USB-A ports connect to a USB hub, which communicates
 For data storage, the SD card uses SPI1, while the EEPROM and SRAM share SPI2. The SD card connects via Port A pins 5 (SCK1), 6 (MISO1), and 7 (MOSI1). Chip select lines use Port B pins 0 (SD card), 1 (EEPROM), and 2 (SRAM). SPI2 uses Port B pin 10 (SCK2), pin 14 (MISO2), and pin 15 (MOSI2). These pins were chosen based on STM32 peripheral mapping and PCB layout considerations.
 
 This design allows the microcontroller to coordinate power management, handle real-time sensor data, and log mission data efficiently while meeting electrical and mechanical constraints.
-\section{PCB Design}
-\subsection{PCB Layout and Design Considerations – Overall}
+\subsection{PCB Design}
+\subsubsection{PCB Layout and Design Considerations – Overall}
 The design of this PCB is subject to several critical constraints to ensure optimal performance and compatibility within the drone’s system. One of the primary concerns is maintaining USB 2.0 signal integrity. This requires careful routing of the USB data lines to minimize interference, preserve signal quality, and ensure reliable data transmission. In order to accomplish this, several criteria must be met. 
 
 \par The most important of these is that the lengths of the traces for the positive and negative data lines match each other. Secondly, the use of vias must be minimized due to the imprecise nature of via manufacturing. Another concern when using vias for high speed signals is the possibility of via stubs—unused lengths of the via that can act as antennas and greatly degrade signal quality.
@@ -1154,14 +1154,14 @@ The design of this PCB is subject to several critical constraints to ensure opti
 
 \par Furthermore, the PCB must be sized to fit within the available space on the drone, which is 95 mm by 40 mm. Lastly, M3 drill holes must be spaced 57.5 mm apart for securing the PCB to the drone frame, ensuring both mechanical stability and ease of assembly.
 
-\subsection{PCB Layout and Design Considerations – Microcontroller}
+\subsubsection{PCB Layout and Design Considerations – Microcontroller}
 The design of this PCB is also influenced by the architecture of the microcontroller selected for this project. Most of the I/O pins are located on the right or bottom of the PCB, with only two pins located elsewhere. This placement necessitates positioning the MCU at the upper central location of the PCB to provide enough room to break out all relevant data lines.
 
 \par Power delivery is another key factor, with specific attention paid to the spacing of vias. These must be positioned to avoid being too close together to ensure that exclusion zones do not overlap, which could result in pins not being connected to any other part of the board.
 
 \par The design also needs to accommodate a stable 3.3V power supply, which will be explained further in the power supply discussion. In terms of communication routing, the USB pins are located on the right side of the microcontroller, while the SPI pins are positioned on the bottom. This placement influences the routing priority on the PCB. To ensure USB signal integrity, the USB lines were routed first, followed by the SPI lines.
 
-\subsection{PCB Layout and Design Considerations – Power Supply}
+\subsubsection{PCB Layout and Design Considerations – Power Supply}
 The power supply design of this PCB involves several key considerations to ensure efficient power distribution and minimize noise or interference. One of the primary elements is the use of copper pours, which help create low resistance paths for current—especially for high current traces. This technique is particularly important for the 15V connection to the buck converter, as the power draw on this section of the PCB could reach 30W over a short distance of less than 2 mm.
 
 \par A dedicated ground layer is crucial for maintaining signal integrity and providing a low resistance return path for all signals. This is essential for reducing electromagnetic interference (EMI) and ensuring the proper functioning of sensitive circuits.
