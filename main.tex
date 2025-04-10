@@ -967,7 +967,31 @@ Component choices prioritized efficient power management, reliable communication
 \par These components collectively form a robust and efficient embedded system that meets performance, power, and interface demands.
 \par While careful component selection was critical for ensuring the electrical and functional performance of the Harm Drone system, the physical packaging of the PCB played an equally important role in protecting those components and supporting deployment in real-world environments. To guide our enclosure design, we conducted a comparative analysis of commercial drone packaging solutions, focusing on materials, structural design, and accessibility. This helped ensure that our custom 3D-printed case would not only house the electronics effectively but also balance durability, weight, and field serviceability.
 \par While thoughtful component selection was essential to meeting the electrical and performance requirements of the Harm Drone system, these components could not function optimally without a PCB layout that supports their integration. The physical arrangement and routing of the board play a critical role in preserving signal integrity, ensuring proper power distribution, and maintaining system reliability. Accordingly, the following section outlines the key design considerations that informed the layout of the PCB, with special emphasis on supporting high speed communication interfaces, compact form factor, and mechanical compatibility with the drone's structure.
+\section{Hardware Design}
+\subsection{Theory of Operation}
 
+This system consists of three primary subsystems: reliable power distribution, data storage, and stable communication. The following sections describe each subsystem and its operation in detail.
+
+The power distribution subsystem provides regulated voltages to all other system components. It steps down voltage from a 14.8V, 1Ah battery using two regulation stages. First, the LMR51430 buck converter reduces the voltage to 5V. This 5V output powers various ICs and ports. Then, the XC6210A332MR-G LDO further steps the 5V down to 3.3V, which supplies the microcontroller and other peripherals. These two voltage regulation stages serve as critical elements of the system's electrical architecture.
+
+The communication subsystem enables reliable data exchange between the microcontroller and both onboard sensors and the host device. Four USB-A ports, arranged as two stacked pairs, provide interfaces for up to four USB sensors. These ports draw power from the 5V rail and route data to a USB hub, which multiplexes the signals and forwards them to the microcontroller. The hub operates at 3.3V from the LDO. For host communication, the design includes a USB-C port connected to an FT231XS-R USB-to-UART interface. This interface converts USB signals to UART, then transmits them to the microcontroller via 5V power. Together, these components form the complete communication path.
+
+The data storage subsystem incorporates three SPI memory devices to provide persistent and volatile data handling. A microSD card serves as the primary storage medium, capable of storing up to 4GB of sensor data. It operates at 3.3V. Additionally, the system includes a CAT25160VI-GT3 EEPROM (16 Kb) and a 23AA02M-I/SN SRAM (2 Mb), both powered at 3.3V. Together, these devices provide robust storage capacity for both mission-critical and temporary data.
+
+\subsection{Hardware Design Narrative}
+
+The STM32F072CB microcontroller functions as the core controller of the Harm Drone system. It interfaces with each of the three major subsystems: power, communication, and data storage. This section details how the microcontroller connects to each subsystem, which ports were selected, and the rationale behind those choices.
+
+For each interface, the microcontroller offers multiple pin options. For example, it can output the SPI clock signal on different pins, allowing flexibility in PCB layout. The team employed an elimination-based approach to pin selection, prioritizing subsystems with fewer pin options. This strategy ensured efficient routing for critical signals like SPI clocks and analog inputs while reserving flexible lines for simpler tasks like binary status detection.
+
+The power subsystem supplies the microcontroller with 3.3V across four power pins. This 3.3V rail also powers the USB hub, EEPROM, SRAM, and SD card. A 5V rail powers the USB ports and the USB-to-UART IC. The LDO derives the 3.3V from the 5V rail, while the buck converter derives the 5V from the 14.8V battery. The selected regulators were chosen based on current demand and voltage requirements of connected ICs.
+
+For communication, the four USB-A ports connect to a USB hub, which communicates with the microcontroller. The USB hub uses the 48 MHz clock output from Port A pin 8. Data+ and Data- are assigned to Port A pins 12 and 11, respectively, as specified in the datasheet. Suspend and reset signals connect to Port B pins 13 and 14. To communicate with the host system, the USB-C port connects to a USB-to-UART IC, which uses Port A pins 9 and 10 for TX and RX. These pin assignments follow the STM32 datasheet recommendations for UART and USB operation.
+
+For data storage, the SD card uses SPI1, while the EEPROM and SRAM share SPI2. The SD card connects via Port A pins 5 (SCK1), 6 (MISO1), and 7 (MOSI1). Chip select lines use Port B pins 0 (SD card), 1 (EEPROM), and 2 (SRAM). SPI2 uses Port B pin 10 (SCK2), pin 14 (MISO2), and pin 15 (MOSI2). These pins were chosen based on STM32 peripheral mapping and PCB layout considerations.
+
+This design allows the microcontroller to coordinate power management, handle real-time sensor data, and log mission data efficiently while meeting electrical and mechanical constraints.
+\section{PCB Design}
 \subsection{PCB Layout and Design Considerations – Overall}
 The design of this PCB is subject to several critical constraints to ensure optimal performance and compatibility within the drone’s system. One of the primary concerns is maintaining USB 2.0 signal integrity. This requires careful routing of the USB data lines to minimize interference, preserve signal quality, and ensure reliable data transmission. In order to accomplish this, several criteria must be met. 
 
@@ -1504,8 +1528,12 @@ Cost & ~\$2.50 & ~\$2.00 \\
 \quickfigure{images/parrot-AR-drone-casing.jpg}{15cm}{Parrot AR.Drone Casing}{parrot-ardrone-casing}
 
 \quickfigure{images/parrot-anafi-USA-casing.jpg}{15cm}{Parrot Anafi USA Casing}{parrot-anafi-usa-casing}
-
-
+\quickfigure{images/microcontroller.png}{15cm}{The Microcontroller and Related Connections}
+\quickfigure{images/usb-a.png}{15cm}{USB-A Ports Connected to USB Hub}
+\quickfigure{images/usb-c.png}{15cm}{USB-C Port Connected to USB to UART IC}
+\quickfigure{images/buck.png}{15cm}{Buck Converter Used to Regulate Battery to 5V}
+\quickfigure{images/ldo.png}{15cm}{LDO Used to Regulate 5V down to 3.3V}
+\quickfigure{images/spi.png}{15cm}{SPI Device and Related Connections}
 \newpage
 %\section*{References}
 %Use the IEEE format for reference style. List all references used in the report. All references should include author, title, journal or magazine title (if a journal article), publisher, page number, date. Below are sample references from a conference proceeding paper [1], book [2], journal article [3], Ph.D. dissertation [4], technical specification [5], and web page.
