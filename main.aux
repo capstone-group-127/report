@@ -1,0 +1,212 @@
+\relax 
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction (3-6 pages)}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Problem Statement}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Project Objectives}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Method of the Report}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Problem Formulation (3-6 pages)}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Problem Statement}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Background}{11}{}\protected@file@percent }
+\citation{speasl2022payload}
+\citation{kendall2022remote}
+\citation{bart2019autodrone}
+\citation{speasl2022payload}
+\citation{kendall2022remote}
+\citation{bart2019autodrone}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Results of Patent and Product Search}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Analysis of Patent Liability}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Action Recommended}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Problem Formulation}{15}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Project Design Requirements, Specifications, and Success Criteria (3-6 pages)}{16}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Design Specifications}{16}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Project Design Specifications for Harm Drone System}}{17}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Project Common Success Criteria (PCSC)}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Project-Specific Success Criteria (PSSC)}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}The Dynamic Nature of System Requirements}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Concept Development, Synthesis, and Process Description (5-10 pages)}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Literature Review}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Concept Generation}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Concept Reduction}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Production Schedule (1-2 pages)}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Detailed Engineering Analysis and Design Product Presentation}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Software Design}{22}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Considerations of Flash Memory}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Read-only Memory (Recovery)}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Onboard EEPROM}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{EEPROM over SPI}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Considerations of Volatile Memory}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Onboard}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{SRAM over SPI}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.3}Considerations of External Interfaces \& Peripherals}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{GPIO Ports}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{SPI}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subparagraph}{Bus 1}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subparagraph}{Bus 2}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{USB}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subparagraph}{to USB}{25}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subparagraph}{to Serial}{25}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Timers}{25}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Configuring the timer in STM32CubeMX. This enables the clock and sets the prescalar, period, mode, and channel modes.}}{25}{}\protected@file@percent }
+\newlabel{timer-configuration}{{1}{25}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Organization}{25}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Debugging}{26}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.4}Modular Organization}{26}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Main Module}{26}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Drone Middleware}{26}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{SD Card Manager}{26}{}\protected@file@percent }
+\citation{parrot2021ardrone}
+\citation{parrot2023anafi}
+\@writefile{toc}{\contentsline {paragraph}{Memory Manager}{27}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Packaging Constraints (HW 4)}{27}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}Commercial Product Packaging}{27}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Parrot AR.Drone}{27}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Parrot Anafi USA}{28}{}\protected@file@percent }
+\citation{st2023stm32}
+\citation{ftdi2023ft231x}
+\citation{ti2023tusb}
+\citation{onsemi2023cat}
+\citation{issi2023sram}
+\citation{samesky2023msd}
+\citation{microchip2023sram}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}Project Package Specifications}{29}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.3}PCB Footprint Layout}{29}{}\protected@file@percent }
+\citation{ti2023stepdown}
+\citation{torex2023ldo}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Design Constraints and Component Selection Rationale (HW 2)}{30}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}Computation Requirements}{30}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.2}Interface Requirements}{30}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.3}On-Chip Peripheral Requirements}{31}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.4}Off-Chip Peripheral Requirements}{31}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.5}Power Constraints}{31}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.6}Packaging Constraints}{31}{}\protected@file@percent }
+\citation{microchip2023atmega}
+\citation{ftdi2023ft231x}
+\citation{silabs2023cp2102}
+\citation{ti2023stepdown}
+\citation{mps2023mp2315}
+\citation{ti2023tusb}
+\citation{terminus2023fe11s}
+\citation{torex2023ldo}
+\citation{ams2023ams1117}
+\citation{onsemi2023cat}
+\citation{microchip2023at24c256}
+\citation{issi2023sram}
+\citation{microchip2023sram}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.7}Cost Constraints}{32}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Component Selection Rationale}{32}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}PCB Layout and Design Considerations – Overall}{33}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}PCB Layout and Design Considerations – Microcontroller}{34}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}PCB Layout and Design Considerations – Power Supply}{34}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8}Performance Estimates and Results}{35}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.8.1}Power Consumption}{35}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.8.2}Clock and Oscillator Speeds}{35}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.8.3}EMI Performance}{35}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Economic Analysis}{36}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Cost Analysis}{36}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Bill of Materials}{36}{}\protected@file@percent }
+\citation{ieee_ethics}
+\citation{ccpa}
+\citation{nspe2020}
+\citation{ieee_ethics}
+\citation{ccpa}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Reliability and Safety Analysis (HW 6)}{37}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Social/Political/Environmental Impact (HW 8)}{37}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Stakeholder Considerations}{37}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Research Data Privacy and Ethics}{37}{}\protected@file@percent }
+\citation{ear}
+\citation{rohs}
+\citation{ccpa}
+\citation{rohs}
+\citation{rohs}
+\citation{rohs}
+\citation{ipc2221}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Political Impact Analysis}{38}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.1}Regulatory Compliance}{38}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Environmental Impact Analysis}{38}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.4.1}Manufacturing}{38}{}\protected@file@percent }
+\citation{natureworks_pla}
+\citation{goncalves_uav}
+\citation{goncalves_uav}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.4.2}Enclosure Material and Additive Manufacturing}{39}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.4.3}Normal Use}{39}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.4.4}Disposal/Recycling}{39}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}Lifecycle Assessment Overview}{39}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Discussion, Conclusions, and Recommendations (2-4 pages)}{40}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Restating the Problem}{40}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Summary of Approach and Design}{40}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Design Performance Summary}{41}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}Recommendations and Future Work}{41}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5}Lessons Learned}{42}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}User’s Manual (1-3 pages)}{43}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11}Appendices}{45}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Tooling Requirements, Estimated Weight, and Unit Cost Summary}}{46}{}\protected@file@percent }
+\newlabel{tooling_costs}{{2}{46}{}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces STM32 vs. ATmega32 Microcontroller Comparison}}{46}{}\protected@file@percent }
+\newlabel{stm32_vs_atmega}{{3}{46}{}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces FT231XS vs. CP2102 USB to UART Comparison}}{46}{}\protected@file@percent }
+\newlabel{ft231_vs_cp2102}{{4}{46}{}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces TUSB3046I vs. FE1.1S USB Hub Comparison}}{47}{}\protected@file@percent }
+\newlabel{tusb_vs_fe1}{{5}{47}{}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces LMR51430 vs. MP2315 Buck Converter Comparison}}{47}{}\protected@file@percent }
+\newlabel{lm514_vs_mp2315}{{6}{47}{}{table.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces XC6210A vs. AMS1117 LDO Comparison}}{47}{}\protected@file@percent }
+\newlabel{xc6210_vs_ams1117}{{7}{47}{}{table.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces CAT25160VI vs. AT24C256 EEPROM Comparison}}{48}{}\protected@file@percent }
+\newlabel{cat25160_vs_at24c256}{{8}{48}{}{table.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces IS62 vs. 23LC1024 SRAM Comparison}}{48}{}\protected@file@percent }
+\newlabel{is62_vs_23lc1024}{{9}{48}{}{table.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces PCB Design Layout}}{49}{}\protected@file@percent }
+\newlabel{pcb-design-layout}{{2}{49}{}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Drill Chart}}{49}{}\protected@file@percent }
+\newlabel{drill-chart}{{3}{49}{}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Silk Screen}}{50}{}\protected@file@percent }
+\newlabel{silk-screen}{{4}{50}{}{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Right Side View of PCB Casing}}{50}{}\protected@file@percent }
+\newlabel{right-side-view-pcb-casing}{{5}{50}{}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Bottom Side of PCB Casing}}{51}{}\protected@file@percent }
+\newlabel{bottom-side-pcb-casing}{{6}{51}{}{figure.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Front View of PCB Casing}}{51}{}\protected@file@percent }
+\newlabel{front-view-pcb-casing}{{7}{51}{}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Top Side View of the PCB Casing}}{52}{}\protected@file@percent }
+\newlabel{top-side-view-pcb-casing}{{8}{52}{}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Top Front View of the PCB Casing}}{53}{}\protected@file@percent }
+\newlabel{top-front-view-pcb-casing}{{9}{53}{}{figure.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces PCB CAD Casing}}{53}{}\protected@file@percent }
+\newlabel{pcb-cad-casing}{{10}{53}{}{figure.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Initial PCB Footprint Layout}}{54}{}\protected@file@percent }
+\newlabel{initial-pcb-footprint-layout}{{11}{54}{}{figure.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Parrot AR.Drone Casing}}{54}{}\protected@file@percent }
+\newlabel{parrot-ardrone-casing}{{12}{54}{}{figure.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Parrot Anafi USA Casing}}{55}{}\protected@file@percent }
+\newlabel{parrot-anafi-usa-casing}{{13}{55}{}{figure.13}{}}
+\bibcite{parrot2021ardrone}{1}
+\bibcite{parrot2023anafi}{2}
+\bibcite{st2023stm32}{3}
+\bibcite{ftdi2023ft231x}{4}
+\bibcite{ti2023tusb}{5}
+\bibcite{onsemi2023cat}{6}
+\bibcite{issi2023sram}{7}
+\bibcite{samesky2023msd}{8}
+\bibcite{microchip2023sram}{9}
+\bibcite{ti2023stepdown}{10}
+\bibcite{torex2023ldo}{11}
+\bibcite{speasl2022payload}{12}
+\@writefile{toc}{\contentsline {section}{\numberline {12}References}{56}{}\protected@file@percent }
+\bibcite{kendall2022remote}{13}
+\bibcite{bart2019autodrone}{14}
+\bibcite{microchip2023atmega}{15}
+\bibcite{silabs2023cp2102}{16}
+\bibcite{mps2023mp2315}{17}
+\bibcite{terminus2023fe11s}{18}
+\bibcite{ams2023ams1117}{19}
+\bibcite{microchip2023at24c256}{20}
+\bibcite{nspe2020}{21}
+\bibcite{ieee_ethics}{22}
+\bibcite{ipc2221}{23}
+\bibcite{rohs}{24}
+\bibcite{ear}{25}
+\bibcite{ccpa}{26}
+\bibcite{ieee1789}{27}
+\bibcite{goncalves_uav}{28}
+\bibcite{natureworks_pla}{29}
+\ttl@finishall
+\gdef \@abspage@last{59}

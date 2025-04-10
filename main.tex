@@ -792,8 +792,15 @@ The power supply design of this PCB involves several key considerations to ensur
 
 \par Finally, the position of the XT60 connector, which delivers power from the battery, must be carefully considered. It should be placed such that, when the battery is connected, the cable does not interfere with the drone’s rotors during operation.
 
-\subsection{Performance Estimates and Results (2-5 pages)}
-Present the estimated performance of the project (and how it was derived) based on the preliminary design (estimates to include speed, cost, power consumption, noise immunity, ease of use, etc., depending on the project). Present the actual performance results. Discuss the results. Compare with estimated performance and explain discrepancies. Include suggestions for design changes that would improve the performance of the project. Use graphs or other figures to show relationships when appropriate.
+\subsection{Performance Estimates and Results}
+%Present the estimated performance of the project (and how it was derived) based on the preliminary design (estimates to include speed, cost, power consumption, noise immunity, ease of use, etc., depending on the project). Present the actual performance results. Discuss the results. Compare with estimated performance and explain discrepancies. Include suggestions for design changes that would improve the performance of the project. Use graphs or other figures to show relationships when appropriate.
+There are many aspects to consider when analyzing the performance of an electronic device. This section will focus on three key properties: power consumption, clock frequency, and EMI (Electromagnetic Interference) performance.
+\subsubsection{Power Consumption}
+The Harm drone is designed to support 4 USB 2.0 ports. In order to support this functionality the board needs to supply two amps of current at five volts. Using Ohm's Law this comes out to ten watts of power for the USB ports alone. In addition to this, there is an LDO on-board that steps down the voltage to 3.3 volts in order to be used by the IC's present on the board. This LDO can supply up to 700 milliamps adding 2.31 Watts to the total power consumption bringing the total to 12.31 Watts.
+\subsubsection{Clock and Oscillator Speeds}
+The Harm Drone carries two independent clock signals: one 48 MHz oscillator included int the micro-controller and a 6 MHz oscillator used by the USB hub. The USB hub also features internal PLLs to increase the frequency to 48 MHz for use in USB signaling.
+\subsubsection{EMI Performance}
+EMI is a central consideration for the Harm Drone. The board uses USB 2.0 communication to minimize any EMI output that could interfere with drone communications. The other serial communications used on the board produce much less EMI than USB communications would to the point that their contribution would be negligible.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         Economic Analysis                              %
