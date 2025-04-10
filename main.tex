@@ -379,21 +379,49 @@ By following this structure, the report ensures clarity for both technical and n
 
 \subsection{Design Specifications}
 
-\par The design specifications for the Harm Drone system establish the functional and physical boundaries required to ensure effective operation. These specifications define measurable performance criteria, allowing for objective validation, iterative refinement, and successful integration during development. Each requirement is supported by a clearly defined metric and technical rationale.
+\par The design specifications for the Harm Drone system establish the functional and physical boundaries necessary for successful operation. These parameters provide measurable criteria for subsystem performance, enabling objective testing, validation, and refinement throughout the development process. Each specification is tied to a quantifiable metric and is supported by a clear rationale.
 
-\par For instance, the system must retain onboard data during flight to accommodate missions in remote environments where real-time transmission is unreliable or unavailable. This ensures that flight logs, sensor readings, and mission data are preserved even in the event of power interruptions.
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|p{3cm}|p{3cm}|p{3cm}|p{4cm}|}
+\hline
+\textbf{Spec ID} & \textbf{Description} & \textbf{Metric} & \textbf{Target Value} & \textbf{Rationale} \\
+\hline
+DS1 & Onboard data retention & Data capacity & $\geq$ 1000 KB & Ensures retention of flight, log, and sensor data in persistent memory. \\
+\hline
+DS2 & Data accessibility & Cross-platform compatibility & Readable on Mac OS, Windows, Debian Linux & Guarantees log access on all major OS platforms. \\
+\hline
+DS3 & External storage capacity & SD card storage & $\geq$ 4 GB & Provides space for extended data logging. \\
+\hline
+DS4 & USB sensor support & Concurrent USB connections & Up to 4 sensors & Supports flexible external sensing integration. \\
+\hline
+DS5 & Light system compliance & Flicker modulation testing & Pass IEEE 1789-2015 check & Meets industry lighting safety standards. \\
+\hline
+DS6 & PCB fabrication & Trace and via tolerance & $\leq \pm$5 mil & Ensures manufacturability and reliability. \\
+\hline
+DS7 & USB data throughput & Data transfer rate & $\geq$ 12 Mbps & Enables real time sensor data exchange. \\
+\hline
+DS8 & Firmware robustness & Uptime with full load & $\geq$ 8 hours & Confirms system stability. \\
+\hline
+DS9 & Boot time & Power on to readiness & $\leq$ 5 seconds & Improves responsiveness. \\
+\hline
+DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone compatibility. \\
+\hline
+\end{tabular}
+\caption{Project Design Specifications for Harm Drone System}
+\end{table}
 
-\par Another set of specifications addresses data accessibility. To streamline post-flight analysis and support diverse user environments, the system is designed to be compatible with major operating systems—Windows, macOS, and Debian Linux without requiring drivers or file conversions. This cross-platform functionality improves usability and supports field operations involving multiple stakeholders.
+\par Within the UAV design context, the specifications address environmental, technical, and regulatory considerations. For example, DS1, which concerns onboard data retention, is essential for UAVs operating in remote or disconnected areas where real-time data transmission may be unreliable or impossible. Ensuring robust local storage safeguards mission-critical data, even during unexpected power interruptions.
 
-\par Additional requirements define system performance goals. The embedded system must be capable of handling real-time data streams from multiple USB sensors simultaneously, with data transfer rates sufficient to prevent latency or data loss. This capability supports modular sensor integration and enhances the system’s flexibility in mission-specific applications.
+\par Specifications DS2 and DS3 emphasize interoperability and ease of access. In real-world deployments involving multiple users and varied systems, the ability to seamlessly retrieve data across different operating systems—without requiring extra drivers or file conversions—simplifies analysis and enhances usability. These features align with user-centric design principles.
 
-\par Compliance with safety standards is also prioritized. The drone’s lighting system is designed to meet IEEE 1789-2015 guidelines for flicker modulation, reducing biological effects associated with LED flicker and ensuring safe operation around humans.
+\par DS4 and DS7 focus on system performance. Since the Harm Drone must interface with multiple sensors simultaneously, the embedded system must support USB 2.0 data rates capable of handling concurrent real-time data streams. These requirements prevent communication bottlenecks and ensure all peripherals operate without interference or data loss.
 
-\par From a manufacturing and integration perspective, the PCB is designed with tight fabrication tolerances to improve electrical performance and reliability. Furthermore, the enclosure is constrained to a maximum volume compatible with standard UAV chassis, eliminating the need for structural modifications during installation.
+\par DS5 underscores the project's adherence to health and safety guidelines, particularly the IEEE 1789-2015 standard for minimizing adverse effects caused by LED flicker. Compliance with this standard not only ensures safer operation in human environments but also contributes to an overall higher standard of system usability.
 
-\par System robustness and responsiveness are captured through additional criteria. The drone must maintain stable operation under full load for at least eight hours and be ready for deployment within five seconds of powering on. These attributes are critical to ensuring mission readiness and consistent performance in field conditions.
+\par DS6 and DS10 address design manufacturability and platform compatibility. Meeting precise fabrication tolerances (DS6) enhances PCB reliability and electrical performance, while adhering to enclosure volume constraints (DS10) guarantees that the system integrates cleanly into standard UAV frames without structural modifications.
 
-\par A full summary of these design specifications—including descriptions, target metrics, and supporting rationale—is presented in \textbf{Table~1} at the end of this report.
+\par Lastly, DS8 and DS9 reflect the system’s robustness and responsiveness. A drone that can sustain prolonged operation under full load (DS8) and reboot quickly (DS9) is essential for field deployment scenarios. These characteristics bolster mission readiness and reinforce user confidence in the system’s dependability.
 
 \subsection{Project Common Success Criteria (PCSC)}
 
@@ -1094,35 +1122,6 @@ For full schematics, firmware source code, and additional test scripts, refer to
    % \item Figure titles and numbering: Figures should be numbered consecutively in the report. Every figure must have a descriptive title located immediately below the figure.
    % \item Table titles and numbers: Tables should be numbered consecutively in the report. Every table must have a descriptive title located above or below the table.
   % \end{itemize}
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|p{3cm}|p{3cm}|p{3cm}|p{4cm}|}
-\hline
-\textbf{Spec ID} & \textbf{Description} & \textbf{Metric} & \textbf{Target Value} & \textbf{Rationale} \\
-\hline
-DS1 & Onboard data retention & Data capacity & $\geq$ 1000 KB & Ensures retention of flight, log, and sensor data in persistent memory. \\
-\hline
-DS2 & Data accessibility & Cross-platform compatibility & Readable on Mac OS, Windows, Debian Linux & Guarantees log access on all major OS platforms. \\
-\hline
-DS3 & External storage capacity & SD card storage & $\geq$ 4 GB & Provides space for extended data logging. \\
-\hline
-DS4 & USB sensor support & Concurrent USB connections & Up to 4 sensors & Supports flexible external sensing integration. \\
-\hline
-DS5 & Light system compliance & Flicker modulation testing & Pass IEEE 1789-2015 check & Meets industry lighting safety standards. \\
-\hline
-DS6 & PCB fabrication & Trace and via tolerance & $\leq \pm$5 mil & Ensures manufacturability and reliability. \\
-\hline
-DS7 & USB data throughput & Data transfer rate & $\geq$ 12 Mbps & Enables real time sensor data exchange. \\
-\hline
-DS8 & Firmware robustness & Uptime with full load & $\geq$ 8 hours & Confirms system stability. \\
-\hline
-DS9 & Boot time & Power on to readiness & $\leq$ 5 seconds & Improves responsiveness. \\
-\hline
-DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone compatibility. \\
-\hline
-\end{tabular}
-\caption{Project Design Specifications for Harm Drone System}
-\end{table}
 
 \begin{table}[h!]
 \centering
