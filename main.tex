@@ -243,7 +243,7 @@ Presents a comprehensive table of performance specifications, the criteria used 
 \item \textbf{Section 4: Concept Development and Design Process} \newline
 Includes the literature review, concept generation and reduction processes, production timeline, and engineering tradeoffs.
 
-\item \textbf{Section 5: Final Design and Performance} \newline
+\item \textbf{Section 5: Detailed Engineering Analysis and Design Product Presentation} \newline
 Contains a detailed description of the final PCB layout, packaging, and power design. This section also includes estimated and actual performance metrics.
 
 \item \textbf{Section 6: Economic Analysis} \newline
@@ -498,29 +498,54 @@ The design of the Harm Drone is influenced by all of the datasheets listed for t
 \subsection{Production Schedule}
 %Discuss the phases of the design and implementation of your project. (PERT charts, Gantt charts, or OPPMs may be appropriate in the discussion) Recommend any improvements that could have been made in the scheduling and planning.
 
-\section{Project Design and Implementation Timeline}
-
 The Harm Drone project was developed over a 17-week period, progressing through clearly defined phases of planning, design, prototyping, development, testing, and finalization. Below is a week-by-week breakdown of the project's evolution.
 
-\subsection*{Weeks 1–2: Planning and Requirements}
-The first two weeks focused on project kickoff activities. Team roles were assigned, initial goals were established, and a feasibility assessment was performed. By Week 2, the team defined high-level system requirements, identified key components, and began evaluating technical constraints including environmental and regulatory considerations.
+\subsubsection*{Weeks 1–2: Initial Hardware Testing and Software Parallelization}
 
-\subsection*{Weeks 3–5: System Architecture and Design}
-During Weeks 3 through 5, the team designed the system's architecture. A block diagram was developed outlining subsystems and communication protocols. The PCB layout was initiated alongside enclosure sizing constraints. By Week 5, decisions regarding USB protocols, memory, and power systems were finalized, and a design review was conducted.
+During the first two weeks, the team focused on validating the initial hardware and laying the foundation for the software stack. Testing of the first PCB revision was completed, during which a design issue was identified that required correction. To address this, the team began redesigning the PCB and prepared for a second fabrication order.
 
-\subsection*{Weeks 6–7: Prototyping and Component Acquisition}
-Weeks 6 and 7 involved finalizing the 3D enclosure design and ordering components. PCB fabrication for the first prototype was completed, and a PLA enclosure was 3D printed. Component arrival was scheduled to overlap with early testing procedures.
+To maintain momentum and prevent delays, development of the flight control software progressed in parallel. This decision ensured that the software would be ready for integration immediately upon arrival of the updated PCB. This parallel approach allowed the team to optimize scheduling efficiency and continue advancing project deliverables despite hardware-related setbacks.
 
-\subsection*{Weeks 8–10: Hardware and Software Development}
-Development efforts ramped up in Weeks 8 through 10. The team assembled the PCB and conducted initial hardware validation. Concurrently, firmware development began, including USB sensor integration and SD card file system setup. By Week 10, multi-sensor support and basic data logging functionality were implemented.
+\subsubsection*{Weeks 2–3: PCB Assembly, Microcontroller Integration, and Software Expansion}
 
-\subsection*{Weeks 11–13: System Testing and Validation}
-The focus during Weeks 11 to 13 was full system testing. This included verifying data transfer from USB sensors to SD card storage, testing data persistence after power loss, and checking compliance with IEEE 1789-2015 flicker safety standards. Environmental and thermal stress testing was also performed to ensure durability and reliability.
+Following the redesign and receipt of the updated PCB, the team successfully assembled the board and completed initial testing. With hardware validation nearing completion, efforts shifted toward microcontroller integration to ensure seamless communication across system components.
 
-\subsection*{Weeks 14–15: Optimization and Final Revisions}
+Simultaneously, software development accelerated. The team focused on implementing core functionalities, including flight control algorithms, GPS navigation protocols, and the data collection framework. These foundational software modules are critical for autonomous flight and onboard telemetry logging.
+
+To support upcoming integration tasks, additional sensors were identified and ordered. This ensured that all necessary components would be available in time to conclude the hardware development phase. The combined emphasis on hardware finalization and software advancement positioned the team well for full-system integration in the following weeks.
+
+\subsubsection*{Weeks 4–5: Sensor Testing, Peripheral Validation, and Software Refinement}
+
+During Weeks 4 and 5, the team received three out of the four sensors planned for integration. Preparations were made to begin testing these components immediately upon arrival to maintain development momentum.
+
+On the hardware side, validation of critical communication protocols and memory components was completed. The team successfully tested the SPI bus, as well as the EEPROM and SRAM modules, confirming reliable operation and proper interfacing with the microcontroller.
+
+Meanwhile, software development continued in parallel. Although not yet finalized, the team made steady progress toward implementing the full feature set. With core functions nearing completion, focus began to shift toward integrating the newly acquired sensors and refining the software to ensure seamless and reliable system behavior in preparation for full hardware-software integration.
+
+\subsubsection*{Weeks 6–8: Hardware Completion, Software Integration, and PSSC Progress}
+
+During Weeks 6 through 8, the team achieved several major project milestones. All Yocto sensors were tested and confirmed to be fully functional, and the arrival of the final outstanding sensor officially marked the completion of the hardware development phase.
+
+With the hardware finalized, efforts shifted toward flight software development. A parallel workflow was maintained, allowing the sensor and data systems to be prepared for integration while core flight functionalities were still under development. As part of this strategy, the team finalized PCB testing, validated USB communication, and began implementing SD card data logging capabilities.
+
+During this period, critical issues were identified in the USB hub and microcontroller interface, prompting the decision to revise and reorder the PCB. While awaiting the new board, the team prioritized software development to maintain progress. Key efforts included testing project-specific success criteria (PSSCs), enabling SD card read/write functionality, and installing VirtualHub on the drone's onboard computer to detect and interface with the Yocto sensors.
+
+By Week 8, the newly ordered PCB had arrived and assembly began immediately. In parallel, the team verified successful USB temperature sensor detection and confirmed that sensor readings could be logged to the SD card—meeting one of the defined PSSCs. In the same timeframe, another PSSC was completed, reflecting steady system-level progress.
+
+To conclude this development phase, the team prepared for a flight test under 10-knot wind conditions. The goal was to demonstrate autonomous drone navigation to four user-defined GPS coordinates. If successful, this test would satisfy two additional PSSCs, bringing the system significantly closer to final integration and validation.
+
+\subsubsection*{Weeks 9–11: Flight Test Setback, Design Reevaluation, and Recovery Planning}
+
+During Weeks 9 through 11, the team conducted a flight test of the drone to validate autonomous navigation and system integration. Unfortunately, the test resulted in an unexpected malfunction, which led to the loss of the drone. While this represented a significant setback, it prompted a thorough reassessment of the system design and risk management strategies.
+
+In response, the team developed a revised plan focused on improving system robustness and long-term reliability. This included finalizing a new PCB design that would be more versatile and better aligned with the updated project-specific success criteria (PSSCs). Key improvements targeted enhanced sensor integration, fault tolerance, and communication stability.
+
+By the end of Week 11, the updated PCB had been finalized, and the team initiated procurement of the required components. Preparations were made for board assembly and revalidation to ensure that development could continue with minimal further disruption. Despite the challenges, this phase marked a turning point in refining the system architecture and ensuring the project remained on track for successful completion.
+
+\subsubsection*{Weeks 12–14: Optimization and Final Revisions}
 In Weeks 14 and 15, the team performed bug fixes, streamlined the firmware, and documented key system behavior. Final hardware validation and power optimization were completed, ensuring the system was stable and met design criteria.
 
-\subsection*{Weeks 16–17: Final Report and Presentation}
+\subsubsection*{Weeks 15–17: Final Report and Presentation}
 The last two weeks were devoted to finalizing the project deliverables. All report sections, Gantt and PERT charts, and tables were compiled and formatted. In Week 17, the team conducted its final presentation and submitted the completed documentation for evaluation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -812,6 +837,8 @@ In summary, the Harm Drone project uses multiple software components to support 
 
 \par We adopted the lightweight plastic construction approach of the Parrot AR.Drone while improving structural reinforcement and accessibility. Instead of using a fully integrated casing like the AR.Drone, we designed a 3D-printed modular enclosure with two interlocking halves and a latch mechanism, allowing for quick access, easy maintenance, and upgrades. Additionally, we incorporated precisely positioned cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, enabling seamless external connectivity without requiring complete disassembly.
 
+\quickfigure{images/parrot-AR-drone-casing.jpg}{15cm}{Parrot AR.Drone Casing}{parrot-ardrone-casing}
+
 \paragraph{Parrot Anafi USA}
 
 \par Parrot engineered the Anafi USA to balance durability and weight efficiency, ensuring optimal flight performance while protecting internal electronics. Parrot built the drone’s enclosure as part of the main frame, ensuring structural support while keeping components compact and secure.
@@ -831,6 +858,8 @@ In summary, the Harm Drone project uses multiple software components to support 
 \end{itemize}
 
 \par We based the \textit{Harm Drone}’s enclosure on the Anafi USA’s thermoplastic construction, enhancing durability and accessibility through a custom 3D-printed modular design. Unlike the Anafi USA’s fully integrated frame, our enclosure maintains modularity, ensuring that components can be easily removed, replaced, or upgraded. To improve usability, we integrated cutouts for USB-C, microSD, USB ports, XT60 connectors, and a power switch, allowing external connections without the need for full enclosure removal.
+
+\quickfigure{images/parrot-anafi-USA-casing.jpg}{15cm}{Parrot Anafi USA Casing}{parrot-anafi-usa-casing}
 
 \subsubsection{Project Package Specifications}
 
@@ -943,7 +972,31 @@ Component choices prioritized efficient power management, reliable communication
 \par These components collectively form a robust and efficient embedded system that meets performance, power, and interface demands.
 \par While careful component selection was critical for ensuring the electrical and functional performance of the Harm Drone system, the physical packaging of the PCB played an equally important role in protecting those components and supporting deployment in real-world environments. To guide our enclosure design, we conducted a comparative analysis of commercial drone packaging solutions, focusing on materials, structural design, and accessibility. This helped ensure that our custom 3D-printed case would not only house the electronics effectively but also balance durability, weight, and field serviceability.
 \par While thoughtful component selection was essential to meeting the electrical and performance requirements of the Harm Drone system, these components could not function optimally without a PCB layout that supports their integration. The physical arrangement and routing of the board play a critical role in preserving signal integrity, ensuring proper power distribution, and maintaining system reliability. Accordingly, the following section outlines the key design considerations that informed the layout of the PCB, with special emphasis on supporting high speed communication interfaces, compact form factor, and mechanical compatibility with the drone's structure.
+\section{Hardware Design}
+\subsection{Theory of Operation}
 
+This system consists of three primary subsystems: reliable power distribution, data storage, and stable communication. The following sections describe each subsystem and its operation in detail.
+
+The power distribution subsystem provides regulated voltages to all other system components. It steps down voltage from a 14.8V, 1Ah battery using two regulation stages. First, the LMR51430 buck converter reduces the voltage to 5V. This 5V output powers various ICs and ports. Then, the XC6210A332MR-G LDO further steps the 5V down to 3.3V, which supplies the microcontroller and other peripherals. These two voltage regulation stages serve as critical elements of the system's electrical architecture.
+
+The communication subsystem enables reliable data exchange between the microcontroller and both onboard sensors and the host device. Four USB-A ports, arranged as two stacked pairs, provide interfaces for up to four USB sensors. These ports draw power from the 5V rail and route data to a USB hub, which multiplexes the signals and forwards them to the microcontroller. The hub operates at 3.3V from the LDO. For host communication, the design includes a USB-C port connected to an FT231XS-R USB-to-UART interface. This interface converts USB signals to UART, then transmits them to the microcontroller via 5V power. Together, these components form the complete communication path.
+
+The data storage subsystem incorporates three SPI memory devices to provide persistent and volatile data handling. A microSD card serves as the primary storage medium, capable of storing up to 4GB of sensor data. It operates at 3.3V. Additionally, the system includes a CAT25160VI-GT3 EEPROM (16 Kb) and a 23AA02M-I/SN SRAM (2 Mb), both powered at 3.3V. Together, these devices provide robust storage capacity for both mission-critical and temporary data.
+
+\subsection{Hardware Design Narrative}
+
+The STM32F072CB microcontroller functions as the core controller of the Harm Drone system. It interfaces with each of the three major subsystems: power, communication, and data storage. This section details how the microcontroller connects to each subsystem, which ports were selected, and the rationale behind those choices.
+
+For each interface, the microcontroller offers multiple pin options. For example, it can output the SPI clock signal on different pins, allowing flexibility in PCB layout. The team employed an elimination-based approach to pin selection, prioritizing subsystems with fewer pin options. This strategy ensured efficient routing for critical signals like SPI clocks and analog inputs while reserving flexible lines for simpler tasks like binary status detection.
+
+The power subsystem supplies the microcontroller with 3.3V across four power pins. This 3.3V rail also powers the USB hub, EEPROM, SRAM, and SD card. A 5V rail powers the USB ports and the USB-to-UART IC. The LDO derives the 3.3V from the 5V rail, while the buck converter derives the 5V from the 14.8V battery. The selected regulators were chosen based on current demand and voltage requirements of connected ICs.
+
+For communication, the four USB-A ports connect to a USB hub, which communicates with the microcontroller. The USB hub uses the 48 MHz clock output from Port A pin 8. Data+ and Data- are assigned to Port A pins 12 and 11, respectively, as specified in the datasheet. Suspend and reset signals connect to Port B pins 13 and 14. To communicate with the host system, the USB-C port connects to a USB-to-UART IC, which uses Port A pins 9 and 10 for TX and RX. These pin assignments follow the STM32 datasheet recommendations for UART and USB operation.
+
+For data storage, the SD card uses SPI1, while the EEPROM and SRAM share SPI2. The SD card connects via Port A pins 5 (SCK1), 6 (MISO1), and 7 (MOSI1). Chip select lines use Port B pins 0 (SD card), 1 (EEPROM), and 2 (SRAM). SPI2 uses Port B pin 10 (SCK2), pin 14 (MISO2), and pin 15 (MOSI2). These pins were chosen based on STM32 peripheral mapping and PCB layout considerations.
+
+This design allows the microcontroller to coordinate power management, handle real-time sensor data, and log mission data efficiently while meeting electrical and mechanical constraints.
+\section{PCB Design}
 \subsection{PCB Layout and Design Considerations – Overall}
 The design of this PCB is subject to several critical constraints to ensure optimal performance and compatibility within the drone’s system. One of the primary concerns is maintaining USB 2.0 signal integrity. This requires careful routing of the USB data lines to minimize interference, preserve signal quality, and ensure reliable data transmission. In order to accomplish this, several criteria must be met. 
 
@@ -1242,14 +1295,14 @@ For full schematics, firmware source code, and additional test scripts, refer to
 
 %The following appendices should be organized in the order listed. If an appendix is not applicable to your report, insert a page in the proper place and note this fact on it.
 
-\subsection*{Appendix A: Notes}
+\subsection{Appendix A: Notes}
 %This appendix consists of a numbered list of material, books, magazines, etc. from which you have taken information, circuits, data, or other information directly. The main body of the report is to use End Notes for references. Material in the main body of the report taken from any of the listed documents should be assigned an End Note number as a superscript in the discussion of the material and be listed in the END note section. In the case of schematics and pictures, the end note number should appear as a superscript after the figure's title. The first time a copyright or trademark is encountered in the report it
 %will be assigned an end note number and proper notation will appear in the end notes. Written permission will be sought for information copied from data books, books, magazines, and data sheets. If verbal permission is given, the date, name, and phone number of the person giving permission will be noted in the end notes. If permission cannot be obtained, no copies of the data will be included in the report.
 
-\subsection*{Appendix B: Acceptance Testing}
+\subsection{Appendix B: Acceptance Testing}
 %This appendix is an extract from your senior project proposal requirements specifications testing section. If you have requested a change in your acceptance testing (Project Specific Success Criteria) a copy of the request and the approval letter will be included. The last page will then be a copy of the new (modified) acceptance testing criteria (PSSC). This information will be used by the faculty to judge whether your project performs as proposed or has been modified during the demonstration phase of your presentation.
 
-\subsection*{Appendix C: Electrical Specifications}
+\subsection{Appendix C: Electrical Specifications}
 %This appendix will, as a minimal requirement, contain the following:
 %\begin{enumerate}[noitemsep]
    % \item Schematics: An overall block diagram or interconnection diagram from ORCAD will be the first page. Lines on the schematics that enter and leave the page will be annotated so that one knows which page sheet they go to or come from as well as the name of the function it performs. Signal flow if possible, should be from left to right. If a line is exceptionally long its name should appear above the line about midway of the total length. Devices will be assigned reference designations as listed in the national standard (IEEE Std 315-1975). If a reference designation is not found in the quick reference list for a device, further information may be obtained from the standards books maintained in the ECEN maintenance shop. Symbols drawn by the ORCAD software will also be acceptable. Logic symbols will be in accordance with IEEE Std 91-1984 or as drawn by ORCAD.
@@ -1261,13 +1314,13 @@ For full schematics, firmware source code, and additional test scripts, refer to
    % \item Accuracy Certification: In this section, describe how the accuracy claimed in your project acceptance testing statement (PSSC) was verified. Give the name and serial number of the units used to check the accuracy and the date of the most recent time the instrument was calibrated against a NIST traceable standard.
 %\end{enumerate}
 
-\subsection*{Appendix D: Software}
+\subsection{Appendix D: Software}
 %\begin{enumerate}[noitemsep]
    % \item Flowcharts: An overall flowchart will begin this section. Detailed flowcharts will be done for each individual routine. Each flowchart will be given a descriptive title. The title should be centered at the top of the page. On the line below the title, centered and enclosed in parenthesis, will appear a reference to the corresponding line numbers or page in the software listing where this code can be found. Circles containing an alpha designator will be used to show connectivity between portions of flowcharts. A to/from page number will be placed next to the circle to aid in tracing the flow between pages. Pseudo-code may be used in place of flowcharts for computational code, but not for control or input/output code.
    % \item Program Listings: High Level or Machine: Compressed printing can be used. All programs must have enough comments so that a reviewer can gain insight into the purpose of the program elements.
 %\end{enumerate}
 
-\subsection*{Appendix E: Resource Expenditure Analysis}
+\subsection{Appendix E: Resource Expenditure Analysis}
 %\begin{enumerate}[noitemsep]
    % \item Cost Analysis: This appendix consists of a list of parts grouped under general headings along with the total price. In narrative form, discuss the nature of any cost overrun, if you are more than 10\% over your estimated cost.
    % \item Labor Hour Analysis: This appendix will contain a breakdown of the hours spent in the development of the hardware and the software. Besides these two main areas, attempt to sub divide it into specific areas as basic research, requisition of parts, testing hardware, testing software, debugging hardware/software, writing the report, etc.
@@ -1275,7 +1328,11 @@ For full schematics, firmware source code, and additional test scripts, refer to
    % \item Other Resources: Include in this appendix things like funding supplied by others, review time done by others, etc.
 %\end{enumerate}
 
-\subsection*{Appendix F: Individual Student Outcomes Appendices}
+\subsection{Appendix F: Individual Student Outcomes Appendices}
+\subsubsection{Appendix F1: Carter Brehm}
+\subsubsection{Appendix F2: Toby Heinemann}
+\subsubsection{Appendix F3: Camryn Klintworth}
+\subsubsection{Appendix F4: Michael Maline}
 %Each member of the team is responsible for an individual appendix (F1, F2, F3, [F4]) that includes evidence that each member of the team has met ABET Criterion 3, 1) through 7), student outcomes. These can be organized as you wish, but they MUST BE ORGANIZED, not just a collection of notes and miscellaneous course work. Identify each of the 7 outcomes and your supporting evidence.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1477,14 +1534,16 @@ Cost & ~\$2.50 & ~\$2.00 \\
 
 \quickfigure{images/initial-PCB-footprint-layout.png}{15cm}{Initial PCB Footprint Layout}{initial-pcb-footprint-layout}
 
-\quickfigure{images/parrot-AR-drone-casing.jpg}{15cm}{Parrot AR.Drone Casing}{parrot-ardrone-casing}
+\quickfigure{images/microcontroller.png}{15cm}{The Microcontroller and Related Connections}{microcontroller}
+\quickfigure{images/usb-a.png}{15cm}{USB-A Ports Connected to USB Hub}{usb-a}
+\quickfigure{images/usb-c.png}{15cm}{USB-C Port Connected to USB to UART IC}{usb-c}
+\quickfigure{images/buck.png}{15cm}{Buck Converter Used to Regulate Battery to 5V}{buck}
+\quickfigure{images/ldo.png}{15cm}{LDO Used to Regulate 5V down to 3.3V}{ldo}
+\quickfigure{images/spi.png}{15cm}{SPI Device and Related Connections}{spi}
 
-\quickfigure{images/parrot-anafi-USA-casing.jpg}{15cm}{Parrot Anafi USA Casing}{parrot-anafi-usa-casing}
-
-
-\newpage
 %\section*{References}
 %Use the IEEE format for reference style. List all references used in the report. All references should include author, title, journal or magazine title (if a journal article), publisher, page number, date. Below are sample references from a conference proceeding paper [1], book [2], journal article [3], Ph.D. dissertation [4], technical specification [5], and web page.
+\newpage
 \begin{thebibliography}{99}
 
 \bibitem{parrot2021ardrone}
