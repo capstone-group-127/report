@@ -183,7 +183,7 @@ Group 127 would like to acknowledge the invaluable support and assistance provid
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         Introduction                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction (3-6 pages)}
+\section{Introduction}
 %The introduction should orient the reader to the topic of the report by including the following:
 %\begin{itemize}[noitemsep]
  %   \item \textbf{The problem} - Explain the problem that is addressed in the report.
@@ -273,7 +273,7 @@ By following this structure, the report ensures clarity for both technical and n
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                    Problem Formulation                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Problem Formulation (3-6 pages)}
+\section{Problem Formulation}
 \subsection{Problem Statement}
 %State the problem to be solved as indicated by the need (the university, industry sponsor, or self-proposed). Present the objectives and expectations of the need and constraints given to the problem.
 \par In many academic and research applications, there is a growing demand for reliable and cost-effective unmanned aerial systems (UAS) capable of collecting and storing high fidelity environmental or system data. However, current drone systems used in industry and academia frequently rely on expensive proprietary sensors, specialized storage modules, and wireless transmission protocols that are not only costly, but also introduce reliability risks in field conditions. The result is a significant barrier to entry for budget conscious research teams, student projects, and field operations requiring autonomy, robustness, and open platform support.
@@ -363,7 +363,7 @@ By following this structure, the report ensures clarity for both technical and n
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Project Design Requirements, Specifications, and Success Criteria     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Project Design Requirements, Specifications, and Success Criteria (3-6 pages)}
+\section{Project Design Requirements, Specifications, and Success Criteria}
 %\begin{itemize}[noitemsep]
   %  \item Give a clear set of design specifications for the project. The design specifications should be clear concise statements with a specific metric and an appropriate value.
   %  \item The specifications should provide an unambiguous measure of the success of the final design in meeting the need and constraints associated with the design problem.
@@ -484,7 +484,7 @@ DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone c
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         Concept Development, Synthesis, and Process Description          %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Concept Development, Synthesis, and Process Description (5-10 pages)}
+\section{Concept Development, Synthesis, and Process Description}
 \subsection{Literature Review}
 Give a brief summary of the key literature that has been researched and used in the design effort. This can include textbooks, handbooks, technical papers, technical reports, web sources, codes and regulations. A summary of similar designs, processes, or techniques can also be discussed to show the strengths and weaknesses of your design compared to others. Indicate whenever the design process was supported by previous coursework.
 
@@ -494,7 +494,7 @@ Show that design methods were used to generate several conceptual solutions to t
 \subsection{Concept Reduction}
 Show that a judicial decision-making process was used to reduce the number of possible conceptual solutions to a single (optimal) solution that is to be implemented and verified and/or validated by the end of the project. Discuss why alternative solutions were rejected/chosen over other solutions. Describe the criteria used to evaluate potential solutions. Substantiate that the proposed final concept is the optimal choice in providing the functionality necessary while best meeting the specified constraints of the design problem. Document in detail the decision-making process.
 
-\subsection{Production Schedule (1-2 pages)}
+\subsection{Production Schedule}
 Discuss the phases of the design and implementation of your project. (PERT charts, Gantt charts, or OPPMs may be appropriate in the discussion) Recommend any improvements that could have been made in the scheduling and planning.
 
 \section{Project Design and Implementation Timeline}
@@ -782,7 +782,7 @@ To facilitate distribution of tasks, unit testing, as well as code cleanliness, 
 \paragraph{Memory Manager} Similar to the SD card manager, the memory manager is another process called upon by the main loop. When data is received from the attached USB sensors, this data is mirrored to both the SD card and the volatile memory to allow for recovery of failed transfers. The memory manager also implements a key-value store, allowing for configuration values like data format and operational timing (how long to wait before takeoff).
 \subsubsection{Summary}
 In summary, the Harm Drone project uses multiple software components to support and augment the operation of the original drone and flight control software. A middleware program runs on the drone to allow for sharing information with the microcontroller, while the microcontroller handles sensor reading and data logging. The software is architected in a way that allows for unit testing with defined inputs and outputs, while also ensuring that each portion of the system remains cohesive during normal operation.
-\subsection{Packaging Constraints (HW 4)}
+\subsection{Packaging Constraints}
 \subsubsection{Commercial Product Packaging}
 
 \par To refine the \textit{Harm Drone}’s PCB packaging design, we analyzed two commercial drones with plastic based enclosures: the Parrot AR.Drone and the Parrot Anafi USA. Both drones emphasize lightweight and durable construction, making them useful comparisons for our 3D-printed plastic case. However, they differ in structural integrity, modularity, and accessibility.
@@ -851,7 +851,7 @@ In summary, the Harm Drone project uses multiple software components to support 
 
 \par With an estimated PCB size of 95.5\,mm $\times$ 40.228\,mm $\times$ 17.68\,mm, the layout maintains clear separation of power and data lines, ensures efficient signal routing, and aligns precisely with enclosure cutouts. We included the final footprint layout in Appendix C, detailing component placement, trace routing, and external port alignment.
 
-\subsection{Design Constraints and Component Selection Rationale (HW 2)}
+\subsection{Design Constraints and Component Selection Rationale}
 
 \subsubsection{Computation Requirements}
 
@@ -970,7 +970,7 @@ The power supply design of this PCB involves several key considerations to ensur
 
 \par Finally, the position of the XT60 connector, which delivers power from the battery, must be carefully considered. It should be placed such that, when the battery is connected, the cable does not interfere with the drone’s rotors during operation.
 
-\subsection{Performance Estimates and Results (2-5 pages)}
+\subsection{Performance Estimates and Results}
 Present the estimated performance of the project (and how it was derived) based on the preliminary design (estimates to include speed, cost, power consumption, noise immunity, ease of use, etc., depending on the project). Present the actual performance results. Discuss the results. Compare with estimated performance and explain discrepancies. Include suggestions for design changes that would improve the performance of the project. Use graphs or other figures to show relationships when appropriate.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1015,13 +1015,13 @@ Include a full parts list for the entire design if applicable. All standard part
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                    Reliability and Safety Analysis                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Reliability and Safety Analysis (HW 6)}
+\section{Reliability and Safety Analysis}
 It is the ethical responsibility of the engineer to ensure that the solution to the design problem is safe to the public and the environment. This is substantiated by showing that Design for Safety methods were employed in the design process and documented through a Hazards and Failure Analysis. Discuss the results of the analysis and how safety was incorporated into the design.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %               Social/Political/Environmental Impact                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Social/Political/Environmental Impact (HW 8)}
+\section{Social/Political/Environmental Impact}
 
 \par We designed the Harm Drone PCB with a strong emphasis on ethical engineering and social responsibility. Because the board collects real-time data in potentially sensitive environments, we intentionally avoid wireless data transmission, reducing interception risks and aligning with ethical data handling practices \cite{ieee_ethics}, \cite{ccpa}.
 
@@ -1077,7 +1077,7 @@ It is the ethical responsibility of the engineer to ensure that the solution to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %            Discussion, Conclusions, and Recommendations                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion, Conclusions, and Recommendations (2-4 pages)}
+\section{Discussion, Conclusions, and Recommendations}
 %Restate the problem that gave rise to the report. Summarize the main points and the approach that was taken. Summarize the design performance. Provide recommendations, explaining subsequent action or posing specific questions for investigations. Discuss the lessons learned.
 \subsection{Restating the Problem}
 
@@ -1145,7 +1145,7 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         User’s Manual                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{User’s Manual (1-3 pages)}
+\section{User’s Manual}
 %Provide a user’s manual for the operation and maintenance of the system designed in the project. The operators' manual for a Senior Capstone Design Project will give complete and detailed step-by-step operating instructions such that anyone can operate the device. If it is necessary to calibrate any part of the project to assure its proper operation, the calibration procedure must be a part of this manual. It will contain all applicable safety warnings that apply to operation and/or operator maintenance of the project.
 
 %The user's manual will include all initialization and/or set up instructions needed for the proper operation of the project. If the project is done for yourself, the manual may be bound in the report and need only be detailed enough that you would be able to operate it after a long period of time away from it.
