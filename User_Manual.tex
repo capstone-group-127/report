@@ -1,0 +1,81 @@
+\section*{User’s Manual}
+
+\subsection*{Overview}
+The Harm Drone system is a modular embedded data logger designed for UAV platforms. It allows users to interface up to four USB sensors, log data to onboard memory and an SD card, and retrieve data post-flight on any major OS. This manual outlines how to install, configure, operate, and troubleshoot the system.
+
+\subsection*{Package Contents}
+\begin{itemize}
+    \item Harm Drone PCB (fully assembled)
+    \item 3D-printed PLA enclosure
+    \item Pre-flashed microcontroller
+    \item USB sensors (x3 Yoctopuce, x1 USB thermometer)
+    \item SD Card (≥4GB, FAT32 formatted)
+    \item Power cable (XT60 or barrel)
+\end{itemize}
+
+\subsection*{Installation}
+
+\subsubsection*{Hardware Setup}
+\begin{enumerate}
+    \item Insert SD card into SD card slot.
+    \item Connect up to four USB sensors to the USB hub.
+    \item Attach XT60 power input to 14.8V LiPo battery.
+    \item Ensure the enclosure is secured and ventilation is unobstructed.
+\end{enumerate}
+
+\subsubsection*{Software Setup (Optional)}
+\begin{enumerate}
+    \item If using VirtualHub (for Yoctopuce sensors), install it on the onboard computer:
+    \begin{verbatim}
+    sudo ./VirtualHub
+    \end{verbatim}
+    \item Connect the drone to a host PC via USB-to-serial.
+    \item Optional: Use STM32 ST-LINK Utility to reprogram firmware.
+\end{enumerate}
+
+\subsection*{Operation}
+\begin{enumerate}
+    \item Power on the board. Boot takes ≤5 seconds.
+    \item The LED indicator will pulse to indicate data logging has begun.
+    \item The system will automatically begin recording sensor data to onboard memory and SD card.
+    \item To stop logging, either cut power or send a stop command over serial.
+\end{enumerate}
+
+\subsection*{File Structure}
+\begin{itemize}
+    \item \texttt{/logs/YYYYMMDD\_HHMMSS/}
+    \begin{itemize}
+        \item \texttt{temp.csv}
+        \item \texttt{light.csv}
+        \item \texttt{accel.csv}
+        \item \texttt{gyro.csv}
+    \end{itemize}
+    \item All files are CSV format, time-stamped, and human-readable.
+\end{itemize}
+
+\subsection*{Maintenance}
+\begin{itemize}
+    \item Keep USB ports clean and avoid moisture exposure.
+    \item Do not operate without an enclosure during flight.
+    \item Check solder joints and connectors before flight.
+    \item Update firmware periodically via ST-LINK interface.
+\end{itemize}
+
+\subsection*{Troubleshooting}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Issue} & \textbf{Possible Cause} & \textbf{Solution} \\
+\hline
+No LED at boot & No power or damaged regulator & Check XT60 power, LDO output \\
+\hline
+No data on SD card & Card not inserted/formatted & Ensure FAT32 format, reinsert \\
+\hline
+Sensor not detected & Loose USB connection & Replug sensor, restart system \\
+\hline
+VirtualHub doesn't detect & Hub not initialized & Confirm hub power and clock \\
+\hline
+\end{tabular}
+
+\subsection*{10.8 Contact and Support}
+For support, contact Group 127 via \texttt{harmdrone@unomaha.edu}. For Yoctopuce sensor help, visit \texttt{www.yoctopuce.com}.
+
