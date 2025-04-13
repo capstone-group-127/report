@@ -34,13 +34,23 @@ jobs:
         with:
           root_file: |
             main.tex
-            sections/abstract.tex
-            sections/user_manual.tex
-      - name: Upload completed PDF
+            ./sections/abstract.tex
+            ./sections/user-manual.tex
+      - name: Upload completed main PDF
         uses: actions/upload-artifact@v4
         with:
           name: final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
           path: main.pdf
+      - name: Upload completed abstract PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: abstract-v${{ github.run_number }}-${{ env.NOW }}.pdf
+          path: abstract.pdf
+      - name: Upload completed user manual PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: user-manual-v${{ github.run_number }}-${{ env.NOW }}.pdf
+          path: user-manual.pdf
       - name: Upload TeXtidote report
         uses: actions/upload-artifact@v4
         with:
@@ -48,8 +58,12 @@ jobs:
           path: report.html
       - name: Rename textidote report
         run: mv report.html textidote-report.html
-      - name: Rename latex report
+      - name: Rename main report
         run: mv main.pdf final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
+      - name: Rename abstract
+        run: mv abstract.pdf abstract-v${{ github.run_number }}-${{ env.NOW }}.pdf
+      - name: Rename user manual
+        run: mv user-manual.pdf user-manual-v${{ github.run_number }}-${{ env.NOW }}.pdf
       - name: Tag the repository
         id: tag
         env:
@@ -70,3 +84,5 @@ jobs:
           files: |
             textidote-report.html
             final-report-v${{ github.run_number }}-${{ env.NOW }}.pdf
+            sections/user-manual-v${{ github.run_number }}-${{ env.NOW }}.pdf
+            sections/abstract-v${{ github.run_number }}-${{ env.NOW }}.pdf
