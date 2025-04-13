@@ -34,8 +34,8 @@ jobs:
         with:
           root_file: |
             main.tex
-            sections\abstract.tex
-            sections\user_manual.tex
+            sections/abstract.tex
+            sections/user_manual.tex
       - name: Upload completed PDF
         uses: actions/upload-artifact@v4
         with:
