@@ -32,7 +32,10 @@ jobs:
       - uses: xu-cheng/latex-action@v3
         name: Github Action for LaTeX
         with:
-          root_file: main.tex
+          root_file: |
+            main.tex
+            sections\abstract.tex
+            sections\user_manual.tex
       - name: Upload completed PDF
         uses: actions/upload-artifact@v4
         with:

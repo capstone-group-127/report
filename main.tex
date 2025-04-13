@@ -69,6 +69,8 @@
   breakatwhitespace=false,        
 }
 
+\usepackage{subfiles}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                           Title Page                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,8 +130,7 @@ A statement affirming that the Code of Ethics of the IEEE has been reviewed and 
 \subsection*{Environmental Impact Statement}
 A statement declaring that the designers have considered any impact to the environment in their design and have eliminated the use of toxic materials, specifically those dangerous to humans.
 
-\subsection*{Project Abstract}
-% (Insert Project Abstract as stipulated in the rubric)
+\subfile{sections/abstract.tex}
 
 \subsection*{Acknowledgement}
 
@@ -178,6 +179,8 @@ Group 127 would like to acknowledge the invaluable support and assistance provid
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \tableofcontents
+\listoffigures
+\listoftables
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1352,87 +1355,7 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         User’s Manual                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{User’s Manual}
-%Provide a user’s manual for the operation and maintenance of the system designed in the project. The operators' manual for a Senior Capstone Design Project will give complete and detailed step-by-step operating instructions such that anyone can operate the device. If it is necessary to calibrate any part of the project to assure its proper operation, the calibration procedure must be a part of this manual. It will contain all applicable safety warnings that apply to operation and/or operator maintenance of the project.
-
-%The user's manual will include all initialization and/or set up instructions needed for the proper operation of the project. If the project is done for yourself, the manual may be bound in the report and need only be detailed enough that you would be able to operate it after a long period of time away from it.
-\subsection*{Overview}
-\par The Harm Drone PCB is a modular embedded system designed for UAV integration. It enables onboard data logging, multi-sensor USB support, persistent storage, and compliance with safety lighting standards. This guide outlines the steps for setting up, operating, and verifying system functionality.
-
-\subsection*{1. System Setup}
-
-\begin{itemize}
-    \item \textbf{Power Supply:} Connect a regulated 5V–12V DC source to the PCB's primary power input header. Ensure polarity is correct to avoid damage.
-    \item \textbf{Microcontroller Programming:} Use a USB-to-serial interface or dedicated programmer to flash firmware onto the microcontroller via the debug header.
-    \item \textbf{Sensor Integration:} Connect up to four USB based sensors to the onboard USB host ports. The system will automatically enumerate connected devices during boot.
-    \item \textbf{Storage Media:}
-    \begin{itemize}
-        \item Insert a microSD card (formatted as FAT32) into the onboard SD card slot.
-        \item Ensure onboard flash memory is configured through firmware settings.
-    \end{itemize}
-    \item \textbf{Lighting System:} The LED lighting module is powered through a regulated rail and PWM controlled from the microcontroller. Ensure the LED assembly is securely mounted and connected to the proper output pins.
-\end{itemize}
-
-\subsection*{2. Operation Instructions}
-
-\begin{itemize}
-    \item \textbf{Power-On:} Apply power to the board. The system will complete its boot process within 5 seconds, and status LEDs will indicate readiness.
-    \item \textbf{Data Logging:}
-    \begin{itemize}
-        \item Sensor data is logged automatically into onboard flash and/or the SD card.
-        \item Logged files are timestamped and stored in OS accessible formats.
-    \end{itemize}
-    \item \textbf{Sensor Communication:} USB sensor data streams are handled in real time. USB ports are hot pluggable during non-critical flight phases.
-    \item \textbf{Lighting Compliance Check:}
-    \begin{itemize}
-        \item The lighting subsystem operates at a PWM frequency above 3000 Hz to ensure compliance with IEEE 1789-2015.
-        \item Users may verify operation with an oscilloscope across the lighting output pins.
-    \end{itemize}
-    \item \textbf{Shutdown Procedure:} To prevent file corruption, initiate shutdown via the flight controller interface or wait for the onboard activity LED to cease blinking.
-\end{itemize}
-
-\subsection*{3. Data Retrieval and Validation}
-
-\begin{itemize}
-    \item \textbf{SD Card Access:}
-    \begin{itemize}
-        \item Remove the microSD card and insert it into a host computer.
-        \item Confirm data readability on Windows, MacOS, or Debian Linux.
-    \end{itemize}
-    \item \textbf{Onboard Storage Recovery:}
-    \begin{itemize}
-        \item Use the provided retrieval script or terminal access via UART to extract files.
-        \item Validate integrity by comparing checksums to known test vectors.
-    \end{itemize}
-\end{itemize}
-
-\subsection*{4. Maintenance and Troubleshooting}
-
-\begin{itemize}
-    \item \textbf{Firmware Updates:} Re-flash via SWD header if system behavior becomes unstable or features are added.
-    \item \textbf{Debugging Tools:}
-    \begin{itemize}
-        \item UART terminal for system logs and diagnostics.
-        \item Onboard test points for multimeter or oscilloscope probes.
-    \end{itemize}
-    \item \textbf{Common Issues:}
-    \begin{itemize}
-        \item \textit{No USB sensor detected:} Check current draw, firmware logs, and port functionality.
-        \item \textit{SD card not accessible:} Verify filesystem format and reinsert.
-        \item \textit{Lighting flicker:} Measure modulation rate and confirm compliance settings.
-    \end{itemize}
-\end{itemize}
-
-\subsection*{5. Safety and Handling Notes}
-
-\begin{itemize}
-    \item Operate the system within the recommended voltage range.
-    \item Avoid exposure to water or conductive dust.
-    \item Secure all connections before flight.
-\end{itemize}
-
-\subsection*{6. Support and Documentation}
-For full schematics, firmware source code, and additional test scripts, refer to the project GitHub repository or contact the development team. Future updates and community contributions will be listed in the repository changelog.
+\subfile{sections/user_manual.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                          Appendices                                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
