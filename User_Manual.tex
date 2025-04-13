@@ -1,9 +1,80 @@
-\section*{User’s Manual}
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in,lmargin=1in,rmargin=1in]{geometry}
+\usepackage{fancyhdr}
+\setcounter{tocdepth}{3}
+\usepackage{titletoc,tocloft}
+\setlength{\cftsubsecindent}{0.65cm}
+\setlength{\cftsubsubsecindent}{1.3cm}
+\newcommand{\nocontentsline}[3]{}
+\let\origcontentsline\addcontentsline
+\newcommand\stoptoc{\let\addcontentsline\nocontentsline}
+\newcommand\resumetoc{\let\addcontentsline\origcontentsline}
+\makeatletter
+\newcommand\teenyparagraph[1]{%
+  \@tempswatrue
+  \if@nobreak\@tempswafalse\fi
+  \if@noskipsec \leavevmode \fi
+  \par
+  \@nobreakfalse
+  \everypar{}%
+  \protected@edef\@svsec{\@seccntformat{paragraph}}%
+  \@tempswafalse
+  \@xsect{3.25ex \@plus 1ex \@minus .2ex}%
+  {\normalfont\normalsize\bfseries #1}%
+}
+\makeatother
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep}
+\usepackage{listings} % For code listings
+\usepackage{color} % For colored text
+\usepackage{amsmath} % For mathematical notation
+\usepackage{array} % For better table formatting
+\usepackage{float}
+\usepackage{url}
+\patchcmd{\thebibliography}{\section*}{\section}{}{}
+\graphicspath{ {./images/} }
 
-\subsection*{Overview}
+\newcommand{\quickimage}[2]{%
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=#2]{#1}
+\end{figure}%
+} 
+
+\newcommand{\quickfigure}[4]{%
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=#2]{#1}
+\caption{#3}
+\label{#4}
+\end{figure}%
+} 
+
+\lstset{ %
+  numbers=left,           
+  stepnumber=1,           
+  numbersep=5pt,          
+  showspaces=false,           
+  showstringspaces=false,     
+  showtabs=false,         
+  frame=single,           
+  tabsize=4,              
+  captionpos=b,           
+  breaklines=true,            
+  breakatwhitespace=false,        
+}
+\begin{document}
+\section{User’s Manual}
+
+\subsection{Overview}
 The Harm Drone system is a modular embedded data logger designed for UAV platforms. It allows users to interface up to four USB sensors, log data to onboard memory and an SD card, and retrieve data post-flight on any major OS. This manual outlines how to install, configure, operate, and troubleshoot the system.
 
-\subsection*{Package Contents}
+\subsection{Package Contents}
 \begin{itemize}
     \item Harm Drone PCB (fully assembled)
     \item 3D-printed PLA enclosure
@@ -13,9 +84,9 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
     \item Power cable (XT60 or barrel)
 \end{itemize}
 
-\subsection*{Installation}
+\subsection{Installation}
 
-\subsubsection*{Hardware Setup}
+\subsubsection{Hardware Setup}
 \begin{enumerate}
     \item Insert SD card into SD card slot.
     \item Connect up to four USB sensors to the USB hub.
@@ -23,7 +94,7 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
     \item Ensure the enclosure is secured and ventilation is unobstructed.
 \end{enumerate}
 
-\subsubsection*{Software Setup (Optional)}
+\subsubsection{Software Setup (Optional)}
 \begin{enumerate}
     \item If using VirtualHub (for Yoctopuce sensors), install it on the onboard computer:
     \begin{verbatim}
@@ -33,7 +104,7 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
     \item Optional: Use STM32 ST-LINK Utility to reprogram firmware.
 \end{enumerate}
 
-\subsection*{Operation}
+\subsection{Operation}
 \begin{enumerate}
     \item Power on the board. Boot takes ≤5 seconds.
     \item The LED indicator will pulse to indicate data logging has begun.
@@ -41,7 +112,7 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
     \item To stop logging, either cut power or send a stop command over serial.
 \end{enumerate}
 
-\subsection*{File Structure}
+\subsection{File Structure}
 \begin{itemize}
     \item \texttt{/logs/YYYYMMDD\_HHMMSS/}
     \begin{itemize}
@@ -53,15 +124,48 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
     \item All files are CSV format, time-stamped, and human-readable.
 \end{itemize}
 
-\subsection*{Maintenance}
+\subsection{Maintenance}
 \begin{itemize}
     \item Keep USB ports clean and avoid moisture exposure.
     \item Do not operate without an enclosure during flight.
     \item Check solder joints and connectors before flight.
     \item Update firmware periodically via ST-LINK interface.
 \end{itemize}
+\subsection{Hypothetical UAV Integration}
 
-\subsection*{Troubleshooting}
+While the Harm Drone PCB was not tested on a physical UAV, it was designed with drone integration in mind. The following outlines how the system would be installed and operated on a drone platform in a real-world deployment.
+
+\subsubsection{Physical Mounting}
+The PCB would be mounted inside the UAV fuselage or payload bay using vibration-dampened standoffs. The 3D-printed PLA enclosure features access ports for the USB hub, SD card slot, power input, and debug headers. Care would be taken to ensure:
+
+\begin{itemize}
+    \item All sensors are securely plugged into the USB hub.
+    \item The enclosure is protected from direct airflow and moisture.
+    \item The system is isolated from electromagnetic interference sources such as ESCs and motors.
+\end{itemize}
+
+\subsubsection*{Power Supply}
+The Harm Drone requires 14.8V input, which is compatible with most UAV battery systems (e.g., 4S LiPo). Power would be drawn via an XT60 connector split off the drone’s main battery line using a voltage-protected parallel tap. The board's internal buck and LDO regulators would then generate 5V and 3.3V rails for the USB hub and MCU.
+
+\subsubsection{Communication}
+The system can be connected to the drone’s flight computer via USB-to-serial (UART) for receiving mission start/stop commands and optional GPS waypoint data. If using a system like Pixhawk or ArduPilot:
+
+\begin{itemize}
+    \item A UART port from the FC would connect to the board’s USART lines (TX/RX).
+    \item The microcontroller would parse incoming MAVLink or custom serial messages to trigger logging.
+    \item Outgoing sensor status or logging state could be sent back to the FC for telemetry overlay.
+\end{itemize}
+
+\subsubsection{Operation in Flight}
+Once powered, the system would initialize in under 5 seconds and begin polling the connected USB sensors. Data would be logged to both internal flash and the SD card. The lightweight design ensures minimal impact on flight time or payload capacity.
+
+\subsubsection{Data Retrieval}
+Post-flight, the SD card would be removed and accessed via any standard OS. Files are saved in timestamped folders in CSV format for immediate analysis.
+
+\subsubsection{Safety Considerations}
+All lighting is PWM-controlled and conforms to IEEE 1789-2015 standards, allowing for safe visual inspection or night operation. The system includes current limiting and watchdog timers to ensure safe shutdown in case of anomalies.
+
+\subsection{Troubleshooting}
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Issue} & \textbf{Possible Cause} & \textbf{Solution} \\
@@ -76,6 +180,7 @@ VirtualHub doesn't detect & Hub not initialized & Confirm hub power and clock \\
 \hline
 \end{tabular}
 
-\subsection*{10.8 Contact and Support}
+\subsection{Contact and Support}
 For support, contact Group 127 via \texttt{harmdrone@unomaha.edu}. For Yoctopuce sensor help, visit \texttt{www.yoctopuce.com}.
 
+\end{document}
