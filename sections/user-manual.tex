@@ -33,7 +33,6 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
     sudo ./VirtualHub
     \end{verbatim}
     \item Connect the drone to a host PC via USB-to-serial.
-    \item Optional: Use STM32 ST-LINK Utility to reprogram firmware.
 \end{enumerate}
 
 \subsection{Operation}
@@ -46,14 +45,6 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
 
 \subsection{File Structure}
 \begin{itemize}
-    \item \texttt{/logs/YYYYMMDD\_HHMMSS/}
-    \begin{itemize}
-        \item \texttt{temp.csv}
-        \item \texttt{light.csv}
-        \item \texttt{accel.csv}
-        \item \texttt{gyro.csv}
-    \end{itemize}
-    \item All files are CSV format, time-stamped, and human-readable.
 \end{itemize}
 
 \subsection{Maintenance}
@@ -61,7 +52,7 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
     \item Keep USB ports clean and avoid moisture exposure.
     \item Do not operate without an enclosure during flight.
     \item Check solder joints and connectors before flight.
-    \item Update firmware periodically via ST-LINK interface.
+    \item Update firmware periodically.
 \end{itemize}
 \subsection{Hypothetical UAV Integration}
 
@@ -92,7 +83,7 @@ The system can be connected to the drone’s flight computer via USB-to-serial (
 Once powered, the system would initialize in under 5 seconds and begin polling the connected USB sensors. Data would be logged to both internal flash and the SD card. The lightweight design ensures minimal impact on flight time or payload capacity.
 
 \subsubsection{Data Retrieval}
-Post-flight, the SD card would be removed and accessed via any standard OS. Files are saved in timestamped folders in CSV format for immediate analysis.
+Post-flight, the SD card would be removed and accessed via any standard OS. Files are saved in timestamped folders in serial format for immediate analysis.
 
 \subsubsection{Safety Considerations}
 All lighting is PWM-controlled and conforms to IEEE 1789-2015 standards, allowing for safe visual inspection or night operation. The system includes current limiting and watchdog timers to ensure safe shutdown in case of anomalies.
