@@ -12,7 +12,7 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
     \item 3D-printed PLA enclosure
     \item Pre-flashed microcontroller
     \item USB sensors (x3 Yoctopuce, x1 USB thermometer)
-    \item SD Card (>4GB, FAT32 formatted)
+    \item SD Card (4GB, FAT32 formatted)
     \item Power cable (XT60 or barrel)
 \end{itemize}
 
@@ -26,17 +26,58 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
     \item Ensure the enclosure is secured and ventilation is unobstructed.
 \end{enumerate}
 
-\subsubsection{Software Setup (Optional)}
+\subsection{Software Setup (Optional)}
+
+The following steps outline how to configure a host PC for testing, development, or debugging of the sensor logging system.
+
 \begin{enumerate}
-    \item If using VirtualHub (for Yoctopuce sensors), install it on the onboard computer:
+    \item \textbf{Install Python 3.x} \\
+    Download and install Python 3.x from the official website: \\
+    \url{https://www.python.org/downloads/}
+    
+    \item \textbf{Install Required Python Packages} \\
+    Use \texttt{pip} to install the necessary libraries:
+    \begin{verbatim}
+    python -m pip install pyserial psutil
+    \end{verbatim}
+
+    \item \textbf{Install Yoctopuce Sensor API Library} \\
+    Download the Yoctopuce Python library from: \\
+    \url{https://www.yoctopuce.com/EN/libraries.php} \\
+    Unzip the library and either:
+    \begin{itemize}
+        \item Copy the \texttt{yoctopuce} folder into your project directory, or
+        \item Install it globally if available.
+    \end{itemize}
+
+    \item \textbf{(Optional) Install and Launch VirtualHub} \\
+    If using Yoctopuce USB sensors, install and run VirtualHub on the host PC or onboard computer:
     \begin{verbatim}
     sudo ./VirtualHub
     \end{verbatim}
-    \item Install Yoctopuce API Library from https://www.yoctopuce.com/EN/libraries.php
-    \item Install pyserial
-    \item Install digitemp for interfacing with the DS18B20 via UART temperature sensor.
-    \item Connect the drone to a host PC via USB-to-serial.
+    This utility enables automatic detection and control of Yoctopuce devices via USB.
+
+    \item \textbf{Install \texttt{digitemp} Library} \\
+    Install or include the \texttt{digitemp} Python module to interface with the DS18B20 temperature sensor over UART:
+    \begin{itemize}
+        \item If available on PyPI:
+        \begin{verbatim}
+        python -m pip install digitemp
+        \end{verbatim}
+        \item If provided locally, place the module files (\texttt{digitemp.master}, \texttt{digitemp.device}, etc.) in the same directory as the main script.
+    \end{itemize}
+
+    \item \textbf{Connect the Drone via FTDI Serial Cable} \\
+    Use a USB-to-Serial (FTDI) cable to connect the host PC to the STM32-based PCB:
+    \begin{itemize}
+        \item \textbf{TX (FTDI)} to \textbf{RX (STM32)}
+        \item \textbf{GND (FTDI)} to \textbf{GND (STM32)}
+    \end{itemize}
+    Identify the FTDI COM port (e.g., \texttt{COM4}) and configure it in the Python script accordingly.
 \end{enumerate}
+
+Once configured, running the Python script will read real-time sensor data from USB devices and transmit it over serial to the STM32 microcontroller for logging to the SD card.
+
 
 \subsection{Operation}
 \begin{enumerate}
@@ -47,16 +88,6 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
 \end{enumerate}
 
 \subsection{File Structure}
-\begin{itemize}
-    \item \texttt{/logs/YYYYMMDD\_HHMMSS/}
-    \begin{itemize}
-        \item \texttt{temp.csv}
-        \item \texttt{light.csv}
-        \item \texttt{accel.csv}
-        \item \texttt{gyro.csv}
-    \end{itemize}
-    \item All files are CSV format, time-stamped, and human-readable.
-\end{itemize}
 
 \subsection{Maintenance}
 \begin{itemize}
@@ -70,7 +101,7 @@ The Harm Drone system is a modular embedded data logger designed for UAV platfor
 While the Harm Drone PCB was not tested on a physical UAV, it was designed with drone integration in mind. The following outlines how the system would be installed and operated on a drone platform in a real-world deployment.
 
 \subsubsection{Physical Mounting}
-The PCB would be mounted inside the UAV fuselage or payload bay using vibration-dampened standoffs. The 3D-printed PLA enclosure features access ports for the USB hub, SD card slot, power input, and debug headers. Care would be taken to ensure:
+Using vibration-dampened standoffs, the PCB would be mounted inside the UAV fuselage or payload bay. The 3D-printed PLA enclosure features access ports for the USB hub, SD card slot, power input, and debug headers. Care would be taken to ensure:
 
 \begin{itemize}
     \item All sensors are securely plugged into the USB hub.
@@ -79,7 +110,7 @@ The PCB would be mounted inside the UAV fuselage or payload bay using vibration-
 \end{itemize}
 
 \subsubsection*{Power Supply}
-The Harm Drone requires 14.8V input, which is compatible with most UAV battery systems (e.g., 4S LiPo). Power would be drawn via an XT60 connector split off the drone’s main battery line using a voltage-protected parallel tap. The board's internal buck and LDO regulators would then generate 5V and 3.3V rails for the USB hub and MCU.
+The Harm Drone requires 14.8V input, which is compatible with most UAV battery systems (e.g., 4S LiPo). Power would be drawn via an XT60 connector split off the drone’s main battery line using a voltage-protected parallel tap. The board's internal buck and LDO regulators would generate 5V and 3.3V rails for the USB hub and MCU.
 
 \subsubsection{Communication}
 The system can be connected to the drone’s flight computer via USB-to-serial (UART) for receiving mission start/stop commands and optional GPS waypoint data. If using a system like Pixhawk or ArduPilot:
@@ -91,13 +122,13 @@ The system can be connected to the drone’s flight computer via USB-to-serial (
 \end{itemize}
 
 \subsubsection{Operation in Flight}
-Once powered, the system would initialize in under 5 seconds and begin polling the connected USB sensors. Data would be logged to both internal flash and the SD card. The lightweight design ensures minimal impact on flight time or payload capacity.
+Once powered, the system would initialize in under 5 seconds and begin polling the connected USB sensors. Data would be logged to both the internal flash and the SD card. The lightweight design ensures minimal impact on flight time or payload capacity.
 
 \subsubsection{Data Retrieval}
 Post-flight, the SD card would be removed and accessed via any standard OS. Files are saved in timestamped folders in CSV format for immediate analysis.
 
 \subsubsection{Safety Considerations}
-All lighting is PWM-controlled and conforms to IEEE 1789-2015 standards, allowing for safe visual inspection or night operation. The system includes current limiting and watchdog timers to ensure safe shutdown in case of anomalies.
+All lighting is PWM-controlled and conforms to IEEE 1789-2015 standards, allowing for safe visual inspection or night operation. The system includes current limiting and watchdog timers to ensure a safe shutdown in case of anomalies.
 
 \subsection{Troubleshooting}
 \begin{tabular}{|l|l|l|}
@@ -115,6 +146,6 @@ VirtualHub doesn't detect & Hub not initialized & Confirm hub power and clock \\
 \end{tabular}
 
 \subsection{Contact and Support}
-For support, contact Group 127 via \texttt{harmdrone@unomaha.edu}. For Yoctopuce sensor help, visit \texttt{www.yoctopuce.com}.
+For Yoctopuce sensor help, visit \texttt{www.yoctopuce.com}.
 
 \end{document}
