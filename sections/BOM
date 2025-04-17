@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{longtable}
+\usepackage[margin=0.2in]{geometry}
+
+\begin{document}
+
+\small
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{2pt}
+
+\begin{longtable}{|p{5cm}|c|p{3cm}|p{1.2cm}|p{1.2cm}|p{5cm}|}
+\hline
+\textbf{Part Number} & \textbf{Qty} & \textbf{Value} & \textbf{Unit Price} & \textbf{Ext. Price} & \textbf{Source} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Part Number} & \textbf{Qty} & \textbf{Value} & \textbf{Unit Price} & \textbf{Ext. Price} & \textbf{Source} \\
+\hline
+\endhead
+
+311-1140-1-ND & 13 & 0.1$\mu$F & \$0.03 & \$0.33 & YAGEO \\
+1276-1244-1-ND & 3 & 4.7$\mu$F & \$0.06 & \$0.18 & Samsung Electro-Mechanics \\
+1276-6455-1-ND & 2 & 10$\mu$F & \$0.01 & \$0.03 & Samsung Electro-Mechanics \\
+1276-1029-1-ND & 3 & 1$\mu$F & \$0.03 & \$0.09 & Samsung Electro-Mechanics \\
+1276-1100-1-ND & 2 & 22$\mu$F & \$0.07 & \$0.14 & Samsung Electro-Mechanics \\
+445-1420-1-ND & 3 & 2.2$\mu$F & \$0.10 & \$0.30 & TDK Corporation \\
+311-1107-1-ND & 2 & 47pF & \$0.05 & \$0.10 & YAGEO \\
+399-C0805C270J5GACTUCT-ND & 2 & 27pF & \$0.05 & \$0.10 & KEMET \\
+399-C0805C220J5GACTUCT-ND & 2 & 22pF & \$0.04 & \$0.08 & KEMET \\
+399-C0805C103K4RECTUCT-ND & 1 & 10nF & \$0.12 & \$0.12 & KEMET \\
+732-4971-1-ND & 1 & PWM LED & \$0.14 & \$0.14 & Würth Elektronik \\
+497-14645-ND & 1 & Microcontroller & \$3.93 & \$3.93 & STMicroelectronics \\
+296-48466-ND & 1 & USB Hub & \$3.41 & \$3.41 & Texas Instruments \\
+893-XC6210A332MR-GCT-ND & 1 & LDO & \$1.31 & \$1.31 & Torex Semiconductor Ltd \\
+150-23AA02M-I/SN-ND & 1 & SRAM & \$3.19 & \$3.19 & Microchip Technology \\
+AE11131-ND & 2 & 2-Port USB & \$1.11 & \$2.22 & Assmann WSW Components \\
+1568-1816-ND & 1 & XT60-M & \$1.60 & \$1.60 & SparkFun Electronics \\
+2223-MSD-12-ACT-ND & 1 & SD Card & \$1.28 & \$1.28 & Same Sky (Formerly CUI Devices) \\
+732-7447707068CT-ND & 1 & 6.8$\mu$H & \$2.32 & \$2.32 & Würth Elektronik \\
+311-27.0CRCT-ND & 13 & 27$\Omega$ & \$0.01 & \$0.13 & YAGEO \\
+A126341CT-ND & 8 & 15k$\Omega$ & \$2.91 & \$23.28 & Susumu \\
+311-100KCRCT-ND & 1 & 100k$\Omega$ & \$0.01 & \$0.01 & YAGEO \\
+RMCF0805FT13K7CT-ND & 1 & 13.7k$\Omega$ & \$0.03 & \$0.03 & Stackpole Electronics Inc \\
+RR12P10.0KDCT-ND & 5 & 10k$\Omega$ & \$0.03 & \$0.15 & Susumu \\
+118-CR0805-FX-2700ELFCT-ND & 2 & 270$\Omega$ & \$0.02 & \$0.04 & Bourns Inc. \\
+311-5.1KARCT-ND & 2 & 5.1k$\Omega$ & \$0.01 & \$0.02 & YAGEO \\
+P2.0KDACT-ND & 1 & 2k$\Omega$ & \$0.07 & \$0.07 & Panasonic Electronic Components \\
+311-1.5KARCT-ND & 3 & 1.5k$\Omega$ & \$0.01 & \$0.03 & YAGEO \\
+LEDC2012X110N & 2 & SM0805UBWC & \$0.14 & \$0.14 & Würth Elektronik \\
+401-1703-1-ND & 1 & KSR221GLFS & \$1.05 & \$1.05 & C\&K \\
+401-1999-1-ND & 1 & Switch & \$0.76 & \$0.76 & C\&K \\
+296-LMR51430XDDCRCT-ND & 1 & LMR51430 & \$1.30 & \$1.30 & Texas Instruments \\
+CAT25160VI-GT3CT-ND & 1 & EEPROM & \$0.46 & \$0.46 & Onsemi \\
+2073-USB4110-GF-A-1-ND & 1 & USB4110GFA & \$1.24 & \$1.24 & GCT \\
+768-1129-1-ND & 1 & FT231XS-R & \$2.34 & \$2.34 & FDTI \\
+XC1921-ND & 1 & ECS-060-20-4X-DU & \$0.54 & \$0.54 & ECS Inc. \\
+Y3DMK001 & 1 & Yocto-3D & \$47.50 & \$47.50 & Yoctopuce \\
+YBUTTON1 & 1 & Yocto-Knob & \$30.65 & \$30.65 & Yoctopuce \\
+LIGHTMK4 & 1 & Yocto-Light-V4 & \$25.00 & \$25.00 & Yoctopuce \\
+PL2303GL & 1 & USB Thermometer & \$10.90 & \$10.90 & USBTEMP \\
+Lipo Battery & 1 & Battery 14.8V & \$39.99 & \$39.99 & HRB Power \\
+\hline
+\end{longtable}
+
+\end{document}
