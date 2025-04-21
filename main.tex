@@ -1,4 +1,5 @@
 \documentclass[12pt]{article}
+\usepackage{longtable}
 \usepackage[utf8]{inputenc}
 \usepackage[tmargin=1in,lmargin=1in,rmargin=1in]{geometry}
 \usepackage{fancyhdr}
@@ -1217,8 +1218,9 @@ EMI is a central consideration for the Harm Drone. The board uses USB 2.0 commun
 
 \par Compared to commercial solutions costing hundreds or thousands of dollars, the Harm Drone platform offers significant savings while maintaining essential research functionality.
 
+\clearpage
 \subsection{Bill of Materials}
-Include a full parts list for the entire design if applicable. All standard parts should be completely identified by their code or specification. Custom parts must also be specified.
+\subfile{sections/BOM.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                    Reliability and Safety Analysis                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
