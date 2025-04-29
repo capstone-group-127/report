@@ -1394,6 +1394,94 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
    % \item Labor Hour Analysis: This appendix will contain a breakdown of the hours spent in the development of the hardware and the software. Besides these two main areas, attempt to sub divide it into specific areas as basic research, requisition of parts, testing hardware, testing software, debugging hardware/software, writing the report, etc.
    % \item Parts List: This appendix will contain a listing, in reference designation alpha numeric order, of all the parts used. All parts which do not have a reference designation will be listed in alpha numeric order under a heading of miscellaneous items. Use of the parts list documentation of the schematic capture part of the ORCAD program is recommended.
    % \item Other Resources: Include in this appendix things like funding supplied by others, review time done by others, etc.
+
+\subsubsection{Cost Analysis}
+
+The total material cost for the Harm Drone project was approximately \$326.43, well within the original \$420 project budget. No cost overruns exceeding 10\% occurred. Cost efficiency was maintained through early part procurement and iterative prototyping.
+
+\begin{itemize}
+    \item \textbf{Microcontroller and Memory:}
+    \begin{itemize}
+        \item STM32F072CBT6 Microcontroller – \$3.93
+        \item EEPROM Memory – \$0.46
+        \item SRAM Memory – \$3.19
+        \item SD Card - \$1.28
+        \item USB HUB - \$3.41
+        \item USB Ports - \$2.22
+    \end{itemize}
+    \item \textbf{Power System:}
+    \begin{itemize}
+        \item LMR51430 Buck Converter – \$1.30
+        \item XC6210 LDO Regulator – \$1.31
+        \item XT60-M - \$1.60
+        \item Battery - \$39.99
+    \end{itemize}
+    \item \textbf{Sensors:}
+    \begin{itemize}
+        \item Yoctopuce USB Sensors (3x) – \$103.15
+        \item USB Temperature Probe – \$10.90
+    \end{itemize}
+    \item \textbf{Other:}
+    \begin{itemize}
+        \item 3D-Printed Enclosure – \$10.00
+        \item PCB Fabrication – \$119.93
+        \item LEDs - \$0.42
+        \item Switch - \$0.76
+        \item Button - \$1.05
+        \item Miscellaneous Passive Components – \$27.55
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Labor Hour Analysis}
+
+The estimated total labor effort was approximately 1350 hours across hardware and software design and development. The breakdown is as follows:
+
+\begin{center}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Task} & \textbf{Hours Spent} \\
+\hline
+Basic Research and Planning & 400 \\
+Parts Requisition and Procurement & 20 \\
+Hardware Design (PCB and Enclosure) & 200 \\
+Software and Firmware Development & 300 \\
+Hardware Assembly and Integration & 100 \\
+Testing and Debugging Hardware & 100 \\
+Testing and Debugging Software & 150 \\
+Final Report Writing and Presentation Preparation & 80 \\
+\hline
+\textbf{Total} & 1350 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Parts List}
+
+\textbf{Reference Designated Components:}
+
+\begin{itemize}
+    \item C1, C2, C3 – 0.1µF Capacitors
+    \item L1 – Fixed Inductor 10µH
+    \item R1, R2 – 10kΩ Resistors
+    \item U1 – STM32F072CBT6 Microcontroller
+    \item U2 – LMR51430 Buck Converter
+    \item U3 – XC6210 LDO Regulator
+    \item U4 – USB Hub Controller
+\end{itemize}
+
+\textbf{Miscellaneous Items:}
+
+\begin{itemize}
+    \item 3D-Printed PLA Enclosure
+    \item Yoctopuce USB Sensors
+    \item USB Temperature Probe
+    \item SD Card (≥4GB, FAT32 Formatted)
+\end{itemize}
+
+\subsubsection{Other Resources}
+
+Funding and technical support for the Harm Drone project were provided by the University of Nebraska’s Electrical and Computer Engineering Department. Review and project sponsorship were provided by Dr. Andrew Harms. Technical instruction on PCB design and USB communication was provided by Dr. Hamid Sharif, and engineering project management guidance was provided by Professor Herbert Detloff.
+
 %\end{enumerate}
 
 \subsection{Appendix F: Individual Student Outcomes Appendices}
