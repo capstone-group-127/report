@@ -1409,6 +1409,43 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 
 \subsection{Appendix B: Acceptance Testing}
 %This appendix is an extract from your senior project proposal requirements specifications testing section. If you have requested a change in your acceptance testing (Project Specific Success Criteria) a copy of the request and the approval letter will be included. The last page will then be a copy of the new (modified) acceptance testing criteria (PSSC). This information will be used by the faculty to judge whether your project performs as proposed or has been modified during the demonstration phase of your presentation.
+This appendix outlines the Project-Specific Success Criteria (PSSC) as established during the proposal phase and verified during final testing. The criteria reflect the primary functional goals of the Harm Drone system and were used to assess the project's success. 
+
+The original PSSCs were developed in collaboration with the project sponsor, Dr. Andrew Harms, and were later refined during system development. A change request was submitted to reflect updated project scope and design constraints; the signed approval is included below.
+
+\subsubsection*{Original PSSCs (Proposal Phase)}
+\begin{enumerate}
+    \item The drone will autonomously navigate to 4 different user-defined GPS Coordinates, return, then land.
+    \item The drone will maintain flight during wind speeds of up to 10 nautical miles per hour.
+    \item The drone will use bi-directional USB communication to support up to 4 add-on sensors.
+    \item The drone will contain a removable storage medium that will store up to 4GB of data.
+    \item The drone’s lighting system will comply with IEEE 1789-2015 flicker standards.
+\end{enumerate}
+
+\subsubsection{Change Approval Letter}
+
+\subsubsection*{Modified PSSCs (Final Version)}
+\begin{enumerate}
+    \item \textbf{Data Persistence:} The board will receive and store 1000KB of flight, log, and sensor data on nonvolatile, persistent onboard storage. This will be tested by writing 1000KB of high-entropy random data to the memory, then powering off the device for 60 seconds to allow for complete discharge. The test will pass if the data read from persistent storage matches the original data with an efficacy rate equal to that of the recovered data.
+
+    \item \textbf{Cross-Platform SD Card Support:} The board will store content on a removable SD card using a filesystem accessible by all three major operating systems: Windows, macOS, and Debian Linux. We will verify this by writing 4GB of data to the SD card and successfully reading it from all three systems.
+
+    \item \textbf{Sensor Communication Support:} The board will support bi-directional USB communication with up to four add-on sensors. This will be validated by connecting four USB sensors simultaneously and verifying real-time data transmission through each port.
+
+    \item \textbf{Removable Data Logging:} The board will utilize a removable storage medium to store up to 4GB of data. Testing will involve writing 4GB of data to the medium and reading the full contents from an external system to confirm data integrity.
+
+    \item \textbf{Flicker-Free Lighting Compliance:} The board’s lighting system will comply with IEEE 1789-2015 Recommended Practice 2, section 8.1.1, which defines flicker modulation limits as follows:
+    \begin{itemize}
+        \item Below 90 Hz: Modulation (\%) < $0.01 \times$ frequency
+        \item Between 90–3000 Hz: Modulation (\%) < $0.0333 \times$ frequency
+        \item Above 3000 Hz: No restriction on modulation
+    \end{itemize}
+    This criterion will be validated using an oscilloscope to measure LED modulation frequency and ensure compliance with biological safety thresholds.
+\end{enumerate}
+
+\vspace{1cm}
+
+\noindent\textbf{SPO Signature:} Herb Detloff
 
 \subsection{Appendix C: Electrical Specifications}
 %This appendix will, as a minimal requirement, contain the following:
@@ -1441,24 +1478,6 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 \subsubsection{Timing Analysis}
 
 \subsubsection{Loading Analysis}
-
-\newpage
-
-\subsubsection{Specification Sheets}
-
-\subsubsection{Microcontroller}
-
-\includepdf[pages=-, scale=0.8, pagecommand={}]{stm32f072cb.pdf}
-
-\newpage
-
-\subsubsection{USB Hub}
-
-\includepdf[pages=-, scale=0.8, pagecommand={}]{USB Hub.pdf}
-
-\subsubsection{Signal Quality Analysis}
-
-\subsubsection{Saftey/Electrical Hazard Checklist}
 
 \subsubsection{Accuracy Certification}
 
