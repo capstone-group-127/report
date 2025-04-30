@@ -124,7 +124,7 @@
 
 \subsection*{Ethical Design Statement}
 %A statement affirming that the Code of Ethics of the IEEE has been reviewed and applied to the design process and in the selection of the final proposed design. And that, the designers have held the safety of the public to be paramount and have addressed this in their design.
-The design and development of the Harm Drone system adhered to the IEEE Code of Ethics throughout the entire engineering process. In accordance with these principles, the team prioritized public safety, transparency, and the responsible use of technology. Key design decisions, such as compliance with IEEE 1789-2015 lighting standards, modular architecture to avoid misuse, and the exclusion of wireless telemetry to minimize privacy and interference concerns, reflect the team's commitment to safety and ethical responsibility. All features of the system were evaluated for potential misuse, and the final design avoids applications that could compromise human well-being or data integrity. The team remained honest about the limitations of the system and sought guidance from the faculty when needed to ensure that all work upheld professional standards of conduct.
+The design and development of the Harm Drone system adhered to the IEEE Code of Ethics throughout the entire engineering process. Under these principles, the team prioritized public safety, transparency, and the responsible use of technology. Key design decisions, such as compliance with IEEE 1789-2015 lighting standards, modular architecture to avoid misuse, and the exclusion of wireless telemetry to minimize privacy and interference concerns, reflect the team's commitment to safety and ethical responsibility. All system features were evaluated for potential misuse, and the final design avoids applications that could compromise human well-being or data integrity. The team remained honest about the limitations of the system and sought guidance from the faculty when needed to ensure that all work upheld professional standards of conduct.
 
 \subsection*{Environmental Impact Statement}
 %A statement declaring that the designers have considered any impact to the environment in their design and have eliminated the use of toxic materials, specifically those dangerous to humans.
@@ -490,13 +490,50 @@ DS10 & System packaging & Enclosure volume & $\leq$ 900 cm$^3$ & Ensures drone c
 \section{Concept Development, Synthesis, and Process Description}
 \subsection{Literature Review}
 %Give a brief summary of the key literature that has been researched and used in the design effort. This can include textbooks, handbooks, technical papers, technical reports, web sources, codes and regulations. A summary of similar designs, processes, or techniques can also be discussed to show the strengths and weaknesses of your design compared to others. Indicate whenever the design process was supported by previous coursework.
-The design of the Harm Drone is influenced by all of the datasheets listed for the parts used in the assembly of the main board. However, outside of technical datasheets the main reference used in this design were the USB transfers and USB descriptors slides prepared by Dr. Hamid Sharif-Kashani for ECEN 435: Embedded Microcontroller Design. These slides were used as reference for understanding USB timing, enumeration, and modes. These slides helped distinguish between full speed and half speed USB while also helping to understand which version would be the most relevant for the intended use case.
+The design of the Harm Drone system was informed by a range of technical references, academic materials, and component documentation. The primary sources of information included datasheets for all critical components used in the PCB, such as the STM32 microcontroller, USB hub controller, EEPROM, SRAM, and power regulation ICs. These datasheets provided essential specifications, electrical characteristics, and recommended circuit topologies that guided the board layout and ensured safe, functional integration of all subsystems.
+
+Beyond manufacturer documentation, the design process was significantly supported by academic coursework, particularly material covered in ECEN 435: Embedded Microcontroller Design. A key resource was the set of instructional slides on USB architecture and data transfers, prepared by Dr. Hamid Sharif-Kashani. These slides provided foundational understanding of USB timing, device enumeration, endpoint configuration, and transfer types. They were especially valuable in selecting appropriate USB modes and understanding the practical differences between low-speed, full-speed, and high-speed devices in the context of embedded sensor integration.
+
+While no directly equivalent commercial systems were replicated, the Harm Drone concept was influenced by design practices observed in USB-based data acquisition modules and flight data recorders. Compared to these, the Harm Drone emphasizes modularity, open-ended sensor support, and cross-platform data access, distinguishing it as a more flexible and cost-effective alternative.
+
+Previous coursework in embedded systems, circuit design, and digital communication protocols was frequently referenced to validate design decisions, particularly in the areas of PCB layout, memory mapping, and microcontroller peripheral configuration.
 
 \subsection{Concept Generation}
 %Show that design methods were used to generate several conceptual solutions to the design problem. Draw sketches or tree diagrams to describe the alternatives that were produced by this effort.
+To address the problem of affordable, modular UAV-based data logging without wireless dependence, multiple design concepts were explored. The goal was to determine the most effective architecture for reliable onboard sensor data acquisition, storage, and accessibility. Initial concept brainstorming sessions identified the following high-level alternatives:
+
+\begin{enumerate}
+    \item \textbf{Wireless Transmission System:} A real-time telemetry system using Wi-Fi or LoRa to transmit sensor data mid-flight.
+    \item \textbf{Onboard Raspberry Pi Logger:} A Linux-based embedded computer interfacing with USB or GPIO sensors and writing to onboard storage.
+    \item \textbf{STM32 Microcontroller System with USB Sensors:} A lightweight microcontroller-based solution using USB-connected sensors and dual memory (flash + SD) for persistent logging.
+    \item \textbf{Drone Flight Controller Integration:} Embedding data logging functions directly into a drone's onboard FC via MAVLink or serial bus.
+    \item \textbf{I2C/SPI Sensor Platform:} Using low-level embedded sensors interfaced via I2C or SPI buses, requiring custom firmware for each device.
+\end{enumerate}
+
+Each concept was diagrammed and discussed in terms of feasibility, power requirements, modularity, and ease of integration with UAV platforms. These alternatives formed the basis for the next phase: concept reduction.
+
+\quickfigure{images/concept-generation.png}{15cm}{Concept Tree Diagram for Harm Drone System Design Alternatives
+}{concept-generation}
+
+\newpage 
 
 \subsection{Concept Reduction}
 %Show that a judicial decision-making process was used to reduce the number of possible conceptual solutions to a single (optimal) solution that is to be implemented and verified and/or validated by the end of the project. Discuss why alternative solutions were rejected/chosen over other solutions. Describe the criteria used to evaluate potential solutions. Substantiate that the proposed final concept is the optimal choice in providing the functionality necessary while best meeting the specified constraints of the design problem. Document in detail the decision-making process.
+A weighted decision matrix was used to evaluate each conceptual solution based on key criteria: cost, modularity, platform independence, ease of manufacturing, power efficiency, and regulatory compliance. Each option was scored on a 1–5 scale against each criterion, and results were discussed during team design reviews.
+
+\textbf{Evaluation Criteria:}
+\begin{itemize}
+    \item \textbf{Cost}: Minimize BOM and assembly cost.
+    \item \textbf{Modularity}: Support easy sensor changes and reconfiguration.
+    \item \textbf{Compatibility}: Operate across major OS platforms and UAV types.
+    \item \textbf{Simplicity}: Limit software overhead and setup time.
+    \item \textbf{Safety/Compliance}: Adhere to IEEE 1789-2015 lighting and electrical safety guidelines.
+    \item \textbf{Power Efficiency}: Maximize battery life in flight scenarios.
+\end{itemize}
+
+The STM32-based microcontroller design was selected as the optimal solution. It met all functional goals while offering superior power efficiency and ease of manufacturing. The USB sensor system allowed true plug-and-play support without extensive firmware modification. Raspberry Pi designs were rejected due to size, boot time, and power draw. Wireless options were excluded to meet the constraint of no real-time transmission. Flight controller integration was dismissed due to its reliance on specific UAV hardware, reducing platform independence.
+
+By aligning with the project's objectives and constraints, the chosen STM32/USB-based architecture provided the best balance of performance, flexibility, and cost. This design was then carried forward for full prototyping, testing, and validation.
 
 \subsection{Production Schedule}
 %Discuss the phases of the design and implementation of your project. (PERT charts, Gantt charts, or OPPMs may be appropriate in the discussion) Recommend any improvements that could have been made in the scheduling and planning.
