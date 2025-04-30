@@ -703,14 +703,14 @@ $\lambda = 10^{-5}$
 $\lambda = 10^{-9}$
 \par Any other failure that is not restricted to the domain of the add-on board will be classified as a critical failure. A critical failure could affect power, signals, or other resources the drone depends on to stay in the air. This is the most critical failure as damage to the drone or users should be avoided at all costs.
 \paragraph{Microcontroller}
-\par The schematic for the microcontroller and related circuitry can be seen in Figure \ref{main}.
+\par The schematic for the microcontroller and related circuitry can be seen in Figure \ref{microcontroller}.
 \subparagraph{Failure Conditions}
 \par When reviewing the microcontroller, the most apparent source of failure is the many forms of decoupling capacitors used to balance the various power and ground inputs to the controller.
 \subparagraph{Effects}
 \par The effect of this would most likely be an undefined state of the microcontroller that can be mostly associated with non-operation. Inputs and outputs will stop flowing through the system, and active data collection will stop. However, due to the isolation between the microcontroller and the critical power systems, this would not affect the drone's operation.
 \subparagraph{Criticality}
 \par Due to the mild effect a microcontroller failure would have on the drone system as a whole, this failure can be categorized as non-critical.
-\paragraph{Buck}\par The schematic for the buck converter and related circuitry can be seen in Appendix A, Figure \ref{buck}.
+\paragraph{Buck}\par The schematic for the buck converter and related circuitry can be seen in Appendix C, Figure \ref{buck}.
 \subparagraph{Failure Conditions}
 The buck converter uses precise passive values to support the range of voltages that are output by the onboard battery. This means that failure of any of these passive components could cause a malfunction in the buck converter.
 \subparagraph{Effects}
@@ -718,7 +718,7 @@ The effect that a passive failure could have on the buck converter could range f
 \subparagraph{Criticality}
 Because the failure could affect the drone flight itself, this failure is critical. This failure also has the greatest chance of damaging internal circuitry of either device.
 \paragraph{LDO}
-\par The schematic for the LDO and related circuitry can be seen in Appendix A, Figure \ref{LDO}.
+\par The schematic for the LDO and related circuitry can be seen in Appendix C, Figure \ref{ldo}.
 \subparagraph{Failure Conditions}
 The LDO is a fairly simple integrated circuit, relying on no precise values of passives to fulfill its role. This indicates that the circuit has very few failure conditions. If a short were to occur on the printed circuit itself, it could malfunction the LDO.
 \subparagraph{Effects}
@@ -726,7 +726,7 @@ A failure condition that causes the LDO to malfunction will affect power to the 
 \subparagraph{Criticality}
 Due to the containment of any issues with the LDO to the logic portion of the circuit, the failure criticality of the LDO can be categorized as non-critical. The microcontroller could shut down without affecting the flight of the drone and the safety of the user.
 \paragraph{SPI}
-\par The schematic for the SPI communication with the SD card, SRAM, and EEPROM can be seen in Appendix A, Figure \ref{SPI}.
+\par The schematic for the SPI communication with the SD card, SRAM, and EEPROM can be seen in Appendix C, Figure \ref{spi}.
 \subparagraph{Failure Conditions}
 The SPI circuitry has several failure cases. The SD card specifically requires precise passive values to enable the SPI mode on the card. The SRAM and EEPROM require less precise passives and instead rely only on the MOSI and MISO lines, but these could be shorted, causing communication errors.
 \subparagraph{Effects}
@@ -734,7 +734,7 @@ If communication is affected with the SPI bus, data storage and collection will 
 \subparagraph{Criticality}
 A failure of communication in SPI will only affect the board, not the power system or the drone flight itself. Thus, this can be categorized as a non-critical failure.
 \paragraph{USB}
-\par The schematic for the USB hub, ports, and related circuitry can be seen in Appendix A, Figure \ref{USB}.
+\par The schematic for the USB hub, ports, and related circuitry can be seen in Appendix C, Figure \ref{usba}.
 \subparagraph{Failure Conditions}
 The USB hub does utilize the main buck converter power system to draw up to 2A at 5V, so this gives it a larger failure surface. A short could affect the battery and the drone's flight.
 \subparagraph{Effects}
@@ -742,7 +742,7 @@ If the USB hub were to malfunction and use too much power, the drone would be un
 \subparagraph{Criticality}
 Because the USB hub is connected centrally to the root power system, a failure of this system can be categorized as critical.
 \paragraph{USB Serial}
-\par The schematic for the USB-to-serial conversion circuitry can be seen in Appendix A, Figure \ref{usb-serial}.
+\par The schematic for the USB-to-serial conversion circuitry can be seen in Appendix C, Figure \ref{usbc}.
 \subparagraph{Failure Conditions}
 The USB-to-serial circuit requires specific passives on the port and converter to ensure conversion from USB-level voltage to TTL. If these passives were to short or fail, serial communication with the drone could be interrupted.
 \subparagraph{Effects}
