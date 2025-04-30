@@ -29,6 +29,7 @@
 \usepackage{setspace}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{etoolbox}
+\usepackage{pdfpages}
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep}
 \usepackage{listings} % For code listings
@@ -1236,16 +1237,16 @@ EMI is a central consideration for the Harm Drone. The board uses USB 2.0 commun
 
 \par Economic sustainability was a central consideration throughout the design of the Harm Drone system. Given the team's commitment to affordability and accessibility, all project phases—including research, design, fabrication, and testing—were executed with rigorous cost control measures.
 
-\par The total prototype cost was \$328.77, which includes expenses for electronic components, PCB fabrication, enclosure 3D printing, shipping fees, and miscellaneous prototyping supplies. The breakdown is as follows:
+\par The total prototype cost was \$397.00, which includes expenses for electronic components, PCB fabrication, enclosure 3D printing, shipping fees, and miscellaneous prototyping supplies. The breakdown is as follows:
 
 \begin{itemize}
-\item PCB fabrication and assembly: \$113.56
-\item Component procurement (MCU, EEPROM, USB hub, LDOs, buck converter, etc.): \$66.25
-\item PLA filament and 3D printing materials: \$15
+\item PCB fabrication and assembly: \$119.93
+\item Component procurement (MCU, EEPROM, USB hub, LDOs, buck converter, etc.): \$136.05
+\item PLA filament and 3D printing materials: \$7.06
 \item Testing peripherals (microSD cards, USB sensors, cables, etc.): \$133.96
 \end{itemize}
 
-\par In terms of labor, the project required over 571.2 documented engineer-hours. These hours include circuit design, schematic development, firmware programming, layout, prototyping, documentation, debugging, and stakeholder presentations. At a modest estimated rate of \$25/hour, the total labor investment would be valued at \$14,280. While labor costs were not billed, they provide a realistic perspective on the time intensity of embedded system development and can help inform future budgeting.
+\par In terms of labor, the project required over 1350 documented engineer-hours. These hours include circuit design, schematic development, firmware programming, layout, prototyping, documentation, debugging, and stakeholder presentations. At a modest estimated rate of \$25/hour, the total labor investment would be valued at \$33,750. While labor costs were not billed, they provide a realistic perspective on the time intensity of embedded system development and can help inform future budgeting.
 
 \par The expected lifetime operational cost of the device is minimal. Because the system requires no external subscription services, licenses, or cloud based telemetry, ongoing costs are limited to:
 
@@ -1357,7 +1358,7 @@ The final design successfully met its core requirements:
 \item Total cost of parts remained just under our hard cap, and the enclosure and PCB occupied a volume of less than 900 cm\textsuperscript{3}.
 \end{itemize}
 
-\par Additional testing showed the system’s ability to recover from mid-operation resets, an important feature for deployment in unpredictable environments. The firmware was designed with extensibility in mind, and the project team successfully demonstrated proof of concept sensor drivers for future expansion. Moreover, the use of nonvolatile memory with cyclic redundancy check (CRC) verification added a layer of fault tolerance not found in comparable low-cost platforms.
+\par Additional testing showed the system’s ability to recover from mid-operation resets, an important feature for deployment in unpredictable environments. The firmware was designed with extensibility in mind, and the project team successfully demonstrated proof-of-concept sensor drivers for future expansion. Moreover, the use of nonvolatile memory with cyclic redundancy check (CRC) verification added a layer of fault tolerance not found in comparable low-cost platforms.
 
 \subsection{Recommendations and Future Work}
 
@@ -1420,6 +1421,46 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
    % \item Safety/Electrical Hazard Checklist: With respect to safety, all controls will be appropriately labeled. Warning labels such as “disconnect power before opening case”, “no user serviceable parts inside”, “danger hazardous voltages” etc. will be affixed to the project if applicable.
    % \item Accuracy Certification: In this section, describe how the accuracy claimed in your project acceptance testing statement (PSSC) was verified. Give the name and serial number of the units used to check the accuracy and the date of the most recent time the instrument was calibrated against a NIST traceable standard.
 %\end{enumerate}
+
+\subsubsection{Schematics}
+
+\quickfigure{images/schematic/microcontroller.png}{15cm}{The Microcontroller and Related Connections}{microcontroller}
+
+\quickfigure{images/schematic/USBA.png}{15cm}{USB-A Ports Connected to USB Hub}{usb-a}
+
+\quickfigure{images/schematic/USBC.png}{15cm}{USB-C Port Connected to USB to UART IC}{usb-c}
+
+\quickfigure{images/schematic/buck.png}{15cm}{Buck Converter Used to Regulate Battery to 5V}{buck}
+
+\quickfigure{images/schematic/ldo.png}{15cm}{LDO Used to Regulate 5V down to 3.3V}{ldo}
+
+\quickfigure{images/schematic/spi.png}{15cm}{SPI Device and Related Connections}{spi}
+
+\newpage
+
+\subsubsection{Timing Analysis}
+
+\subsubsection{Loading Analysis}
+
+\newpage
+
+\subsubsection{Specification Sheets}
+
+The following pages from the STM32F072CB datasheet highlight key electrical specifications, pin configuration, and recommended usage. These pages were selected based on their relevance to power requirements, signal integrity, and integration with the rest of the Harm Drone system.
+
+\includepdf[pages=-, scale=0.8, pagecommand={}]{stm32f072cb.pdf}
+
+\newpage
+
+\includepdf[pages=-, scale=0.8, pagecommand={}]{USB Hub.pdf}
+
+\subsubsection{Signal Quality Analysis}
+
+\subsubsection{Saftey/Electrical Hazard Checklist}
+
+\subsubsection{Accuracy Certification}
+
+\newpage
 
 \subsection{Appendix D: Software}
 %\begin{enumerate}[noitemsep]
@@ -1499,23 +1540,61 @@ Final Report Writing and Presentation Preparation & 80 \\
 \textbf{Reference Designated Components:}
 
 \begin{itemize}
-    \item C1, C2, C3 – 0.1$\mu$F Capacitors
-    \item L1 – Fixed Inductor 10$\mu$H
-    \item R1, R2 – 10k$\Omega$ Resistors
-    \item U1 – STM32F072CBT6 Microcontroller
-    \item U2 – LMR51430 Buck Converter
-    \item U3 – XC6210 LDO Regulator
-    \item U4 – USB Hub Controller
+    \item \textbf{C1, C2, C3, C5, C6, C8, C9, C10, C12, C15, C16, C20, C21} – 0.1\,$\mu$\text{F} Capacitor (0805)
+    \item \textbf{C4} – 10\,nF Capacitor (0805)
+    \item \textbf{C11, C13, C7} – 4.7\,$\mu$\text{F} Capacitor (0805)
+    \item \textbf{C14, C17} – 10\,$\mu$\text{F} Capacitor (0805)
+    \item \textbf{C18, C19, C29} – 1\,$\mu$\text{F} Capacitor (0805)
+    \item \textbf{C22, C23} – 22\,$\mu$\text{F} Capacitor (0805)
+    \item \textbf{C24, C25, C26} – 3.2\,$\mu$\text{F} Capacitor (0805)
+    \item \textbf{C27, C28} – 47\,pF Capacitor (0805)
+    \item \textbf{C30, C31} – 27\,pF Capacitor (0805)
+    \item \textbf{C32, C33} – 22\,pF Capacitor (0805)
+
+    \item \textbf{D1} – PWM LED Indicator (PWM\_LED)
+    
+    \item \textbf{IC1} – STM32 Microcontroller (Microcontroller)
+    \item \textbf{IC2} – USB Hub Controller (USB-HUB)
+    \item \textbf{IC3} – LDO Voltage Regulator (LDO)
+    \item \textbf{IC4} – SRAM Memory (SRAM)
+    
+    \item \textbf{J2, J3} – Dual USB Ports (2-Port USB)
+    \item \textbf{J4} – XT60 Power Connector (XT60-M)
+    \item \textbf{J5} – SD Card Socket (SDCard)
+    
+    \item \textbf{L1} – 6.8\,$\mu$H Inductor (Inductor)
+    
+    \item \textbf{R1, R2, R3, R4, R5, R6, R7, R8, R21, R25, R26, R32, R33} – 27\,$\Omega$ Resistors (0805)
+    \item \textbf{R9, R10, R11, R12, R13, R14, R15, R16} – 15\,k$\Omega$ Resistors (0805)
+    \item \textbf{R17} – 100\,k$\Omega$ Resistor (0805)
+    \item \textbf{R18} – 13.7\,k$\Omega$ Resistor (0805)
+    \item \textbf{R19, R20, R22, R23, R24} – 10\,k$\Omega$ Resistors (0805)
+    \item \textbf{R27, R28} – 270\,$\Omega$ Resistors (0805)
+    \item \textbf{R29, R30} – 2.5\,k$\Omega$ Resistors (0805)
+    \item \textbf{R34, R35, R36} – 1.5\,k$\Omega$ Resistors (0805)
+
+    \item \textbf{RXLED1, TXLED1} – Status LEDs (LEDC2012X110N, SM0805UBWC)
+    
+    \item \textbf{S1, S2} – Tactile Pushbutton Switches (SW\_JS102011SAQN)
+    
+    \item \textbf{U1} – LMR51430 Buck Converter (SOT-23-6)
+    \item \textbf{U2} – EEPROM Memory (EEPROM)
+    
+    \item \textbf{USB-C1} – USB Connector (GCT\_USB4110GFA)
+    \item \textbf{USB2UART1} – USB to UART Bridge (FT231XS-R, SSOP-20)
+    
+    \item \textbf{Y1} – Oscillator Crystal (ECS-060-20-4X, XTAL\_ECS-160-20-4X)
 \end{itemize}
 
 \textbf{Miscellaneous Items:}
-
 \begin{itemize}
     \item 3D-Printed PLA Enclosure
-    \item Yoctopuce USB Sensors
-    \item USB Temperature Probe
-    \item SD Card ($\ge$4GB, FAT32 Formatted)
+    \item MicroSD Card (≥4GB, FAT32 formatted)
+    \item Yoctopuce USB Sensors (3x)
+    \item USB Temperature Sensor
+    \item Power Cable with XT60 Connector
 \end{itemize}
+
 
 \subsubsection{Other Resources}
 
@@ -1579,13 +1658,6 @@ Funding and technical support for the Harm Drone project were provided by the Un
 \quickfigure{images/PCB-CAD-drawing.png}{15cm}{PCB CAD Casing}{pcb-cad-casing}
 
 \quickfigure{images/initial-PCB-footprint-layout.png}{15cm}{Initial PCB Footprint Layout}{initial-pcb-footprint-layout}
-
-\quickfigure{images/schematic/microcontroller.png}{15cm}{The Microcontroller and Related Connections}{microcontroller}
-\quickfigure{images/schematic/USBA.png}{15cm}{USB-A Ports Connected to USB Hub}{usb-a}
-\quickfigure{images/schematic/USBC.png}{15cm}{USB-C Port Connected to USB to UART IC}{usb-c}
-\quickfigure{images/schematic/buck.png}{15cm}{Buck Converter Used to Regulate Battery to 5V}{buck}
-\quickfigure{images/schematic/ldo.png}{15cm}{LDO Used to Regulate 5V down to 3.3V}{ldo}
-\quickfigure{images/schematic/spi.png}{15cm}{SPI Device and Related Connections}{spi}
 
 %\section*{References}
 %Use the IEEE format for reference style. List all references used in the report. All references should include author, title, journal or magazine title (if a journal article), publisher, page number, date. Below are sample references from a conference proceeding paper [1], book [2], journal article [3], Ph.D. dissertation [4], technical specification [5], and web page.
