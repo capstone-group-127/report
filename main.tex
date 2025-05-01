@@ -29,7 +29,6 @@
 \usepackage{setspace}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{etoolbox}
-\usepackage{pdfpages}
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep}
 \usepackage{listings} % For code listings
@@ -734,7 +733,7 @@ If communication is affected with the SPI bus, data storage and collection will 
 \subparagraph{Criticality}
 A failure of communication in SPI will only affect the board, not the power system or the drone flight itself. Thus, this can be categorized as a non-critical failure.
 \paragraph{USB}
-\par The schematic for the USB hub, ports, and related circuitry can be seen in Appendix A, Figure \ref{USB}.
+\par The schematic for the USB hub, ports, and related circuitry can be seen in Appendix A, Figure \ref{usb-a}.
 \subparagraph{Failure Conditions}
 The USB hub does utilize the main buck converter power system to draw up to 2A at 5V, so this gives it a larger failure surface. A short could affect the battery and the drone's flight.
 \subparagraph{Effects}
@@ -742,7 +741,7 @@ If the USB hub were to malfunction and use too much power, the drone would be un
 \subparagraph{Criticality}
 Because the USB hub is connected centrally to the root power system, a failure of this system can be categorized as critical.
 \paragraph{USB Serial}
-\par The schematic for the USB-to-serial conversion circuitry can be seen in Appendix A, Figure \ref{usb-serial}.
+\par The schematic for the USB-to-serial conversion circuitry can be seen in Appendix A, Figure \ref{usb-c}.
 \subparagraph{Failure Conditions}
 The USB-to-serial circuit requires specific passives on the port and converter to ensure conversion from USB-level voltage to TTL. If these passives were to short or fail, serial communication with the drone could be interrupted.
 \subparagraph{Effects}
@@ -1479,25 +1478,7 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 	\end{tabular}
 \end{table}
 \par This table lists the current draw for all of the components used to finish our PSSC's. The Buck converter receives 15 V from the battery, and steps it down to 5 V for the LDO, USB to UART, and the USB 2.0 ports. The LDO steps down to 3.3 V for the Microcontroller, EEPROM, and the USB Hub.
-\newpage
-
-\subsubsection{Specification Sheets}
-
-The following pages from the STM32F072CB datasheet highlight key electrical specifications, pin configuration, and recommended usage. These pages were selected based on their relevance to power requirements, signal integrity, and integration with the rest of the Harm Drone system.
-
-\includepdf[pages=-, scale=0.8, pagecommand={}]{stm32f072cb.pdf}
-
-\newpage
-
-\includepdf[pages=-, scale=0.8, pagecommand={}]{USB Hub.pdf}
-
-\subsubsection{Signal Quality Analysis}
-
-\subsubsection{Saftey/Electrical Hazard Checklist}
-
-\subsubsection{Accuracy Certification}
-
-\newpage
+\clearpage
 
 \subsection{Appendix D: Software}
 %\begin{enumerate}[noitemsep]
