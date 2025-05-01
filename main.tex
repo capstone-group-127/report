@@ -702,7 +702,7 @@ $\lambda = 10^{-5}$
 $\lambda = 10^{-9}$
 \par Any other failure that is not restricted to the domain of the add-on board will be classified as a critical failure. A critical failure could affect power, signals, or other resources the drone depends on to stay in the air. This is the most critical failure as damage to the drone or users should be avoided at all costs.
 \paragraph{Microcontroller}
-\par The schematic for the microcontroller and related circuitry can be seen in Figure \ref{main}.
+\par The schematic for the microcontroller and related circuitry can be seen in Figure \ref{microcontroller}.
 \subparagraph{Failure Conditions}
 \par When reviewing the microcontroller, the most apparent source of failure is the many forms of decoupling capacitors used to balance the various power and ground inputs to the controller.
 \subparagraph{Effects}
@@ -717,7 +717,7 @@ The effect that a passive failure could have on the buck converter could range f
 \subparagraph{Criticality}
 Because the failure could affect the drone flight itself, this failure is critical. This failure also has the greatest chance of damaging internal circuitry of either device.
 \paragraph{LDO}
-\par The schematic for the LDO and related circuitry can be seen in Appendix A, Figure \ref{LDO}.
+\par The schematic for the LDO and related circuitry can be seen in Appendix A, Figure \ref{ldo}.
 \subparagraph{Failure Conditions}
 The LDO is a fairly simple integrated circuit, relying on no precise values of passives to fulfill its role. This indicates that the circuit has very few failure conditions. If a short were to occur on the printed circuit itself, it could malfunction the LDO.
 \subparagraph{Effects}
@@ -725,7 +725,7 @@ A failure condition that causes the LDO to malfunction will affect power to the 
 \subparagraph{Criticality}
 Due to the containment of any issues with the LDO to the logic portion of the circuit, the failure criticality of the LDO can be categorized as non-critical. The microcontroller could shut down without affecting the flight of the drone and the safety of the user.
 \paragraph{SPI}
-\par The schematic for the SPI communication with the SD card, SRAM, and EEPROM can be seen in Appendix A, Figure \ref{SPI}.
+\par The schematic for the SPI communication with the SD card, SRAM, and EEPROM can be seen in Appendix A, Figure \ref{spi}.
 \subparagraph{Failure Conditions}
 The SPI circuitry has several failure cases. The SD card specifically requires precise passive values to enable the SPI mode on the card. The SRAM and EEPROM require less precise passives and instead rely only on the MOSI and MISO lines, but these could be shorted, causing communication errors.
 \subparagraph{Effects}
