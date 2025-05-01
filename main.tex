@@ -624,7 +624,7 @@ $\pi_L$ & Learning Factor & 1.0 & Produced for 5 years \\ \hline
 \[ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L\]
 \[ \lambda_p = (0.56*2.1 + 0.025*5) * 1.0 * 1.0 = 1.3\]
 \[ \text{(MTTF) } \lambda_p^{-1} = 0.76923077 \]
-\par The results indicate that this part has an mean time to failure (MTTF) of 769,230 hours. This is a reliable part, but the estimated time to failure is shorter than the rest of the components in the system. To increase reliability, a better microcontroller could be chosen, built to military specification. Otherwise, a processor with less bits or pins could be used to decrease complexity.
+\par The results indicate that this part has a mean time to failure (MTTF) of 769,230 hours. This is a reliable part, but the estimated time to failure is shorter than the rest of the components in the system. To increase reliability, a better microcontroller could be chosen, built to military specification. Otherwise, a processor with less bits or pins could be used to decrease complexity.
 \paragraph{Buck Converter}
 \par The LMR51430 buck converter was chosen for a reliability analysis due to its role in providing power to the entire system. Power for both the system and the drone will be provided from an on-board XT60 connection to a battery, so determining the reliability of this converter is useful for determining the longevity of the system.
 \begin{table}[htbp!]
@@ -644,7 +644,7 @@ $\pi_L$ & Learning Factor & 1.0 & 3 years production \\ \hline
 \[ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L\]
 \[ \lambda_p = (0.1*2.1 + 0.005*5) * 1.0 * 1.0 = 0.24\]
 \[ \text{(MTTF) } \lambda_p^{-1} = 4.26 \]
-\par The results indicate that this part has an mean time to failure (MTTF) of 4,255,319 hours. This makes sense, because the simplicity and fixed nature of the buck converter means it will last longer under load. The reliability could be increased by finding a more reliable part with better construction, or by using active cooling to decrease temperature fluctuations. Otherwise, this part is easily serviceable on the product, as it's physically separated from other, more sensitive ICs.
+\par The results indicate that this part has a mean time to failure (MTTF) of 4,255,319 hours. This makes sense, because the simplicity and fixed nature of the buck converter means it will last longer under load. The reliability could be increased by finding a more reliable part with better construction, or by using active cooling to decrease temperature fluctuations. Otherwise, this part is easily serviceable on the product, as it's physically separated from other, more sensitive ICs.
 \paragraph{LDO Regulator} The XC6210 LDO regulator was chosen for a reliability analysis because it's a critical component for providing a stable voltage to parts of the system.  Determining its reliability is important for assessing overall system longevity.
 
 \begin{table}[htbp!]
@@ -665,7 +665,7 @@ $\pi_L$ & Learning Factor & 1.0 & 2 years production \\ \hline
 $$ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L$$
 $$ \lambda_p = (0.03 * 2.1 + 0.0028 * 5.0) * 1.0 * 1.0 = 0.08 $$
 $$ \text{(MTTF) } \lambda_p^{-1} = 12.99 $$
-\par The results indicate that this part has an mean time to failure (MTTF) of 12,990,000 hours.  This result is significantly higher than that of the buck converter from before, which makes intuitive sense. The LDO should run cooler and have fewer points of failure compared to a switching supply. To increase the reliability, better cooling or a Mil-Spec part could be considered.
+\par The results indicate that this part has a mean time to failure (MTTF) of 12,990,000 hours.  This result is significantly higher than that of the buck converter from before, which makes intuitive sense. The LDO should run cooler and have fewer points of failure compared to a switching supply. To increase the reliability, better cooling or a Mil-Spec part could be considered.
 \newpage
 \paragraph{Inductor}
 \begin{table}[htbp!]
@@ -683,7 +683,7 @@ $\pi_E$ & Environment Factor & 5.0 & $A_{UC}$ \\ \hline
 $$ \lambda_p = \lambda_b * \pi_T * \pi_Q * \pi_E $$
 $$ \lambda_p = 0.00003 * 1.8 + 3.0 * 5.0 = 0.08 $$
 $$ \text{(MTTF) } \lambda_p^{-1} = 15.000054 $$
-\par The results indicate that this part has an mean time to failure (MTTF) of 15,000,054 hours.  This is due to the fixed nature of the inductor, as an alternative to a variable inductor which may wear more quickly. This also means it will fail after some other parts in the system, so reliability concerns are best focused on the previous parts.
+\par The results indicate that this part has a mean time to failure (MTTF) of 15,000,054 hours.  This is due to the fixed nature of the inductor, as an alternative to a variable inductor which may wear more quickly. This also means it will fail after some other parts in the system, so reliability concerns are best focused on the previous parts.
 
 \subsubsection{Safety Analysis}
 \paragraph{C95}
@@ -1458,24 +1458,29 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 \newpage
 
 \subsubsection{Timing Analysis}
+\quickfigure{images/USB-timing.jpg}{15cm}{An example of USB packet timing.}{usb-timing}
+\quickfigure{images/spi-timing.png}{15cm}{An example of SPI timing.}{spi-timing}
+
+
 
 \subsubsection{Loading Analysis}
 \begin{table}[htbp!]
 	\centering
-	\begin{tabular}{lllll}
-		\multicolumn{3}{c}{Loading   Analysis}       &  &  \\
-		\multicolumn{3}{c}{15V Devices}              &  &  \\
-		Device No.     & Device Descriptor & Current &  &  \\
-		LMR51430XDDCR  & Buck Converter    & 300 mA  &  &  \\
-		\multicolumn{3}{c}{5V Devices}               &  &  \\
-		AE11131-ND     & USB 2.0 Ports     & 100 mA  &  &  \\
-		FT231XS-R      & USB to UART       & 8 mA    &  &  \\
-		XC6210A332MR-G & LDO               & 100 mA  &  &  \\
-		\multicolumn{3}{c}{3.3V Devices}             &  &  \\
-		STM32F072CB    & Microcontroller   & 120 mA  &  &  \\
-		CAT25160VI-GT3 & EEPROM            & 2 mA    &  &  \\
-		TUSB2046I      & USB Hub           & 40 mA   &  & 
-	\end{tabular}
+	\begin{tabular}{|lll|}
+\hline
+\multicolumn{3}{|c|}{Loading Analysis}                                                  \\ \hline
+\multicolumn{3}{|c|}{15V Devices}                                                       \\ \hline
+\multicolumn{1}{|l|}{Device No.}     & \multicolumn{1}{l|}{Device Descriptor} & Current \\ \hline
+\multicolumn{1}{|l|}{LMR51430XDDCR}  & \multicolumn{1}{l|}{Buck Converter}    & 300 mA  \\ \hline
+\multicolumn{3}{|c|}{5V Devices}                                                        \\ \hline
+\multicolumn{1}{|l|}{AE11131-ND}     & \multicolumn{1}{l|}{USB 2.0 Ports}     & 100 mA  \\ \hline
+\multicolumn{1}{|l|}{FT231XS-R}      & \multicolumn{1}{l|}{USB to UART}       & 8 mA    \\ \hline
+\multicolumn{1}{|l|}{XC6210A332MR-G} & \multicolumn{1}{l|}{LDO}               & 100 mA  \\ \hline
+\multicolumn{3}{|c|}{3.3V Devices}                                                      \\ \hline
+\multicolumn{1}{|l|}{STM32F072CB}    & \multicolumn{1}{l|}{Microcontroller}   & 120 mA  \\ \hline
+\multicolumn{1}{|l|}{CAT25160VI-GT3} & \multicolumn{1}{l|}{EEPROM}            & 2 mA    \\ \hline
+\multicolumn{1}{|l|}{TUSB2046I}      & \multicolumn{1}{l|}{USB Hub}           & 40 mA   \\ \hline
+\end{tabular}
 \end{table}
 \par This table lists the current draw for all of the components used to finish our PSSC's. The Buck converter receives 15 V from the battery, and steps it down to 5 V for the LDO, USB to UART, and the USB 2.0 ports. The LDO steps down to 3.3 V for the Microcontroller, EEPROM, and the USB Hub.
 \clearpage
