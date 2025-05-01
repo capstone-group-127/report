@@ -1424,6 +1424,29 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 
 \subsection{Appendix B: Acceptance Testing}
 %This appendix is an extract from your senior project proposal requirements specifications testing section. If you have requested a change in your acceptance testing (Project Specific Success Criteria) a copy of the request and the approval letter will be included. The last page will then be a copy of the new (modified) acceptance testing criteria (PSSC). This information will be used by the faculty to judge whether your project performs as proposed or has been modified during the demonstration phase of your presentation.
+This appendix outlines the Project-Specific Success Criteria (PSSC) as established during the proposal phase and verified during final testing. The criteria reflect the primary functional goals of the Harm Drone system and were used to assess the project's success. 
+
+The original PSSCs were developed in collaboration with the project sponsor, Dr. Andrew Harms, and were later refined during system development. A change request was submitted to reflect updated project scope and design constraints; the signed approval is included below.
+
+\subsubsection*{Original PSSCs (Proposal Phase)}
+\begin{enumerate}
+    \item The drone will autonomously navigate to 4 different user-defined GPS Coordinates, return, then land.
+    \item The drone will maintain flight during wind speeds of up to 10 nautical miles per hour.
+    \item The drone will use bi-directional USB communication to support up to 4 add-on sensors.
+    \item The drone will contain a removable storage medium that will store up to 4GB of data.
+    \item The drone’s lighting system will comply with IEEE 1789-2015 flicker standards.
+\end{enumerate}
+
+\subsubsection{Change Approval Letter}
+
+\subsubsection*{Modified PSSCs (Final Version)}
+\begin{enumerate}
+    \item The board will receive and store 1000KB of flight, log, and sensor data on nonvolatile, persistent onboard memory. Testing involves loading high-entropy data and verifying recovery after power loss.
+    \item The board will store content of sensor data on a removable SD card using a file system readable by Windows, macOS, and Linux.
+    \item The board will support bi-directional USB communication with up to four sensors.
+    \item The removable storage medium will store at least 4GB of data.
+    \item The board’s lighting system will meet IEEE 1789-2015 Recommended Practice 2.
+\end{enumerate}
 
 \subsection{Appendix C: Electrical Specifications}
 %This appendix will, as a minimal requirement, contain the following:
