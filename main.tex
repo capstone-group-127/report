@@ -624,8 +624,8 @@ $\pi_L$ & Learning Factor & 1.0 & Produced for 5 years \\ \hline
 \par Using the indicated equation to calculate the total failure:
 \[ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L\]
 \[ \lambda_p = (0.56*2.1 + 0.025*5) * 1.0 * 1.0 = 1.3\]
-\[ \lambda_p^{-1} = 0.76923077 \]
-\par The results indicate that this part has an average time to failure of 769,230 hours. This is a reliable part, but the estimated time to failure is shorter than the rest of the components in the system. To increase reliability, a better microcontroller could be chosen, built to military specification. Otherwise, a processor with less bits or pins could be used to decrease complexity.
+\[ \text{(MTTF) } \lambda_p^{-1} = 0.76923077 \]
+\par The results indicate that this part has an mean time to failure (MTTF) of 769,230 hours. This is a reliable part, but the estimated time to failure is shorter than the rest of the components in the system. To increase reliability, a better microcontroller could be chosen, built to military specification. Otherwise, a processor with less bits or pins could be used to decrease complexity.
 \paragraph{Buck Converter}
 \par The LMR51430 buck converter was chosen for a reliability analysis due to its role in providing power to the entire system. Power for both the system and the drone will be provided from an on-board XT60 connection to a battery, so determining the reliability of this converter is useful for determining the longevity of the system.
 \begin{table}[htbp!]
@@ -644,8 +644,8 @@ $\pi_L$ & Learning Factor & 1.0 & 3 years production \\ \hline
 \par Using the indicated equation to calculate the total failure:
 \[ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L\]
 \[ \lambda_p = (0.1*2.1 + 0.005*5) * 1.0 * 1.0 = 0.24\]
-\[ \lambda_p^{-1} = 4.26 \]
-\par The results indicate that this part has an average time to failure of 4,255,319 hours. This makes sense, because the simplicity and fixed nature of the buck converter means it will last longer under load. The reliability could be increased by finding a more reliable part with better construction, or by using active cooling to decrease temperature fluctuations. Otherwise, this part is easily serviceable on the product, as it's physically separated from other, more sensitive ICs.
+\[ \text{(MTTF) } \lambda_p^{-1} = 4.26 \]
+\par The results indicate that this part has an mean time to failure (MTTF) of 4,255,319 hours. This makes sense, because the simplicity and fixed nature of the buck converter means it will last longer under load. The reliability could be increased by finding a more reliable part with better construction, or by using active cooling to decrease temperature fluctuations. Otherwise, this part is easily serviceable on the product, as it's physically separated from other, more sensitive ICs.
 \paragraph{LDO Regulator} The XC6210 LDO regulator was chosen for a reliability analysis because it's a critical component for providing a stable voltage to parts of the system.  Determining its reliability is important for assessing overall system longevity.
 
 \begin{table}[htbp!]
@@ -665,8 +665,8 @@ $\pi_L$ & Learning Factor & 1.0 & 2 years production \\ \hline
 \par Using the indicated equation to calculate the total failure:
 $$ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L$$
 $$ \lambda_p = (0.03 * 2.1 + 0.0028 * 5.0) * 1.0 * 1.0 = 0.08 $$
-$$ \lambda_p^{-1} = 12.99 $$
-\par The results indicate that this part has an average time to failure of 12,990,000 hours.  This result is significantly higher than that of the buck converter from before, which makes intuitive sense. The LDO should run cooler and have fewer points of failure compared to a switching supply. To increase the reliability, better cooling or a Mil-Spec part could be considered.
+$$ \text{(MTTF) } \lambda_p^{-1} = 12.99 $$
+\par The results indicate that this part has an mean time to failure (MTTF) of 12,990,000 hours.  This result is significantly higher than that of the buck converter from before, which makes intuitive sense. The LDO should run cooler and have fewer points of failure compared to a switching supply. To increase the reliability, better cooling or a Mil-Spec part could be considered.
 \newpage
 \paragraph{Inductor}
 \begin{table}[htbp!]
@@ -683,8 +683,8 @@ $\pi_E$ & Environment Factor & 5.0 & $A_{UC}$ \\ \hline
 \par Using the indicated equation to calculate the total failure:
 $$ \lambda_p = \lambda_b * \pi_T * \pi_Q * \pi_E $$
 $$ \lambda_p = 0.00003 * 1.8 + 3.0 * 5.0 = 0.08 $$
-$$ \lambda_p^{-1} = 15.000054 $$
-\par The results indicate that this part has an average time to failure of 15,000,054 hours.  This is due to the fixed nature of the inductor, as an alternative to a variable inductor which may wear more quickly. This also means it will fail after some other parts in the system, so reliability concerns are best focused on the previous parts.
+$$ \text{(MTTF) } \lambda_p^{-1} = 15.000054 $$
+\par The results indicate that this part has an mean time to failure (MTTF) of 15,000,054 hours.  This is due to the fixed nature of the inductor, as an alternative to a variable inductor which may wear more quickly. This also means it will fail after some other parts in the system, so reliability concerns are best focused on the previous parts.
 
 \subsubsection{Safety Analysis}
 \paragraph{C95}
@@ -750,7 +750,7 @@ If communication with the drone were to be interrupted, the drone couldn't commu
 \subparagraph{Criticality}
 This failure case doesn't affect the drone's flight, only the ability to gather data, so it doesn't affect a person's health, making it a non-critical failure.
 \subsubsection{Summary}
-\subparagraph{} This report details a safety and reliability analysis conducted on the Harm Drone add-on board. A reliability analysis was performed on key components including the microcontroller, buck converter, LDO regulator, and inductor, with calculations to estimate their mean time to failure (MTTF). The results suggest the microcontroller has the shortest estimated time to failure, indicating it as an area for potential improvement. 
+\subparagraph{} This report details a safety and reliability analysis conducted on the Harm Drone add-on board. A reliability analysis was performed on key components including the microcontroller, buck converter, LDO regulator, and inductor, with calculations to estimate their mean time to failure (MTTF). The results suggest the microcontroller has the shortest estimated time to failure, indicating it as an area for potential improvement. As the microcontroller is responsible for the system's operation, the mean time to failure (MTTF) for the system is that of the microcontroller, \textbf{769,230 hours}. 
 \par The safety analysis addresses IEEE Standard C95.1 regarding electromagnetic field exposure and the National Electrical Safety Code, concluding that the drone's current design does not pose a significant electromagnetic hazard and that the NESC is out of scope for this task. 
 \par A Failure Mode, Effects, and Criticality Analysis (FMECA) identifies potential failure modes, their effects, and criticality levels for components like the microcontroller, buck converter, LDO, SPI communication, USB hub, and USB-to-serial converter. The FMECA categorizes failures as either non-critical (affecting only the add-on board) or critical (potentially impacting the drone's flight and safety). Critical failures, such as those associated with the buck converter and USB hub, necessitate higher-quality components and/or redundancy to minimize risk.
 \subsection{Software Design}
@@ -1403,9 +1403,25 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 
 %The following appendices should be organized in the order listed. If an appendix is not applicable to your report, insert a page in the proper place and note this fact on it.
 
-\subsection{Appendix A: Notes}
+\subsection{Appendix}
 %This appendix consists of a numbered list of material, books, magazines, etc. from which you have taken information, circuits, data, or other information directly. The main body of the report is to use End Notes for references. Material in the main body of the report taken from any of the listed documents should be assigned an End Note number as a superscript in the discussion of the material and be listed in the END note section. In the case of schematics and pictures, the end note number should appear as a superscript after the figure's title. The first time a copyright or trademark is encountered in the report it
 %will be assigned an end note number and proper notation will appear in the end notes. Written permission will be sought for information copied from data books, books, magazines, and data sheets. If verbal permission is given, the date, name, and phone number of the person giving permission will be noted in the end notes. If permission cannot be obtained, no copies of the data will be included in the report.
+
+\quickfigure{images/PCB-design-layout.png}{15cm}{PCB Design Layout}{pcb-design-layout}
+
+\quickfigure{images/PCB-design-layout-smd.png}{15cm}{PCB Design Layout, SMD Parts}{pcb-design-layout-smd}
+
+\quickfigure{images/PCB-design-layout-full.png}{15cm}{PCB Design Layout, All Parts}{pcb-design-layout-full}
+
+\quickfigure{images/case-empty.png}{15cm}{Empty Casing}{case-empty}
+
+\quickfigure{images/pcb-in-case.png}{15cm}{Empty Casing}{pcb-in-case}
+
+\quickfigure{images/pcb-in-case-front.png}{15cm}{Empty Casing}{pcb-in-case-front}
+
+\quickfigure{images/pcb-in-case-side.png}{15cm}{Empty Casing}{pcb-in-case-side}
+
+\quickfigure{images/initial-PCB-footprint-layout.png}{15cm}{Initial PCB Footprint Layout}{initial-pcb-footprint-layout}
 
 \subsection{Appendix B: Acceptance Testing}
 %This appendix is an extract from your senior project proposal requirements specifications testing section. If you have requested a change in your acceptance testing (Project Specific Success Criteria) a copy of the request and the approval letter will be included. The last page will then be a copy of the new (modified) acceptance testing criteria (PSSC). This information will be used by the faculty to judge whether your project performs as proposed or has been modified during the demonstration phase of your presentation.
@@ -1435,6 +1451,10 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 \quickfigure{images/schematic/ldo.png}{15cm}{LDO Used to Regulate 5V down to 3.3V}{ldo}
 
 \quickfigure{images/schematic/spi.png}{15cm}{SPI Device and Related Connections}{spi}
+
+\quickfigure{images/drill-chart.png}{15cm}{Drill Chart}{drill-chart}
+
+\quickfigure{images/silk-screen.png}{15cm}{Silk Screen}{silk-screen}
 
 \newpage
 
@@ -1484,6 +1504,11 @@ The following pages from the STM32F072CB datasheet highlight key electrical spec
    % \item Flowcharts: An overall flowchart will begin this section. Detailed flowcharts will be done for each individual routine. Each flowchart will be given a descriptive title. The title should be centered at the top of the page. On the line below the title, centered and enclosed in parenthesis, will appear a reference to the corresponding line numbers or page in the software listing where this code can be found. Circles containing an alpha designator will be used to show connectivity between portions of flowcharts. A to/from page number will be placed next to the circle to aid in tracing the flow between pages. Pseudo-code may be used in place of flowcharts for computational code, but not for control or input/output code.
    % \item Program Listings: High Level or Machine: Compressed printing can be used. All programs must have enough comments so that a reviewer can gain insight into the purpose of the program elements.
 %\end{enumerate}
+\quickfigure{software-level0}{12cm}{Top-level breakdown of the Harm Drone software stack.}{software-level0}
+\quickfigure{software-level1}{16cm}{Low-level breakdown of the Harm Drone software stack.}{software-level1}
+\quickfigure{software-routines}{16cm}{The main and flight routines of the integrated Harm Drone system.}{software-routines}
+\quickfigure{software-integration-block-diagram}{17cm}{A typical software setup for a host drone utilizing the Harm Drone.}{software-integration-block-diagram}
+\clearpage
 
 \subsection{Appendix E: Resource Expenditure Analysis}
 %\begin{enumerate}[noitemsep]
@@ -1654,27 +1679,6 @@ Funding and technical support for the Harm Drone project were provided by the Un
    % \item Figure titles and numbering: Figures should be numbered consecutively in the report. Every figure must have a descriptive title located immediately below the figure.
    % \item Table titles and numbers: Tables should be numbered consecutively in the report. Every table must have a descriptive title located above or below the table.
   % \end{itemize}
-
-\quickfigure{images/PCB-design-layout.png}{15cm}{PCB Design Layout}{pcb-design-layout}
-
-% todo: the silk screen and drill chart do not match the current PCB design layout above
-\quickfigure{images/drill-chart.png}{15cm}{Drill Chart}{drill-chart}
-
-\quickfigure{images/silk-screen.png}{15cm}{Silk Screen}{silk-screen}
-
-\quickfigure{images/right-side-of-PCB-casing.png}{15cm}{Right Side View of PCB Casing}{right-side-view-pcb-casing}
-
-\quickfigure{images/bottom-side-of-PCB-casing.png}{15cm}{Bottom Side of PCB Casing}{bottom-side-pcb-casing}
-
-\quickfigure{images/front-view-of-PCB-casing.png}{15cm}{Front View of PCB Casing}{front-view-pcb-casing}
-
-\quickfigure{images/top-view-PCB-casing-open.png}{15cm}{Top Side View of the PCB Casing}{top-side-view-pcb-casing}
-
-\quickfigure{images/top-front-view-PCB-casing-open.png}{15cm}{Top Front View of the PCB Casing}{top-front-view-pcb-casing}
-
-\quickfigure{images/PCB-CAD-drawing.png}{15cm}{PCB CAD Casing}{pcb-cad-casing}
-
-\quickfigure{images/initial-PCB-footprint-layout.png}{15cm}{Initial PCB Footprint Layout}{initial-pcb-footprint-layout}
 
 %\section*{References}
 %Use the IEEE format for reference style. List all references used in the report. All references should include author, title, journal or magazine title (if a journal article), publisher, page number, date. Below are sample references from a conference proceeding paper [1], book [2], journal article [3], Ph.D. dissertation [4], technical specification [5], and web page.
