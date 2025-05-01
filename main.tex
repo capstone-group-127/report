@@ -1403,9 +1403,25 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 
 %The following appendices should be organized in the order listed. If an appendix is not applicable to your report, insert a page in the proper place and note this fact on it.
 
-\subsection{Appendix A: Notes}
+\subsection{Appendix}
 %This appendix consists of a numbered list of material, books, magazines, etc. from which you have taken information, circuits, data, or other information directly. The main body of the report is to use End Notes for references. Material in the main body of the report taken from any of the listed documents should be assigned an End Note number as a superscript in the discussion of the material and be listed in the END note section. In the case of schematics and pictures, the end note number should appear as a superscript after the figure's title. The first time a copyright or trademark is encountered in the report it
 %will be assigned an end note number and proper notation will appear in the end notes. Written permission will be sought for information copied from data books, books, magazines, and data sheets. If verbal permission is given, the date, name, and phone number of the person giving permission will be noted in the end notes. If permission cannot be obtained, no copies of the data will be included in the report.
+
+\quickfigure{images/PCB-design-layout.png}{15cm}{PCB Design Layout}{pcb-design-layout}
+
+\quickfigure{images/PCB-design-layout-smd.png}{15cm}{PCB Design Layout, SMD Parts}{pcb-design-layout-smd}
+
+\quickfigure{images/PCB-design-layout-full.png}{15cm}{PCB Design Layout, All Parts}{pcb-design-layout-full}
+
+\quickfigure{images/case-empty.png}{15cm}{Empty Casing}{case-empty}
+
+\quickfigure{images/pcb-in-case.png}{15cm}{Empty Casing}{pcb-in-case}
+
+\quickfigure{images/pcb-in-case-front.png}{15cm}{Empty Casing}{pcb-in-case-front}
+
+\quickfigure{images/pcb-in-case-side.png}{15cm}{Empty Casing}{pcb-in-case-side}
+
+\quickfigure{images/initial-PCB-footprint-layout.png}{15cm}{Initial PCB Footprint Layout}{initial-pcb-footprint-layout}
 
 \subsection{Appendix B: Acceptance Testing}
 %This appendix is an extract from your senior project proposal requirements specifications testing section. If you have requested a change in your acceptance testing (Project Specific Success Criteria) a copy of the request and the approval letter will be included. The last page will then be a copy of the new (modified) acceptance testing criteria (PSSC). This information will be used by the faculty to judge whether your project performs as proposed or has been modified during the demonstration phase of your presentation.
@@ -1436,23 +1452,15 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 
 \quickfigure{images/schematic/spi.png}{15cm}{SPI Device and Related Connections}{spi}
 
+\quickfigure{images/drill-chart.png}{15cm}{Drill Chart}{drill-chart}
+
+\quickfigure{images/silk-screen.png}{15cm}{Silk Screen}{silk-screen}
+
 \newpage
 
 \subsubsection{Timing Analysis}
 
 \subsubsection{Loading Analysis}
-
-\newpage
-
-\subsubsection{Specification Sheets}
-
-The following pages from the STM32F072CB datasheet highlight key electrical specifications, pin configuration, and recommended usage. These pages were selected based on their relevance to power requirements, signal integrity, and integration with the rest of the Harm Drone system.
-
-\includepdf[pages=-, scale=0.8, pagecommand={}]{stm32f072cb.pdf}
-
-\newpage
-
-\includepdf[pages=-, scale=0.8, pagecommand={}]{USB Hub.pdf}
 
 \subsubsection{Signal Quality Analysis}
 
@@ -1637,27 +1645,6 @@ Funding and technical support for the Harm Drone project were provided by the Un
    % \item Figure titles and numbering: Figures should be numbered consecutively in the report. Every figure must have a descriptive title located immediately below the figure.
    % \item Table titles and numbers: Tables should be numbered consecutively in the report. Every table must have a descriptive title located above or below the table.
   % \end{itemize}
-
-\quickfigure{images/PCB-design-layout.png}{15cm}{PCB Design Layout}{pcb-design-layout}
-
-% todo: the silk screen and drill chart do not match the current PCB design layout above
-\quickfigure{images/drill-chart.png}{15cm}{Drill Chart}{drill-chart}
-
-\quickfigure{images/silk-screen.png}{15cm}{Silk Screen}{silk-screen}
-
-\quickfigure{images/right-side-of-PCB-casing.png}{15cm}{Right Side View of PCB Casing}{right-side-view-pcb-casing}
-
-\quickfigure{images/bottom-side-of-PCB-casing.png}{15cm}{Bottom Side of PCB Casing}{bottom-side-pcb-casing}
-
-\quickfigure{images/front-view-of-PCB-casing.png}{15cm}{Front View of PCB Casing}{front-view-pcb-casing}
-
-\quickfigure{images/top-view-PCB-casing-open.png}{15cm}{Top Side View of the PCB Casing}{top-side-view-pcb-casing}
-
-\quickfigure{images/top-front-view-PCB-casing-open.png}{15cm}{Top Front View of the PCB Casing}{top-front-view-pcb-casing}
-
-\quickfigure{images/PCB-CAD-drawing.png}{15cm}{PCB CAD Casing}{pcb-cad-casing}
-
-\quickfigure{images/initial-PCB-footprint-layout.png}{15cm}{Initial PCB Footprint Layout}{initial-pcb-footprint-layout}
 
 %\section*{References}
 %Use the IEEE format for reference style. List all references used in the report. All references should include author, title, journal or magazine title (if a journal article), publisher, page number, date. Below are sample references from a conference proceeding paper [1], book [2], journal article [3], Ph.D. dissertation [4], technical specification [5], and web page.
