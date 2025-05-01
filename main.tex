@@ -1441,7 +1441,24 @@ Throughout the development of the Harm Drone PCB, the team encountered a number 
 \subsubsection{Timing Analysis}
 
 \subsubsection{Loading Analysis}
-
+\begin{table}[htbp!]
+	\centering
+	\begin{tabular}{lllll}
+		\multicolumn{3}{c}{Loading   Analysis}       &  &  \\
+		\multicolumn{3}{c}{15V Devices}              &  &  \\
+		Device No.     & Device Descriptor & Current &  &  \\
+		LMR51430XDDCR  & Buck Converter    & 300 mA  &  &  \\
+		\multicolumn{3}{c}{5V Devices}               &  &  \\
+		AE11131-ND     & USB 2.0 Ports     & 100 mA  &  &  \\
+		FT231XS-R      & USB to UART       & 8 mA    &  &  \\
+		XC6210A332MR-G & LDO               & 100 mA  &  &  \\
+		\multicolumn{3}{c}{3.3V Devices}             &  &  \\
+		STM32F072CB    & Microcontroller   & 120 mA  &  &  \\
+		CAT25160VI-GT3 & EEPROM            & 2 mA    &  &  \\
+		TUSB2046I      & USB Hub           & 40 mA   &  & 
+	\end{tabular}
+\end{table}
+\par This table lists the current draw for all of the components used to finish our PSSC's. The Buck converter receives 15 V from the battery, and steps it down to 5 V for the LDO, USB to UART, and the USB 2.0 ports. The LDO steps down to 3.3 V for the Microcontroller, EEPROM, and the USB Hub.
 \newpage
 
 \subsubsection{Specification Sheets}
