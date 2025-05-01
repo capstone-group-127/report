@@ -624,8 +624,8 @@ $\pi_L$ & Learning Factor & 1.0 & Produced for 5 years \\ \hline
 \par Using the indicated equation to calculate the total failure:
 \[ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L\]
 \[ \lambda_p = (0.56*2.1 + 0.025*5) * 1.0 * 1.0 = 1.3\]
-\[ \lambda_p^{-1} = 0.76923077 \]
-\par The results indicate that this part has an average time to failure of 769,230 hours. This is a reliable part, but the estimated time to failure is shorter than the rest of the components in the system. To increase reliability, a better microcontroller could be chosen, built to military specification. Otherwise, a processor with less bits or pins could be used to decrease complexity.
+\[ \text{(MTTF) } \lambda_p^{-1} = 0.76923077 \]
+\par The results indicate that this part has an mean time to failure (MTTF) of 769,230 hours. This is a reliable part, but the estimated time to failure is shorter than the rest of the components in the system. To increase reliability, a better microcontroller could be chosen, built to military specification. Otherwise, a processor with less bits or pins could be used to decrease complexity.
 \paragraph{Buck Converter}
 \par The LMR51430 buck converter was chosen for a reliability analysis due to its role in providing power to the entire system. Power for both the system and the drone will be provided from an on-board XT60 connection to a battery, so determining the reliability of this converter is useful for determining the longevity of the system.
 \begin{table}[htbp!]
@@ -644,8 +644,8 @@ $\pi_L$ & Learning Factor & 1.0 & 3 years production \\ \hline
 \par Using the indicated equation to calculate the total failure:
 \[ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L\]
 \[ \lambda_p = (0.1*2.1 + 0.005*5) * 1.0 * 1.0 = 0.24\]
-\[ \lambda_p^{-1} = 4.26 \]
-\par The results indicate that this part has an average time to failure of 4,255,319 hours. This makes sense, because the simplicity and fixed nature of the buck converter means it will last longer under load. The reliability could be increased by finding a more reliable part with better construction, or by using active cooling to decrease temperature fluctuations. Otherwise, this part is easily serviceable on the product, as it's physically separated from other, more sensitive ICs.
+\[ \text{(MTTF) } \lambda_p^{-1} = 4.26 \]
+\par The results indicate that this part has an mean time to failure (MTTF) of 4,255,319 hours. This makes sense, because the simplicity and fixed nature of the buck converter means it will last longer under load. The reliability could be increased by finding a more reliable part with better construction, or by using active cooling to decrease temperature fluctuations. Otherwise, this part is easily serviceable on the product, as it's physically separated from other, more sensitive ICs.
 \paragraph{LDO Regulator} The XC6210 LDO regulator was chosen for a reliability analysis because it's a critical component for providing a stable voltage to parts of the system.  Determining its reliability is important for assessing overall system longevity.
 
 \begin{table}[htbp!]
@@ -665,8 +665,8 @@ $\pi_L$ & Learning Factor & 1.0 & 2 years production \\ \hline
 \par Using the indicated equation to calculate the total failure:
 $$ \lambda_p = (C_1\pi_T + C_2\pi_E) \pi_Q \pi_L$$
 $$ \lambda_p = (0.03 * 2.1 + 0.0028 * 5.0) * 1.0 * 1.0 = 0.08 $$
-$$ \lambda_p^{-1} = 12.99 $$
-\par The results indicate that this part has an average time to failure of 12,990,000 hours.  This result is significantly higher than that of the buck converter from before, which makes intuitive sense. The LDO should run cooler and have fewer points of failure compared to a switching supply. To increase the reliability, better cooling or a Mil-Spec part could be considered.
+$$ \text{(MTTF) } \lambda_p^{-1} = 12.99 $$
+\par The results indicate that this part has an mean time to failure (MTTF) of 12,990,000 hours.  This result is significantly higher than that of the buck converter from before, which makes intuitive sense. The LDO should run cooler and have fewer points of failure compared to a switching supply. To increase the reliability, better cooling or a Mil-Spec part could be considered.
 \newpage
 \paragraph{Inductor}
 \begin{table}[htbp!]
@@ -683,8 +683,8 @@ $\pi_E$ & Environment Factor & 5.0 & $A_{UC}$ \\ \hline
 \par Using the indicated equation to calculate the total failure:
 $$ \lambda_p = \lambda_b * \pi_T * \pi_Q * \pi_E $$
 $$ \lambda_p = 0.00003 * 1.8 + 3.0 * 5.0 = 0.08 $$
-$$ \lambda_p^{-1} = 15.000054 $$
-\par The results indicate that this part has an average time to failure of 15,000,054 hours.  This is due to the fixed nature of the inductor, as an alternative to a variable inductor which may wear more quickly. This also means it will fail after some other parts in the system, so reliability concerns are best focused on the previous parts.
+$$ \text{(MTTF) } \lambda_p^{-1} = 15.000054 $$
+\par The results indicate that this part has an mean time to failure (MTTF) of 15,000,054 hours.  This is due to the fixed nature of the inductor, as an alternative to a variable inductor which may wear more quickly. This also means it will fail after some other parts in the system, so reliability concerns are best focused on the previous parts.
 
 \subsubsection{Safety Analysis}
 \paragraph{C95}
@@ -750,7 +750,7 @@ If communication with the drone were to be interrupted, the drone couldn't commu
 \subparagraph{Criticality}
 This failure case doesn't affect the drone's flight, only the ability to gather data, so it doesn't affect a person's health, making it a non-critical failure.
 \subsubsection{Summary}
-\subparagraph{} This report details a safety and reliability analysis conducted on the Harm Drone add-on board. A reliability analysis was performed on key components including the microcontroller, buck converter, LDO regulator, and inductor, with calculations to estimate their mean time to failure (MTTF). The results suggest the microcontroller has the shortest estimated time to failure, indicating it as an area for potential improvement. 
+\subparagraph{} This report details a safety and reliability analysis conducted on the Harm Drone add-on board. A reliability analysis was performed on key components including the microcontroller, buck converter, LDO regulator, and inductor, with calculations to estimate their mean time to failure (MTTF). The results suggest the microcontroller has the shortest estimated time to failure, indicating it as an area for potential improvement. As the microcontroller is responsible for the system's operation, the mean time to failure (MTTF) for the system is that of the microcontroller, \textbf{769,230 hours}. 
 \par The safety analysis addresses IEEE Standard C95.1 regarding electromagnetic field exposure and the National Electrical Safety Code, concluding that the drone's current design does not pose a significant electromagnetic hazard and that the NESC is out of scope for this task. 
 \par A Failure Mode, Effects, and Criticality Analysis (FMECA) identifies potential failure modes, their effects, and criticality levels for components like the microcontroller, buck converter, LDO, SPI communication, USB hub, and USB-to-serial converter. The FMECA categorizes failures as either non-critical (affecting only the add-on board) or critical (potentially impacting the drone's flight and safety). Critical failures, such as those associated with the buck converter and USB hub, necessitate higher-quality components and/or redundancy to minimize risk.
 \subsection{Software Design}
